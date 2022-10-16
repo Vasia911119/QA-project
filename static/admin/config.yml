@@ -1,0 +1,81 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
+
+local_backend: true
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: 'home'
+    label: 'Home Page'
+    folder: 'content/home'
+    slug: '{{slug}}'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'home',
+        }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'components'
+    label: 'Components and Functionality'
+    folder: 'content/components'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'component',
+        }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - {
+          label: 'Description',
+          name: 'description',
+          widget: 'text',
+          required: true,
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: 'presentations'
+    label: 'Presentations'
+    folder: 'content/presentations'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'presentation',
+        }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: 'templates'
+    label: 'Templates'
+    folder: 'content/templates'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'template',
+        }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
