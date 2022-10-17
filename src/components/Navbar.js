@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-
+import { HTMLContent } from './Content'
 import useMenuStructure from '../queries/menu-structure'
 
 export default function Navbar() {
@@ -14,13 +14,23 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
+          {Array.isArray(menuItems) &&
+            menuItems.map(item => {
+              item.tableOfContents
+            })}
+
           <ul>
             {Array.isArray(menuItems) &&
               menuItems.map(item => (
                 <li key={item.node.fields.slug} className="mt-2">
-                  <Link to={item.node.fields.slug} className=" px-2 lg:px-0">
-                    {item.node.frontmatter.title}
-                  </Link>
+                  {/* <Link to={item.node.fields.slug} className=" px-2 lg:px-0"> */}
+                  {item.node.frontmatter.title}
+                  <HTMLContent
+                    className="prose max-w-none"
+                    content={item.node.tableOfContents}
+                  />
+
+                  {/* </Link> */}
                 </li>
               ))}
           </ul>
