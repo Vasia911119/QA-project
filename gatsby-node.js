@@ -1,9 +1,3 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
-
 const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
@@ -15,21 +9,14 @@ exports.createPages = ({ actions, graphql }) => {
   return graphql(`
     {
       allMarkdownRemark(
-        limit: 1000
         filter: { frontmatter: { templateKey: { eq: "component" } } }
       ) {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              description
-              templateKey
-            }
-            html
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            templateKey
           }
         }
       }
@@ -37,21 +24,19 @@ exports.createPages = ({ actions, graphql }) => {
   `).then(result => {
     if (result.errors) {
       result.errors.forEach(e => console.error(e.toString()))
-
       return Promise.reject(result.errors)
     }
-    console.log(result)
-    const componentData = result.data.allMarkdownRemark.edges
 
-    componentData.forEach(({ node }) => {
-      const { title, description } = node.frontmatter
+    const pages = result.data.allMarkdownRemark.nodes
+
+    pages.forEach(page => {
       createPage({
-        path: node.fields.slug,
+        path: page.fields.slug,
         component: path.resolve(
-          `src/templates/${String(node.frontmatter.templateKey)}.js`
+          `src/templates/${String(page.frontmatter.templateKey)}.js`
         ),
         context: {
-          node,
+          slug: page.fields.slug,
         },
       })
     })

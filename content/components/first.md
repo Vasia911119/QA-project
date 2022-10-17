@@ -6,8 +6,6 @@ description: first decription
 featuredimage: /img/soldier-60707_960_720.png
 ---
 
-# H﻿eader
-
 ### 1. Main site link
 
 У правому кутку посилання на головний сайт **GoIT** у вигляді логотипу.
