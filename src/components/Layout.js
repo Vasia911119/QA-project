@@ -1,15 +1,13 @@
-import 'fontsource-open-sans'
+import 'fontsource-inter'
 
 import { withPrefix } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
 
 import Navbar from '../components/Navbar'
 
 // import useSiteMetadata from '../queries/site-metadata'
 
-// import '../styles/all.css'
 import Header from './Header'
 
 const Layout = ({ children }) => {
@@ -18,7 +16,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="HandheldFriendly" content="True" />
@@ -63,7 +61,7 @@ const Layout = ({ children }) => {
           content="black-translucent"
         />
         <meta name="msapplication-TileColor" content={color} />
-      </Helmet>
+      </Helmet> */}
 
       <div className="max-w-screen-lg mx-auto antialiased">
         <Header />
