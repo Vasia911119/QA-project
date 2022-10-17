@@ -1,16 +1,32 @@
 ---
 templateKey: component
-title: first
+title: Header
 date: 2022-10-14T16:50:17.142Z
 description: first decription
 featuredimage: /img/soldier-60707_960_720.png
 ---
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+# H﻿eader
+
+
+
+### 1. Main site link
+
+У правому кутку посилання на головний сайт **GoIT** у вигляді логотипу.
+
+**2﻿. Navigation menu**
+
+Всередині навігаційне меню переміщення між вирішеними питаннями:
+
+* Стрілка `"ліворуч"` відкриває попереднє питання.
+* Центральна кнопка, на якій демонструється номер поточного питання та через слеш '"/"` загальна кількість питань. По кліку на цю кнопку відкривається список вирішених питань. Клік на кнопку з номером питання у списку відкриває сторінку з відповідним питанням. відкривається список вирішених питань.
+* Стрілка `"праворуч"` відкриває наступне питання.
+
+
 
 ![soldier](/img/soldier-60707_960_720.png)
 
+### 3. Localization icon
 
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+У лівому куті індикатор локалізації. Під час підсвічування символу `"UA"` зміст сторінки відображається українською мовою. Під час підсвічування символу `"RU"` зміст сторінки відображається російською мовою. Змінити підсвічування можна натисканням на відповідний символ.
 
 ![](/img/soldier-60707_960_720.png)
