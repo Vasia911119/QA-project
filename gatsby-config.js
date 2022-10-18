@@ -15,6 +15,7 @@ const social = {
 require('dotenv').config({
   path: `.env`,
 })
+const autoprefixer = require('autoprefixer')
 
 module.exports = {
   siteMetadata: {
@@ -28,7 +29,12 @@ module.exports = {
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-postcss',
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [autoprefixer()],
+      },
+    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {

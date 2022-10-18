@@ -10,8 +10,9 @@ import Layout from '../components/Layout'
 const ComponentTemplate = ({ data }) => {
   const { title } = data.markdownRemark.frontmatter
   const { html } = data.markdownRemark
-  // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
+
   return (
+    // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
     <div className="w-full">
       <div className="space-y-4 text-left">
         <h1 className="text-3xl leading-12 text-gray-800 lg:text-4xl lg:leading-14 mb-2">
