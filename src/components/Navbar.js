@@ -2,11 +2,13 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { HTMLContent } from './Content'
 import useMenuStructure from '../queries/menu-structure'
+import SwitchLanguage from './SwitchLanguages'
 
 export default function Navbar() {
   const menuItems = useMenuStructure()
   return (
     <div className="font-bold w-60 bg-blue-200  py-2">
+      <SwitchLanguage />
       <ul className="flex flex-col lg:inline-flex items-center">
         <li>
           <Link to={'/'} className=" px-2 lg:px-0">

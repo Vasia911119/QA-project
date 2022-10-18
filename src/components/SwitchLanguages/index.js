@@ -1,1 +1,1 @@
-// export { default } from './SwitchLanguage'
+export { default } from './SwitchLanguages'

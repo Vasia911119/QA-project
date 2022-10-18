@@ -5,14 +5,14 @@ export const showLanguage = lang => {
   return lang === 'uk' ? 'UA' : lang.toUpperCase()
 }
 
-const LanguageList = () => {
+const LanguageList = ({ onItemClick }) => {
   const { languages, originalPath } = useI18next()
 
   return (
     <ul className="languages">
       {languages.map(lng => (
         <li key={lng}>
-          <Link to={originalPath} language={lng}>
+          <Link to={originalPath} language={lng} onClick={onItemClick}>
             {showLanguage(lng)}
           </Link>
         </li>

@@ -197,10 +197,13 @@ module.exports = {
         siteUrl: ``,
 
         i18nextOptions: {
+          lng: 'uk',
+          fallbackLng: 'uk',
+          load: 'currentOnly',
           interpolation: {
             escapeValue: false,
           },
-          returnObjects: true,
+          // returnObjects: true,
           keySeparator: false,
           nsSeparator: false,
         },
