@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { sendMessage } from '../services/telegramApi'
+import { NotificationContainer, NotificationManager } from 'react-notifications'
+import 'react-notifications/lib/notifications.css'
 
 const schema = yup
   .object({
@@ -11,6 +13,9 @@ const schema = yup
     message: yup.string().required().min(10).max(2000),
   })
   .required()
+
+const createNotification = () =>
+  NotificationManager.success('Повідомлення відправлено')
 
 const Form = () => {
   const [error, setError] = useState(null)
@@ -35,6 +40,7 @@ const Form = () => {
       text += `<b>Форма отримана з:</b>\n`
       text += `<a href="https://xxx.netlify.app/">https://xxx.netlify.app/</a>`
       await sendMessage(text)
+      createNotification()
       reset()
     } catch (error) {
       console.log(error)
@@ -47,34 +53,56 @@ const Form = () => {
   }
 
   return (
-    <form
-      className="bg-orange-300 w-60 m-auto py-11"
-      method="POST"
-      name="contact"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <input
-        className="rounded border-2 border-blue-600 mx-auto block"
-        {...register('name')}
-      />
-      <p>{errors.name?.message}</p>
+    <div className="w-[753px] ml-auto">
+      <h2 className="font-inter font-medium text-lg text-stone-900 mb-[27px]">
+        Залишились питання чи є пропозиії, повідом нам.
+      </h2>
+      <form
+        className=""
+        method="POST"
+        name="contact"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="flex justify-between">
+          <input
+            className="w-[165px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2"
+            {...register('name')}
+            placeholder="Ім’я"
+          />
 
-      <input
-        className="rounded border-2 border-blue-600 mx-auto block"
-        {...register('email')}
-      />
-      <p>{errors.email?.message}</p>
+          <input
+            className="w-[165px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2"
+            {...register('email')}
+            placeholder="Email"
+          />
 
-      <textarea
-        className="rounded border-2 border-blue-600 mx-auto block"
-        {...register('message')}
-      />
-      <p>{errors.message?.message}</p>
+          <input
+            className="w-[287px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2"
+            {...register('message')}
+            placeholder="Залиште коментар..."
+          />
+        </div>
+        <div className="flex justify-between">
+          <p className="w-[165px] font-inter font-medium text-xs text-red-500">
+            {errors.name?.message}
+          </p>
+          <p className="w-[165px] font-inter font-medium text-xs text-red-500">
+            {errors.email?.message}
+          </p>
+          <p className="w-[287px] font-inter font-medium text-xs text-red-500">
+            {errors.message?.message}
+          </p>
+        </div>
 
-      <button className="rounded bg-blue-600 w-30 mx-auto block" type="submit">
-        Відправити
-      </button>
-    </form>
+        <button
+          className="rounded-[10px] border border-blue-600 block w-[120px] h-8 font-inter font-semibold text-xs text-blue-600 ml-auto transition-all hover:border-red-500 hover:text-red-500"
+          type="submit"
+        >
+          Надіслати
+        </button>
+      </form>
+      <NotificationContainer />
+    </div>
   )
 }
 

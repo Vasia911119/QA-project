@@ -3,7 +3,6 @@ import React from 'react'
 import Layout from '../components/Layout'
 import * as s from '../styles/home.module.css'
 import PropTypes from 'prop-types'
-
 import Form from '../components/Form'
 
 import { HTMLContent } from '../components/Content'
@@ -12,7 +11,6 @@ export default function HomePage({ data }) {
   return (
     <Layout>
       <div className="w-full">
-        <Form />
         <div className="space-y-4 text-left">
           <h1 className="text-3xl leading-12 text-gray-800 lg:text-4xl lg:leading-14 mb-2">
             {data.markdownRemark.frontmatter.title}
@@ -22,6 +20,7 @@ export default function HomePage({ data }) {
           className="prose max-w-none"
           content={data.markdownRemark.html}
         />
+        <Form />
       </div>
     </Layout>
   )
