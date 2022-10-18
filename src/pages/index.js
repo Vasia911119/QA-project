@@ -29,7 +29,16 @@ HomePage.propTypes = {
   }),
 }
 export const pageQuery = graphql`
-  query {
+  query ($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     markdownRemark(frontmatter: { templateKey: { eq: "home" } }, html: {}) {
       id
       html

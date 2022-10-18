@@ -1,0 +1,16 @@
+{
+  "header": {
+    "home": "Специфікація до web-ресурсу",
+    "main": {
+      "name": "Компоненти та функціональність",
+      "id": "components-and-functionality"
+    },
+    "presentations": "Презентації",
+    "templates": "Шаблони"
+  },
+  "button": {
+    "next": "Далі",
+    "previous": "Назад"
+  },
+  "form": {}
+}

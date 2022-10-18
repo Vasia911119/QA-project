@@ -1,0 +1,16 @@
+{
+  "header": {
+    "home": "Specification for the web resource",
+    "main": {
+      "name": "Components and functionality",
+      "id": "components-and-functionality"
+    },
+    "presentations": "Presentations",
+    "templates": "Templates"
+  },
+  "button": {
+    "next": "Next",
+    "previous": "Back"
+  },
+  "form": {}
+}

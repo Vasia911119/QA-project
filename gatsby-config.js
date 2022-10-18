@@ -179,5 +179,32 @@ module.exports = {
         icon: srcLogo,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/locales`,
+        name: `locale`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        localeJsonSourceName: `locale`,
+        languages: [`uk`, `en`, `ru`],
+        defaultLanguage: `uk`,
+        generateDefaultLanguagePage: '/uk',
+        // if you are using Helmet, you must include siteUrl, and make sure you add http:https
+        siteUrl: ``,
+
+        i18nextOptions: {
+          interpolation: {
+            escapeValue: false,
+          },
+          returnObjects: true,
+          keySeparator: false,
+          nsSeparator: false,
+        },
+      },
+    },
   ],
 }
