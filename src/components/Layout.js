@@ -64,11 +64,11 @@ const Layout = ({ children }) => {
       </Helmet> */}
 
       <div className="max-w-screen-lg mx-auto antialiased">
-        <Header />
+        {/* <Header /> */}
 
-        <main className="flex ">
+        <main className="flex relative">
           <Navbar />
-          {children}
+          <div className="ml-60">{children}</div>
         </main>
       </div>
     </>
