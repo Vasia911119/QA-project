@@ -4,9 +4,7 @@ export default function useMenuStructure() {
   const { allMarkdownRemark } = useStaticQuery(
     graphql`
       query MenuStructureQuery {
-        allMarkdownRemark(
-          filter: { frontmatter: { templateKey: { eq: "component" } } }
-        ) {
+        allMarkdownRemark {
           edges {
             node {
               fields {
@@ -15,8 +13,10 @@ export default function useMenuStructure() {
               frontmatter {
                 description
                 title
+                templateKey
               }
-              tableOfContents(absolute: true, pathToSlugField: "fields.slug")
+              tableOfContents(pathToSlugField: "fields.slug", absolute: true)
+              html
             }
           }
         }
