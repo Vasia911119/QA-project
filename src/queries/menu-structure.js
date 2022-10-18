@@ -16,6 +16,7 @@ export default function useMenuStructure() {
                 description
                 title
               }
+              tableOfContents(absolute: true, pathToSlugField: "fields.slug")
             }
           }
         }
