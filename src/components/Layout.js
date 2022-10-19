@@ -63,12 +63,12 @@ const Layout = ({ children }) => {
         <meta name="msapplication-TileColor" content={color} />
       </Helmet> */}
 
-      <div className="max-w-screen-lg mx-auto antialiased">
-        <Header />
+      <div className="max-w-screen-lg mx-auto flex relative antialiased">
+        {/* <Header /> */}
+        <Navbar />
 
-        <main className="flex ">
-          <Navbar />
-          {children}
+        <main className="">
+          <div className="ml-60">{children}</div>
         </main>
       </div>
     </>

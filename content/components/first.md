@@ -6,8 +6,6 @@ description: first decription
 featuredimage: /img/soldier-60707_960_720.png
 ---
 
-# H﻿eader
-
 ### 1. Main site link
 
 У правому кутку посилання на головний сайт **GoIT** у вигляді логотипу.
@@ -25,5 +23,12 @@ featuredimage: /img/soldier-60707_960_720.png
 ### 3. Localization icon
 
 У лівому куті індикатор локалізації. Під час підсвічування символу `"UA"` зміст сторінки відображається українською мовою. Під час підсвічування символу `"RU"` зміст сторінки відображається російською мовою. Змінити підсвічування можна натисканням на відповідний символ.
+
+```chuck
+      <main className="flex relative">
+          <Navbar />
+          <div className="ml-60">{children}</div>
+        </main>
+```
 
 ![](/img/soldier-60707_960_720.png)

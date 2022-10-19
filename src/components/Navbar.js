@@ -2,42 +2,75 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { HTMLContent } from './Content'
 import useMenuStructure from '../queries/menu-structure'
-import SwitchLanguage from './SwitchLanguages'
+import Accordion from './Accordion/Accordion'
+
+import SwitchLanguages from './SwitchLanguages'
 
 export default function Navbar() {
   const menuItems = useMenuStructure()
+
+  // console.log(menuItems)
   return (
-    <div className="font-bold w-60 bg-blue-200  py-2">
-      <SwitchLanguage />
-      <ul className="flex flex-col lg:inline-flex items-center">
+    <div className="font-bold w-60 bg-blue-200 fixed ">
+      <ul className="flex flex-col lg:inline-flex ">
         <li>
-          <Link to={'/'} className=" px-2 lg:px-0">
+          <Link to={'/'} className=" ">
             Специфікація до web ресурсу
           </Link>
         </li>
         <li>
-          {Array.isArray(menuItems) &&
-            menuItems.map(item => {
-              item.tableOfContents
-            })}
-
-          <ul>
-            {Array.isArray(menuItems) &&
-              menuItems.map(item => (
-                <li key={item.node.fields.slug} className="mt-2">
-                  {/* <Link to={item.node.fields.slug} className=" px-2 lg:px-0"> */}
-                  {item.node.frontmatter.title}
-                  <HTMLContent
-                    className="prose max-w-none"
-                    content={item.node.tableOfContents}
-                  />
-
-                  {/* </Link> */}
-                </li>
-              ))}
-          </ul>
+          <div>
+            <Accordion
+              title="components and functionality"
+              content={
+                Array.isArray(menuItems) &&
+                menuItems.map(item =>
+                  item.node.frontmatter.templateKey === 'component' ? (
+                    <Accordion
+                      key={item.node.frontmatter.title}
+                      title={item.node.frontmatter.title}
+                      content={
+                        <HTMLContent content={item.node.tableOfContents} />
+                      }
+                    />
+                  ) : null
+                )
+              }
+            />
+          </div>
+        </li>
+        <li>
+          <Accordion
+            title="three"
+            content={
+              Array.isArray(menuItems) &&
+              menuItems.map(item =>
+                item.node.frontmatter.templateKey === 'presentation' ? (
+                  <div key={item.node.frontmatter.title}>
+                    <HTMLContent content={item.node.html} />
+                  </div>
+                ) : null
+              )
+            }
+          />
+        </li>
+        <li>
+          <Accordion
+            title="three"
+            content={
+              Array.isArray(menuItems) &&
+              menuItems.map(item =>
+                item.node.frontmatter.templateKey === 'template' ? (
+                  <div key={item.node.frontmatter.title}>
+                    <HTMLContent content={item.node.html} />
+                  </div>
+                ) : null
+              )
+            }
+          />
         </li>
       </ul>
+      <SwitchLanguages />
     </div>
   )
 }

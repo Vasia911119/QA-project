@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useI18next } from 'gatsby-plugin-react-i18next'
 import Flag from 'react-world-flags'
+import { filter } from 'lodash'
 // import LanguageList from './LanguageList'
 
 const showLanguage = lang => {
@@ -20,13 +21,15 @@ const showFlag = lang => {
   }
 }
 
-const SwitchLanguage = () => {
+const SwitchLanguages = () => {
   const [open, setOpen] = React.useState(false)
   const { languages, originalPath, language } = useI18next()
 
   const handleOpen = () => {
     setOpen(!open)
   }
+
+  const langArray = languages.filter(lang => lang !== language)
 
   return (
     <div>
@@ -36,17 +39,20 @@ const SwitchLanguage = () => {
       </button>
       {open && (
         <ul className="languages">
-          {languages.map(lng => (
-            <li key={lng}>
-              <Link to={originalPath} language={lng} onClick={handleOpen}>
-                {showLanguage(lng)}
-              </Link>
-            </li>
-          ))}
+          {langArray.map(lng => {
+            return (
+              <li key={lng}>
+                <Link to={originalPath} language={lng} onClick={handleOpen}>
+                  <Flag code={showFlag(lng)} />
+                  {showLanguage(lng)}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       )}
     </div>
   )
 }
 
-export default SwitchLanguage
+export default SwitchLanguages
