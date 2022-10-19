@@ -9,7 +9,7 @@ export default function Navbar() {
 
   // console.log(menuItems)
   return (
-    <div className="font-bold w-60 bg-blue-200 fixed ">
+    <div className="font-bold w-60 text-text fixed ">
       <ul className="flex flex-col lg:inline-flex ">
         <li>
           <Link to={'/'} className=" ">
@@ -25,6 +25,7 @@ export default function Navbar() {
                 menuItems.map(item =>
                   item.node.frontmatter.templateKey === 'component' ? (
                     <Accordion
+                      titleUrl={item.node.fields.slug}
                       key={item.node.frontmatter.title}
                       title={item.node.frontmatter.title}
                       content={

@@ -16,55 +16,8 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      {/* <Helmet>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="HandheldFriendly" content="True" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          href={`${withPrefix('/')}rss.xml`}
-        />
-
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href={`${withPrefix('/')}img/apple-touch-icon.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href={`${withPrefix('/')}img/favicon-32x32.png`}
-          sizes="32x32"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href={`${withPrefix('/')}img/favicon-16x16.png`}
-          sizes="16x16"
-        />
-
-        <link
-          rel="mask-icon"
-          href={`${withPrefix('/')}img/safari-pinned-tab.svg`}
-          color="#ff4400"
-        />
-        <link rel="manifest" href="/manifest.webmanifest" />
-
-        <meta name="theme-color" content={color} />
-        <meta name="msapplication-navbutton-color" content={color} />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
-        <meta name="msapplication-TileColor" content={color} />
-      </Helmet> */}
-
-      <div className="max-w-screen-lg mx-auto flex relative antialiased">
-        {/* <Header /> */}
+      <div className="max-w-screen-lg mx-auto relative antialiased">
+        <Header />
         <Navbar />
         <main className="">
           <div className="ml-60">{children}</div>

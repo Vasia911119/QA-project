@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { Link, navigate } from 'gatsby'
+
 import PropTypes from 'prop-types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as s from './Accordion.module.css'
 
-function Accordion({ title, content }) {
+function Accordion({ title, content, titleUrl = null }) {
   const [accordionStatus, setAccordionStatus] = useState(false)
 
   const handleClick = () => {
@@ -11,12 +13,17 @@ function Accordion({ title, content }) {
   }
   return (
     <div>
-      <button className={s.button} onClick={handleClick}>
-        {title}
-        {/* <div className="w-1 h-1">
-          <FontAwesomeIcon icon="fa-solid fa-chevron-up" />
-        </div> */}
-      </button>
+      {titleUrl ? (
+        <Link to={titleUrl}>
+          <button className={s.button} onClick={() => handleClick(titleUrl)}>
+            {title}
+          </button>
+        </Link>
+      ) : (
+        <button className={s.button} onClick={handleClick}>
+          {title}
+        </button>
+      )}
       <div className={accordionStatus ? null : s.collapsed}>{content}</div>
     </div>
   )
