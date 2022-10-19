@@ -14,8 +14,9 @@ export default function Navbar() {
   const { home, components, presentations, templates } = t('header', {
     returnObjects: true,
   })
+  // console.log(i18n.language)
 
-  console.log(menuItems)
+  // console.log(menuItems)
 
   return (
     <div className="font-bold w-60 bg-blue-200 fixed ">
