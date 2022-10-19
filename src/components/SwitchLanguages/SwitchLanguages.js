@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, useI18next } from 'gatsby-plugin-react-i18next'
 import Flag from 'react-world-flags'
-// import LanguageList from './LanguageList'
 
 const showLanguage = lang => {
   return lang === 'uk' ? 'UA' : lang.toUpperCase()
