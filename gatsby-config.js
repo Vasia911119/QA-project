@@ -221,21 +221,17 @@ module.exports = {
         languages: [`uk`, `ru`, `en`],
         defaultLanguage: `uk`,
         generateDefaultLanguagePage: '/uk',
-        // redirect: true,
-        // if you are using Helmet, you must include siteUrl, and make sure you add http:https
-        siteUrl: `http://localhost:8000/`,
+        redirect: true,
+        siteUrl: '',
 
         i18nextOptions: {
           lng: 'uk',
-          // fallbackLng: 'uk',
           load: 'currentOnly',
           interpolation: {
             escapeValue: false,
           },
-
-          // returnObjects: true,
-          keySeparator: true,
-          nsSeparator: false,
+          nsSeparator: true,
+          keySeparator: false,
         },
       },
     },
