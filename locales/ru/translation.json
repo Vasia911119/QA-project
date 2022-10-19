@@ -1,10 +1,7 @@
 {
   "header": {
     "home": "Спецификация к web-ресурсу",
-    "main": {
-      "name": "Компоненты и функциональность",
-      "id": "components-and-functionality"
-    },
+    "components": "Компоненты и функциональность",
     "presentations": "Презентации",
     "templates": "Шаблоны"
   },

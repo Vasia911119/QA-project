@@ -1,10 +1,7 @@
 {
   "header": {
     "home": "Specification for the web resource",
-    "main": {
-      "name": "Components and functionality",
-      "id": "components-and-functionality"
-    },
+    "components": "Components and functionality",
     "presentations": "Presentations",
     "templates": "Templates"
   },
