@@ -66,6 +66,7 @@ const Layout = ({ children }) => {
       <div className="max-w-screen-lg mx-auto flex relative antialiased">
         {/* <Header /> */}
         <Navbar />
+
         <main className="">
           <div className="ml-60">{children}</div>
         </main>

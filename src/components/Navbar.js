@@ -4,6 +4,8 @@ import { HTMLContent } from './Content'
 import useMenuStructure from '../queries/menu-structure'
 import Accordion from './Accordion/Accordion'
 
+import SwitchLanguages from './SwitchLanguages'
+
 export default function Navbar() {
   const menuItems = useMenuStructure()
 
@@ -68,6 +70,7 @@ export default function Navbar() {
           />
         </li>
       </ul>
+      <SwitchLanguages />
     </div>
   )
 }

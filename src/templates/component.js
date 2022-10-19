@@ -33,7 +33,16 @@ ComponentTemplate.propTypes = {
 export default ComponentTemplate
 
 export const query = graphql`
-  query Page($slug: String!) {
+  query Page($slug: String!, $language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       fields {
         slug
