@@ -1,11 +1,19 @@
 .collapsed {
   @apply h-0 truncate;
 }
-
+.tableOfContent {
+  /* @apply ml-9; */
+}
+.tableOfContent li {
+  @apply ml-9 mb-5;
+}
 .button {
-  @apply bg-main w-full px-2 py-1 flex border-2;
+  @apply w-full flex items-center justify-between mb-5;
+}
+.iconRotate {
+  @apply rotate-180;
 }
 
 p {
-  @apply text-xl  text-text  mb-5;
+  @apply text-xl  text-stone-400;
 }

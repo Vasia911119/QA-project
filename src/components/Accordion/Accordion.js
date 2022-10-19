@@ -1,27 +1,35 @@
 import React, { useState } from 'react'
 import { Link, navigate } from 'gatsby'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import * as s from './Accordion.module.css'
 import PropTypes from 'prop-types'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as s from './Accordion.module.css'
 
-function Accordion({ title, content, titleUrl = null }) {
-  const [accordionStatus, setAccordionStatus] = useState(false)
+function Accordion({ title, content = '', titleUrl = null, status = false }) {
+  const [accordionStatus, setAccordionStatus] = useState(status)
 
   const handleClick = () => {
     setAccordionStatus(!accordionStatus)
   }
+  console.log(titleUrl)
   return (
-    <div>
+    <div className={s.tableOfContent}>
       {titleUrl ? (
         <Link to={titleUrl}>
           <button className={s.button} onClick={() => handleClick(titleUrl)}>
-            {title}
+            <span>{title}</span>
+            <span className={accordionStatus ? null : s.iconRotate}>
+              {<FontAwesomeIcon icon={faChevronUp} />}
+            </span>
           </button>
         </Link>
       ) : (
         <button className={s.button} onClick={handleClick}>
-          {title}
+          <span>{title}</span>
+          <span className={accordionStatus ? null : s.iconRotate}>
+            {<FontAwesomeIcon icon={faChevronUp} />}
+          </span>
         </button>
       )}
       <div className={accordionStatus ? null : s.collapsed}>{content}</div>

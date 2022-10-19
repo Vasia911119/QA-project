@@ -3,20 +3,23 @@ import { Link } from 'gatsby'
 import { HTMLContent } from './Content'
 import useMenuStructure from '../queries/menu-structure'
 import Accordion from './Accordion/Accordion'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
-export default function Navbar() {
+export default function Navbar(props) {
   const menuItems = useMenuStructure()
 
-  // console.log(menuItems)
+  console.log(window.location.href)
+  console.log(menuItems)
   return (
-    <div className="font-bold w-60 text-text fixed ">
-      <ul className="flex flex-col lg:inline-flex ">
-        <li>
+    <div className="navigation py-6 px-5 overflow-y-auto  max-h-[600px]">
+      <ul className="flex flex-col ">
+        <li className="navigationItem">
           <Link to={'/'} className=" ">
             Специфікація до web ресурсу
           </Link>
         </li>
-        <li>
+        <li className="navigationItem">
           <div>
             <Accordion
               title="components and functionality"
@@ -38,7 +41,7 @@ export default function Navbar() {
             />
           </div>
         </li>
-        <li>
+        <li className="navigationItem ">
           <Accordion
             title="three"
             content={
@@ -53,7 +56,7 @@ export default function Navbar() {
             }
           />
         </li>
-        <li>
+        <li className="navigationItem">
           <Accordion
             title="three"
             content={

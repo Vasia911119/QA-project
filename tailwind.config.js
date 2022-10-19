@@ -13,19 +13,12 @@ module.exports = {
       xl: '1280px',
       notXl: { max: '1279.98px' },
     },
-
-    // ALL COLORS
-    colors: {
-      main: '#252A41',
-      bgColor: '#fff',
-      accent: '#FB923C',
-      orange: '#ff7849',
-      button: '#2563EB',
-      buttonHover: '#3B82F6',
-      buttonDisabled: '#D6D3D1',
-      text: '#9EA2C6',
-      textLight: '#F8FAFC',
+    borderRadius: {
+      none: '0',
+      DEFAULT: '0.5rem',
     },
+    // ALL COLORS
+
     // BASE FONT
     fontFamily: {
       inter: ['Inter', 'sans-serif'], // class="font-inter"
@@ -33,9 +26,14 @@ module.exports = {
     },
     // THEME
     extend: {
-      // backgroundColor: theme => ({
-      //   ...theme('colors'),
-      // }),
+      colors: {
+        blue: { 950: '#252A41' },
+        orange: { 950: '#ff7849' },
+        grey: { 350: '#9EA2C6' }, //text
+        // buttonDisabled: '#D6D3D1', stone 300
+
+        // textLight: '#F8FAFC', slate 50
+      },
 
       // CONTAINER
       container: {
