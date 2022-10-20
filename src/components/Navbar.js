@@ -14,7 +14,6 @@ export default function Navbar() {
   const { home, components, presentations, templates } = t('header', {
     returnObjects: true,
   })
-  // console.log(i18n.language)
 
   // console.log(menuItems)
 
@@ -33,7 +32,8 @@ export default function Navbar() {
               content={
                 Array.isArray(menuItems) &&
                 menuItems.map(item =>
-                  item.node.frontmatter.templateKey === 'component' ? (
+                  item.node.frontmatter.templateKey === 'component' &&
+                  item.node.frontmatter.language === i18n.language ? (
                     <Accordion
                       key={item.node.frontmatter.title}
                       title={item.node.frontmatter.title}
@@ -53,7 +53,8 @@ export default function Navbar() {
             content={
               Array.isArray(menuItems) &&
               menuItems.map(item =>
-                item.node.frontmatter.templateKey === 'presentation' ? (
+                item.node.frontmatter.templateKey === 'presentation' &&
+                item.node.frontmatter.language === i18n.language ? (
                   <div key={item.node.frontmatter.title}>
                     <HTMLContent content={item.node.html} />
                   </div>

@@ -4,6 +4,7 @@ title: Page body
 date: 2022-10-14T17:03:04.778Z
 description: second decription
 featuredimage: /img/soldier-60707_960_720.png
+language: en
 ---
 
 ### 1. Theory
