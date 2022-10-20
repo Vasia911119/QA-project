@@ -14,6 +14,7 @@ export default function useMenuStructure() {
                 description
                 title
                 templateKey
+                language
               }
               tableOfContents(pathToSlugField: "fields.slug", absolute: true)
               html

@@ -21,7 +21,7 @@
   @apply w-full flex justify-between items-center;
 }
 .button {
-  @apply text-left;
+  @apply text-left whitespace-normal;
 }
 .icon {
   @apply cursor-pointer;

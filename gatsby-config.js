@@ -207,5 +207,33 @@ module.exports = {
         icon: srcLogo,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/locales`,
+        name: `locale`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        localeJsonSourceName: `locale`,
+        languages: [`uk`, `ru`, `en`],
+        defaultLanguage: `uk`,
+        generateDefaultLanguagePage: true,
+        redirect: true,
+        siteUrl: '',
+
+        i18nextOptions: {
+          lng: 'uk',
+          load: 'currentOnly',
+          interpolation: {
+            escapeValue: false,
+          },
+          nsSeparator: true,
+          keySeparator: false,
+        },
+      },
+    },
   ],
 }

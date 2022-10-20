@@ -18,9 +18,7 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
       {titleUrl ? (
         <div className={s.buttonWrapper}>
           <Link to={titleUrl} activeClassName="activeLink">
-            <button className={s.button}>
-              <span>{title}</span>
-            </button>
+            <button className={s.button}>{title}</button>
           </Link>
           <span
             className={accordionStatus ? s.icon : s.iconRotate}
@@ -32,7 +30,7 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
       ) : (
         <div className={s.buttonWrapper}>
           <button className={s.button} onClick={handleClick}>
-            <span>{title}</span>
+            {title}
           </button>
           <span
             className={accordionStatus ? s.icon : s.iconRotate}

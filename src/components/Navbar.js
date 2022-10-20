@@ -1,55 +1,62 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { HTMLContent } from './Content'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 import useMenuStructure from '../queries/menu-structure'
 import Accordion from './Accordion/Accordion'
 
-export default function Navbar(props) {
+import SwitchLanguages from './SwitchLanguages'
+
+export default function Navbar() {
   const menuItems = useMenuStructure()
 
-  console.log(window.location.href)
-  console.log(menuItems)
+  const { t, i18n } = useTranslation()
+  const { home, components, presentations, templates } = t('header', {
+    returnObjects: true,
+  })
+
+  // console.log(menuItems)
+
   return (
     <div className="navigationScroll font-semibold text-base text-grey-350 py-6 px-5 overflow-y-auto  max-h-[600px]">
       <ul className="flex flex-col ">
         <li className="navigationItem ">
           <div className="navigationItemIcon"></div>
-          <i className="fa-regular fa-house" />
-          <Link to={'/'} activeClassName="activeLink">
-            Специфікація до web ресурсу
+          <Link to={'/'} className=" ">
+            {t(home)}
           </Link>
         </li>
         <li className="navigationItem">
-          <div className="navigationItemIcon"></div>
-          <div>
-            <Accordion
-              title="Components and functionality"
-              content={
-                Array.isArray(menuItems) &&
-                menuItems.map(item =>
-                  item.node.frontmatter.templateKey === 'component' ? (
-                    <Accordion
-                      titleUrl={item.node.fields.slug}
-                      key={item.node.frontmatter.title}
-                      title={item.node.frontmatter.title}
-                      content={
-                        <HTMLContent content={item.node.tableOfContents} />
-                      }
-                    />
-                  ) : null
-                )
-              }
-            />
-          </div>
+          <div div className="navigationItemIcon"></div>
+          <Accordion
+            title={t(components)}
+            content={
+              Array.isArray(menuItems) &&
+              menuItems.map(item =>
+                item.node.frontmatter.templateKey === 'component' &&
+                item.node.frontmatter.language === i18n.language ? (
+                  <Accordion
+                    titleUrl={item.node.fields.slug}
+                    key={item.node.frontmatter.title}
+                    title={item.node.frontmatter.title}
+                    content={
+                      <HTMLContent content={item.node.tableOfContents} />
+                    }
+                  />
+                ) : null
+              )
+            }
+          />
         </li>
         <li className="navigationItem ">
           <div className="navigationItemIcon"></div>
           <Accordion
-            title="three"
+            title={t(presentations)}
             content={
               Array.isArray(menuItems) &&
               menuItems.map(item =>
-                item.node.frontmatter.templateKey === 'presentation' ? (
+                item.node.frontmatter.templateKey === 'presentation' &&
+                item.node.frontmatter.language === i18n.language ? (
                   <div key={item.node.frontmatter.title}>
                     <HTMLContent content={item.node.html} />
                   </div>
@@ -61,7 +68,7 @@ export default function Navbar(props) {
         <li className="navigationItem">
           <div className="navigationItemIcon"></div>
           <Accordion
-            title="four"
+            title={t(templates)}
             content={
               Array.isArray(menuItems) &&
               menuItems.map(item =>
@@ -75,6 +82,7 @@ export default function Navbar(props) {
           />
         </li>
       </ul>
+      <SwitchLanguages />
     </div>
   )
 }

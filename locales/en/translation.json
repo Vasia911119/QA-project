@@ -1,0 +1,26 @@
+{
+  "header": {
+    "home": "Specification for the web resource",
+    "components": "Components and functionality",
+    "presentations": "Presentations",
+    "templates": "Templates"
+  },
+  "button": {
+    "next": "Next",
+    "previous": "Back"
+  },
+  "form": {
+    "title": "If you have any questions or suggestions, let us know",
+    "nameInput": "Name",
+    "emailInput": "Email",
+    "messageInput": "Leave your comment...",
+    "submit": "Send"
+  },
+  "formValidation": {
+    "required": "It is a required field",
+    "name": "Name must contain min 3 characters",
+    "email": "Only Latin letters and min 3 letters before @ accepted",
+    "message": "Message must contain min 20 characters",
+    "success": "Message sent"
+  }
+}
