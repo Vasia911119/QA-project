@@ -3,8 +3,6 @@ import { Link } from 'gatsby'
 import { HTMLContent } from './Content'
 import useMenuStructure from '../queries/menu-structure'
 import Accordion from './Accordion/Accordion'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
 export default function Navbar(props) {
   const menuItems = useMenuStructure()
@@ -12,17 +10,20 @@ export default function Navbar(props) {
   console.log(window.location.href)
   console.log(menuItems)
   return (
-    <div className="navigation py-6 px-5 overflow-y-auto  max-h-[600px]">
+    <div className="navigationScroll font-semibold text-base text-grey-350 py-6 px-5 overflow-y-auto  max-h-[600px]">
       <ul className="flex flex-col ">
-        <li className="navigationItem">
-          <Link to={'/'} className=" ">
+        <li className="navigationItem ">
+          <div className="navigationItemIcon"></div>
+          <i className="fa-regular fa-house" />
+          <Link to={'/'} activeClassName="activeLink">
             Специфікація до web ресурсу
           </Link>
         </li>
         <li className="navigationItem">
+          <div className="navigationItemIcon"></div>
           <div>
             <Accordion
-              title="components and functionality"
+              title="Components and functionality"
               content={
                 Array.isArray(menuItems) &&
                 menuItems.map(item =>
@@ -42,6 +43,7 @@ export default function Navbar(props) {
           </div>
         </li>
         <li className="navigationItem ">
+          <div className="navigationItemIcon"></div>
           <Accordion
             title="three"
             content={
@@ -57,8 +59,9 @@ export default function Navbar(props) {
           />
         </li>
         <li className="navigationItem">
+          <div className="navigationItemIcon"></div>
           <Accordion
-            title="three"
+            title="four"
             content={
               Array.isArray(menuItems) &&
               menuItems.map(item =>

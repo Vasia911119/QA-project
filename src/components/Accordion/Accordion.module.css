@@ -1,19 +1,31 @@
+.uncollapsed {
+  @apply mt-5;
+}
+
+.uncollapsed > div:not(:last-child),
+.uncollapsed li:not(:last-child) {
+  @apply mb-5;
+}
 .collapsed {
   @apply h-0 truncate;
 }
-.tableOfContent {
-  /* @apply ml-9; */
-}
-.tableOfContent li {
-  @apply ml-9 mb-5;
-}
-.button {
-  @apply w-full flex items-center justify-between mb-5;
-}
-.iconRotate {
-  @apply rotate-180;
+.wrapper {
+  @apply w-full;
 }
 
-p {
-  @apply text-xl  text-stone-400;
+.wrapper li {
+  @apply ml-9;
+}
+
+.buttonWrapper {
+  @apply w-full flex justify-between items-center;
+}
+.button {
+  @apply text-left;
+}
+.icon {
+  @apply cursor-pointer;
+}
+.iconRotate {
+  @apply rotate-180 cursor-pointer;
 }

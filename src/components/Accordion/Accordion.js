@@ -14,25 +14,37 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
   }
   console.log(titleUrl)
   return (
-    <div className={s.tableOfContent}>
+    <div className={s.wrapper}>
       {titleUrl ? (
-        <Link to={titleUrl}>
-          <button className={s.button} onClick={() => handleClick(titleUrl)}>
-            <span>{title}</span>
-            <span className={accordionStatus ? null : s.iconRotate}>
-              {<FontAwesomeIcon icon={faChevronUp} />}
-            </span>
-          </button>
-        </Link>
-      ) : (
-        <button className={s.button} onClick={handleClick}>
-          <span>{title}</span>
-          <span className={accordionStatus ? null : s.iconRotate}>
+        <div className={s.buttonWrapper}>
+          <Link to={titleUrl} activeClassName="activeLink">
+            <button className={s.button}>
+              <span>{title}</span>
+            </button>
+          </Link>
+          <span
+            className={accordionStatus ? s.icon : s.iconRotate}
+            onClick={handleClick}
+          >
             {<FontAwesomeIcon icon={faChevronUp} />}
           </span>
-        </button>
+        </div>
+      ) : (
+        <div className={s.buttonWrapper}>
+          <button className={s.button} onClick={handleClick}>
+            <span>{title}</span>
+          </button>
+          <span
+            className={accordionStatus ? s.icon : s.iconRotate}
+            onClick={handleClick}
+          >
+            {<FontAwesomeIcon icon={faChevronUp} />}
+          </span>
+        </div>
       )}
-      <div className={accordionStatus ? null : s.collapsed}>{content}</div>
+      <div className={accordionStatus ? s.uncollapsed : s.collapsed}>
+        {content}
+      </div>
     </div>
   )
 }
