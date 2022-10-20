@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { HTMLContent } from './Content'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 import useMenuStructure from '../queries/menu-structure'
 import Accordion from './Accordion/Accordion'
 
@@ -9,23 +10,30 @@ import SwitchLanguages from './SwitchLanguages'
 export default function Navbar() {
   const menuItems = useMenuStructure()
 
+  const { t, i18n } = useTranslation()
+  const { home, components, presentations, templates } = t('header', {
+    returnObjects: true,
+  })
+
   // console.log(menuItems)
+
   return (
     <div className="font-bold w-60 bg-blue-200 fixed ">
       <ul className="flex flex-col lg:inline-flex ">
         <li>
           <Link to={'/'} className=" ">
-            Специфікація до web ресурсу
+            {t(home)}
           </Link>
         </li>
         <li>
           <div>
             <Accordion
-              title="components and functionality"
+              title={t(components)}
               content={
                 Array.isArray(menuItems) &&
                 menuItems.map(item =>
-                  item.node.frontmatter.templateKey === 'component' ? (
+                  item.node.frontmatter.templateKey === 'component' &&
+                  item.node.frontmatter.language === i18n.language ? (
                     <Accordion
                       key={item.node.frontmatter.title}
                       title={item.node.frontmatter.title}
@@ -41,11 +49,12 @@ export default function Navbar() {
         </li>
         <li>
           <Accordion
-            title="three"
+            title={t(presentations)}
             content={
               Array.isArray(menuItems) &&
               menuItems.map(item =>
-                item.node.frontmatter.templateKey === 'presentation' ? (
+                item.node.frontmatter.templateKey === 'presentation' &&
+                item.node.frontmatter.language === i18n.language ? (
                   <div key={item.node.frontmatter.title}>
                     <HTMLContent content={item.node.html} />
                   </div>
@@ -56,7 +65,7 @@ export default function Navbar() {
         </li>
         <li>
           <Accordion
-            title="three"
+            title={t(templates)}
             content={
               Array.isArray(menuItems) &&
               menuItems.map(item =>
