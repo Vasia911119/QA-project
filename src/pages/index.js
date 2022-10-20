@@ -1,7 +1,5 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import Layout from '../components/Layout'
-import * as s from '../styles/home.module.css'
 import PropTypes from 'prop-types'
 import Form from '../components/Form'
 

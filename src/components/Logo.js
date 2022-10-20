@@ -9,10 +9,10 @@ export default function Logo({ title, className }) {
       formats={['auto', 'webp', 'avif']}
       alt={title}
       title={title}
-      className={className}
+      className="mb-5"
       placeholder="blurred"
-      width={150}
-      height={50}
+      width={96}
+      height={32}
     />
   )
 }

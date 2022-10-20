@@ -19,3 +19,26 @@ h6 {
   padding: 0;
   margin: 0;
 }
+
+.activeLink {
+  color: white;
+}
+
+/* sidebar styles */
+
+.navigationItem {
+  @apply mb-5 ml-9 flex;
+}
+
+.navigationItem > div {
+  @apply mr-5;
+}
+.navigationItemIcon {
+  @apply mt-1 w-4 h-4 bg-white;
+}
+.activeMenu {
+  @apply text-slate-50;
+}
+.subNavigationItem {
+  @apply ml-9;
+}

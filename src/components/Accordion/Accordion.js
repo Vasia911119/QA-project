@@ -1,23 +1,48 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import { Link, navigate } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import * as s from './Accordion.module.css'
+import PropTypes from 'prop-types'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function Accordion({ title, content }) {
-  const [accordionStatus, setAccordionStatus] = useState(false)
+function Accordion({ title, content = '', titleUrl = null, status = false }) {
+  const [accordionStatus, setAccordionStatus] = useState(status)
 
   const handleClick = () => {
     setAccordionStatus(!accordionStatus)
   }
+  console.log(titleUrl)
   return (
-    <div>
-      <button className={s.button} onClick={handleClick}>
-        {title}
-        {/* <div className="w-1 h-1">
-          <FontAwesomeIcon icon="fa-solid fa-chevron-up" />
-        </div> */}
-      </button>
-      <div className={accordionStatus ? null : s.collapsed}>{content}</div>
+    <div className={s.wrapper}>
+      {titleUrl ? (
+        <div className={s.buttonWrapper}>
+          <Link to={titleUrl} activeClassName="activeLink">
+            <button className={s.button}>{title}</button>
+          </Link>
+          <span
+            className={accordionStatus ? s.icon : s.iconRotate}
+            onClick={handleClick}
+          >
+            {<FontAwesomeIcon icon={faChevronUp} />}
+          </span>
+        </div>
+      ) : (
+        <div className={s.buttonWrapper}>
+          <button className={s.button} onClick={handleClick}>
+            {title}
+          </button>
+          <span
+            className={accordionStatus ? s.icon : s.iconRotate}
+            onClick={handleClick}
+          >
+            {<FontAwesomeIcon icon={faChevronUp} />}
+          </span>
+        </div>
+      )}
+      <div className={accordionStatus ? s.uncollapsed : s.collapsed}>
+        {content}
+      </div>
     </div>
   )
 }
