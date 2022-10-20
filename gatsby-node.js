@@ -17,6 +17,7 @@ exports.createPages = ({ actions, graphql }) => {
           }
           frontmatter {
             templateKey
+            description
           }
         }
       }
@@ -37,6 +38,7 @@ exports.createPages = ({ actions, graphql }) => {
         ),
         context: {
           slug: page.fields.slug,
+          description: page.frontmatter.description,
         },
       })
     })
