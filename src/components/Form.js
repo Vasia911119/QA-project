@@ -2,31 +2,39 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { sendMessage } from '../services/telegramApi'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 import 'react-notifications/lib/notifications.css'
 
-const schema = yup
-  .object({
-    name: yup.string().trim().required().min(3).max(100),
-    email: yup
-      .string()
-      .email()
-      .required()
-      .max(63)
-      .matches(
-        /(?!-)^(?:[aA-zZ0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[aA-zZ0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*"){3}@(?:(?:[aA-zZ0-9](?:[aA-zZ0-9-]*[aA-zZ0-9])?\.)+[aA-zZ0-9](?:[aA-zZ0-9-]*[aA-zZ0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[aA-zZ0-9-]*[aA-zZ0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/g,
-        'only Latin letters and min 3 letters before @'
-      ),
-    message: yup.string().required().min(20).max(2000),
-  })
-  .required()
-
-const createNotification = () =>
-  NotificationManager.success('Повідомлення відправлено')
-
 const Form = () => {
   const [error, setError] = useState(null)
+  const { t } = useTranslation()
+
+  const { required, name, email, message, success } = t('formValidation', {
+    returnObjects: true,
+  })
+  const { title, nameInput, emailInput, messageInput, submit } = t('form', {
+    returnObjects: true,
+  })
+
+  const schema = yup
+    .object({
+      name: yup.string().trim().required(t(required)).min(3, t(name)).max(100),
+      email: yup
+        .string()
+        .email(t(email))
+        .required(t(required))
+        .max(63)
+        .matches(
+          /(?!-)^(?:[aA-zZ0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[aA-zZ0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*"){3}@(?:(?:[aA-zZ0-9](?:[aA-zZ0-9-]*[aA-zZ0-9])?\.)+[aA-zZ0-9](?:[aA-zZ0-9-]*[aA-zZ0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[aA-zZ0-9-]*[aA-zZ0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/g,
+          t(email)
+        ),
+      message: yup.string().required(t(required)).min(20, t(message)).max(2000),
+    })
+    .required()
+
+  const createNotification = () => NotificationManager.success(t(success))
 
   const {
     register,
@@ -63,7 +71,7 @@ const Form = () => {
   return (
     <div className="w-[753px] ml-auto">
       <h2 className="font-inter font-medium text-lg text-stone-900 mb-[27px]">
-        Залишились питання чи є пропозиії, повідом нам.
+        {t(title)}
       </h2>
       <form
         className=""
@@ -75,19 +83,19 @@ const Form = () => {
           <input
             className="w-[165px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2"
             {...register('name')}
-            placeholder="Ім’я"
+            placeholder={t(nameInput)}
           />
 
           <input
             className="w-[165px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2"
             {...register('email')}
-            placeholder="Email"
+            placeholder={t(emailInput)}
           />
 
           <input
             className="w-[287px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2"
             {...register('message')}
-            placeholder="Залиште коментар..."
+            placeholder={t(messageInput)}
           />
         </div>
         <div className="flex justify-between">
@@ -106,7 +114,7 @@ const Form = () => {
           className="rounded-[10px] border border-blue-600 block w-[120px] h-8 font-inter font-semibold text-xs text-blue-600 ml-auto transition-all hover:border-red-500 hover:text-red-500"
           type="submit"
         >
-          Надіслати
+          {t(submit)}
         </button>
       </form>
       <NotificationContainer />
