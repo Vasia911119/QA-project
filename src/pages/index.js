@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Breadcrumb from '../components/Breadcrumb'
@@ -11,16 +11,26 @@ export default function HomePage({ data }) {
   const { edges: nodes } = data.allMarkdownRemark
   const { i18n } = useTranslation()
 
-  const [initialLang, setInitialLang] = React.useState('')
+  // const [initialLang, setInitialLang] = React.useState('')
+  // React.useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     window.localStorage.removeItem('gatsby-i18next-language')
+  //     window.localStorage.setItem('gatsby-i18next-language', 'uk')
+  //     const newLocalStorage = window.localStorage.getItem(
+  //       'gatsby-i18next-language'
+  //     )
+  //     setInitialLang(newLocalStorage)
+  //   }
+  // }, [])
 
   React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.removeItem('gatsby-i18next-language')
+    const initialLang = window.localStorage.getItem('gatsby-i18next-language')
+    const visit = window.localStorage.getItem('visit')
+
+    if (initialLang === 'ru' && !visit) {
       window.localStorage.setItem('gatsby-i18next-language', 'uk')
-      const newLocalStorage = window.localStorage.getItem(
-        'gatsby-i18next-language'
-      )
-      setInitialLang(newLocalStorage)
+      window.localStorage.setItem('visit', 'true')
+      navigate('/uk')
     }
   }, [])
 
