@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Breadcrumb from '../components/Breadcrumb'
@@ -11,18 +11,17 @@ export default function HomePage({ data }) {
   const { edges: nodes } = data.allMarkdownRemark
   const { i18n } = useTranslation()
 
-  const [initialLang, setInitialLang] = React.useState('')
+  // Костыль от Максима для украинского по умолчанию
+  // React.useEffect(() => {
+  //   const initialLang = window.localStorage.getItem('gatsby-i18next-language')
+  //   const visit = window.localStorage.getItem('visit')
 
-  React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.removeItem('gatsby-i18next-language')
-      window.localStorage.setItem('gatsby-i18next-language', 'uk')
-      const newLocalStorage = window.localStorage.getItem(
-        'gatsby-i18next-language'
-      )
-      setInitialLang(newLocalStorage)
-    }
-  }, [])
+  //   if (initialLang === 'ru' && !visit) {
+  //     window.localStorage.setItem('gatsby-i18next-language', 'uk')
+  //     window.localStorage.setItem('visit', 'true')
+  //     navigate('/uk')
+  //   }
+  // }, [])
 
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
