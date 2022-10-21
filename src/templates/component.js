@@ -13,6 +13,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next'
 const ComponentTemplate = ({ data }) => {
   // const { title } = data.markdownRemark.frontmatter
   // const { html } = data.markdownRemark
+
   const { i18n } = useTranslation()
   const edges = data.allMarkdownRemark.edges
 
@@ -66,6 +67,9 @@ export const query = graphql`
           frontmatter {
             title
             language
+          }
+          fields {
+            slug
           }
           html
         }

@@ -2,6 +2,7 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const webpack = require(`webpack`)
+const slugHandler = require('./src/api/slugHandler')
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -16,8 +17,10 @@ exports.createPages = ({ actions, graphql }) => {
             slug
           }
           frontmatter {
+            slug
             templateKey
             description
+            language
           }
         }
       }
@@ -31,14 +34,20 @@ exports.createPages = ({ actions, graphql }) => {
     const pages = result.data.allMarkdownRemark.nodes
 
     pages.forEach(page => {
+      const language = page.frontmatter.language
+      const templateKey = page.frontmatter.templateKey
+      const description = page.frontmatter.description
+      const slug = slugHandler(language, templateKey, page.frontmatter.slug)
       createPage({
-        path: page.fields.slug,
+        path: slug,
         component: path.resolve(
           `src/templates/${String(page.frontmatter.templateKey)}.js`
         ),
         context: {
-          slug: page.fields.slug,
-          description: page.frontmatter.description,
+          slug,
+          description,
+          language,
+          templateKey,
         },
       })
     })
@@ -48,12 +57,16 @@ exports.createPages = ({ actions, graphql }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (!!node.frontmatter && !!node.frontmatter.slug) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value: slugHandler(
+        node.frontmatter.language,
+        node.frontmatter.templateKey,
+        node.frontmatter.slug
+      ),
     })
   }
 }

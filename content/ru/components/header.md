@@ -2,6 +2,7 @@
 templateKey: component
 title: Хэдeр
 date: 2022-10-14T16:50:17.142Z
+slug: header
 description: header
 featuredimage: /img/soldier-60707_960_720.png
 language: ru
