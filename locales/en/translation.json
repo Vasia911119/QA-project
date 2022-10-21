@@ -22,5 +22,6 @@
     "email": "Only Latin letters and min 3 letters before @ accepted",
     "message": "Message must contain min 20 characters",
     "success": "Message sent"
-  }
+  },
+  "searchPlaceholder": "Search EN"
 }

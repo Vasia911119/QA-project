@@ -2,6 +2,7 @@
 templateKey: component
 title: Тіло сторінки
 date: 2022-10-14T17:03:04.778Z
+slug: body page
 description: body page
 featuredimage: /img/soldier-60707_960_720.png
 language: uk
