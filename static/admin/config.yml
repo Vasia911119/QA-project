@@ -13,10 +13,14 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'home'
-    label: 'Home Page'
-    folder: 'content/home'
+  # Home Page EN
+  - name: 'homeEN'
+    label: 'Home Page (English)'
+    filter: { field: language, value: en }
+    folder: 'content/en/home'
+    create: true
     slug: '{{slug}}'
+    identifier_field: name
     fields:
       - {
           label: 'Template Key',
@@ -24,21 +28,54 @@ collections:
           widget: 'hidden',
           default: 'home',
         }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'en' }
+
+  # Home Page UA
+  - name: 'homeUA'
+    label: 'Home Page (Ukrainian)'
+    filter: { field: language, value: uk }
+    folder: 'content/uk/home'
+    slug: '{{slug}}'
+    identifier_field: name
+    fields:
       - {
-          label: 'Language',
-          name: 'language',
-          widget: 'select',
-          options: ['uk', 'en', 'ru'],
-          default: 'uk',
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'home',
         }
       - { label: 'Title', name: 'title', widget: 'string', required: true }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'uk' }
 
-  - name: 'components'
-    label: 'Components and Functionality'
-    folder: 'content/components'
-    create: true
+  # Home Page RU
+  - name: 'homeRU'
+    label: 'Home Page (Russian)'
+    filter: { field: language, value: ru }
+    folder: 'content/ru/home'
     slug: '{{slug}}'
+    identifier_field: name
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'home',
+        }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'ru' }
+
+  # Components Pages EN
+  - name: 'componentsEN'
+    label: 'Components and Functionality (English)'
+    filter: { field: language, value: en }
+    folder: 'content/en/components'
+    create: true
+    slug: '{{fields.slug}}'
+    identifier_field: name
     fields:
       - {
           label: 'Template Key',
@@ -46,15 +83,9 @@ collections:
           widget: 'hidden',
           default: 'component',
         }
-      - {
-          label: 'Language',
-          name: 'language',
-          widget: 'select',
-          options: ['uk', 'en', 'ru'],
-          default: 'uk',
-        }
       - { label: 'Title', name: 'title', widget: 'string', required: true }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Slug', name: 'slug', widget: 'string', required: true }
       - {
           label: 'Description',
           name: 'description',
@@ -62,12 +93,70 @@ collections:
           required: true,
         }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'en' }
 
-  - name: 'presentations'
-    label: 'Presentations'
-    folder: 'content/presentations'
+  # Components Pages UA
+  - name: 'componentsUA'
+    label: 'Components and Functionality (Ukrainian)'
+    filter: { field: language, value: uk }
+    folder: 'content/uk/components'
+    create: true
+    slug: '{{fields.slug}}'
+    identifier_field: name
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'component',
+        }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Slug', name: 'slug', widget: 'string', required: true }
+      - {
+          label: 'Description',
+          name: 'description',
+          widget: 'text',
+          required: true,
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'uk' }
+
+  # Components Pages RU
+  - name: 'componentsRU'
+    label: 'Components and Functionality (Russian)'
+    filter: { field: language, value: ru }
+    folder: 'content/ru/components'
+    create: true
+    slug: '{{fields.slug}}'
+    identifier_field: name
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'component',
+        }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Slug', name: 'slug', widget: 'string', required: true }
+      - {
+          label: 'Description',
+          name: 'description',
+          widget: 'text',
+          required: true,
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'ru' }
+
+  # Presentations EN
+  - name: 'presentationsEN'
+    label: 'Presentations (English)'
+    filter: { field: language, value: en }
+    folder: 'content/en/presentations'
     create: true
     slug: '{{slug}}'
+    identifier_field: name
     fields:
       - {
           label: 'Template Key',
@@ -75,17 +164,52 @@ collections:
           widget: 'hidden',
           default: 'presentation',
         }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'en' }
+
+  # Presentations UA
+  - name: 'presentationsUA'
+    label: 'Presentations (Ukrainian)'
+    filter: { field: language, value: uk }
+    folder: 'content/uk/presentations'
+    create: true
+    slug: '{{slug}}'
+    identifier_field: name
+    fields:
       - {
-          label: 'Language',
-          name: 'language',
-          widget: 'select',
-          options: ['uk', 'en', 'ru'],
-          default: 'uk',
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'presentation',
         }
       - { label: 'Title', name: 'title', widget: 'string', required: true }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'uk' }
 
+  # Presentations RU
+  - name: 'presentationsRU'
+    label: 'Presentations (Russian)'
+    filter: { field: language, value: ru }
+    folder: 'content/ru/presentations'
+    create: true
+    slug: '{{slug}}'
+    identifier_field: name
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'presentation',
+        }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'ru' }
+
+  # Templates (no language)
   - name: 'templates'
     label: 'Templates'
     folder: 'content/templates'
