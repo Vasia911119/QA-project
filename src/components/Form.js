@@ -20,7 +20,7 @@ const Form = () => {
 
   const schema = yup
     .object({
-      name: yup.string().trim().required(t(required)).min(3, t(name)).max(100),
+      name: yup.string().trim().required(t(required)).min(2, t(name)).max(100),
       email: yup
         .string()
         .email(t(email))
