@@ -18,36 +18,38 @@ export default function Navbar() {
   // console.log(menuItems)
 
   return (
-    <div className="font-bold w-60 bg-blue-200 fixed ">
-      <ul className="flex flex-col lg:inline-flex ">
-        <li>
+    <div className="navigationScroll font-semibold text-base text-grey-350 py-6 px-5 overflow-y-auto  max-h-[600px]">
+      <ul className="flex flex-col ">
+        <li className="navigationItem ">
+          <div className="navigationItemIcon"></div>
           <Link to={'/'} className=" ">
             {t(home)}
           </Link>
         </li>
-        <li>
-          <div>
-            <Accordion
-              title={t(components)}
-              content={
-                Array.isArray(menuItems) &&
-                menuItems.map(item =>
-                  item.node.frontmatter.templateKey === 'component' &&
-                  item.node.frontmatter.language === i18n.language ? (
-                    <Accordion
-                      key={item.node.frontmatter.title}
-                      title={item.node.frontmatter.title}
-                      content={
-                        <HTMLContent content={item.node.tableOfContents} />
-                      }
-                    />
-                  ) : null
-                )
-              }
-            />
-          </div>
+        <li className="navigationItem">
+          <div div className="navigationItemIcon"></div>
+          <Accordion
+            title={t(components)}
+            content={
+              Array.isArray(menuItems) &&
+              menuItems.map(item =>
+                item.node.frontmatter.templateKey === 'component' &&
+                item.node.frontmatter.language === i18n.language ? (
+                  <Accordion
+                    titleUrl={item.node.fields.slug}
+                    key={item.node.frontmatter.title}
+                    title={item.node.frontmatter.title}
+                    content={
+                      <HTMLContent content={item.node.tableOfContents} />
+                    }
+                  />
+                ) : null
+              )
+            }
+          />
         </li>
-        <li>
+        <li className="navigationItem ">
+          <div className="navigationItemIcon"></div>
           <Accordion
             title={t(presentations)}
             content={
@@ -63,7 +65,8 @@ export default function Navbar() {
             }
           />
         </li>
-        <li>
+        <li className="navigationItem">
+          <div className="navigationItemIcon"></div>
           <Accordion
             title={t(templates)}
             content={

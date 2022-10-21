@@ -1,11 +1,31 @@
+.uncollapsed {
+  @apply mt-5;
+}
+
+.uncollapsed > div:not(:last-child),
+.uncollapsed li:not(:last-child) {
+  @apply mb-5;
+}
 .collapsed {
   @apply h-0 truncate;
 }
-
-.button {
-  @apply bg-red-900 text-white w-full px-2 py-1 flex border-2;
+.wrapper {
+  @apply w-full;
 }
 
-p {
-  @apply text-xl  text-gray-800  mb-5;
+.wrapper li {
+  @apply ml-9;
+}
+
+.buttonWrapper {
+  @apply w-full flex justify-between items-center;
+}
+.button {
+  @apply text-left whitespace-normal;
+}
+.icon {
+  @apply cursor-pointer;
+}
+.iconRotate {
+  @apply rotate-180 cursor-pointer;
 }
