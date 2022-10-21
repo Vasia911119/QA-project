@@ -38,6 +38,7 @@ collections:
     filter: { field: language, value: uk }
     folder: 'content/uk/home'
     slug: '{{slug}}'
+    create: true
     identifier_field: name
     fields:
       - {
@@ -56,6 +57,7 @@ collections:
     filter: { field: language, value: ru }
     folder: 'content/ru/home'
     slug: '{{slug}}'
+    create: true
     identifier_field: name
     fields:
       - {
