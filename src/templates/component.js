@@ -16,7 +16,8 @@ const ComponentTemplate = ({ data }) => {
   // const { title } = data.markdownRemark.frontmatter
   // const { html } = data.markdownRemark
 
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const { components } = t('header', { returnObjects: true })
   const edges = data.allMarkdownRemark.edges
 
   return (
@@ -26,10 +27,7 @@ const ComponentTemplate = ({ data }) => {
         return (
           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
           <div className="w-full" key={item.node.frontmatter.title}>
-            <Breadcrumb
-              title={item.node.frontmatter.title}
-              name={'Компоненти та функціональність'}
-            />
+            <Breadcrumb title={item.node.frontmatter.title} name={components} />
             <div className="space-y-4 text-left">
               <h1 className="text-3xl leading-12 text-gray-800 lg:text-4xl lg:leading-14 mb-2">
                 {item.node.frontmatter.title}
