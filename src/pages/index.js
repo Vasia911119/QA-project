@@ -11,6 +11,19 @@ export default function HomePage({ data }) {
   const { edges: nodes } = data.allMarkdownRemark
   const { i18n } = useTranslation()
 
+  const [initialLang, setInitialLang] = React.useState('')
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem('gatsby-i18next-language')
+      window.localStorage.setItem('gatsby-i18next-language', 'uk')
+      const newLocalStorage = window.localStorage.getItem(
+        'gatsby-i18next-language'
+      )
+      setInitialLang(newLocalStorage)
+    }
+  }, [])
+
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
     nodes &&
