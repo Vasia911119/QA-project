@@ -69,8 +69,8 @@ const Form = () => {
   }
 
   return (
-    <div className="w-[753px] ml-auto">
-      <h2 className="font-inter font-medium text-lg text-stone-900 mb-[27px]">
+    <div className="bg-blue-100 pt-[32px] pr-[36px] pb-[16px] pl-[32px] mt-[100px]">
+      <h2 className="font-inter font-medium text-lg text-stone-900 mb-[27px] text-center">
         {t(title)}
       </h2>
       <form
@@ -79,44 +79,47 @@ const Form = () => {
         name="contact"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-[32px] relative">
           <input
-            className="w-[165px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2"
+            className="w-[264px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent"
             {...register('name')}
             placeholder={t(nameInput)}
           />
 
           <input
-            className="w-[165px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2"
+            className="w-[264px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent"
             {...register('email')}
             placeholder={t(emailInput)}
           />
 
           <input
-            className="w-[287px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2"
+            className="w-[264px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent"
             {...register('message')}
             placeholder={t(messageInput)}
           />
         </div>
-        <div className="flex justify-between">
-          <p className="w-[165px] font-inter font-medium text-xs text-red-500">
+        <div className="flex justify-between absolute top-[calc(100%_-_108px)] w-[864px]">
+          <p className="w-[264px] font-inter font-medium text-xs text-red-500">
             {errors.name?.message}
           </p>
-          <p className="w-[165px] font-inter font-medium text-xs text-red-500">
+          <p className="w-[264px] font-inter font-medium text-xs text-red-500">
             {errors.email?.message}
           </p>
-          <p className="w-[287px] font-inter font-medium text-xs text-red-500">
+          <p className="w-[264px] font-inter font-medium text-xs text-red-500">
             {errors.message?.message}
           </p>
         </div>
 
         <button
-          className="rounded-[10px] border border-blue-600 block w-[120px] h-8 font-inter font-semibold text-xs text-blue-600 ml-auto transition-all hover:border-red-500 hover:text-red-500"
+          className="rounded-[10px] border border-blue-600 block w-[120px] h-8 font-inter font-semibold text-xs text-blue-600 ml-auto transition-all hover:border-red-500 hover:text-red-500 mb-[12px]"
           type="submit"
         >
           {t(submit)}
         </button>
       </form>
+      <p className="font-inter font-medium text-xs text-[#9EA2C6] text-center">
+        Copyright © 2022 GoIT. All rights reserved.
+      </p>
       <NotificationContainer />
     </div>
   )

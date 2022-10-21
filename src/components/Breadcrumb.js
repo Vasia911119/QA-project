@@ -6,7 +6,7 @@ import { BiChevronRight } from 'react-icons/bi'
 
 const Breadcrumb = ({ title, name }) => {
   return (
-    <div className="flex font-inter font-medium text-sm text-stone-900">
+    <div className="flex font-inter font-semibold text-sm text-stone-900 mb-[24px]">
       {name ? (
         <>
           <Link to="/">
@@ -35,7 +35,7 @@ const Breadcrumb = ({ title, name }) => {
             className="ml-[1px] w-[22px] h-[22px] text-[#B3B3B3]"
             alt="next"
           />
-          <span className="ml-[1px]">{title}</span>
+          <span className=" ml-[1px]">{title}</span>
         </>
       )}
     </div>
