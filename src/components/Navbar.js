@@ -27,7 +27,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="navigationItem">
-          <div div className="navigationItemIcon"></div>
+          <div className="navigationItemIcon"></div>
           <Accordion
             title={t(components)}
             content={
