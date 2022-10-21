@@ -25,22 +25,27 @@ const ComponentTemplate = ({ data }) => {
       if (item.node.frontmatter.language === i18n.language) {
         return (
           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-          <div className="w-full" key={item.node.frontmatter.title}>
-            <Breadcrumb
-              title={item.node.frontmatter.title}
-              name={'Компоненти та функціональність'}
-            />
-            <div className="space-y-4 text-left">
-              <h1 className="text-3xl leading-12 text-gray-800 lg:text-4xl lg:leading-14 mb-2">
-                {item.node.frontmatter.title}
-              </h1>
+          <>
+            <div
+              className="w-[608px] mx-auto pt-[32px]"
+              key={item.node.frontmatter.title}
+            >
+              <Breadcrumb
+                title={item.node.frontmatter.title}
+                name={'Компоненти та функціональність'}
+              />
+              <div className="space-y-4 text-left">
+                <h1 className="font-inter text-3xl leading-12 text-gray-800 lg:text-4xl lg:leading-14 mb-2">
+                  {item.node.frontmatter.title}
+                </h1>
+              </div>
+              <HTMLContent
+                className="prose max-w-none"
+                content={item.node.html}
+              />
             </div>
-            <HTMLContent
-              className="prose max-w-none"
-              content={item.node.html}
-            />
             <Form />
-          </div>
+          </>
         )
       }
     })
