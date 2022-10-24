@@ -24,6 +24,15 @@ h6 {
   color: white;
 }
 
+/* Layout */
+
+.mobileMemuClosed {
+  @apply bg-blue-950 md:hidden text-stone-400  fixed overflow-hidden  smOnly:top-0 left-0 smOnly:w-screen smOnly:h-screen smOnly:z-50 smOnly:translate-x-full smOnly:transition-transform;
+}
+.mobileMemuOpened {
+  @apply bg-blue-950 md:hidden text-stone-400 fixed overflow-hidden  smOnly:top-0 left-0 smOnly:w-screen smOnly:h-screen smOnly:z-50 smOnly:translate-x-0 smOnly:transition-transform;
+}
+
 /* sidebar styles */
 
 .navigationItem {

@@ -27,11 +27,8 @@ const ComponentTemplate = ({ data }) => {
       if (item.node.frontmatter.language === i18n.language) {
         return (
           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-          <>
-            <div
-              className="md:w-[608px] mx-auto pt-[32px]"
-              key={item.node.frontmatter.title}
-            >
+          <div key={item.node.frontmatter.title}>
+            <div className="md:w-[608px] mx-auto pt-[32px]">
               <Breadcrumb
                 title={item.node.frontmatter.title}
                 name={components}
@@ -48,7 +45,7 @@ const ComponentTemplate = ({ data }) => {
             </div>
             <ButtonsNavigate />
             <Form />
-          </>
+          </div>
         )
       }
     })

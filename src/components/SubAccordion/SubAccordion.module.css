@@ -1,46 +1,50 @@
 /* .uncollapsed, */
-.uncollapsed p {
+.uncollapsedSub p {
   @apply py-2;
 }
-.uncollapsed ul li:not(:last-child) {
+.uncollapsedSub ul li:not(:last-child) {
   @apply mb-5;
 }
-.uncollapsed div ul {
+.uncollapsedSub div ul {
   @apply mt-5;
 }
-.collapsed {
+.collapsedSub {
   @apply h-0 w-0 truncate;
 }
-.wrapper {
+.wrapperSub {
   @apply w-full;
 }
+/* .wrapperSub:last-child {
+  @apply relative before:block before:w-1  before:h-[200px] before:left-[-32px] before:absolute before:bg-pink-500;
+} */
 
-.wrapper li {
+.wrapperSub li {
   @apply ml-9;
 }
 
-.buttonWrapper {
-  @apply w-full flex justify-between items-center  relative before:block before:w-5  before:h-px before:left-[-32px] before:absolute before:bg-pink-500;
+.buttonWrapperSub {
+  @apply w-full flex justify-between items-center;
+  /* @apply w-full flex justify-between items-center  relative before:block before:w-5  before:h-px before:left-[-32px] before:absolute before:bg-pink-500; */
 }
 /* .wrapper:not(:last-child) {
   @apply after:block after:w-[2px] after:top-8 after:h-full after:left-[-32px] after:absolute after:bg-pink-500;
 } */
-.collapsedButtomWrapper {
+.collapsedButtomWrapperSub {
   @apply w-full flex  justify-between items-center;
 }
-.button {
+.buttonSub {
   @apply text-left whitespace-normal;
 }
-.icon {
+.iconSub {
   @apply cursor-pointer;
 }
-.icon svg {
+.iconSub svg {
   @apply w-5 h-5;
 }
 
-.iconRotate {
+.iconRotateSub {
   @apply rotate-180 cursor-pointer;
 }
-.iconRotate svg {
+.iconRotateSub svg {
   @apply w-5 h-5;
 }

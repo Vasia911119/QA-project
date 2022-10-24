@@ -4,7 +4,13 @@ import { BiChevronUp } from 'react-icons/bi'
 import * as s from './Accordion.module.css'
 import PropTypes from 'prop-types'
 
-function Accordion({ title, content = '', titleUrl = null, status = false }) {
+function Accordion({
+  handleClose,
+  title,
+  content = '',
+  titleUrl = null,
+  status = false,
+} = {}) {
   const [accordionStatus, setAccordionStatus] = useState(status)
 
   const handleClick = () => {
@@ -16,7 +22,9 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
       {titleUrl ? (
         <div className={s.buttonWrapper}>
           <Link to={titleUrl} activeClassName="activeLink">
-            <button className={s.button}>{title}</button>
+            <button onClick={handleClose} className={s.button}>
+              {title}
+            </button>
           </Link>
           <span
             className={accordionStatus ? s.icon : s.iconRotate}

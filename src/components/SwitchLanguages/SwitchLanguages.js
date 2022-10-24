@@ -31,8 +31,8 @@ const SwitchLanguages = () => {
 
   return (
     <div>
-      <button onClick={handleOpen} className="flex">
-        <Flag code={showFlag(language)} />
+      <button onClick={handleOpen} className="flex pr-5">
+        <Flag code={showFlag(language)} className="rounded-xl w-6 h-6" />
         <p>{showLanguage(language)}</p>
       </button>
       {open && (
