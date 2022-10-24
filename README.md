@@ -41,3 +41,42 @@ React.useEffect(() => {
     }
   }, [])
 ```
+
+## Dark Mode
+
+[Инструкция по созданию темной темы](https://javascript.plainenglish.io/how-to-add-dark-mode-in-a-gatsby-website-23df7289b220)
+
+Теперь при переключении темы к `html` будет добавляться класс `dark`
+
+Помимо этого, в файл `tailwind.config.js` добавить:
+
+```
+module.exports = {
+  darkMode: 'class',
+  // ...
+}
+```
+
+Для написания стилей темной темы используется синтаксис `dark:...`
+
+```
+<!-- Dark mode not enabled -->
+<html>
+<body>
+  <!-- Will be white -->
+  <div class="bg-white dark:bg-black">
+    <!-- ... -->
+  </div>
+</body>
+</html>
+
+<!-- Dark mode enabled -->
+<html class="dark">
+<body>
+  <!-- Will be black -->
+  <div class="bg-white dark:bg-black">
+    <!-- ... -->
+  </div>
+</body>
+</html>
+```
