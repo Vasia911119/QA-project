@@ -1,11 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { HTMLContent } from './Content'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { HTMLContent } from './Content'
 import useMenuStructure from '../queries/menu-structure'
 import Accordion from './Accordion/Accordion'
-
-import SwitchLanguages from './SwitchLanguages'
 
 export default function Navbar() {
   const menuItems = useMenuStructure()
@@ -14,8 +12,6 @@ export default function Navbar() {
   const { home, components, presentations, templates } = t('header', {
     returnObjects: true,
   })
-
-  // console.log(menuItems)
 
   return (
     <div className="navigationScroll font-semibold text-base text-grey-350 py-6 px-5 overflow-y-auto  max-h-[600px]">
@@ -82,7 +78,6 @@ export default function Navbar() {
           />
         </li>
       </ul>
-      <SwitchLanguages />
     </div>
   )
 }
