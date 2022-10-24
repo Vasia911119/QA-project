@@ -11,7 +11,7 @@ const Breadcrumb = ({ title, name }) => {
         <>
           <Link to="/">
             <BiHome
-              className="w-[22px] h-[22px] text-[#B3B3B3] transition-all hover:text-stone-900"
+              className="w-[22px] h-[22px] text-[#B3B3B3] transition-all  hover:text-stone-900 focus:text-stone-900"
               alt="home"
             />
           </Link>
