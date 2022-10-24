@@ -11,7 +11,7 @@ const showFlag = lang => {
     case 'uk':
       return 'UA'
     case 'en':
-      return 'US'
+      return 'GB'
     case 'ru':
       return null
     default:
