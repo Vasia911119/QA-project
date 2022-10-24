@@ -28,7 +28,7 @@ const ComponentTemplate = ({ data }) => {
           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
           <>
             <div
-              className="w-[608px] mx-auto pt-[32px]"
+              className="md:w-[608px] mx-auto pt-[32px]"
               key={item.node.frontmatter.title}
             >
               <Breadcrumb
