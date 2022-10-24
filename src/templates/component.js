@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Form from '../components/Form'
 import Breadcrumb from '../components/Breadcrumb'
+import ButtonsNavigate from '../components/ButtonsNavigate'
 
 import { HTMLContent } from '../components/Content'
 import Layout from '../components/Layout'
@@ -45,6 +46,7 @@ const ComponentTemplate = ({ data }) => {
                 content={item.node.html}
               />
             </div>
+            <ButtonsNavigate />
             <Form />
           </>
         )

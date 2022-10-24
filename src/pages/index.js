@@ -2,6 +2,7 @@ import { graphql, navigate } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Breadcrumb from '../components/Breadcrumb'
+import ButtonsNavigate from '../components/ButtonsNavigate'
 
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 
@@ -40,6 +41,7 @@ export default function HomePage({ data }) {
               className="prose max-w-none"
               content={component.html}
             />
+            <ButtonsNavigate />
           </div>
         )
       }

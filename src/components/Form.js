@@ -106,7 +106,7 @@ const Form = () => {
         </div>
 
         <button
-          className="rounded-[10px] border border-blue-600 block w-[226px] h-14 xl:w-[120px] xl:h-10 font-inter font-semibold text-xs text-blue-600 mx-auto xl:mr-0 transition-all hover:border-red-500 hover:text-red-500 mb-[52px] md:mb-[56px] xl:mb-[12px]"
+          className="rounded-[10px] border border-blue-600 block w-[226px] h-14 xl:w-[120px] xl:h-10 font-inter font-semibold text-xs text-blue-600 mx-auto xl:mr-0 transition-all hover:bg-blue-500 focus:bg-blue-500 hover:text-slate-50 focus:text-slate-50  mb-[52px] md:mb-[56px] xl:mb-[12px]"
           type="submit"
         >
           {t(submit)}
