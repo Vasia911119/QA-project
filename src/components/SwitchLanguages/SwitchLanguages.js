@@ -11,7 +11,7 @@ const showFlag = lang => {
     case 'uk':
       return 'UA'
     case 'en':
-      return 'US'
+      return 'GB'
     case 'ru':
       return null
     default:
@@ -31,9 +31,9 @@ const SwitchLanguages = () => {
 
   return (
     <div>
-      <button onClick={handleOpen}>
+      <button onClick={handleOpen} className="flex">
         <Flag code={showFlag(language)} />
-        {showLanguage(language)}
+        <p>{showLanguage(language)}</p>
       </button>
       {open && (
         <ul className="languages">

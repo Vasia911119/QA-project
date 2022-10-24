@@ -2,6 +2,7 @@ import { graphql, navigate } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Breadcrumb from '../components/Breadcrumb'
+import ButtonsNavigate from '../components/ButtonsNavigate'
 
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 
@@ -29,7 +30,7 @@ export default function HomePage({ data }) {
     nodes.map(({ node: component }) => {
       if (component.frontmatter.language === i18n.language) {
         return (
-          <div className="w-[608px] mx-auto pt-[32px]" key={component.id}>
+          <div className="md:w-[608px] mx-auto pt-[32px]" key={component.id}>
             <Breadcrumb title={component.frontmatter.title} />
             <div className="space-y-4 text-left">
               <h1 className="text-3xl leading-12 text-gray-800 lg:text-4xl lg:leading-14 mb-2">
@@ -40,6 +41,7 @@ export default function HomePage({ data }) {
               className="prose max-w-none"
               content={component.html}
             />
+            <ButtonsNavigate />
           </div>
         )
       }

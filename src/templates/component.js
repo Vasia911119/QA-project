@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Form from '../components/Form'
 import Breadcrumb from '../components/Breadcrumb'
+import ButtonsNavigate from '../components/ButtonsNavigate'
 
 import { HTMLContent } from '../components/Content'
 import Layout from '../components/Layout'
@@ -28,7 +29,7 @@ const ComponentTemplate = ({ data }) => {
           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
           <>
             <div
-              className="w-[608px] mx-auto pt-[32px]"
+              className="md:w-[608px] mx-auto pt-[32px]"
               key={item.node.frontmatter.title}
             >
               <Breadcrumb
@@ -45,6 +46,7 @@ const ComponentTemplate = ({ data }) => {
                 content={item.node.html}
               />
             </div>
+            <ButtonsNavigate />
             <Form />
           </>
         )
