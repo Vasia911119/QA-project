@@ -6,6 +6,8 @@ import useMenuStructure from '../queries/menu-structure'
 import Accordion from './Accordion/Accordion'
 
 import SwitchLanguages from './SwitchLanguages'
+import { HiOutlineDocumentText, HiOutlineTemplate } from 'react-icons/hi'
+import { BiHome, BiCreditCard } from 'react-icons/bi'
 
 export default function Navbar() {
   const menuItems = useMenuStructure()
@@ -21,13 +23,13 @@ export default function Navbar() {
     <div className="navigationScroll font-semibold text-base text-grey-350 py-6 px-5 overflow-y-auto  max-h-[600px]">
       <ul className="flex flex-col ">
         <li className="navigationItem ">
-          <div className="navigationItemIcon"></div>
+          <BiHome />
           <Link to={'/'} className=" ">
             {t(home)}
           </Link>
         </li>
         <li className="navigationItem">
-          <div className="navigationItemIcon"></div>
+          <HiOutlineTemplate />
           <Accordion
             title={t(components)}
             content={
@@ -49,7 +51,7 @@ export default function Navbar() {
           />
         </li>
         <li className="navigationItem ">
-          <div className="navigationItemIcon"></div>
+          <BiCreditCard />
           <Accordion
             title={t(presentations)}
             content={
@@ -66,7 +68,7 @@ export default function Navbar() {
           />
         </li>
         <li className="navigationItem">
-          <div className="navigationItemIcon"></div>
+          <HiOutlineDocumentText />
           <Accordion
             title={t(templates)}
             content={
