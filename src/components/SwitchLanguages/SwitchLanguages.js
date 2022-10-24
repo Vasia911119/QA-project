@@ -31,9 +31,9 @@ const SwitchLanguages = () => {
 
   return (
     <div>
-      <button onClick={handleOpen}>
+      <button onClick={handleOpen} className="flex">
         <Flag code={showFlag(language)} />
-        {showLanguage(language)}
+        <p>{showLanguage(language)}</p>
       </button>
       {open && (
         <ul className="languages">

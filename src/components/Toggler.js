@@ -18,7 +18,7 @@ const ToggleMode = () => {
   }
 
   return (
-    <button className="button" onClick={ThemeToggle}>
+    <button onClick={ThemeToggle} className="flex">
       {theme === 'dark' ? (
         <>
           <HiOutlineMoon />

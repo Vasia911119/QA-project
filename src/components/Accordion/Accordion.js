@@ -12,7 +12,7 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
   const handleClick = () => {
     setAccordionStatus(!accordionStatus)
   }
-  console.log(titleUrl)
+  // console.log(titleUrl)
   return (
     <div className={s.wrapper}>
       {titleUrl ? (
