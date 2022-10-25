@@ -31,18 +31,39 @@ const SwitchLanguages = () => {
 
   return (
     <div>
-      <button onClick={handleOpen} className="flex">
-        <Flag code={showFlag(language)} />
-        <p>{showLanguage(language)}</p>
+      <button onClick={handleOpen} className="flex items-center">
+        <Flag
+          code={showFlag(language)}
+          className="w-6 h-6 !inline-block object-cover rounded-[50%] mr-3"
+          fallback={
+            <span className="w-6 h-6 inline-block object-cover rounded-[50%] mr-3 bg-white"></span>
+          }
+        />
+        <p className="text-grey-350 hover:text-slate-50 transition-colors">
+          {showLanguage(language)}
+        </p>
       </button>
       {open && (
         <ul className="languages">
           {langArray.map(lng => {
             return (
-              <li key={lng}>
-                <Link to={originalPath} language={lng} onClick={handleOpen}>
-                  <Flag code={showFlag(lng)} />
-                  {showLanguage(lng)}
+              <li key={lng} className="my-1">
+                <Link
+                  to={originalPath}
+                  language={lng}
+                  onClick={handleOpen}
+                  className="flex items-center"
+                >
+                  <Flag
+                    code={showFlag(lng)}
+                    className="w-6 h-6 !inline-block object-cover rounded-[50%] mr-3"
+                    fallback={
+                      <span className="w-6 h-6 inline-block object-cover rounded-[50%] mr-3 bg-white"></span>
+                    }
+                  />
+                  <p className="text-grey-350 hover:text-slate-50 transition-colors">
+                    {showLanguage(lng)}
+                  </p>
                 </Link>
               </li>
             )

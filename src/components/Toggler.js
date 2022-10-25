@@ -18,15 +18,18 @@ const ToggleMode = () => {
   }
 
   return (
-    <button onClick={ThemeToggle} className="flex">
+    <button
+      onClick={ThemeToggle}
+      className="flex items-center text-grey-350 hover:text-slate-50 transition-colors"
+    >
       {theme === 'dark' ? (
         <>
-          <HiOutlineMoon />
+          <HiOutlineMoon className="w-6 h-6 stroke-current mr-3" />
           <p>Dark</p>
         </>
       ) : (
         <>
-          <HiOutlineSun />
+          <HiOutlineSun className="w-6 h-6 stroke-current mr-3" />
           <p>Light</p>
         </>
       )}
