@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useI18next } from 'gatsby-plugin-react-i18next'
 import Flag from 'react-world-flags'
+// import * as s from './SwitchLanguages.module.css'
 
 const showLanguage = lang => {
   return lang === 'uk' ? 'UA' : lang.toUpperCase()
@@ -32,7 +33,11 @@ const SwitchLanguages = () => {
   return (
     <div>
       <button onClick={handleOpen} className="flex">
-        <Flag code={showFlag(language)} />
+        <Flag
+          code={showFlag(language)}
+          // className={s.icon}
+          className="w-6 h-6 object-cover rounded-full mr-3"
+        />
         <p>{showLanguage(language)}</p>
       </button>
       {open && (
