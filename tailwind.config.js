@@ -1,8 +1,8 @@
 module.exports = {
   darkMode: 'class',
   content: [
-    './src/pages//*.{js,jsx,ts,tsx}',
-    './src/components//*.{js,jsx,ts,tsx}',
+    './src/pages/**/*.{js,jsx,ts,tsx}',
+    './src/components/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     // MEDIA QUERIES
@@ -31,6 +31,7 @@ module.exports = {
         blue: { 950: '#252A41' },
         orange: { 950: '#ff7849' },
         grey: { 350: '#9EA2C6' }, //text
+        slate: { 50: '#F8FAFC' },
         // buttonDisabled: '#D6D3D1', stone 300
 
         // textLight: '#F8FAFC', slate 50
