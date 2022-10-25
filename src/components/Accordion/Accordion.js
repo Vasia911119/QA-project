@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, navigate } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import * as s from './Accordion.module.css'
 import PropTypes from 'prop-types'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -24,7 +24,7 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
             className={accordionStatus ? s.icon : s.iconRotate}
             onClick={handleClick}
           >
-            {<FontAwesomeIcon icon={faChevronUp} />}
+            {/* {<FontAwesomeIcon icon={faChevronUp} />} */}
           </span>
         </div>
       ) : (
@@ -36,7 +36,7 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
             className={accordionStatus ? s.icon : s.iconRotate}
             onClick={handleClick}
           >
-            {<FontAwesomeIcon icon={faChevronUp} />}
+            {/* {<FontAwesomeIcon icon={faChevronUp} />} */}
           </span>
         </div>
       )}
