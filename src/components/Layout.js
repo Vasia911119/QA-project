@@ -2,10 +2,10 @@ import 'fontsource-inter'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Navbar from '../components/Navbar'
+// import Navbar from '../components/Navbar'
 
-import Header from './Header'
-import Footer from './Footer'
+// import Header from './Header'
+// import Footer from './Footer'
 
 const Layout = ({ children }) => {
   return (
