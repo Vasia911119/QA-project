@@ -44,7 +44,7 @@ export default function HomePage({ data }) {
               className="prose max-w-none"
               content={component.html}
             />
-            <ButtonsNavigate />
+            <ButtonsNavigate location={location} />
           </div>
         )
       }
