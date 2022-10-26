@@ -3,6 +3,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 // import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi'
 // import Home from '../images/home.inline.svg'
 // import Icon from '../images/Icon.inline.svg'
+import * as s from './Toggler.module.css'
 
 const ToggleMode = () => {
   let websiteTheme
@@ -27,25 +28,11 @@ const ToggleMode = () => {
     >
       {theme === 'dark' ? (
         <>
-          <StaticImage
-            src="../images/dark-google.png"
-            formats={['png']}
-            alt="dark icon"
-          />
-          {/* <Home /> */}
-          {/* <HiOutlineMoon className="w-6 h-6 stroke-current mr-3" /> */}
-          <p>Dark</p>
+          <p className={s.darkIcon}>Dark</p>
         </>
       ) : (
         <>
-          <StaticImage
-            src="../images/google.png"
-            formats={['png']}
-            alt="icon"
-          />
-          {/* <Icon /> */}
-          {/* <HiOutlineSun className="w-6 h-6 stroke-current mr-3" /> */}
-          <p>Light</p>
+          <p className={s.whiteIcon}>Light</p>
         </>
       )}
     </button>
