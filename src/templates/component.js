@@ -46,7 +46,7 @@ const ComponentTemplate = ({ data }) => {
                 content={item.node.html}
               />
             </div>
-            <ButtonsNavigate location={location} />
+            <ButtonsNavigate />
             <Form />
           </>
         )

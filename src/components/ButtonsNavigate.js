@@ -3,7 +3,7 @@ import { graphql, useStaticQuery, navigate } from 'gatsby'
 import { BiChevronRight } from 'react-icons/bi'
 import { BiChevronLeft } from 'react-icons/bi'
 
-const ButtonsNavigate = ({ location }) => {
+const ButtonsNavigate = () => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
@@ -32,7 +32,8 @@ const ButtonsNavigate = ({ location }) => {
     return result
   }
   const resultArray = getResultArray()
-  const currentIndex = resultArray.indexOf(location.pathname)
+  let pathname = typeof window !== 'undefined' ? window.location.pathname : ''
+  const currentIndex = resultArray.indexOf(pathname)
   const navigation = resultIndex => {
     navigate(resultArray[resultIndex])
   }
