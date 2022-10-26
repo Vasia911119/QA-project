@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
 // import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi'
-import Home from '../images/home.inline.svg'
-import Icon from '../images/Icon.inline.svg'
+// import Home from '../images/home.inline.svg'
+// import Icon from '../images/Icon.inline.svg'
 
 const ToggleMode = () => {
   let websiteTheme
@@ -26,13 +27,23 @@ const ToggleMode = () => {
     >
       {theme === 'dark' ? (
         <>
-          <Home />
+          <StaticImage
+            src="../images/dark-google.png"
+            formats={['png']}
+            alt="dark icon"
+          />
+          {/* <Home /> */}
           {/* <HiOutlineMoon className="w-6 h-6 stroke-current mr-3" /> */}
           <p>Dark</p>
         </>
       ) : (
         <>
-          <Icon />
+          <StaticImage
+            src="../images/google.png"
+            formats={['png']}
+            alt="icon"
+          />
+          {/* <Icon /> */}
           {/* <HiOutlineSun className="w-6 h-6 stroke-current mr-3" /> */}
           <p>Light</p>
         </>
