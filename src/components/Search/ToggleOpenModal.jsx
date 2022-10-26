@@ -5,10 +5,6 @@ import { RiSearchLine } from 'react-icons/ri'
 const ToggleSearchModalOpen = () => {
   let [isOpen, setIsOpen] = useState(false)
 
-  useEffect(() => {
-    console.log(isOpen)
-  }, [isOpen])
-
   const closeModal = () => {
     setIsOpen(false)
   }
