@@ -12,6 +12,7 @@ export default function Header() {
       <Link to={`/`} className="">
         <Logo title={title} />
       </Link>
+
       <ToggleSearchModalOpen />
     </header>
   )
