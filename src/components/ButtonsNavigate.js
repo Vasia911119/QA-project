@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, useStaticQuery, navigate } from 'gatsby'
-import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { BiChevronRight } from 'react-icons/bi'
 import { BiChevronLeft } from 'react-icons/bi'
 
@@ -34,12 +33,6 @@ const ButtonsNavigate = ({ location }) => {
   }
   const resultArray = getResultArray()
   const currentIndex = resultArray.indexOf(location.pathname)
-  // console.log('currentIndex', currentIndex)
-
-  // let first
-  // let last
-  // currentIndex === 0 ? (first = true) : (first = false)
-
   const navigation = resultIndex => {
     navigate(resultArray[resultIndex])
   }
@@ -84,21 +77,3 @@ const ButtonsNavigate = ({ location }) => {
 }
 
 export default ButtonsNavigate
-
-// export const pathQuery = graphql`
-//   query MyQuery {
-//     allSitePage {
-//       edges {
-//         previous {
-//           path
-//         }
-//         next {
-//           path
-//         }
-//         node {
-//           path
-//         }
-//       }
-//     }
-//   }
-// `
