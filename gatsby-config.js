@@ -268,7 +268,7 @@ module.exports = {
         normalizer: ({ data }) =>
           data.allMarkdownRemark.nodes.map((node) => ({
             id: node.id,
-            slug: node.fields.slug,
+           
             title: node.frontmatter.title,
             templateKey: node.frontmatter.templateKey,
             language: node.frontmatter.language,
