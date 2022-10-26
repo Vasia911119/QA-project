@@ -1,5 +1,5 @@
 ---
-title: home
+title: page chapters list
 pages_chapter_item:
   - page_chapter_name: specification
     page_ru: Спецификация к web ресурсу
