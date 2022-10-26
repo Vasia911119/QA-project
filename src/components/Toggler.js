@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi'
+// import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi'
+import Home from '../images/home.inline.svg'
+import Icon from '../images/Icon.inline.svg'
 
 const ToggleMode = () => {
   let websiteTheme
@@ -24,12 +26,14 @@ const ToggleMode = () => {
     >
       {theme === 'dark' ? (
         <>
-          <HiOutlineMoon className="w-6 h-6 stroke-current mr-3" />
+          <Home />
+          {/* <HiOutlineMoon className="w-6 h-6 stroke-current mr-3" /> */}
           <p>Dark</p>
         </>
       ) : (
         <>
-          <HiOutlineSun className="w-6 h-6 stroke-current mr-3" />
+          <Icon />
+          {/* <HiOutlineSun className="w-6 h-6 stroke-current mr-3" /> */}
           <p>Light</p>
         </>
       )}
