@@ -13,160 +13,537 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'ua'
-    label: 'UA'
+  - label: 'List of pages chapters'
+    name: 'list_of_pages_chapters'
+    # identifier_field: name
+    description:
+      'Перелік розділів. При зміні уже існуючих розділів потрібно повторно
+      обрати їх у вже існуючих колекціях (наприклад, Pages_UA)'
+    folder: 'content/pages-chapters'
+    create: false
+    delete: false
+    path: 'list-of-pages-chapters'
+    fields:
+      [
+        {
+          label: 'Title of pages chapters',
+          name: 'title',
+          widget: 'string',
+          required: true,
+          hint: 'Назва для колекції сторінок в адмін панелі',
+          default: 'Список розділів зі сторінками',
+        },
+        {
+          label: 'pages chapter item',
+          name: 'pages_chapter_item',
+          widget: 'list',
+          fields:
+            [
+              {
+                label: 'pages chapter name',
+                name: 'pages_chapter_name',
+                widget: string,
+                required: true,
+                pattern: [
+                    '^[a-z]+[a-z0-9-]+[-]*[a-z0-9-]*[a-z0-9]+$',
+                    'Назва може містити тільки малі латинські літери, цифри та
+                    тире. Має починатися з літери та не може закінчуватися на
+                    тире',
+                  ],
+                hint: 'Назва папки для збереження розділу',
+              },
+              {
+                label: 'Page chapter range',
+                name: 'chapter_range',
+                widget: 'string',
+                required: false,
+                pattern: [
+                    '^[0-9]{1,2}$',
+                    'Може містити тільки цифри, що позначають черговість
+                    розміщення підрозділу на веб-сторінці (зверху вниз)',
+                  ],
+                hint: 'Цифра, що позначає черговість розміщення підрозділу на
+                  веб-сторінці (зверху вниз)',
+              },
+            ],
+        },
+      ]
+  - label: 'List of Links Chapters'
+    name: 'list_of_links_chapters'
+    # identifier_field: links_chapter_value
+    description:
+      'Перелік підрозділів. При зміні уже існуючих підрозділів потрібно повторно
+      обрати їх у вже існуючих колекціях (наприклад, Links_UA)'
+    folder: 'content/links-chapters'
+    create: false
+    delete: false
+    path: 'list-of-links-chapters'
+    fields:
+      [
+        {
+          label: 'Title of links chapters',
+          name: 'title',
+          widget: 'string',
+          required: true,
+          default: 'Список розділів посиланнями',
+          hint: 'Назва для відображення колекцій лінків в адмінпанелі',
+        },
+        {
+          label: 'links chapter item',
+          name: 'links_chapter_item',
+          widget: 'list',
+          fields: [
+              {
+                label: 'Links chapter name',
+                name: 'links_chapter_name',
+                widget: string,
+                required: true,
+                pattern: [
+                    '^[a-z]+[a-z0-9-]+[-]*[a-z0-9-]*[a-z0-9]+$',
+                    'Назва може містити тільки малі латинські літери, цифри та
+                    тире. Має починатися з літери та не може закінчуватися на
+                    тире',
+                  ],
+                hint: 'Назва папки для збереження підрозділу',
+              },
+              # {
+              #   label: 'Chapter at page, ua',
+              #   name: 'chapter_ua',
+              #   widget: string,
+              #   required: true,
+              #   hint: 'Назва підрозділу українською мовою для відображення на
+              #     сторінці',
+              # },
+              # {
+              #   label: 'Chapter at page, ru',
+              #   name: 'chapter_ru',
+              #   widget: string,
+              #   required: true,
+              #   hint: 'Назва підрозділу російською мовою для відображення на
+              #     сторінці',
+              # },
+              # {
+              #   label: 'Chapter at page, en',
+              #   name: 'chapter_en',
+              #   widget: string,
+              #   required: true,
+              #   hint: 'Назва підрозділу англійською мовою для відображення на
+              #     сторінці',
+              # },
+              {
+                label: 'Links chapter range',
+                name: 'chapter_range',
+                widget: 'string',
+                required: false,
+                pattern: [
+                    '^[0-9]{1,2}$',
+                    'Може містити тільки цифри, що позначають черговість
+                    розміщення підрозділу на веб-сторінці (зверху вниз)',
+                  ],
+                hint: 'Цифра, що позначає черговість розміщення підрозділу на
+                  веб-сторінці (зверху вниз)',
+              },
+            ],
+        },
+      ]
+  - label: 'Pages_UA'
+    name: 'pages_ua'
+    folder: 'content/ua/pages'
+    media_folder: '/static/img'
+    public_folder: /img
+    # label_singular: 'Chapters_UA'
+    slug: '{{slug}}'
+    description:
+      'Розділи українською мовою. Для створення нового розділу, будь ласка,
+      спочатку додайте його в колекцію List of Chapters'
     create: true
-    folder: 'ua'
+    delete: true
+    # path: '{{page}}/{{language}}'
+    filter: { field: 'language', value: 'uk' }
     fields:
       - {
-          label: 'Template Key',
-          name: 'templateKey',
-          widget: 'hidden',
-          default: 'component',
-        }
-      - { label: 'Language', name: 'language', widget: 'hidden', default: 'uk' }
-      - { label: 'Title', name: 'title', widget: 'string', required: false }
-      - {
-          label: 'Publish Date',
-          name: 'date',
-          widget: 'datetime',
-          required: false,
+          label: 'Page Chapter',
+          name: 'page_chapter',
+          collection: 'list_of_pages_chapters',
+          widget: 'relation',
+          required: true,
+          search_fields: ['pages_chapter_item.*.pages_chapter_name'],
+          value_field: 'pages_chapter_item.*.pages_chapter_name',
+          display_fields: ['pages_chapter_item.*.pages_chapter_name'],
+          hint: 'Виберіть назву папки для збереження даного розділу',
         }
       - {
-          label: 'URL',
-          name: 'url',
+          label: 'Title of the page',
+          name: 'title',
           widget: 'string',
-          required: false,
-          hint: 'Необов"язкове поле, використовується для створення посилань',
+          required: true,
+          hint: 'Введіть назву для даної сторінки, яка буде відображатися на
+            сторінці',
         }
       - {
-          label: 'Body',
-          name: 'body',
-          widget: 'markdown',
-          required: false,
-          hint: 'Необов"язкове поле, використовується для створення сторінок з контентом',
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['uk'],
+          default: 'uk',
         }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
       - {
-          label: 'Note',
-          name: 'description',
-          widget: 'text',
-          required: false,
-          hint: 'Необов"язкове поле, використовується для створення загального підсумку з сторінки',
-        }
-      - label: 'links-external'
-        name: 'links-external'
-        slug: '{{slug}}'
-        file: 'content/ua/presentations.md'
-        widget: list
-        fields:
-          - label: 'links'
-            name: 'links'
-            widget: list
-            fields:
-              - {
-                  label: 'Language',
-                  name: 'language',
-                  widget: 'hidden',
-                  default: 'uk',
-                }
-              - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'URL', name: 'url', widget: 'string' }
-      - {
-          label: 'Range',
-          name: 'range',
+          label: 'Page range',
+          name: 'page_range',
           widget: 'string',
           required: false,
           pattern: [
               '^[0-9]{1,2}$',
-              'Може містити тільки цифри, що позначають черговість
-              розміщення підрозділу на веб-сторінці (зверху вниз)',
+              'Може містити тільки цифри, що позначають черговість розміщення
+              розділу на веб-сторінці (зверху вниз)',
             ],
-          hint: 'Цифра, що позначає черговість розміщення підрозділу на
-            веб-сторінці (зверху вниз)',
+          hint: "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
+            розміщення розділу на веб-сторінці (зверху вниз)",
         }
-    # files:
-    #   - label: 'Main'
-    #     name: 'main'
-    #     slug: '{{slug}}'
-    #     # folder: 'content/ua/main'
-    #     file: 'content/ua/main.md'
-    #     fields:
-    #       - {
-    #           label: 'Template Key',
-    #           name: 'templateKey',
-    #           widget: 'hidden',
-    #           default: 'main',
-    #         }
-    #       - {
-    #           label: 'Language',
-    #           name: 'language',
-    #           widget: 'hidden',
-    #           default: 'uk',
-    #         }
-    #       - { label: 'Title', name: 'title', widget: 'string' }
-    #       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-    #       - { label: 'Body', name: 'body', widget: 'markdown' }
-    #   - label: 'pages'
-    #     name: 'pages'
-    #     slug: '{{slug}}'
-    #     # folder: 'content/ua/pages'
-    #     file: 'content/ua/pages.md'
-    #     fields:
-    #       - {
-    #           label: 'Template Key',
-    #           name: 'templateKey',
-    #           widget: 'hidden',
-    #           default: 'pages',
-    #         }
-    #       - {
-    #           label: 'Language',
-    #           name: 'language',
-    #           widget: 'hidden',
-    #           default: 'uk',
-    #         }
-    #       - { label: 'Title', name: 'title', widget: 'string' }
-    #       - label: 'pages'
-    #         name: 'pages'
-    #         widget: list
-    #         fields:
-    #           - { label: 'Title', name: 'title', widget: 'string' }
-    #           - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-    #           - { label: 'Body', name: 'body', widget: 'markdown' }
-    #   - label: 'presentations'
-    #     name: 'presentations'
-    #     slug: '{{slug}}'
-    #     # folder: 'content/ua/presentations'
-    #     file: 'content/ua/presentations.md'
-    #     widget: list
-    #     fields:
-    #       - label: 'links'
-    #         name: 'links'
-    #         widget: list
-    #         fields:
-    #           - {
-    #               label: 'Language',
-    #               name: 'language',
-    #               widget: 'hidden',
-    #               default: 'uk',
-    #             }
-    #           - { label: 'Title', name: 'title', widget: 'string' }
-    #           - { label: 'URL', name: 'url', widget: 'string' }
-    #   - label: 'templates'
-    #     name: 'templates'
-    #     slug: '{{slug}}'
-    #     # folder: 'content/ua/templates'
-    #     file: 'content/ua/templates.md'
-    #     widget: list
-    #     fields:
-    #       - label: 'links'
-    #         name: 'links'
-    #         widget: list
-    #         fields:
-    #           - {
-    #               label: 'Language',
-    #               name: 'language',
-    #               widget: 'hidden',
-    #               default: 'uk',
-    #             }
-    #           - { label: 'Title', name: 'title', widget: 'string' }
-    #           - { label: 'URL', name: 'url', widget: 'string' }
+  - label: 'Pages_RU'
+    name: 'pages_ru'
+    folder: 'content/ru/pages'
+    media_folder: '/static/img'
+    public_folder: /img
+    # label_singular: 'Chapters_UA'
+    slug: '{{slug}}'
+    description:
+      'Розділи українською мовою. Для створення нового розділу, будь ласка,
+      спочатку додайте його в колекцію List of Chapters'
+    create: true
+    delete: true
+    # path: '{{page}}/{{language}}'
+    filter: { field: 'language', value: 'ru' }
+    fields:
+      - {
+          label: 'Page Chapter',
+          name: 'page_chapter',
+          collection: 'list_of_pages_chapters',
+          widget: 'relation',
+          required: true,
+          search_fields: ['pages_chapter_item.*.pages_chapter_name'],
+          value_field: 'pages_chapter_item.*.pages_chapter_name',
+          display_fields: ['pages_chapter_item.*.pages_chapter_name'],
+          hint: 'Виберіть назву папки для збереження даного розділу',
+        }
+      - {
+          label: 'Title of the page',
+          name: 'title',
+          widget: 'string',
+          required: true,
+          hint: 'Введіть назву для даної сторінки, яка буде відображатися на
+            сторінці',
+        }
+      - {
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['ru'],
+          default: 'ru',
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - {
+          label: 'Page range',
+          name: 'page_range',
+          widget: 'string',
+          required: false,
+          pattern: [
+              '^[0-9]{1,2}$',
+              'Може містити тільки цифри, що позначають черговість розміщення
+              розділу на веб-сторінці (зверху вниз)',
+            ],
+          hint: "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
+            розміщення розділу на веб-сторінці (зверху вниз)",
+        }
+  - label: 'Pages_EN'
+    name: 'pages_en'
+    folder: 'content/en/pages'
+    media_folder: '/static/img'
+    public_folder: /img
+    # label_singular: 'Chapters_UA'
+    slug: '{{slug}}'
+    description:
+      'Розділи українською мовою. Для створення нового розділу, будь ласка,
+      спочатку додайте його в колекцію List of Chapters'
+    create: true
+    delete: true
+    # path: '{{page}}/{{language}}'
+    filter: { field: 'language', value: 'en' }
+    fields:
+      - {
+          label: 'Page Chapter',
+          name: 'page_chapter',
+          collection: 'list_of_pages_chapters',
+          widget: 'relation',
+          required: true,
+          search_fields: ['pages_chapter_item.*.pages_chapter_name'],
+          value_field: 'pages_chapter_item.*.pages_chapter_name',
+          display_fields: ['pages_chapter_item.*.pages_chapter_name'],
+          hint: 'Виберіть назву папки для збереження даного розділу',
+        }
+      - {
+          label: 'Title of the page',
+          name: 'title',
+          widget: 'string',
+          required: true,
+          hint: 'Введіть назву для даної сторінки, яка буде відображатися на
+            сторінці',
+        }
+      - {
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['en'],
+          default: 'en',
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - {
+          label: 'Page range',
+          name: 'page_range',
+          widget: 'string',
+          required: false,
+          pattern: [
+              '^[0-9]{1,2}$',
+              'Може містити тільки цифри, що позначають черговість розміщення
+              розділу на веб-сторінці (зверху вниз)',
+            ],
+          hint: "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
+            розміщення розділу на веб-сторінці (зверху вниз)",
+        }
+
+  # ============================================
+
+  - label: 'Links_UA'
+    name: 'links_ua'
+    folder: 'content/ua/links'
+    media_folder: '/static/img'
+    public_folder: /img
+    # label_singular: 'Chapters_UA'
+    slug: '{{slug}}'
+    description:
+      'Розділи українською мовою. Для створення нового розділу, будь ласка,
+      спочатку додайте його в колекцію List of Chapters'
+    create: true
+    delete: true
+    # path: '{{chapter}}/{{language}}'
+    filter: { field: 'language', value: 'uk' }
+    fields:
+      - {
+          label: 'Links chapter',
+          name: 'links_chapter',
+          collection: 'list_of_links_chapters',
+          widget: 'relation',
+          required: true,
+          search_fields: ['links_chapter_item.*.links_chapter_name'],
+          value_field: 'links_chapter_item.*.links_chapter_name',
+          display_fields: ['links_chapter_item.*.links_chapter_name'],
+          hint: 'Виберіть назву папки для збереження даного розділу',
+        }
+      - {
+          label: 'Title of link chapter',
+          name: 'title',
+          widget: 'string',
+          required: true,
+          hint: 'Введіть назву для даної сторінки, яка буде відображатися на
+            сторінці',
+        }
+      - {
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['uk'],
+          default: 'uk',
+        }
+      - {
+          label: 'links items',
+          name: 'links_items',
+          widget: 'list',
+          fields:
+            [
+              {
+                label: 'Title of link',
+                name: 'link_title',
+                widget: 'string',
+                required: true,
+                hint: 'Введіть назву посилання',
+              },
+              {
+                label: 'URL adress',
+                name: 'url_adress',
+                widget: 'string',
+                required: true,
+                hint: 'Введіть назву посилання',
+              },
+              {
+                label: 'Links range',
+                name: 'links_range',
+                widget: 'string',
+                required: false,
+                pattern: [
+                    '^[0-9]{1,2}$',
+                    'Може містити тільки цифри, що позначають черговість розміщення
+                    розділу на веб-сторінці (зверху вниз)',
+                  ],
+                hint:
+                  "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
+                  розміщення розділу на веб-сторінці (зверху вниз)",
+              },
+            ],
+        }
+
+  - label: 'Links_RU'
+    name: 'links_ru'
+    folder: 'content/ru/links'
+    media_folder: '/static/img'
+    public_folder: /img
+    # label_singular: 'Chapters_UA'
+    slug: '{{slug}}'
+    description:
+      'Розділи українською мовою. Для створення нового розділу, будь ласка,
+      спочатку додайте його в колекцію List of Chapters'
+    create: true
+    delete: true
+    # path: '{{chapter}}/{{language}}'
+    filter: { field: 'language', value: 'ru' }
+    fields:
+      - {
+          label: 'Links chapter',
+          name: 'links_chapter',
+          collection: 'list_of_links_chapters',
+          widget: 'relation',
+          required: true,
+          search_fields: ['links_chapter_item.*.links_chapter_name'],
+          value_field: 'links_chapter_item.*.links_chapter_name',
+          display_fields: ['links_chapter_item.*.links_chapter_name'],
+          hint: 'Виберіть назву папки для збереження даного розділу',
+        }
+      - {
+          label: 'Title of link chapter',
+          name: 'title',
+          widget: 'string',
+          required: true,
+          hint: 'Введіть назву для даної сторінки, яка буде відображатися на
+            сторінці',
+        }
+      - {
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['ru'],
+          default: 'ru',
+        }
+      - {
+          label: 'links items',
+          name: 'links_items',
+          widget: 'list',
+          fields:
+            [
+              {
+                label: 'Title of link',
+                name: 'link_title',
+                widget: 'string',
+                required: true,
+                hint: 'Введіть назву посилання',
+              },
+              {
+                label: 'URL adress',
+                name: 'url_adress',
+                widget: 'string',
+                required: true,
+                hint: 'Введіть назву посилання',
+              },
+              {
+                label: 'Links range',
+                name: 'links_range',
+                widget: 'string',
+                required: false,
+                pattern: [
+                    '^[0-9]{1,2}$',
+                    'Може містити тільки цифри, що позначають черговість розміщення
+                    розділу на веб-сторінці (зверху вниз)',
+                  ],
+                hint:
+                  "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
+                  розміщення розділу на веб-сторінці (зверху вниз)",
+              },
+            ],
+        }
+
+  - label: 'Links_EN'
+    name: 'links_en'
+    folder: 'content/en/links'
+    media_folder: '/static/img'
+    public_folder: /img
+    # label_singular: 'Chapters_UA'
+    slug: '{{slug}}'
+    description:
+      'Розділи українською мовою. Для створення нового розділу, будь ласка,
+      спочатку додайте його в колекцію List of Chapters'
+    create: true
+    delete: true
+    # path: '{{chapter}}/{{language}}'
+    filter: { field: 'language', value: 'en' }
+    fields:
+      - {
+          label: 'Links chapter',
+          name: 'links_chapter',
+          collection: 'list_of_links_chapters',
+          widget: 'relation',
+          required: true,
+          search_fields: ['links_chapter_item.*.links_chapter_name'],
+          value_field: 'links_chapter_item.*.links_chapter_name',
+          display_fields: ['links_chapter_item.*.links_chapter_name'],
+          hint: 'Виберіть назву папки для збереження даного розділу',
+        }
+      - {
+          label: 'Title of link chapter',
+          name: 'title',
+          widget: 'string',
+          required: true,
+          hint: 'Введіть назву для даної сторінки, яка буде відображатися на
+            сторінці',
+        }
+      - {
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['en'],
+          default: 'en',
+        }
+      - {
+          label: 'links items',
+          name: 'links_items',
+          widget: 'list',
+          fields:
+            [
+              {
+                label: 'Title of link',
+                name: 'link_title',
+                widget: 'string',
+                required: true,
+                hint: 'Введіть назву посилання',
+              },
+              {
+                label: 'URL adress',
+                name: 'url_adress',
+                widget: 'string',
+                required: true,
+                hint: 'Введіть назву посилання',
+              },
+              {
+                label: 'Links range',
+                name: 'links_range',
+                widget: 'string',
+                required: false,
+                pattern: [
+                    '^[0-9]{1,2}$',
+                    'Може містити тільки цифри, що позначають черговість розміщення
+                    розділу на веб-сторінці (зверху вниз)',
+                  ],
+                hint:
+                  "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
+                  розміщення розділу на веб-сторінці (зверху вниз)",
+              },
+            ],
+        }

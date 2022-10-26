@@ -23,7 +23,7 @@ export default function HomePage({ data }) {
   //     navigate('/uk')
   //   }
   // }, [])
-
+  console.log(window)
   return (
     <p>hello</p>
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout

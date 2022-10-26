@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
 // import Footer from './Footer'
 
 const Layout = ({ children }) => {
+  console.log(window)
   return (
     <p>hello</p>
     // <section className="mx-auto relative antialiased max-sm:max-w-[480px] sm:w-[480px] md:w-[768px] xl:w-[1280px]">
