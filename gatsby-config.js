@@ -266,9 +266,9 @@ module.exports = {
         index: ['title', 'body', 'description'],
         store: ['id', 'slug', 'title', 'language', 'description'],
         normalizer: ({ data }) =>
-          data.allMarkdownRemark.nodes.map((node) => ({
+          data.allMarkdownRemark.nodes.map(node => ({
             id: node.id,
-           
+            slug: node.fields.slug,
             title: node.frontmatter.title,
             templateKey: node.frontmatter.templateKey,
             language: node.frontmatter.language,
@@ -277,6 +277,5 @@ module.exports = {
           })),
       },
     },
-
   ],
 }

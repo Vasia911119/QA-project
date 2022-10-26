@@ -4,6 +4,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import SearchResult from './SearchResult'
 import SearchField from './SearchField'
 import { Dialog, Transition } from '@headlessui/react'
+import { RiSearchLine } from 'react-icons/ri'
 
 const query = graphql`
   {
@@ -15,6 +16,29 @@ const query = graphql`
 `
 
 export const Search = ({ closeModal, isOpen }) => {
+  const [searchQuery, setSearchQuery] = useState('')
+  const [pagesIndexStore, setPagesIndexStore] = useState(null)
+  const data = useStaticQuery(query)
+
+  const {
+    publicStoreURL: pagesPublicStoreURL,
+    publicIndexURL: pagesPublicIndexURL,
+  } = data.localSearchPages
+
+  const handleOnFocus = async () => {
+    if (pagesIndexStore) return
+
+    const [{ data: pagesIndex }, { data: pagesStore }] = await Promise.all([
+      axios.get(`${pagesPublicIndexURL}`),
+      axios.get(`${pagesPublicStoreURL}`),
+    ])
+
+    setPagesIndexStore({
+      index: pagesIndex,
+      store: pagesStore,
+    })
+  }
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -42,28 +66,31 @@ export const Search = ({ closeModal, isOpen }) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                <Dialog.Title
-                  as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900"
-                >
-                  Payment successful
-                </Dialog.Title>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent you
-                    an email with all of the details of your order.
-                  </p>
+                <div className="relative">
+                  <RiSearchLine
+                    color="#9EA2C6"
+                    size={24}
+                    className="absolute left-3 inset-y-1/2 -translate-y-1/2"
+                  />
+
+                  <input
+                    type="text"
+                    className="bg-[#EDEEF9] rounded-[10px] w-[308px] h-10 flex items-center justify-start gap-[10px] pl-10 text-[#9EA2C6]"
+                    placeholder="Що шукаємо?"
+                    onChange={e => setSearchQuery(e.target.value)}
+                    value={searchQuery}
+                    onFocus={handleOnFocus}
+                  />
                 </div>
 
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    onClick={closeModal}
-                  >
-                    Got it, thanks!
-                  </button>
-                </div>
+                {searchQuery && pagesIndexStore && (
+                  <div>
+                    <SearchResult
+                      searchQuery={searchQuery}
+                      pagesIndexStore={pagesIndexStore}
+                    />
+                  </div>
+                )}
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -87,24 +114,26 @@ export const Search = ({ closeModal, isOpen }) => {
 //     }
 //   }, [isSearchModalOpen])
 
-//   const {
-//     publicStoreURL: pagesPublicStoreURL,
-//     publicIndexURL: pagesPublicIndexURL,
-//   } = data.localSearchPages
+// const {
+//   publicStoreURL: pagesPublicStoreURL,
+//   publicIndexURL: pagesPublicIndexURL,
+// } = data.localSearchPages
 
-//   // const handleOnFocus = async () => {
-//   //   if (pagesIndexStore) return
-//   //   const [{ data: pagesIndex }, { data: pagesStore }] = await Promise.all([
-//   //     axios.get(`${pagesPublicIn`dexURL}`),
-//   //     axios.get(`${pagesPublicStoreURL}`),
-//   //   ])
-//   //   setPagesIndexStore({
-//   //     index: pagesIndex,
-//   //     store: pagesStore,
-//   //   })
-//   // }
+// const handleOnFocus = async () => {
+//   if (pagesIndexStore) return;
 
-//   // if (!isSearchModalOpen) return null
+//   const [{ data: pagesIndex }, { data: pagesStore }] = await Promise.all([
+//     axios.get(`${pagesPublicIndexURL}`),
+//     axios.get(`${pagesPublicStoreURL}`),
+//   ])
+
+//   setPagesIndexStore({
+//     index: pagesIndex,
+//     store: pagesStore,
+//   })
+// }
+
+// if (!isSearchModalOpen) return null
 
 //   return (
 //     <div
@@ -118,19 +147,19 @@ export const Search = ({ closeModal, isOpen }) => {
 //                     onClick={() => closeSearchModal()}>
 
 //                 </ActionButton> */}
-//         <SearchField
-//           value={searchQuery}
-//           setValue={setSearchQuery}
-//           onFocus={handleOnFocus}
-//         />
-//         {searchQuery &&
-//           pagesIndexStore(
-//             <div>
-//               <SearchResult
-//                 searchQuery={searchQuery}
-//                 pagesIndexStore={pagesIndexStore}
-//               />
-//             </div>
+// <SearchField
+//   value={searchQuery}
+//   setValue={setSearchQuery}
+//   onFocus={handleOnFocus}
+// />
+// {searchQuery &&
+//   pagesIndexStore(
+//     <div>
+//       <SearchResult
+//         searchQuery={searchQuery}
+//         pagesIndexStore={pagesIndexStore}
+//       />
+//     </div>
 //           )}
 //       </div>
 //     </div>

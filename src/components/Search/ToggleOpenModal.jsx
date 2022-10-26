@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Search } from './SearchModal'
 import { RiSearchLine } from 'react-icons/ri'
 
