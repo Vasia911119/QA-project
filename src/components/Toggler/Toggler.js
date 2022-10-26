@@ -9,6 +9,7 @@ const ToggleMode = () => {
   let websiteTheme
   if (typeof window !== `undefined`) {
     websiteTheme = window.__theme
+    console.log('window.__theme', window.__theme)
   }
   useEffect(() => {
     setTheme(window.__theme)
@@ -16,23 +17,30 @@ const ToggleMode = () => {
 
   const [theme, setTheme] = useState(websiteTheme)
 
+  useEffect(() => {
+    console.log('наш useEffect', theme)
+  }, [theme])
+
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark')
     setTheme(websiteTheme === 'dark' ? 'light' : 'dark')
+    console.log('websiteTheme', websiteTheme)
   }
+
+  console.log('theme', theme)
 
   return (
     <button
       onClick={ThemeToggle}
       className="flex items-center text-grey-350 hover:text-slate-50 transition-colors"
     >
-      {theme === 'dark' ? (
+      {theme !== 'dark' ? (
         <>
-          <p className={s.darkIcon}>Dark</p>
+          <p className={s.whiteIcon}>Light</p>
         </>
       ) : (
         <>
-          <p className={s.whiteIcon}>Light</p>
+          <p className={s.darkIcon}>Dark</p>
         </>
       )}
     </button>
