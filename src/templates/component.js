@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Form from '../components/Form/Form';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
-import ButtonsNavigate from '../components/ButtonsNavigate';
+import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 
 import { HTMLContent } from '../components/Content';
 import Layout from '../components/Layout';
