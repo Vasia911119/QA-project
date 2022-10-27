@@ -60,6 +60,34 @@ export default function HomePage({ data }) {
 //   }),
 // }
 
+// НОВЫЙ QUERY
+// {
+//   allMarkdownRemark(filter: {frontmatter: {language: {eq: "uk"}}}) {
+//     nodes {
+//       frontmatter {
+//         language
+//         chapter_title
+//         link_chapter_name
+//         link_chapter_title
+//         links_chapter
+//         page_chapter
+//         page_chapter_name
+//         page_chapter_title
+//         page_range
+//         page_title
+//         links_items {
+//           link_title
+//           url_adress
+//         }
+//       }
+//       fields {
+//         slug
+//       }
+//       html
+//     }
+//   }
+// }
+
 // export const pageQuery = graphql`
 //   query ($language: String!) {
 //     locales: allLocale(filter: { language: { eq: $language } }) {

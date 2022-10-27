@@ -1,8 +1,8 @@
 ---
-page_title: Хедер
+page_title: Тіло сторінки
 page_chapter_name: components
 page_chapter_title: Компоненти та функціональність
-slug: header
+slug: body-page
 language: uk
 ---
-Т﻿іло сторінки хедера
+т﻿іло сторінки

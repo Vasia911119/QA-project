@@ -1,8 +1,8 @@
 ---
-page_title: Хедер
+page_title: Футер
 page_chapter_name: components
 page_chapter_title: Компоненти та функціональність
-slug: header
+slug: footer
 language: uk
 ---
-Т﻿іло сторінки хедера
+Т﻿іло сторінки футера
