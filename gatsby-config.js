@@ -28,7 +28,14 @@ module.exports = {
   },
   plugins: [
     'gatsby-transformer-remark',
-
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-postcss`,
       options: {

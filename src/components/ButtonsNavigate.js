@@ -1,11 +1,9 @@
 import React from 'react'
 import { graphql, useStaticQuery, navigate } from 'gatsby'
-import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { BiChevronRight } from 'react-icons/bi'
 import { BiChevronLeft } from 'react-icons/bi'
 
-const ButtonsNavigate = ({ location }) => {
-  return <p>button</p>
+const ButtonsNavigate = () => {
   // const data = useStaticQuery(graphql`
   //   query {
   //     allMarkdownRemark(
@@ -27,31 +25,23 @@ const ButtonsNavigate = ({ location }) => {
   //     }
   //   }
   // `)
-
   // const getResultArray = () => {
   //   let result = ['/']
   //   data.allMarkdownRemark.edges.map(item => result.push(item.node.fields.slug))
   //   return result
   // }
   // const resultArray = getResultArray()
-  // const currentIndex = resultArray.indexOf(location.pathname)
-  // // console.log('currentIndex', currentIndex)
-
-  // // let first
-  // // let last
-  // // currentIndex === 0 ? (first = true) : (first = false)
-
+  // let pathname = typeof window !== 'undefined' ? window.location.pathname : ''
+  // const currentIndex = resultArray.indexOf(pathname)
   // const navigation = resultIndex => {
   //   navigate(resultArray[resultIndex])
   // }
-
   // const prev = () => {
   //   navigation(currentIndex - 1)
   // }
   // const next = () => {
   //   navigation(currentIndex + 1)
   // }
-
   // return (
   //   <div className="flex mt-[80px] md:mt-[92px] xl:mt-[100px] font-inter font-semibold text-base text-slate-50">
   //     <button
@@ -85,21 +75,3 @@ const ButtonsNavigate = ({ location }) => {
 }
 
 export default ButtonsNavigate
-
-// export const pathQuery = graphql`
-//   query MyQuery {
-//     allSitePage {
-//       edges {
-//         previous {
-//           path
-//         }
-//         next {
-//           path
-//         }
-//         node {
-//           path
-//         }
-//       }
-//     }
-//   }
-// `
