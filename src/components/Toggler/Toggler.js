@@ -38,7 +38,7 @@ const ToggleMode = () => {
     >
       <IconContext.Provider value={{ color: 'white', size: 24 }}>
         {theme === 'dark' && <HiOutlineMoon />}
-        {theme !== 'light' && <HiOutlineSun />}
+        {theme === 'light' && <HiOutlineSun />}
       </IconContext.Provider>
 
       {theme !== 'dark' ? 'Light' : 'Dark'}
