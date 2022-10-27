@@ -1,51 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
-// import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi'
-// import Home from '../images/home.inline.svg'
-// import Icon from '../images/Icon.inline.svg'
-import * as s from './Toggler.module.css';
+import { IconContext } from 'react-icons';
+import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
+// import * as s from './Toggler.module.css';
 
 const ToggleMode = () => {
-  let websiteTheme = typeof window !== `undefined` ? window.__theme : null;
-  const [theme, setTheme] = useState(websiteTheme);
+  let websiteTheme;
 
-  // if (typeof window !== `undefined`) {
-  //   websiteTheme = window.__theme;
-  //   console.log('window.__theme', window.__theme);
-  // }
+  if (typeof window !== `undefined`) {
+    websiteTheme = window.__theme;
+  }
+  const [theme, setTheme] = useState(() => websiteTheme);
 
   useEffect(() => {
     setTheme(window.__theme);
-    console.log('window.__theme', window.__theme);
-    console.log(websiteTheme === 'dark');
   }, [theme]);
-
-  // useEffect(() => {
-  //   console.log('наш useEffect', theme);
-  // }, [theme]);
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
-
     setTheme(websiteTheme === 'dark' ? 'light' : 'dark');
   };
 
   return (
     <button
       onClick={ThemeToggle}
-      className="flex items-center text-grey-350 hover:text-slate-50 transition-colors"
+      className="flex items-center gap-2 text-grey-350 hover:text-slate-50 focus:text-slate-50 transition-colors"
     >
-      {theme !== 'dark' ? (
-        <>
-          <p className={s.whiteIcon}>Light</p>
-        </>
-      ) : (
-        <>
-          <p className={s.darkIcon}>Dark</p>
-        </>
-      )}
+      <IconContext.Provider value={{ color: 'currentColor', size: 18 }}>
+        {theme === 'dark' && (
+          <>
+            <HiOutlineMoon /> Dark
+          </>
+        )}
 
-      {}
+        {theme === 'light' && (
+          <>
+            <HiOutlineSun /> Light
+          </>
+        )}
+      </IconContext.Provider>
     </button>
   );
 };
