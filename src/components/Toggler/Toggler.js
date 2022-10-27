@@ -37,7 +37,8 @@ const ToggleMode = () => {
       className="flex items-center gap-2 text-grey-350 hover:text-slate-50 transition-colors"
     >
       <IconContext.Provider value={{ color: 'white', size: 24 }}>
-        {theme !== 'dark' ? <HiOutlineSun /> : <HiOutlineMoon />}
+        {theme === 'dark' && <HiOutlineMoon />}
+        {theme !== 'light' && <HiOutlineSun />}
       </IconContext.Provider>
 
       {theme !== 'dark' ? 'Light' : 'Dark'}
