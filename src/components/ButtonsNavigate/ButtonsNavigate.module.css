@@ -1,0 +1,30 @@
+.wrapper {
+  @apply flex mt-[80px] md:mt-[92px] xl:mt-[100px] font-inter font-semibold text-base text-slate-50;
+}
+.buttonLeft {
+  @apply flex items-center justify-center rounded-[10px] bg-blue-600 w-[114px] h-12 font-inter font-semibold text-xs transition-all ml-auto mr-8;
+}
+.buttonLeft:hover {
+  @apply bg-blue-500;
+}
+.buttonLeft:focus {
+  @apply bg-blue-500;
+}
+.buttonLeftDisabled {
+  @apply flex items-center justify-center rounded-[10px] bg-stone-300 w-[114px] h-12 font-inter font-semibold text-xs transition-all ml-auto mr-8;
+}
+.buttonRight {
+  @apply flex items-center justify-center rounded-[10px] bg-blue-600 w-[114px] h-12 font-inter font-semibold text-xs transition-all mr-auto;
+}
+.buttonRight:hover {
+  @apply bg-blue-500;
+}
+.buttonRight:focus {
+  @apply bg-blue-500;
+}
+.buttonRightDisabled {
+  @apply flex items-center justify-center rounded-[10px] bg-stone-300 w-[114px] h-12 font-inter font-semibold text-xs transition-all mr-auto;
+}
+.icon {
+  @apply w-[30px] h-[30px];
+}

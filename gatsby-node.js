@@ -7,51 +7,51 @@ const slugHandler = require('./src/api/slugHandler')
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  return graphql(`
-    {
-      allMarkdownRemark(
-        filter: { frontmatter: { templateKey: { eq: "component" } } }
-      ) {
-        nodes {
-          fields {
-            slug
-          }
-          frontmatter {
-            slug
-            templateKey
-            description
-            language
-          }
-        }
-      }
-    }
-  `).then(result => {
-    if (result.errors) {
-      result.errors.forEach(e => console.error(e.toString()))
-      return Promise.reject(result.errors)
-    }
+  // return graphql(`
+  //   {
+  //     allMarkdownRemark(
+  //       filter: { frontmatter: { templateKey: { eq: "component" } } }
+  //     ) {
+  //       nodes {
+  //         fields {
+  //           slug
+  //         }
+  //         frontmatter {
+  //           slug
+  //           templateKey
+  //           description
+  //           language
+  //         }
+  //       }
+  //     }
+  //   }
+  // `).then(result => {
+  //   if (result.errors) {
+  //     result.errors.forEach(e => console.error(e.toString()))
+  //     return Promise.reject(result.errors)
+  //   }
 
-    const pages = result.data.allMarkdownRemark.nodes
+  // const pages = result.data.allMarkdownRemark.nodes
 
-    pages.forEach(page => {
-      const language = page.frontmatter.language
-      const templateKey = page.frontmatter.templateKey
-      const description = page.frontmatter.description
-      const slug = slugHandler(language, templateKey, page.frontmatter.slug)
-      createPage({
-        path: slug,
-        component: path.resolve(
-          `src/templates/${String(page.frontmatter.templateKey)}.js`
-        ),
-        context: {
-          slug,
-          description,
-          language,
-          templateKey,
-        },
-      })
-    })
-  })
+  // pages.forEach(page => {
+  //   const language = page.frontmatter.language
+  //   const templateKey = page.frontmatter.templateKey
+  //   const description = page.frontmatter.description
+  //   const slug = slugHandler(language, templateKey, page.frontmatter.slug)
+  //   createPage({
+  //     path: slug,
+  //     component: path.resolve(
+  //       `src/templates/${String(page.frontmatter.templateKey)}.js`
+  //     ),
+  //     context: {
+  //       slug,
+  //       description,
+  //       language,
+  //       templateKey,
+  //     },
+  //   })
+  // })
+  // })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

@@ -1,4 +1,4 @@
-const React = require('react')
+const React = require('react');
 
 exports.onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
@@ -18,20 +18,26 @@ exports.onRenderBody = ({ setHeadComponents }) => {
 
             window.__setPreferredTheme = function(theme) {
               setTheme(theme);
+
               try {
                 localStorage.setItem('color-theme', theme);
               } catch (e) {
                 console.error(e);
               }
             };
+
             let preferredTheme;
             try {
               preferredTheme = localStorage.getItem('color-theme');
-            } catch (e) {}
+            } catch (e) {
+                console.error(e);
+            }
+
             let darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
             setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
           })();`,
       }}
     />,
-  ])
-}
+  ]);
+};

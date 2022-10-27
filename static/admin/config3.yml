@@ -1,0 +1,172 @@
+backend:
+  name: git-gateway
+  branch: dev
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
+
+local_backend: true
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: 'ua'
+    label: 'UA'
+    create: true
+    folder: 'ua'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'component',
+        }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'uk' }
+      - { label: 'Title', name: 'title', widget: 'string', required: false }
+      - {
+          label: 'Publish Date',
+          name: 'date',
+          widget: 'datetime',
+          required: false,
+        }
+      - {
+          label: 'URL',
+          name: 'url',
+          widget: 'string',
+          required: false,
+          hint: 'Необов"язкове поле, використовується для створення посилань',
+        }
+      - {
+          label: 'Body',
+          name: 'body',
+          widget: 'markdown',
+          required: false,
+          hint: 'Необов"язкове поле, використовується для створення сторінок з контентом',
+        }
+      - {
+          label: 'Note',
+          name: 'description',
+          widget: 'text',
+          required: false,
+          hint: 'Необов"язкове поле, використовується для створення загального підсумку з сторінки',
+        }
+      - label: 'links-external'
+        name: 'links-external'
+        slug: '{{slug}}'
+        file: 'content/ua/presentations.md'
+        widget: list
+        fields:
+          - label: 'links'
+            name: 'links'
+            widget: list
+            fields:
+              - {
+                  label: 'Language',
+                  name: 'language',
+                  widget: 'hidden',
+                  default: 'uk',
+                }
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'URL', name: 'url', widget: 'string' }
+      - {
+          label: 'Range',
+          name: 'range',
+          widget: 'string',
+          required: false,
+          pattern: [
+              '^[0-9]{1,2}$',
+              'Може містити тільки цифри, що позначають черговість
+              розміщення підрозділу на веб-сторінці (зверху вниз)',
+            ],
+          hint: 'Цифра, що позначає черговість розміщення підрозділу на
+            веб-сторінці (зверху вниз)',
+        }
+    # files:
+    #   - label: 'Main'
+    #     name: 'main'
+    #     slug: '{{slug}}'
+    #     # folder: 'content/ua/main'
+    #     file: 'content/ua/main.md'
+    #     fields:
+    #       - {
+    #           label: 'Template Key',
+    #           name: 'templateKey',
+    #           widget: 'hidden',
+    #           default: 'main',
+    #         }
+    #       - {
+    #           label: 'Language',
+    #           name: 'language',
+    #           widget: 'hidden',
+    #           default: 'uk',
+    #         }
+    #       - { label: 'Title', name: 'title', widget: 'string' }
+    #       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+    #       - { label: 'Body', name: 'body', widget: 'markdown' }
+    #   - label: 'pages'
+    #     name: 'pages'
+    #     slug: '{{slug}}'
+    #     # folder: 'content/ua/pages'
+    #     file: 'content/ua/pages.md'
+    #     fields:
+    #       - {
+    #           label: 'Template Key',
+    #           name: 'templateKey',
+    #           widget: 'hidden',
+    #           default: 'pages',
+    #         }
+    #       - {
+    #           label: 'Language',
+    #           name: 'language',
+    #           widget: 'hidden',
+    #           default: 'uk',
+    #         }
+    #       - { label: 'Title', name: 'title', widget: 'string' }
+    #       - label: 'pages'
+    #         name: 'pages'
+    #         widget: list
+    #         fields:
+    #           - { label: 'Title', name: 'title', widget: 'string' }
+    #           - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+    #           - { label: 'Body', name: 'body', widget: 'markdown' }
+    #   - label: 'presentations'
+    #     name: 'presentations'
+    #     slug: '{{slug}}'
+    #     # folder: 'content/ua/presentations'
+    #     file: 'content/ua/presentations.md'
+    #     widget: list
+    #     fields:
+    #       - label: 'links'
+    #         name: 'links'
+    #         widget: list
+    #         fields:
+    #           - {
+    #               label: 'Language',
+    #               name: 'language',
+    #               widget: 'hidden',
+    #               default: 'uk',
+    #             }
+    #           - { label: 'Title', name: 'title', widget: 'string' }
+    #           - { label: 'URL', name: 'url', widget: 'string' }
+    #   - label: 'templates'
+    #     name: 'templates'
+    #     slug: '{{slug}}'
+    #     # folder: 'content/ua/templates'
+    #     file: 'content/ua/templates.md'
+    #     widget: list
+    #     fields:
+    #       - label: 'links'
+    #         name: 'links'
+    #         widget: list
+    #         fields:
+    #           - {
+    #               label: 'Language',
+    #               name: 'language',
+    #               widget: 'hidden',
+    #               default: 'uk',
+    #             }
+    #           - { label: 'Title', name: 'title', widget: 'string' }
+    #           - { label: 'URL', name: 'url', widget: 'string' }
