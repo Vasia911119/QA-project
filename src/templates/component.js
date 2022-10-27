@@ -34,7 +34,7 @@ const ComponentTemplate = () => {
   //               key={item.node.frontmatter.title}
   //             >
   //               <Breadcrumb
-  //                 title={item.node.frontmatter.title}
+  //                 title={item.node.frontmatter.page_title}
   //                 name={components}
   //               />
   //               <div className="space-y-4 text-left">
