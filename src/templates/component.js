@@ -1,20 +1,20 @@
-import { graphql } from 'gatsby'
-import { GatsbyImage, getImage, getSrc } from 'gatsby-plugin-image'
-import { GatsbySeo, ArticleJsonLd } from 'gatsby-plugin-next-seo'
-import i18next from 'i18next'
-import PropTypes from 'prop-types'
-import React from 'react'
-import Form from '../components/Form'
-import Breadcrumb from '../components/Breadcrumb'
-import ButtonsNavigate from '../components/ButtonsNavigate'
+import { graphql } from 'gatsby';
+import { GatsbyImage, getImage, getSrc } from 'gatsby-plugin-image';
+import { GatsbySeo, ArticleJsonLd } from 'gatsby-plugin-next-seo';
+import i18next from 'i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Form from '../components/Form/Form';
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
+import ButtonsNavigate from '../components/ButtonsNavigate';
 
-import { HTMLContent } from '../components/Content'
-import Layout from '../components/Layout'
+import { HTMLContent } from '../components/Content';
+import Layout from '../components/Layout';
 
-import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 const ComponentTemplate = () => {
-  return <p>hi</p>
+  return <p>hi</p>;
   // const { title } = data.markdownRemark.frontmatter
   // const { html } = data.markdownRemark
 
@@ -54,7 +54,7 @@ const ComponentTemplate = () => {
   //       }
   //     })
   //   )
-}
+};
 
 // ComponentTemplate.propTypes = {
 //   data: PropTypes.shape({
@@ -62,7 +62,7 @@ const ComponentTemplate = () => {
 //   }),
 // }
 
-export default ComponentTemplate
+export default ComponentTemplate;
 
 // export const query = graphql`
 //   query Page($description: String!, $language: String!) {
