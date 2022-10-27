@@ -61,6 +61,45 @@ export default function HomePage({ data }) {
 // }
 
 // НОВЫЙ QUERY
+// export const pageQuery = graphql`
+//   query ($language: String!) {
+//     locales: allLocale(filter: { language: { eq: $language } }) {
+//       edges {
+//         node {
+//           ns
+//           data
+//           language
+//         }
+//       }
+//     }
+//   allMarkdownRemark(filter: {frontmatter: {language: {eq: $language}}}) {
+//     nodes {
+//       frontmatter {
+//         language
+//         chapter_title
+//         link_chapter_name
+//         link_chapter_title
+//         links_chapter
+//         page_chapter
+//         page_chapter_name
+//         page_chapter_title
+//         page_range
+//         page_title
+//         links_items {
+//           link_title
+//           url_adress
+//         }
+//       }
+//       fields {
+//         slug
+//       }
+//       html
+//     }
+//   }
+//  }
+// `
+
+// ЧИСТЫЙ ЗАПРОС С НОВОЙ СТРУКТУРОЙ С ЗАХАРДКОЖЕННЫМ ЯЗЫКОМ ДЛЯ ПРОВЕРКИ РАБОТЫ
 // {
 //   allMarkdownRemark(filter: {frontmatter: {language: {eq: "uk"}}}) {
 //     nodes {
@@ -88,6 +127,7 @@ export default function HomePage({ data }) {
 //   }
 // }
 
+// ЗАПРОС СО СТАРОЙ СТРУКТУРОЙ
 // export const pageQuery = graphql`
 //   query ($language: String!) {
 //     locales: allLocale(filter: { language: { eq: $language } }) {
