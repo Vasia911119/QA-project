@@ -13,7 +13,7 @@ const ToggleMode = () => {
     websiteTheme = window.__theme;
     // console.log('window.__theme', window.__theme);
   }
-  const [theme, setTheme] = useState(websiteTheme);
+  const [theme, setTheme] = useState(() => websiteTheme);
 
   useEffect(() => {
     setTheme(window.__theme);
@@ -34,14 +34,21 @@ const ToggleMode = () => {
   return (
     <button
       onClick={ThemeToggle}
-      className="flex items-center gap-2 text-grey-350 hover:text-slate-50 transition-colors"
+      className="flex items-center gap-2 text-grey-350 hover:text-slate-50 focus:text-slate-50 transition-colors"
     >
-      <IconContext.Provider value={{ color: 'white', size: 24 }}>
-        {theme === 'dark' && <HiOutlineMoon />}
-        {theme === 'light' && <HiOutlineSun />}
-      </IconContext.Provider>
+      <IconContext.Provider value={{ color: 'currentColor', size: 24 }}>
+        {theme === 'dark' && (
+          <>
+            <HiOutlineMoon /> Dark
+          </>
+        )}
 
-      {theme !== 'dark' ? 'Light' : 'Dark'}
+        {theme === 'light' && (
+          <>
+            <HiOutlineSun /> Light
+          </>
+        )}
+      </IconContext.Provider>
     </button>
   );
 };
