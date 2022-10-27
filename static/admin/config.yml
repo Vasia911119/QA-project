@@ -15,7 +15,6 @@ public_folder: /img
 collections:
   - label: 'List of pages chapters'
     name: 'list_of_pages_chapters'
-    # identifier_field: name
     description:
       'Перелік розділів. При зміні уже існуючих розділів потрібно повторно
       обрати їх у вже існуючих колекціях (наприклад, Pages_UA)'
@@ -70,7 +69,6 @@ collections:
       ]
   - label: 'List of Links Chapters'
     name: 'list_of_links_chapters'
-    # identifier_field: links_chapter_value
     description:
       'Перелік підрозділів. При зміні уже існуючих підрозділів потрібно повторно
       обрати їх у вже існуючих колекціях (наприклад, Links_UA)'
@@ -151,14 +149,12 @@ collections:
     folder: 'content/ua/pages'
     media_folder: '/static/img'
     public_folder: /img
-    # label_singular: 'Chapters_UA'
-    slug: '{{slug}}'
+    slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
     create: true
     delete: true
-    # path: '{{page}}/{{language}}'
     filter: { field: 'language', value: 'uk' }
     fields:
       - {
@@ -206,14 +202,12 @@ collections:
     folder: 'content/ru/pages'
     media_folder: '/static/img'
     public_folder: /img
-    # label_singular: 'Chapters_UA'
-    slug: '{{slug}}'
+    slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
     create: true
     delete: true
-    # path: '{{page}}/{{language}}'
     filter: { field: 'language', value: 'ru' }
     fields:
       - {
@@ -261,14 +255,12 @@ collections:
     folder: 'content/en/pages'
     media_folder: '/static/img'
     public_folder: /img
-    # label_singular: 'Chapters_UA'
-    slug: '{{slug}}'
+    slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
     create: true
     delete: true
-    # path: '{{page}}/{{language}}'
     filter: { field: 'language', value: 'en' }
     fields:
       - {
@@ -319,14 +311,12 @@ collections:
     folder: 'content/ua/links'
     media_folder: '/static/img'
     public_folder: /img
-    # label_singular: 'Chapters_UA'
-    slug: '{{slug}}'
+    slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
     create: true
     delete: true
-    # path: '{{chapter}}/{{language}}'
     filter: { field: 'language', value: 'uk' }
     fields:
       - {
@@ -397,14 +387,12 @@ collections:
     folder: 'content/ru/links'
     media_folder: '/static/img'
     public_folder: /img
-    # label_singular: 'Chapters_UA'
-    slug: '{{slug}}'
+    slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
     create: true
     delete: true
-    # path: '{{chapter}}/{{language}}'
     filter: { field: 'language', value: 'ru' }
     fields:
       - {
@@ -475,14 +463,12 @@ collections:
     folder: 'content/en/links'
     media_folder: '/static/img'
     public_folder: /img
-    # label_singular: 'Chapters_UA'
-    slug: '{{slug}}'
+    slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
     create: true
     delete: true
-    # path: '{{chapter}}/{{language}}'
     filter: { field: 'language', value: 'en' }
     fields:
       - {
