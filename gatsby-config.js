@@ -1,21 +1,21 @@
-const siteUrl = 'https://gatsby-starter-netlify-tailwind.netlify.app/'
-const title = 'QA test docs'
-const description = 'Testing gatsby'
-const logo = '/img/logo.png'
-const srcLogo = 'src/images/logo.png'
-const color = '#433e85'
+const siteUrl = 'https://gatsby-starter-netlify-tailwind.netlify.app/';
+const title = 'QA test docs';
+const description = 'Testing gatsby';
+const logo = '/img/logo.png';
+const srcLogo = 'src/images/logo.png';
+const color = '#433e85';
 const social = {
   twitter: '',
   instagram: '',
   youtube: '',
   github: '',
   linkedin: '',
-}
+};
 
 require('dotenv').config({
   path: `.env`,
-})
-const autoprefixer = require('autoprefixer')
+});
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   siteMetadata: {
@@ -172,8 +172,8 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [{ 'content:encoded': edge.node.html }],
-                })
-              })
+                });
+              });
             },
             query: `
               {
@@ -225,7 +225,7 @@ module.exports = {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
         localeJsonSourceName: `locale`,
-        languages: [`uk`, `ru`, `en`],
+        languages: [`uk`, `en`, `ru`],
         defaultLanguage: `uk`,
         generateDefaultLanguagePage: true,
         redirect: true,
@@ -243,4 +243,4 @@ module.exports = {
       },
     },
   ],
-}
+};
