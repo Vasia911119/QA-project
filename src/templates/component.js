@@ -22,73 +22,38 @@ const ComponentTemplate = () => {
   // const { components } = t('header', { returnObjects: true })
   // const edges = data.allMarkdownRemark.edges
 
-<<<<<<< HEAD
-  // return (
-  //   edges &&
-  //   edges.map(item => {
-  //     if (item.node.frontmatter.language === i18n.language) {
-  //       return (
-  //         // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-  //         <>
-  //           <div
-  //             className="md:w-[608px] mx-auto pt-[32px]"
-  //             key={item.node.frontmatter.title}
-  //           >
-  //             <Breadcrumb
-  //               title={item.node.frontmatter.title}
-  //               name={components}
-  //             />
-  //             <div className="space-y-4 text-left">
-  //               <h1 className="font-inter text-3xl leading-12 text-gray-800 lg:text-4xl lg:leading-14 mb-2">
-  //                 {item.node.frontmatter.title}
-  //               </h1>
+  //   return (
+  //     edges &&
+  //     edges.map(item => {
+  //       if (item.node.frontmatter.language === i18n.language) {
+  //         return (
+  //           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
+  //           <>
+  //             <div
+  //               className="mx-auto pt-[32px] md:w-[608px]"
+  //               key={item.node.frontmatter.title}
+  //             >
+  //               <Breadcrumb
+  //                 title={item.node.frontmatter.title}
+  //                 name={components}
+  //               />
+  //               <div className="space-y-4 text-left">
+  //                 <h1 className="leading-12 lg:text-4xl lg:leading-14 mb-2 font-inter text-3xl text-gray-800">
+  //                   {item.node.frontmatter.title}
+  //                 </h1>
+  //               </div>
+  //               <HTMLContent
+  //                 className="prose max-w-none"
+  //                 content={item.node.html}
+  //               />
   //             </div>
-  //             <HTMLContent
-  //               className="prose max-w-none"
-  //               content={item.node.html}
-  //             />
-  //           </div>
-  //           <ButtonsNavigate location={location} />
-  //           <Form />
-  //         </>
-  //       )
-  //     }
-  //   })
-  // )
-=======
-  return (
-    edges &&
-    edges.map(item => {
-      if (item.node.frontmatter.language === i18n.language) {
-        return (
-          // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-          <>
-            <div
-              className="md:w-[608px] mx-auto pt-[32px]"
-              key={item.node.frontmatter.title}
-            >
-              <Breadcrumb
-                title={item.node.frontmatter.title}
-                name={components}
-              />
-              <div className="space-y-4 text-left">
-                <h1 className="font-inter text-3xl leading-12 text-gray-800 lg:text-4xl lg:leading-14 mb-2">
-                  {item.node.frontmatter.title}
-                </h1>
-              </div>
-              <HTMLContent
-                className="prose max-w-none"
-                content={item.node.html}
-              />
-            </div>
-            <ButtonsNavigate />
-            <Form />
-          </>
-        )
-      }
-    })
-  )
->>>>>>> 974540c57cd046bc650cb4e225dcdd3590d77697
+  //             <ButtonsNavigate />
+  //             <Form />
+  //           </>
+  //         )
+  //       }
+  //     })
+  //   )
 }
 
 // ComponentTemplate.propTypes = {
