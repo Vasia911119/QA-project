@@ -2,7 +2,7 @@ import { graphql, navigate } from 'gatsby';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
-import ButtonsNavigate from '../components/ButtonsNavigate';
+import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 
