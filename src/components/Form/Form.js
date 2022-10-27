@@ -9,7 +9,7 @@ import {
   NotificationManager,
 } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-import * as s from './Breadcrumb.module.css';
+import * as s from './Form.module.css';
 
 const Form = () => {
   const [error, setError] = useState(null);

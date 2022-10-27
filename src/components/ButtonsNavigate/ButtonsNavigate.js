@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, useStaticQuery, navigate } from 'gatsby';
 import { BiChevronRight } from 'react-icons/bi';
 import { BiChevronLeft } from 'react-icons/bi';
-import * as s from './Breadcrumb.module.css';
+import * as s from './ButtonsNavigate.module.css';
 
 const ButtonsNavigate = () => {
   // const data = useStaticQuery(graphql`
