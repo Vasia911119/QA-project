@@ -1,16 +1,16 @@
-import { graphql, navigate } from 'gatsby'
-import React from 'react'
-import PropTypes from 'prop-types'
-import Breadcrumb from '../components/Breadcrumb'
-import ButtonsNavigate from '../components/ButtonsNavigate'
+import { graphql, navigate } from 'gatsby';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
+import ButtonsNavigate from '../components/ButtonsNavigate';
 
-import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 
-import { HTMLContent } from '../components/Content'
+import { HTMLContent } from '../components/Content';
 
 export default function HomePage({ data }) {
-  const { edges: nodes } = data.allMarkdownRemark
-  const { i18n } = useTranslation()
+  const { edges: nodes } = data.allMarkdownRemark;
+  const { i18n } = useTranslation();
 
   // Костыль от Максима для украинского по умолчанию
   // React.useEffect(() => {
@@ -51,7 +51,7 @@ export default function HomePage({ data }) {
     //         )
     //       }
     //     })
-  )
+  );
 }
 
 // HomePage.propTypes = {

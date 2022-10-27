@@ -1,0 +1,21 @@
+.wrapper {
+  @apply flex items-center text-[10px] font-inter font-semibold sm:text-sm text-stone-900 mb-6;
+}
+.iconHomeMain {
+  @apply w-[22px] h-[22px];
+}
+.iconHome {
+  @apply w-[22px] h-[22px] text-stone-300 transition-all hover:text-stone-900 focus:text-stone-900;
+}
+.iconNextMain {
+  @apply ml-[1px] w-[22px] h-[22px];
+}
+.iconNext {
+  @apply ml-[1px] w-[22px] h-[22px] text-stone-300;
+}
+.text {
+  @apply ml-[1px] text-stone-300;
+}
+.textTitle {
+  @apply ml-[1px];
+}
