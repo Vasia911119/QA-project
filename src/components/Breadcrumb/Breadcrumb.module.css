@@ -5,7 +5,13 @@
   @apply w-[22px] h-[22px];
 }
 .iconHome {
-  @apply w-[22px] h-[22px] text-stone-300 transition-all hover:text-stone-900 focus:text-stone-900;
+  @apply w-[22px] h-[22px] text-stone-300 transition-all;
+}
+.iconHome:hover {
+  @apply text-stone-900;
+}
+.iconHome:focus {
+  @apply text-stone-900;
 }
 .iconNextMain {
   @apply ml-[1px] w-[22px] h-[22px];
