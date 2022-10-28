@@ -15,6 +15,7 @@ exports.createPages = ({ actions, graphql }) => {
             page_chapter_name
             slug
             language
+            identifier
           }
           fields {
             slug
@@ -38,6 +39,7 @@ exports.createPages = ({ actions, graphql }) => {
         page.frontmatter.page_chapter_name,
         page.frontmatter.slug
       );
+      const identifier = page.frontmatter.identifier;
       console.log(slug);
       createPage({
         path: slug,
@@ -46,6 +48,7 @@ exports.createPages = ({ actions, graphql }) => {
           slug,
           language,
           pagesChapterName,
+          identifier,
         },
       });
     });

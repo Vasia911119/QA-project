@@ -3,6 +3,7 @@ page_title: Хедер
 page_chapter_name: component
 page_chapter_title: Компоненти та функціональність
 slug: header
+identifier: header
 language: uk
 page_range: 1
 ---

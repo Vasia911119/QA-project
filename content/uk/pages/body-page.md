@@ -3,6 +3,7 @@ page_title: Тіло сторінки
 page_chapter_name: component
 page_chapter_title: Компоненти та функціональність
 slug: body-page
+identifier: body-page
 language: uk
 page_range: 2
 ---

@@ -3,6 +3,7 @@ page_title: Хедер
 page_chapter_name: component
 page_chapter_title: Компоненты и функциональность
 slug: header
+identifier: header
 language: ru
 page_range: 1
 ---
