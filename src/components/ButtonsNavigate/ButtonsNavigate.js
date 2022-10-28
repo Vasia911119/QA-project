@@ -22,7 +22,7 @@ const ButtonsNavigate = () => {
       }
     }
   `);
-  
+
   const getResultArray = () => {
     let result = ['/'];
     data.allMarkdownRemark.nodes.map(item => result.push(item.fields.slug));
@@ -40,7 +40,7 @@ const ButtonsNavigate = () => {
   const next = () => {
     navigation(currentIndex + 1);
   };
-  
+
   return (
     <div className={s.wrapper}>
       <button
