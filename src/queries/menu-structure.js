@@ -20,16 +20,27 @@ export default function useMenuStructure() {
                 links_items {
                   link_title
                   url_adress
+                  links_range
                 }
                 title
                 page_title
                 pages_chapter_item {
                   chapter_range
                   pages_chapter_name
+                  chapter_title_EN
+                  chapter_title_RU
+                  chapter_title_UA
                 }
                 pages {
                   body
                   title
+                }
+                links_chapter_item {
+                  chapter_range
+                  links_chapter_name
+                  chapter_title_EN
+                  chapter_title_RU
+                  chapter_title_UA
                 }
               }
               html

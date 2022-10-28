@@ -23,10 +23,7 @@ export default function HomePage({ data }) {
   const { pages_chapter_item: pagesCollectionList } =
     pagesCollection.node.frontmatter;
 
-  const sortedPageChapters = pagesCollectionList.sort(
-    (a, b) => a.chapter_range - b.chapter_range
-  );
-  const homePageChapterName = sortedPageChapters[0].pages_chapter_name;
+  const homePageChapterName = pagesCollectionList[0].pages_chapter_name;
 
   const homePageNodes = nodes.filter(
     i => i.node.frontmatter.page_chapter_name === homePageChapterName

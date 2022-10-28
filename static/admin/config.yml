@@ -436,7 +436,7 @@ collections:
     folder: 'content/ua/links'
     media_folder: '/static/img'
     public_folder: /img
-    slug: '{{fields.slug}}'
+    # slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
@@ -527,7 +527,7 @@ collections:
     folder: 'content/ru/links'
     media_folder: '/static/img'
     public_folder: /img
-    slug: '{{fields.slug}}'
+    # slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
@@ -605,7 +605,7 @@ collections:
     folder: 'content/en/links'
     media_folder: '/static/img'
     public_folder: /img
-    slug: '{{fields.slug}}'
+    # slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
