@@ -1,0 +1,12 @@
+.wrapper {
+  @apply flex items-center rounded-[12px] border border-stone-200 shadow-md mt-[52px] backdrop-blur-[3px] relative bg-slate-50 bg-opacity-[65] max-w-[608px] mx-auto;
+}
+.text {
+  @apply font-inter font-medium text-sm text-stone-900 ml-[100px] py-6;
+}
+.icon {
+  @apply w-[40px] h-[40px] text-slate-50 absolute inset-2/4 translate-y-[-50%] translate-x-[-50%];
+}
+.iconWrapper {
+  @apply w-20 h-full bg-blue-500 rounded-l-[12px] justify-center absolute inset-0;
+}

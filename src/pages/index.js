@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes, { node } from 'prop-types';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
+import Note from '../components/Note/Note';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 
@@ -66,8 +67,8 @@ export default function HomePage({ data }) {
               </h1>
             </div>
             <HTMLContent className="prose max-w-none" content={node.html} />
-
-            {/* <ButtonsNavigate /> */}
+            <Note description={node.frontmatter.description} />
+            <ButtonsNavigate />
           </div>
         );
       }
