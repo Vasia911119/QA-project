@@ -38,6 +38,7 @@ exports.createPages = ({ actions, graphql }) => {
         page.frontmatter.page_chapter_name,
         page.frontmatter.slug
       );
+      console.log(slug);
       createPage({
         path: slug,
         component: path.resolve(`src/templates/component.js`),

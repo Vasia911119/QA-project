@@ -13,83 +13,84 @@ import Layout from '../components/Layout';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 
-const ComponentTemplate = () => {
-  return <p>hi</p>;
-  // const { title } = data.markdownRemark.frontmatter
-  // const { html } = data.markdownRemark
+const ComponentTemplate = ({ data }) => {
+  const { t, i18n } = useTranslation();
+  console.log(data);
+  // const { frontmatter, html } = data.markdownRemark;
+  // console.log(frontmatter);
+  // console.log(html);
 
-  // const { t, i18n } = useTranslation()
-  // const { components } = t('header', { returnObjects: true })
-  // const edges = data.allMarkdownRemark.edges
-
-  //   return (
-  //     edges &&
-  //     edges.map(item => {
-  //       if (item.node.frontmatter.language === i18n.language) {
-  //         return (
-  //           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-  //           <>
-  //             <div
-  //               className="mx-auto pt-[32px] md:w-[608px]"
-  //               key={item.node.frontmatter.title}
-  //             >
-  //               <Breadcrumb
-  //                 title={item.node.frontmatter.page_title}
-  //                 name={components}
-  //               />
-  //               <div className="space-y-4 text-left">
-  //                 <h1 className="leading-12 lg:text-4xl lg:leading-14 mb-2 font-inter text-3xl text-gray-800">
-  //                   {item.node.frontmatter.title}
-  //                 </h1>
-  //               </div>
-  //               <HTMLContent
-  //                 className="prose max-w-none"
-  //                 content={item.node.html}
-  //               />
-  //             </div>
-  //             <ButtonsNavigate />
-  //             <Form />
-  //           </>
-  //         )
-  //       }
-  //     })
-  //   )
+  return (
+    // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
+    <>
+      {/* <div
+        className="mx-auto pt-[32px] md:w-[608px]"
+        key={frontmatter.page_title}
+      >
+        <Breadcrumb
+          title={frontmatter.page_title}
+          name={frontmatter.page_chapter_title}
+        />
+        <div className="space-y-4 text-left">
+          <h1 className="leading-12 lg:text-4xl lg:leading-14 mb-2 font-inter text-3xl text-gray-800">
+            {frontmatter.title}
+          </h1>
+        </div>
+        <HTMLContent className="prose max-w-none" content={html} />
+      </div>
+      <ButtonsNavigate />
+      <Form /> */}
+    </>
+  );
 };
 
-// ComponentTemplate.propTypes = {
-//   data: PropTypes.shape({
-//     markdownRemark: PropTypes.object,
-//   }),
-// }
+ComponentTemplate.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.object,
+  }),
+};
 
 export default ComponentTemplate;
 
-// export const query = graphql`
-//   query Page($description: String!, $language: String!) {
-//     locales: allLocale(filter: { language: { eq: $language } }) {
-//       edges {
-//         node {
-//           ns
-//           data
-//           language
-//         }
-//       }
-//     }
-//     allMarkdownRemark(
-//       filter: { frontmatter: { description: { eq: $description } } }
-//     ) {
-//       edges {
-//         node {
-//           frontmatter {
-//             title
-//             language
-//           }
-//           fields {
-//             slug
-//           }
-//           html
-//         }
-//       }
-//     }
+export const pageQuery = graphql`
+  query ($language: String!, $slug: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      frontmatter {
+        page_chapter_name
+        page_chapter_title
+        page_title
+      }
+      html
+    }
+  }
+`;
+
+// allMarkdownRemark(
+//   filter: {
+//     frontmatter: { language: { eq: $language } }
+//     fields: { slug: { eq: $slug } }
 //   }
-// `
+// ) {
+//   nodes {
+//     frontmatter {
+//       language
+//       page_chapter_name
+//       page_chapter_title
+//       page_title
+//       slug
+//     }
+//     fields {
+//       slug
+//     }
+//     html
+//   }
+// }
