@@ -3,7 +3,9 @@ page_title: Specification for the web resource
 page_chapter_name: home
 page_chapter_title: Specification to the web-source
 slug: specification
+identifier: specification
 language: en
+description: Checking the correct execution of tasks occurs automatically.
 page_range: 1
 ---
 The **Web-resource** is intended for familiarization with the basics and basic rules of the Java programming language. Designed for zero level of user knowledge in programming.

@@ -124,6 +124,7 @@ export const pageQuery = graphql`
           page_chapter_title
           page_title
           slug
+          description
         }
         fields {
           slug

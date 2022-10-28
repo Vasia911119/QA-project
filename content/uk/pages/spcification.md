@@ -3,7 +3,9 @@ page_title: Специфікація до web-ресурсу
 page_chapter_name: home
 page_chapter_title: Специфікація до web-ресурсу
 slug: specification
+identifier: specification
 language: uk
+description: Перевірка на правильність виконання завдань відбувається автоматично.
 page_range: 1
 ---
  **Web-ресурс** призначений для ознайомлення з основами та базовими правилами мови програмування Java. Розрахований на нульовий рівень знань користувача у програмуванні.
