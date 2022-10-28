@@ -76,16 +76,13 @@ collections:
               {
                 label: 'Page chapter range',
                 name: 'chapter_range',
-                widget: 'string',
+                widget: 'number',
                 required: false,
-                pattern:
-                  [
-                    '^[0-9]{1,2}$',
-                    'Може містити тільки цифри, що позначають черговість
-                    розміщення підрозділу на веб-сторінці (зверху вниз)',
-                  ],
+                value_type: 'int',
+                min: 1,
+                step: 1,
                 hint:
-                  'Цифра, що позначає черговість розміщення підрозділу на
+                  'Цифра, що позначає черговість розміщення розділу на
                   веб-сторінці (зверху вниз)',
               },
             ],
@@ -104,7 +101,8 @@ collections:
     create: true
     delete: true
     filter: { field: 'language', value: 'uk' }
-    fields: [
+    fields:
+      [
         {
           label: 'Title of the page',
           name: 'page_title',
@@ -153,7 +151,21 @@ collections:
             'Введіть назву сторінки англійською з маленької літери. Є
             обовязковим для всіх сторінок, крім головної',
         },
-
+        {
+          label: 'Identifier',
+          name: 'identifier',
+          widget: 'string',
+          required: true,
+          pattern:
+            [
+              '^[a-z]+[a-z0-9-]+[-]*[a-z0-9-]*[a-z0-9]+$',
+              'Назва може містити тільки малі латинські літери, цифри та тире.
+              Має починатися з літери та не може закінчуватися на тире',
+            ],
+          hint:
+            'Введіть назву сторінки англійською з маленької літери. Є
+            обовязковим для всіх сторінок, крім головної',
+        },
         {
           label: 'Language',
           name: 'language',
@@ -162,6 +174,15 @@ collections:
         },
         { label: 'Body', name: 'body', widget: 'markdown' },
         {
+          label: 'Note',
+          name: 'description',
+          widget: 'text',
+          required: false,
+          hint:
+            'Необов"язкове поле, використовується для створення загального
+            підсумку з сторінки',
+        },
+        {
           label: 'Page range',
           name: 'page_range',
           widget: 'number',
@@ -169,12 +190,6 @@ collections:
           value_type: 'int',
           min: 1,
           step: 1,
-          # pattern:
-          #   [
-          #     '^[0-9]{1,2}$',
-          #     'Може містити тільки цифри, що позначають черговість розміщення
-          #     розділу на веб-сторінці (зверху вниз)',
-          #   ],
           hint:
             "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
             розміщення розділу на веб-сторінці (зверху вниз)",
@@ -244,6 +259,21 @@ collections:
             обовязковим для всіх сторінок, крім головної',
         },
         {
+          label: 'Identifier',
+          name: 'identifier',
+          widget: 'string',
+          required: true,
+          pattern:
+            [
+              '^[a-z]+[a-z0-9-]+[-]*[a-z0-9-]*[a-z0-9]+$',
+              'Назва може містити тільки малі латинські літери, цифри та тире.
+              Має починатися з літери та не може закінчуватися на тире',
+            ],
+          hint:
+            'Введіть назву сторінки англійською з маленької літери. Є
+            обовязковим для всіх сторінок, крім головної',
+        },
+        {
           label: 'Language',
           name: 'language',
           widget: 'hidden',
@@ -251,16 +281,22 @@ collections:
         },
         { label: 'Body', name: 'body', widget: 'markdown' },
         {
+          label: 'Note',
+          name: 'description',
+          widget: 'text',
+          required: false,
+          hint:
+            'Необов"язкове поле, використовується для створення загального
+            підсумку з сторінки',
+        },
+        {
           label: 'Page range',
           name: 'page_range',
-          widget: 'string',
+          widget: 'number',
           required: false,
-          pattern:
-            [
-              '^[0-9]{1,2}$',
-              'Може містити тільки цифри, що позначають черговість розміщення
-              розділу на веб-сторінці (зверху вниз)',
-            ],
+          value_type: 'int',
+          min: 1,
+          step: 1,
           hint:
             "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
             розміщення розділу на веб-сторінці (зверху вниз)",
@@ -330,6 +366,21 @@ collections:
             обовязковим для всіх сторінок, крім головної',
         },
         {
+          label: 'Identifier',
+          name: 'identifier',
+          widget: 'string',
+          required: true,
+          pattern:
+            [
+              '^[a-z]+[a-z0-9-]+[-]*[a-z0-9-]*[a-z0-9]+$',
+              'Назва може містити тільки малі латинські літери, цифри та тире.
+              Має починатися з літери та не може закінчуватися на тире',
+            ],
+          hint:
+            'Введіть назву сторінки англійською з маленької літери. Є
+            обовязковим для всіх сторінок, крім головної',
+        },
+        {
           label: 'Language',
           name: 'language',
           widget: 'hidden',
@@ -337,16 +388,22 @@ collections:
         },
         { label: 'Body', name: 'body', widget: 'markdown' },
         {
+          label: 'Note',
+          name: 'description',
+          widget: 'text',
+          required: false,
+          hint:
+            'Необов"язкове поле, використовується для створення загального
+            підсумку з сторінки',
+        },
+        {
           label: 'Page range',
           name: 'page_range',
-          widget: 'string',
+          widget: 'number',
           required: false,
-          pattern:
-            [
-              '^[0-9]{1,2}$',
-              'Може містити тільки цифри, що позначають черговість розміщення
-              розділу на веб-сторінці (зверху вниз)',
-            ],
+          value_type: 'int',
+          min: 1,
+          step: 1,
           hint:
             "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
             розміщення розділу на веб-сторінці (зверху вниз)",
@@ -418,17 +475,14 @@ collections:
               {
                 label: 'Links chapter range',
                 name: 'link_chapter_range',
-                widget: 'string',
+                widget: 'number',
                 required: false,
-                pattern:
-                  [
-                    '^[0-9]{1,2}$',
-                    'Може містити тільки цифри, що позначають черговість
-                    розміщення підрозділу на веб-сторінці (зверху вниз)',
-                  ],
+                value_type: 'int',
+                min: 1,
+                step: 1,
                 hint:
-                  'Цифра, що позначає черговість розміщення підрозділу на
-                  веб-сторінці (зверху вниз)',
+                  "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
+                  розміщення розділу на веб-сторінці (зверху вниз)",
               },
             ],
         },
@@ -439,7 +493,6 @@ collections:
     folder: 'content/uk/links'
     media_folder: '/static/img'
     public_folder: /img
-    # slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
@@ -509,14 +562,11 @@ collections:
               {
                 label: 'Links range',
                 name: 'links_range',
-                widget: 'string',
+                widget: 'number',
                 required: false,
-                pattern:
-                  [
-                    '^[0-9]{1,2}$',
-                    'Може містити тільки цифри, що позначають черговість
-                    розміщення розділу на веб-сторінці (зверху вниз)',
-                  ],
+                value_type: 'int',
+                min: 1,
+                step: 1,
                 hint:
                   "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
                   розміщення розділу на веб-сторінці (зверху вниз)",
@@ -530,7 +580,6 @@ collections:
     folder: 'content/ru/links'
     media_folder: '/static/img'
     public_folder: /img
-    # slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
@@ -588,14 +637,11 @@ collections:
               {
                 label: 'Links range',
                 name: 'links_range',
-                widget: 'string',
+                widget: 'number',
                 required: false,
-                pattern:
-                  [
-                    '^[0-9]{1,2}$',
-                    'Може містити тільки цифри, що позначають черговість
-                    розміщення розділу на веб-сторінці (зверху вниз)',
-                  ],
+                value_type: 'int',
+                min: 1,
+                step: 1,
                 hint:
                   "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
                   розміщення розділу на веб-сторінці (зверху вниз)",
@@ -608,7 +654,6 @@ collections:
     folder: 'content/en/links'
     media_folder: '/static/img'
     public_folder: /img
-    # slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
@@ -666,14 +711,11 @@ collections:
               {
                 label: 'Links range',
                 name: 'links_range',
-                widget: 'string',
+                widget: 'number',
                 required: false,
-                pattern:
-                  [
-                    '^[0-9]{1,2}$',
-                    'Може містити тільки цифри, що позначають черговість
-                    розміщення розділу на веб-сторінці (зверху вниз)',
-                  ],
+                value_type: 'int',
+                min: 1,
+                step: 1,
                 hint:
                   "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
                   розміщення розділу на веб-сторінці (зверху вниз)",
