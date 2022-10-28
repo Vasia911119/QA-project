@@ -9,11 +9,9 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { HTMLContent } from '../components/Content';
 
 export default function HomePage({ data }) {
-  // console.log('data', data.allMarkdownRemark.nodes);
   const { nodes } = data.allMarkdownRemark;
   const { i18n } = useTranslation();
-  console.log(nodes);
-  // console.log('nodes', nodes);
+  // console.log(nodes);
 
   // const pagesCollection = nodes.forEach(item => {
   //   console.log(item.node.frontmatter.pages_chapter_item);
@@ -41,13 +39,25 @@ export default function HomePage({ data }) {
 
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-    <>
-      <p>index</p>
-      {nodes.map(node => {
-        console.log('node', node.fields.slug);
-        return <a href={node.fields.slug}>ссылка</a>;
-      })}
-    </>
+    nodes.map(node => {
+      if (node.frontmatter.page_chapter_name === 'home') {
+        return (
+          <div
+            className="mx-auto pt-[32px] dark:bg-slate-300 md:w-[608px]"
+            key={node.id}
+          >
+            <Breadcrumb title={node.frontmatter.page_title} />
+            <div className="space-y-4 text-left">
+              <h1 className="leading-12 lg:text-4xl lg:leading-14 mb-2 text-3xl text-gray-800">
+                {node.frontmatter.page_title}
+              </h1>
+            </div>
+            <HTMLContent className="prose max-w-none" content={node.html} />
+            {/* <ButtonsNavigate /> */}
+          </div>
+        );
+      }
+    })
 
     // homePageNodes &&
     // homePageNodes.map(({ node: component }) => {
@@ -76,12 +86,12 @@ export default function HomePage({ data }) {
     // })
   );
 }
-//
-// HomePage.propTypes = {
-//   data: PropTypes.shape({
-//     markdownRemark: PropTypes.object,
-//   }),
-// }
+
+HomePage.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.object,
+  }),
+};
 
 // НОВЫЙ QUERY
 export const pageQuery = graphql`
@@ -96,7 +106,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { frontmatter: { language: { eq: "uk" } } }
+      filter: { frontmatter: { language: { eq: $language } } }
       sort: { fields: frontmatter___page_range }
     ) {
       nodes {
@@ -111,6 +121,7 @@ export const pageQuery = graphql`
           slug
         }
         html
+        id
       }
     }
   }
