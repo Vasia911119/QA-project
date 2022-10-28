@@ -51,11 +51,11 @@ export const Search = ({ closeModal, isOpen }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-25" />
+          <div className="fixed inset-0 bg-gradient-to-r from-[#8af2fc33] to-[#8af2fc33]" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+        <div className="fixed inset-0 overflow-y-auto ">
+          <div className="flex min-h-full items-center justify-center p-4 text-center ">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -65,7 +65,7 @@ export const Search = ({ closeModal, isOpen }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className=" absolute w-[96%] max-w-[488px] top-[196px] md:w-[488px] md:top-[200px] xl:w-[480px] xl:top-[160px] rounded-[10px] transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all min-h-[60px]">
                 <div className="relative">
                   <RiSearchLine
                     color="#9EA2C6"
@@ -75,7 +75,7 @@ export const Search = ({ closeModal, isOpen }) => {
 
                   <input
                     type="text"
-                    className="bg-[#EDEEF9] rounded-[10px] w-[308px] h-10 flex items-center justify-start gap-[10px] pl-10 text-[#9EA2C6]"
+                    className="bg-[#ffffff]  outline-transparent w-[100%] h-[60px] flex items-center justify-start gap-[10px] pl-10 text-[#9EA2C6]"
                     placeholder="Що шукаємо?"
                     onChange={e => setSearchQuery(e.target.value)}
                     value={searchQuery}

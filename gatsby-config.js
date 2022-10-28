@@ -248,28 +248,36 @@ module.exports = {
             allMarkdownRemark {
               nodes {
                 id
+                rawMarkdownBody
+                frontmatter {
+                  description
+                  language
+                  slug
+                  title
+                  templateKey
+                }
                 fields {
                   slug
                 }
-                frontmatter {
-                  title
-                  templateKey
-                  language
-                  description
-                }
-                rawMarkdownBody
-              }
-            }
           }
+        }
+      }
         `,
         ref: 'id',
         index: ['title', 'body', 'description'],
-        store: ['id', 'slug', 'title', 'language', 'description'],
+        store: [
+          'id',
+          'slug',
+          'title',
+          'language',
+          'description',
+          'templateKey',
+        ],
         normalizer: ({ data }) =>
           data.allMarkdownRemark.nodes.map(node => ({
             id: node.id,
-            slug: node.fields.slug,
             title: node.frontmatter.title,
+            slug: node.frontmatter.slug,
             templateKey: node.frontmatter.templateKey,
             language: node.frontmatter.language,
             description: node.frontmatter.description,

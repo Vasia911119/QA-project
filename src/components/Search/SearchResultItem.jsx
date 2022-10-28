@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 
 function PageSearchResultItem({ page }) {
   return (
-    <Link to={`/${page.slug.current}`}>
+    <Link to={`/`}>
       <a href="">
         <h2>{page.title}</h2>
       </a>
