@@ -3,6 +3,10 @@ import { Link } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { HTMLContent } from './Content';
 import useMenuStructure from '../queries/menu-structure';
+import Logo from './Logo';
+import SwitchLanguages from './SwitchLanguages';
+import ToggleMode from './Toggler';
+
 import Accordion from './Accordion/Accordion';
 
 export default function Navbar() {
@@ -42,6 +46,16 @@ export default function Navbar() {
 
   return (
     <div className="navigationScroll max-h-[600px] overflow-y-auto py-6 px-5 text-base font-semibold  text-grey-350">
+      <div className="  border-b border-stone-400 py-2 px-4 pt-7 pb-4">
+        <Link to={`/`} className="">
+          <Logo title="Go-It" />
+        </Link>
+        <input
+          type="text"
+          className="w-full rounded p-3 text-sm"
+          placeholder="Search"
+        />
+      </div>
       <ul className="flex flex-col ">
         <li className="navigationItem ">
           <div className="navigationItemIcon"></div>
@@ -78,6 +92,10 @@ export default function Navbar() {
           />
         </li>
       </ul>
+      <div className="h-30  flex h-full w-full justify-between border-t border-stone-400 py-4 px-5">
+        <SwitchLanguages />
+        <ToggleMode />
+      </div>
     </div>
   );
 }
