@@ -4,7 +4,13 @@ import { BiChevronUp } from 'react-icons/bi';
 import * as s from './Accordion.module.css';
 import PropTypes from 'prop-types';
 
-function Accordion({ title, content = '', titleUrl = null, status = false }) {
+function Accordion({
+  title,
+  content = '',
+  titleUrl = null,
+  status = false,
+  handleClose,
+}) {
   const [accordionStatus, setAccordionStatus] = useState(status);
 
   const handleClick = () => {
@@ -14,7 +20,11 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
     <div className={s.wrapper}>
       {titleUrl ? (
         <div className={s.buttonWrapper}>
-          <Link to={titleUrl} activeClassName="activeLink">
+          <Link
+            to={titleUrl}
+            onClick={handleClose}
+            activeClassName="activeLink"
+          >
             <button className={s.button}>{title}</button>
           </Link>
           <span
@@ -40,7 +50,13 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
       <ul className={accordionStatus ? s.uncollapsed : s.collapsed}>
         {content.map(i => (
           <li key={i.slug || i.link_title}>
-            <Link to={i.slug || i.url_adress}>{i.title || i.link_title}</Link>
+            <Link
+              onClick={handleClose}
+              target={i.url_adress ? '_blank' : null}
+              to={i.slug || i.url_adress}
+            >
+              {i.title || i.link_title}
+            </Link>
           </li>
         ))}
       </ul>

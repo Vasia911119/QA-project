@@ -9,7 +9,7 @@ import ToggleMode from './Toggler';
 
 import Accordion from './Accordion/Accordion';
 
-export default function Navbar() {
+export default function Navbar({ handleClose }) {
   const menuItems = useMenuStructure();
   // const { t, i18n } = useTranslation();
 
@@ -47,7 +47,7 @@ export default function Navbar() {
   return (
     <div className="navigationScroll max-h-[600px] overflow-y-auto py-6 px-5 text-base font-semibold  text-grey-350">
       <div className="  border-b border-stone-400 py-2 px-4 pt-7 pb-4">
-        <Link to={`/`} className="">
+        <Link to={`/`} onClick={handleClose} className="">
           <Logo title="Go-It" />
         </Link>
         <input
@@ -59,13 +59,17 @@ export default function Navbar() {
       <ul className="flex flex-col ">
         <li className="navigationItem ">
           <div className="navigationItemIcon"></div>
-          <Link to={'/'} className=" ">
+          <Link to={'/'} onClick={handleClose} className=" ">
             {homePageTitle}
           </Link>
         </li>
         <li className="navigationItem">
           <div className="navigationItemIcon"></div>
-          <Accordion title={accordionData.title} content={accordionData.sub} />
+          <Accordion
+            handleClose={handleClose}
+            title={accordionData.title}
+            content={accordionData.sub}
+          />
         </li>
         {/* {linksMenu.map(i => (
           <li className="navigationItem ">
@@ -80,6 +84,7 @@ export default function Navbar() {
         <li className="navigationItem ">
           <div className="navigationItemIcon"></div>
           <Accordion
+            handleClose={handleClose}
             title={linksMenu[0].frontmatter.link_chapter_title}
             content={linksMenu[0].frontmatter.links_items}
           />
@@ -87,6 +92,7 @@ export default function Navbar() {
         <li className="navigationItem ">
           <div className="navigationItemIcon"></div>
           <Accordion
+            handleClose={handleClose}
             title={linksMenu[1].frontmatter.link_chapter_title}
             content={linksMenu[1].frontmatter.links_items}
           />
