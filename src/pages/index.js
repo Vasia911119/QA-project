@@ -93,14 +93,11 @@ export const pageQuery = graphql`
         }
       }
     }
-<<<<<<< HEAD
-    allMarkdownRemark(filter: { frontmatter: { language: { eq: "uk" } } }) {
-=======
+
     allMarkdownRemark(
       filter: { frontmatter: { language: { eq: $language } } }
       sort: { fields: frontmatter___page_range }
     ) {
->>>>>>> bceec2638ad7cd1d485890ad9f2d430a538d78a5
       nodes {
         frontmatter {
           language
