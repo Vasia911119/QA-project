@@ -24,6 +24,14 @@ h6 {
   color: white;
 }
 
+/* --------------------------------- */
+.mobileMemuClosed {
+  @apply fixed left-0 overflow-hidden  bg-blue-950 text-stone-400  smOnly:top-0 smOnly:z-50 smOnly:h-screen smOnly:w-screen smOnly:translate-x-full smOnly:transition-transform md:hidden;
+}
+.mobileMemuOpened {
+  @apply fixed left-0 overflow-hidden bg-blue-950 text-stone-400  smOnly:top-0 smOnly:z-50 smOnly:h-screen smOnly:w-screen smOnly:translate-x-0 smOnly:transition-transform md:hidden;
+}
+
 /* sidebar styles */
 
 .navigationItem {
@@ -34,11 +42,8 @@ h6 {
   @apply mr-5;
 }
 .navigationItemIcon {
-  @apply mt-1 w-4 h-4 bg-white;
+  @apply mt-1 h-4 w-4 bg-white;
 }
 .activeMenu {
   @apply text-slate-50;
-}
-.subNavigationItem {
-  @apply ml-9;
 }
