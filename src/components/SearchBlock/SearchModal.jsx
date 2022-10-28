@@ -15,7 +15,7 @@ const query = graphql`
   }
 `
 
-export const Search = ({ closeModal, isOpen }) => {
+export const SearchModal = ({ closeModal, isOpen }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [pagesIndexStore, setPagesIndexStore] = useState(null)
   const data = useStaticQuery(query)
@@ -73,10 +73,7 @@ export const Search = ({ closeModal, isOpen }) => {
                     className="absolute left-3 inset-y-1/2 -translate-y-1/2"
                   />
 
-                  <input
-                    type="text"
-                    className="bg-[#ffffff]  outline-transparent w-[100%] h-[60px] flex items-center justify-start gap-[10px] pl-10 text-[#9EA2C6]"
-                    placeholder="Що шукаємо?"
+                  <SearchField
                     onChange={e => setSearchQuery(e.target.value)}
                     value={searchQuery}
                     onFocus={handleOnFocus}

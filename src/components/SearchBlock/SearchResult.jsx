@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import { useFlexSearch } from 'react-use-flexsearch'
-import { PageSearchResultItem } from './SearchResultItem'
+import { PageSearchResultItem } from './PageSearchResultItem'
 
 function SearchResult({ searchQuery, pagesIndexStore }) {
   const pagesResult = useFlexSearch(

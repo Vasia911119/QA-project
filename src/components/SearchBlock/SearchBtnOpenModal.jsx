@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Search } from './SearchModal'
+import { SearchModal } from './SearchModal'
 import { RiSearchLine } from 'react-icons/ri'
 
-const ToggleSearchModalOpen = () => {
+const SearchBtnOpenModal = () => {
   let [isOpen, setIsOpen] = useState(false)
 
   const closeModal = () => {
@@ -24,9 +24,9 @@ const ToggleSearchModalOpen = () => {
         search
       </button>
 
-      <Search isOpen={isOpen} closeModal={closeModal} />
+      <SearchModal isOpen={isOpen} closeModal={closeModal} />
     </>
   )
 }
 
-export default ToggleSearchModalOpen
+export default SearchBtnOpenModal

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import ToggleSearchModalOpen from './Search/ToggleOpenModal'
+import SearchBtnOpenModal from './SearchBlock/SearchBtnOpenModal'
 import useSiteMetadata from '../queries/site-metadata'
 import Logo from './Logo'
 
@@ -13,7 +13,7 @@ export default function Header() {
         <Logo title={title} />
       </Link>
 
-      <ToggleSearchModalOpen />
+      <SearchBtnOpenModal />
     </header>
   )
 }
