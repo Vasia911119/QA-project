@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
-import { Link, navigate } from 'gatsby'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
-import * as s from './Accordion.module.css'
-import PropTypes from 'prop-types'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState } from 'react';
+import { Link } from 'gatsby';
+import { BiChevronUp } from 'react-icons/bi';
+import * as s from './Accordion.module.css';
+import PropTypes from 'prop-types';
 
 function Accordion({ title, content = '', titleUrl = null, status = false }) {
-  const [accordionStatus, setAccordionStatus] = useState(status)
+  const [accordionStatus, setAccordionStatus] = useState(status);
 
   const handleClick = () => {
-    setAccordionStatus(!accordionStatus)
-  }
-  // console.log(titleUrl)
+    setAccordionStatus(!accordionStatus);
+  };
   return (
     <div className={s.wrapper}>
       {titleUrl ? (
@@ -24,7 +21,7 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
             className={accordionStatus ? s.icon : s.iconRotate}
             onClick={handleClick}
           >
-            {/* {<FontAwesomeIcon icon={faChevronUp} />} */}
+            <BiChevronUp />
           </span>
         </div>
       ) : (
@@ -36,19 +33,23 @@ function Accordion({ title, content = '', titleUrl = null, status = false }) {
             className={accordionStatus ? s.icon : s.iconRotate}
             onClick={handleClick}
           >
-            {/* {<FontAwesomeIcon icon={faChevronUp} />} */}
+            <BiChevronUp />
           </span>
         </div>
       )}
-      <div className={accordionStatus ? s.uncollapsed : s.collapsed}>
-        {content}
-      </div>
+      <ul className={accordionStatus ? s.uncollapsed : s.collapsed}>
+        {content.map(i => (
+          <li key={i.slug || i.link_title}>
+            <Link to={i.slug || i.url_adress}>{i.title || i.link_title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }
 
-export default Accordion
+export default Accordion;
 Accordion.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.node.isRequired,
-}
+  // title: PropTypes.string.isRequired,
+  // content: PropTypes.node.isRequired,
+};

@@ -9,7 +9,6 @@ import Navbar from '../components/Navbar';
 
 const Layout = ({ children }) => {
   return (
-    // <p>hello</p>
     <section className="max-sm:max-w-[480px] relative mx-auto antialiased sm:w-[480px] md:w-[768px] xl:w-[1280px]">
       <div className="fixed bg-blue-950 text-stone-400 md:w-[48px] xl:w-[348px] ">
         {/* <Header /> */}

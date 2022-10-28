@@ -16,7 +16,6 @@ export default function HomePage({ data }) {
 
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-
     nodes &&
     nodes.map(component => {
       if (
