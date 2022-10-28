@@ -26,6 +26,7 @@ const ButtonsNavigate = () => {
   //     }
   //   }
   // `);
+
   // const data = useStaticQuery(graphql`
   //   query {
   //     allMarkdownRemark(
@@ -57,6 +58,7 @@ const ButtonsNavigate = () => {
   // const next = () => {
   //   navigation(currentIndex + 1);
   // };
+
   return (
     <div className={s.wrapper}>
       {/* <button

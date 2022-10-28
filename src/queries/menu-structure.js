@@ -1,44 +1,36 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
 export default function useMenuStructure() {
-  // const { allMarkdownRemark } = useStaticQuery(
-  //   graphql`
-  //     query MenuStructureQuery {
-  //       allMarkdownRemark {
-  //         edges {
-  //           node {
-  //             frontmatter {
-  //               language
-  //               chapter_title
-  //               link_chapter_name
-  //               link_chapter_title
-  //               links_chapter
-  //               page_chapter
-  //               page_chapter_name
-  //               page_chapter_title
-  //               page_range
-  //               links_items {
-  //                 link_title
-  //                 url_adress
-  //               }
-  //               title
-  //               page_title
-  //               pages_chapter_item {
-  //                 chapter_range
-  //                 pages_chapter_name
-  //               }
-  //               pages {
-  //                 body
-  //                 title
-  //               }
-  //             }
-  //             html
-  //             id
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `
+  const { allMarkdownRemark } = useStaticQuery(
+    graphql`
+      query MenuStructureQuery {
+        allMarkdownRemark(filter: { frontmatter: { language: { eq: "uk" } } }) {
+          nodes {
+            frontmatter {
+              language
+              page_chapter_name
+              page_chapter_title
+              page_title
+              slug
+              link_chapter_name
+              link_chapter_title
+              links_items {
+                link_title
+                links_range
+                url_adress
+              }
+            }
+            fields {
+              slug
+            }
+            html
+          }
+        }
+      }
+    `
+  );
+  // }
+
   // );
   // export default function useMenuStructure() {
   //   const { allMarkdownRemark } = useStaticQuery(
@@ -64,5 +56,5 @@ export default function useMenuStructure() {
   //       }
   //     `
   //   )
-  // return allMarkdownRemark.edges;
+  return allMarkdownRemark.nodes;
 }

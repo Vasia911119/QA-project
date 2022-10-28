@@ -1,6 +1,6 @@
-import { StaticImage } from 'gatsby-plugin-image'
-import PropTypes from 'prop-types'
-import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 export default function Logo({ title, className }) {
   return (
@@ -14,10 +14,10 @@ export default function Logo({ title, className }) {
       width={96}
       height={32}
     />
-  )
+  );
 }
 
 Logo.propTypes = {
   title: PropTypes.string.isRequired,
   className: PropTypes.string,
-}
+};
