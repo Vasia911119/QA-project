@@ -19,7 +19,7 @@ collections:
       'Перелік розділів. При зміні уже існуючих розділів потрібно повторно
       обрати їх у вже існуючих колекціях (наприклад, Pages_UA)'
     folder: 'content/pages-chapters'
-    create: false
+    create: true
     delete: false
     path: 'list-of-pages-chapters'
     fields:
@@ -94,7 +94,7 @@ collections:
 
   - label: 'Pages_UA'
     name: 'pages_ua'
-    folder: 'content/ua/pages'
+    folder: 'content/uk/pages'
     media_folder: '/static/img'
     public_folder: /img
     slug: '{{fields.slug}}'
@@ -104,8 +104,7 @@ collections:
     create: true
     delete: true
     filter: { field: 'language', value: 'uk' }
-    fields:
-      [
+    fields: [
         {
           label: 'Title of the page',
           name: 'page_title',
@@ -154,6 +153,7 @@ collections:
             'Введіть назву сторінки англійською з маленької літери. Є
             обовязковим для всіх сторінок, крім головної',
         },
+
         {
           label: 'Language',
           name: 'language',
@@ -164,14 +164,17 @@ collections:
         {
           label: 'Page range',
           name: 'page_range',
-          widget: 'string',
+          widget: 'number',
           required: false,
-          pattern:
-            [
-              '^[0-9]{1,2}$',
-              'Може містити тільки цифри, що позначають черговість розміщення
-              розділу на веб-сторінці (зверху вниз)',
-            ],
+          value_type: 'int',
+          min: 1,
+          step: 1,
+          # pattern:
+          #   [
+          #     '^[0-9]{1,2}$',
+          #     'Може містити тільки цифри, що позначають черговість розміщення
+          #     розділу на веб-сторінці (зверху вниз)',
+          #   ],
           hint:
             "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
             розміщення розділу на веб-сторінці (зверху вниз)",
@@ -433,10 +436,10 @@ collections:
 
   - label: 'Links_UA'
     name: 'links_ua'
-    folder: 'content/ua/links'
+    folder: 'content/uk/links'
     media_folder: '/static/img'
     public_folder: /img
-    slug: '{{fields.slug}}'
+    # slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
@@ -527,7 +530,7 @@ collections:
     folder: 'content/ru/links'
     media_folder: '/static/img'
     public_folder: /img
-    slug: '{{fields.slug}}'
+    # slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
@@ -605,7 +608,7 @@ collections:
     folder: 'content/en/links'
     media_folder: '/static/img'
     public_folder: /img
-    slug: '{{fields.slug}}'
+    # slug: '{{fields.slug}}'
     description:
       'Розділи українською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
