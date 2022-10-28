@@ -40,7 +40,14 @@ export default function HomePage({ data }) {
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
     nodes.map(node => {
-      console.log(node);
+      // console.log(node);
+      // if (node.fields) {
+      //   return (
+      //     <a key={node.id} href={node.fields.slug} className="flex column">
+      //       {node.frontmatter.page_title}
+      //     </a>
+      //   );
+      // }
       if (node.frontmatter.page_chapter_name === 'home') {
         return (
           <div

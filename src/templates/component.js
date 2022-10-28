@@ -15,45 +15,46 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 const ComponentTemplate = ({ data }) => {
   const { t, i18n } = useTranslation();
-  console.log(data);
-  // const { frontmatter, html } = data.markdownRemark;
-  // console.log(frontmatter);
-  // console.log(html);
+  const { nodes } = data.allMarkdownRemark;
 
   return (
-    // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-    <>
-      {/* <div
-        className="mx-auto pt-[32px] md:w-[608px]"
-        key={frontmatter.page_title}
-      >
-        <Breadcrumb
-          title={frontmatter.page_title}
-          name={frontmatter.page_chapter_title}
-        />
-        <div className="space-y-4 text-left">
-          <h1 className="leading-12 lg:text-4xl lg:leading-14 mb-2 font-inter text-3xl text-gray-800">
-            {frontmatter.title}
-          </h1>
-        </div>
-        <HTMLContent className="prose max-w-none" content={html} />
-      </div>
-      <ButtonsNavigate />
-      <Form /> */}
-    </>
+    nodes &&
+    nodes.map(node => {
+      if (node.frontmatter.language === i18n.language) {
+        return (
+          // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
+          <div key={node.id}>
+            <div className="mx-auto pt-[32px] md:w-[608px]">
+              <Breadcrumb
+                title={node.frontmatter.page_title}
+                name={node.frontmatter.page_chapter_title}
+              />
+              <div className="space-y-4 text-left">
+                <h1 className="leading-12 lg:text-4xl lg:leading-14 mb-2 font-inter text-3xl text-gray-800">
+                  {node.frontmatter.title}
+                </h1>
+              </div>
+              <HTMLContent className="prose max-w-none" content={node.html} />
+            </div>
+            <ButtonsNavigate />
+            <Form />
+          </div>
+        );
+      }
+    })
   );
 };
 
 ComponentTemplate.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
+    allMarkdownRemark: PropTypes.object,
   }),
 };
 
 export default ComponentTemplate;
 
 export const pageQuery = graphql`
-  query ($language: String!, $slug: String!) {
+  query ($language: String!, $identifier: String!) {
     locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
@@ -63,13 +64,23 @@ export const pageQuery = graphql`
         }
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        page_chapter_name
-        page_chapter_title
-        page_title
+    allMarkdownRemark(
+      filter: { frontmatter: { identifier: { eq: $identifier } } }
+    ) {
+      nodes {
+        frontmatter {
+          language
+          page_chapter_name
+          page_chapter_title
+          page_title
+          slug
+        }
+        fields {
+          slug
+        }
+        html
+        id
       }
-      html
     }
   }
 `;
@@ -94,3 +105,13 @@ export const pageQuery = graphql`
 //     html
 //   }
 // }
+
+// markdownRemark(fields: { slug: { eq: $slug } }) {
+//       frontmatter {
+//         language
+//         page_chapter_name
+//         page_chapter_title
+//         page_title
+//       }
+//       html
+//     }

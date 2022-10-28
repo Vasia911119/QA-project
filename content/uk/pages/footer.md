@@ -3,6 +3,7 @@ page_title: Футер
 page_chapter_name: component
 page_chapter_title: Компоненти та функціональність
 slug: footer
+identifier: footer
 language: uk
 page_range: 3
 ---

@@ -3,6 +3,7 @@ page_title: Header
 page_chapter_name: component
 page_chapter_title: Components and functionality
 slug: header
+identifier: header
 language: en
 page_range: 1
 ---
