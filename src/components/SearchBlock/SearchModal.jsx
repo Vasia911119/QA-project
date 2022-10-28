@@ -74,7 +74,7 @@ export const SearchModal = ({ closeModal, isOpen }) => {
                   />
 
                   <SearchField
-                    onChange={e => setSearchQuery(e.target.value)}
+                    setValue={setSearchQuery}
                     value={searchQuery}
                     onFocus={handleOnFocus}
                   />
