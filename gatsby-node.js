@@ -1,75 +1,71 @@
-const _ = require('lodash')
-const path = require('path')
-const { createFilePath } = require('gatsby-source-filesystem')
-const webpack = require(`webpack`)
-const slugHandler = require('./src/api/slugHandler')
+const _ = require('lodash');
+const path = require('path');
+const { createFilePath } = require('gatsby-source-filesystem');
+const webpack = require(`webpack`);
+const slugHandler = require('./src/api/slugHandler');
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
-  // return graphql(`
-  //   {
-  //     allMarkdownRemark(
-  //       filter: { frontmatter: { templateKey: { eq: "component" } } }
-  //     ) {
-  //       nodes {
-  //         fields {
-  //           slug
-  //         }
-  //         frontmatter {
-  //           slug
-  //           templateKey
-  //           description
-  //           language
-  //         }
-  //       }
-  //     }
-  //   }
-  // `).then(result => {
-  //   if (result.errors) {
-  //     result.errors.forEach(e => console.error(e.toString()))
-  //     return Promise.reject(result.errors)
-  //   }
+  return graphql(`
+    {
+      allMarkdownRemark(filter: { frontmatter: { language: { regex: "/" } } }) {
+        nodes {
+          frontmatter {
+            page_chapter_name
+            slug
+            language
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      result.errors.forEach(e => console.error(e.toString()));
+      return Promise.reject(result.errors);
+    }
 
-  // const pages = result.data.allMarkdownRemark.nodes
+    const pages = result.data.allMarkdownRemark.nodes;
 
-  // pages.forEach(page => {
-  //   const language = page.frontmatter.language
-  //   const templateKey = page.frontmatter.templateKey
-  //   const description = page.frontmatter.description
-  //   const slug = slugHandler(language, templateKey, page.frontmatter.slug)
-  //   createPage({
-  //     path: slug,
-  //     component: path.resolve(
-  //       `src/templates/${String(page.frontmatter.templateKey)}.js`
-  //     ),
-  //     context: {
-  //       slug,
-  //       description,
-  //       language,
-  //       templateKey,
-  //     },
-  //   })
-  // })
-  // })
-}
+    pages.forEach(page => {
+      const language = page.frontmatter.language;
+      const pagesChapterName = page.frontmatter.page_chapter_name;
+      const slug = slugHandler(
+        language,
+        page.frontmatter.page_chapter_name,
+        page.frontmatter.slug
+      );
+      createPage({
+        path: slug,
+        component: path.resolve(`src/templates/component.js`),
+        context: {
+          slug,
+          language,
+          pagesChapterName,
+        },
+      });
+    });
+  });
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
+  const { createNodeField } = actions;
   if (!!node.frontmatter && !!node.frontmatter.slug) {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
       node,
       value: slugHandler(
         node.frontmatter.language,
-        node.frontmatter.templateKey,
+        node.frontmatter.page_chapter_name,
         node.frontmatter.slug
       ),
-    })
+    });
   }
-}
+};
 
 // exports.onCreateWebpackConfig = ({ actions }) => {
 //   actions.setWebpackConfig({

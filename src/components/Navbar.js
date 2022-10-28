@@ -7,7 +7,7 @@ import Accordion from './Accordion/Accordion';
 
 export default function Navbar() {
   const menuItems = useMenuStructure();
-  //   console.log(menuItems);
+
   const { t, i18n } = useTranslation();
   //   const { home, components, presentations, templates } = t('header', {
   //     returnObjects: true,
