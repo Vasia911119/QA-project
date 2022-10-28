@@ -151,7 +151,6 @@ collections:
             'Введіть назву сторінки англійською з маленької літери. Є
             обовязковим для всіх сторінок, крім головної',
         },
-
         {
           label: 'Language',
           name: 'language',
@@ -159,6 +158,13 @@ collections:
           default: 'uk',
         },
         { label: 'Body', name: 'body', widget: 'markdown' },
+        {
+          label: 'Note',
+          name: 'description',
+          widget: 'text',
+          required: false,
+          hint: 'Необов"язкове поле, використовується для створення загального підсумку з сторінки',
+        }
         {
           label: 'Page range',
           name: 'page_range',
@@ -243,6 +249,13 @@ collections:
         },
         { label: 'Body', name: 'body', widget: 'markdown' },
         {
+          label: 'Note',
+          name: 'description',
+          widget: 'text',
+          required: false,
+          hint: 'Необов"язкове поле, використовується для створення загального підсумку з сторінки',
+        }
+        {
           label: 'Page range',
           name: 'page_range',
           widget: 'number',
@@ -325,6 +338,13 @@ collections:
           default: 'ru',
         },
         { label: 'Body', name: 'body', widget: 'markdown' },
+        {
+          label: 'Note',
+          name: 'description',
+          widget: 'text',
+          required: false,
+          hint: 'Необов"язкове поле, використовується для створення загального підсумку з сторінки',
+        }
         {
           label: 'Page range',
           name: 'page_range',
