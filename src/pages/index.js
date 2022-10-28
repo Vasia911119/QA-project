@@ -42,7 +42,7 @@ export default function HomePage({ data }) {
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
     <>
-      <p>index</p>
+      <p>inde dfsdfsd fsdf sdf sdf dsx</p>
       {nodes.map(node => {
         console.log('node', node.fields.slug);
         return <a href={node.fields.slug}>ссылка</a>;
@@ -95,10 +95,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
-      filter: { frontmatter: { language: { eq: "uk" } } }
-      sort: { fields: frontmatter___page_range }
-    ) {
+    allMarkdownRemark(filter: { frontmatter: { language: { eq: "uk" } } }) {
       nodes {
         frontmatter {
           language

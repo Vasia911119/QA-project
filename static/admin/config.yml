@@ -361,7 +361,7 @@ collections:
       'Перелік підрозділів. При зміні уже існуючих підрозділів потрібно повторно
       обрати їх у вже існуючих колекціях (наприклад, Links_UA)'
     folder: 'content/links-chapters'
-    create: false
+    create: true
     delete: false
     path: 'list-of-links-chapters'
     fields:
@@ -475,9 +475,9 @@ collections:
           widget: 'relation',
           required: true,
           file: 'list-of-links-chapters',
-          search_fields: ['links_chapter_item.*.chapter_title_UA'],
-          display_fields: ['links_chapter_item.*.chapter_title_UA'],
-          value_field: 'links_chapter_item.*.chapter_title_UA',
+          search_fields: ['links_chapter_item.*.link_chapter_title_UA'],
+          display_fields: ['links_chapter_item.*.link_chapter_title_UA'],
+          value_field: 'links_chapter_item.*.link_chapter_title_UA',
           hint: 'Виберіть назву папки для збереження даного розділу',
         },
         {

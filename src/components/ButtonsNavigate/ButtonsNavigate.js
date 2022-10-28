@@ -28,10 +28,7 @@ const ButtonsNavigate = () => {
   // `);
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(
-        filter: { fields: { slug: { regex: "/" } } }
-        sort: { fields: frontmatter___page_range }
-      ) {
+      allMarkdownRemark(filter: { fields: { slug: { regex: "/" } } }) {
         nodes {
           fields {
             slug
