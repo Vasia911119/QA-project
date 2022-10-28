@@ -7,6 +7,7 @@ import React from 'react';
 import Form from '../components/Form/Form';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
+import Note from '../components/Note/Note';
 
 import { HTMLContent } from '../components/Content';
 import Layout from '../components/Layout';
@@ -36,6 +37,7 @@ const ComponentTemplate = ({ data }) => {
               </div>
               <HTMLContent className="prose max-w-none" content={node.html} />
             </div>
+            <Note description={node.frontmatter.description} />
             <ButtonsNavigate />
             <Form />
           </div>
