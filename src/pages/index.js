@@ -28,31 +28,24 @@ export default function HomePage({ data }) {
   );
   const homePageChapterName = sortedPageChapters[0].pages_chapter_name;
 
-  console.log('homePageChapterName', homePageChapterName);
-  console.log(nodes);
-
-  nodes.forEach(element => {
-    console.log(element);
-  });
-  console.log(Array.isArray(nodes));
   const homePageNodes = nodes.filter(
     i => i.node.frontmatter.page_chapter_name === homePageChapterName
   );
 
-  console.log(homePageNodes);
+  // console.log(homePageNodes);
 
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
 
     homePageNodes &&
     homePageNodes.map(({ node: component }) => {
-      console.log(component);
+      // console.log(component);
       if (component.frontmatter.language === 'uk') {
-        console.log(component);
+        // console.log(component);
         return (
           <div
             className="mx-auto pt-[32px] dark:bg-slate-300 md:w-[608px]"
-            // key={component.id}
+            key={component.id}
           >
             <Breadcrumb title={component.frontmatter.title} />
             <div className="space-y-4 text-left">
