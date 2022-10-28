@@ -7,23 +7,23 @@ import Accordion from './Accordion/Accordion';
 
 export default function Navbar() {
   const menuItems = useMenuStructure();
-  console.log(menuItems);
+  // console.log(menuItems);
   const { t, i18n } = useTranslation();
   //   const { home, components, presentations, templates } = t('header', {
   //     returnObjects: true,
   //   })
-  const pagesCollection = menuItems.find(item => {
-    if (item.node.frontmatter.pages_chapter_item)
-      return item.node.frontmatter.pages_chapter_item;
-  });
+  // const pagesCollection = menuItems.find(item => {
+  //   if (item.node.frontmatter.pages_chapter_item)
+  //     return item.node.frontmatter.pages_chapter_item;
+  // });
 
-  const { pages_chapter_item: pagesCollectionList } =
-    pagesCollection.node.frontmatter;
+  // const { pages_chapter_item: pagesCollectionList } =
+  //   pagesCollection.node.frontmatter;
 
-  const sortedPageChapters = pagesCollectionList.sort(
-    (a, b) => a.chapter_range - b.chapter_range
-  );
-  console.log(sortedPageChapters);
+  // const sortedPageChapters = pagesCollectionList.sort(
+  //   (a, b) => a.chapter_range - b.chapter_range
+  // );
+  // console.log(sortedPageChapters);
 
   //   const linksCollection = menuItems.find(item => {
   //     if (item.node.frontmatter.links_chapter_item)
