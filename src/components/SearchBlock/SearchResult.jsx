@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import { useFlexSearch } from 'react-use-flexsearch'
-import { PageSearchResultItem } from './PageSearchResultItem'
+import { SearchResultItem } from './SearchResultItem'
 
 function SearchResult({ searchQuery, pagesIndexStore }) {
   const pagesResult = useFlexSearch(
@@ -15,6 +15,17 @@ function SearchResult({ searchQuery, pagesIndexStore }) {
   }
 
   return (
+    // <>
+    //   {pagesResult.length > 0 && (
+    //     <>
+    //       <p>Chapter</p>
+    //       {pagesResult.map(res => (
+    //         <SearchResultItem key={res.id} page={res} />
+    //       ))}
+    //     </>
+    //   )}
+    // </>
+
     <>
       {pagesResult.map(res => (
         <Link to="">{res.title}</Link>

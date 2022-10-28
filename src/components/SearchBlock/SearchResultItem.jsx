@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-function PageSearchResultItem({ page }) {
+function SearchResultItem({ page }) {
   return (
-    <Link to={`/`}>
-      <a href="">
+    <Link to={`/page`}>
+      <a href="#">
         <h2>{page.title}</h2>
       </a>
     </Link>
   )
 }
 
-export default PageSearchResultItem
+export default SearchResultItem
