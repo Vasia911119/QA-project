@@ -1,7 +1,22 @@
+.wrapper {
+  @apply w-full;
+}
+.wrapperUncollapsed {
+  @apply relative w-full;
+}
+.wrapperUncollapsed::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: -27px;
+  width: 2px;
+  height: calc(100% - 30px);
+  background-color: #9ea2c6;
+}
+
 .uncollapsed {
   @apply mt-5;
 }
-
 .uncollapsed > div:not(:last-child),
 .uncollapsed li:not(:last-child) {
   @apply mb-5;
@@ -9,23 +24,20 @@
 .collapsed {
   @apply h-0 truncate;
 }
-.wrapper {
-  @apply w-full;
-}
-
-.wrapper li {
-  @apply ml-9;
-}
 
 .buttonWrapper {
-  @apply w-full flex justify-between items-center;
+  @apply flex w-full items-center justify-between;
 }
 .button {
-  @apply text-left whitespace-normal;
+  @apply mr-4 whitespace-normal text-left;
+  /* flex-basis: 100%;
+  flex-shrink: 2; */
 }
 .icon {
+  /* flex-shrink: 1; */
   @apply cursor-pointer;
 }
 .iconRotate {
+  /* flex-shrink: 1; */
   @apply rotate-180 cursor-pointer;
 }

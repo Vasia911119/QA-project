@@ -1,12 +1,12 @@
 .wrapper {
-  @apply flex items-center rounded-[12px] border border-stone-200 shadow-md mt-[52px] backdrop-blur-[3px] relative bg-slate-50 bg-opacity-[65] max-w-[608px] mx-auto;
+  @apply relative mx-auto mt-[52px] flex max-w-[608px] items-center rounded-[12px] border border-stone-200 bg-slate-50 bg-opacity-[65] shadow-md backdrop-blur-[3px];
 }
 .text {
-  @apply font-inter font-medium text-sm text-stone-900 ml-[100px] py-6;
+  @apply ml-[100px] mr-5 py-6 font-inter text-sm font-medium text-stone-900;
 }
 .icon {
-  @apply w-[40px] h-[40px] text-slate-50 absolute inset-2/4 translate-y-[-50%] translate-x-[-50%];
+  @apply absolute inset-2/4 h-[40px] w-[40px] translate-y-[-50%] translate-x-[-50%] text-slate-50;
 }
 .iconWrapper {
-  @apply w-20 bg-blue-500 rounded-l-[12px] justify-center absolute inset-0;
+  @apply absolute inset-0 w-20 justify-center rounded-l-[12px] bg-blue-500;
 }
