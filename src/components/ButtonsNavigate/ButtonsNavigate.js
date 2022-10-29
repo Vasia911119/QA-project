@@ -55,8 +55,12 @@ const ButtonsNavigate = () => {
     <div className={s.wrapper}>
       <button
         onClick={prev}
-        className={currentIndex === 0 ? s.buttonLeftDisabled : s.buttonLeft}
-        disabled={currentIndex === 0}
+        className={
+          currentIndex === 0 || pathname === '/'
+            ? s.buttonLeftDisabled
+            : s.buttonLeft
+        }
+        disabled={currentIndex === 0 || pathname === '/'}
         type="button"
       >
         <BiChevronLeft className={s.icon} alt="prev" />
