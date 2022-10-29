@@ -16,7 +16,10 @@ export default function HomePage({ data }) {
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
     nodes.map(node => {
-      if (node.frontmatter.page_chapter_name === 'home') {
+      if (
+        node.frontmatter.page_chapter_name === 'home' &&
+        node.frontmatter.language === i18n.language
+      ) {
         return (
           <div className="mx-auto pt-[32px] dark:bg-slate-300 " key={node.id}>
             <Breadcrumb title={node.frontmatter.page_title} />
@@ -53,11 +56,7 @@ export const pageQuery = graphql`
         }
       }
     }
-
-    allMarkdownRemark(
-      filter: { frontmatter: { language: { eq: $language } } }
-      sort: { fields: frontmatter___page_range }
-    ) {
+    allMarkdownRemark(sort: { fields: frontmatter___page_range }) {
       nodes {
         frontmatter {
           language
@@ -76,3 +75,8 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+// allMarkdownRemark(
+//       filter: { frontmatter: { language: { eq: $language } } }
+//       sort: { fields: frontmatter___page_range }
+//     ) {

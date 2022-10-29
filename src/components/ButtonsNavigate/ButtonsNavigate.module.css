@@ -4,10 +4,7 @@
 .buttonLeft {
   @apply flex items-center justify-center rounded-[10px] bg-blue-600 w-[114px] h-12 font-inter font-semibold text-xs transition-all ml-auto mr-8;
 }
-.buttonLeft:hover {
-  @apply bg-blue-500;
-}
-.buttonLeft:focus {
+.buttonLeft:hover, .buttonLeft:focus {
   @apply bg-blue-500;
 }
 .buttonLeftDisabled {
@@ -16,10 +13,7 @@
 .buttonRight {
   @apply flex items-center justify-center rounded-[10px] bg-blue-600 w-[114px] h-12 font-inter font-semibold text-xs transition-all mr-auto;
 }
-.buttonRight:hover {
-  @apply bg-blue-500;
-}
-.buttonRight:focus {
+.buttonRight:hover, .buttonRight:focus {
   @apply bg-blue-500;
 }
 .buttonRightDisabled {

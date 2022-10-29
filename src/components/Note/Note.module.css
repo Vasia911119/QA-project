@@ -1,8 +1,14 @@
 .wrapper {
-  @apply relative mx-auto mt-[52px] flex max-w-[608px] items-center rounded-[12px] border border-stone-200 bg-slate-50 bg-opacity-[65] shadow-md backdrop-blur-[3px];
+  @apply relative mx-auto mt-[52px] flex max-w-[608px] items-center rounded-[12px] bg-slate-50 bg-opacity-[65] shadow-md backdrop-blur-[3px];
+}
+:global(.dark) .wrapper {
+  @apply bg-[#252A41] bg-opacity-50;
 }
 .text {
   @apply ml-[100px] mr-5 py-6 font-inter text-sm font-medium text-stone-900;
+}
+:global(.dark) .text {
+  @apply text-slate-50;
 }
 .icon {
   @apply absolute inset-2/4 h-[40px] w-[40px] translate-y-[-50%] translate-x-[-50%] text-slate-50;

@@ -1,8 +1,14 @@
 .wrapper {
   @apply bg-blue-100 pt-[52px] px-3 md:pt-8 md:px-14 xl:pr-9 pb-5 xl:pl-8 mt-[100px];
 }
+:global(.dark) .wrapper {
+  @apply bg-[#1C2237];
+}
 .title {
   @apply font-inter font-medium sm:text-lg text-stone-900 mb-8 text-center text-sm;
+}
+:global(.dark) .title {
+  @apply text-[#9EA2C6];
 }
 .wrapperInputs {
   @apply md:flex md:justify-between md:flex-wrap mb-[60px] xl:mb-8 relative md:w-[608px] xl:w-[864px];
@@ -10,8 +16,29 @@
 .input {
   @apply w-[100%] md:w-[280px] xl:w-[264px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent mb-8 xl:mb-0
 }
+.inputRed {
+  @apply w-[100%] md:w-[280px] xl:w-[264px] border-b border-red-500 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent mb-8 xl:mb-0
+}
+:global(.dark) .input, :global(.dark) .textarea {
+  @apply border-stone-300;
+}
 .textarea {
   @apply w-[100%] xl:w-[264px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent
+}
+.textareaRed {
+  @apply w-[100%] md:w-[280px] xl:w-[264px] border-b border-red-500 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent mb-8 xl:mb-0
+}
+.input::placeholder,
+.textarea::placeholder,
+.inputRed::placeholder,
+.textareaRed::placeholder {
+  @apply text-[#9EA2C6]
+}
+.textarea:focus,
+.input:focus,
+.textareaRed:focus,
+.inputRed:focus {
+  @apply outline-0;
 }
 .wrapperErrorMsg {
   @apply md:flex md:justify-between md:flex-wrap absolute md:w-[608px] xl:w-[864px] top-[calc(100%_-_340px)] md:top-[calc(100%_-_278px)] xl:top-[calc(100%_-_118px)]
@@ -25,10 +52,7 @@
 .button {
   @apply rounded-[10px] border border-blue-600 block w-[226px] h-14 xl:w-[120px] xl:h-10 font-inter font-semibold text-xs text-blue-600 mx-auto xl:mr-0 transition-all mb-[52px] md:mb-[56px] xl:mb-[12px]
 }
-.button:hover {
-  @apply bg-blue-500 text-slate-50;
-}
-.button:focus {
+.button:hover, .button:focus {
   @apply bg-blue-500 text-slate-50;
 }
 .text {
