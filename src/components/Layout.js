@@ -37,12 +37,19 @@ const Layout = ({ children }) => {
 
       <main className="">
         {!mobileOpen && width < 768 && (
-          <button className="absolute right-5 top-8" onClick={handleClose}>
+          <button
+            className="absolute right-5 top-8"
+            onClick={() => setMobileOpen(true)}
+          >
             <BiMenu className="h-6 w-6" />
           </button>
         )}
         {mobileOpen && width < 768 && (
-          <MobileMenu handleClose={handleClose} isOpen={mobileOpen} />
+          <MobileMenu
+            setMobileOpen={setMobileOpen}
+            handleClose={handleClose}
+            mobileOpen={mobileOpen}
+          />
         )}
         <div className={!menuCollapsed ? ' mdOnly:ml-14' : 'ml-0'}>
           {children}

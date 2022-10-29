@@ -3,7 +3,7 @@ import { IconContext } from 'react-icons';
 import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
 // import * as s from './Toggler.module.css';
 
-const ToggleMode = ({ collapsed = falses }) => {
+const ToggleMode = ({ collapsed = false }) => {
   let websiteTheme;
 
   if (typeof window !== `undefined`) {
