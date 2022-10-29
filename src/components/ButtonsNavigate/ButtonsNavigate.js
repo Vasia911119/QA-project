@@ -39,7 +39,7 @@ const ButtonsNavigate = () => {
   };
   const resultArray = getResultArray();
   let pathname = typeof window !== 'undefined' ? window.location.pathname : '';
-  const currentIndex = resultArray.indexOf(pathname);
+  const currentIndex = pathname === '/' ? 0 : resultArray.indexOf(pathname);
   const navigation = resultIndex => {
     navigate(resultArray[resultIndex]);
   };
