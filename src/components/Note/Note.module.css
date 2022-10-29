@@ -1,8 +1,8 @@
 .wrapper {
-  @apply flex items-center rounded-[12px] border border-stone-200 shadow-md mt-[52px] backdrop-blur-[3px] relative bg-slate-50 bg-opacity-[65] max-w-[608px] mx-auto;
+  @apply flex items-center rounded-[12px] shadow-md mt-[52px] backdrop-blur-[3px] relative bg-slate-50 bg-opacity-[65] max-w-[608px] mx-auto;
 }
 :global(.dark) .wrapper {
-  @apply bg-[#252A41] bg-opacity-50 border-0;
+  @apply bg-[#252A41] bg-opacity-50;
 }
 .text {
   @apply font-inter font-medium text-sm text-stone-900 ml-[100px] py-6;
