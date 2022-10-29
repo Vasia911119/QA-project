@@ -1,22 +1,19 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from 'react';
+import { Link } from 'gatsby';
 
-import useSiteMetadata from '../queries/site-metadata'
-import Logo from './Logo'
+import useSiteMetadata from '../queries/site-metadata';
+import Logo from './Logo';
+import SearchBtnOpenModal from './SearchBlock/SearchBtnOpenModal';
 
 export default function Header() {
-  const { title } = useSiteMetadata()
+  const { title } = useSiteMetadata();
 
   return (
-    <header className="  py-2 px-4 pt-7 pb-4 border-b border-stone-400">
+    <header className="  border-b border-stone-400 py-2 px-4 pt-7 pb-4">
       <Link to={`/`} className="">
         <Logo title={title} />
       </Link>
-      <input
-        type="text"
-        className="w-full rounded text-sm p-3"
-        placeholder="Search"
-      />
+      <SearchBtnOpenModal />
     </header>
-  )
+  );
 }

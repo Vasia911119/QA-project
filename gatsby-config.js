@@ -242,5 +242,47 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+        name: 'pages',
+        engine: 'flexsearch',
+        engineOptions: {
+          tokenize: 'forward',
+        },
+        query: `
+          {
+            allMarkdownRemark {
+              nodes {
+                id
+                rawMarkdownBody
+                fields {
+                  slug
+                }
+                frontmatter {
+                  slug
+                  language
+                  title
+                  description
+                }
+              }
+            }
+          }
+        `,
+        ref: 'id',
+        index: ['title', 'body', 'description'],
+        store: ['id', 'slug', 'title', 'language', 'description'],
+        normalizer: ({ data }) =>
+          data.allMarkdownRemark.nodes.map(node => ({
+            id: node.id,
+
+            slug: node.frontmatter.slug,
+            title: node.frontmatter.title,
+            language: node.frontmatter.language,
+            description: node.frontmatter.description,
+            body: node.rawMarkdownBody,
+          })),
+      },
+    },
   ],
 };

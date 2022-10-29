@@ -8,6 +8,7 @@ import SwitchLanguages from './SwitchLanguages';
 import ToggleMode from './Toggler';
 
 import Accordion from './Accordion/Accordion';
+import SearchBtnOpenModal from './SearchBlock/SearchBtnOpenModal';
 
 export default function Navbar({ handleClose }) {
   const menuItems = useMenuStructure();
@@ -50,11 +51,12 @@ export default function Navbar({ handleClose }) {
         <Link to={`/`} onClick={handleClose} className="">
           <Logo title="Go-It" />
         </Link>
-        <input
+        {/* <input
           type="text"
           className="w-full rounded p-3 text-sm"
           placeholder="Search"
-        />
+        /> */}
+        <SearchBtnOpenModal />
       </div>
       <ul className="flex flex-col ">
         <li className="navigationItem ">
