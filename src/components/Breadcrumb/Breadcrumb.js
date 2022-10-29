@@ -11,14 +11,14 @@ const Breadcrumb = ({ title, name }) => {
     <div className={s.wrapper}>
       {name ? (
         <>
-          <Link to={`/${i18n.language}/`}>
+          <Link to={`/${i18n.language}/`} aria-label="home">
             <BiHome className={s.iconHome} alt="home" />
           </Link>
           <BiChevronRight className={s.iconNext} alt="next" />
         </>
       ) : (
         <>
-          <Link to={`/${i18n.language}/`}>
+          <Link to={`/${i18n.language}/`} aria-label="home">
             <BiHome className={s.iconHomeMain} alt="home" />
           </Link>
           <BiChevronRight className={s.iconNextMain} alt="next" />
