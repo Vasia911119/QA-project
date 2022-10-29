@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import Navbar from '../Navbar';
+import Navbar from '../Navbar/Navbar';
 import Header from '../Header';
 import Footer from '../Footer';
 
-function MobileMenu({ handleClose, isOpen }) {
+function MobileMenu({ setMobileOpen, handleClose, mobileOpen }) {
   return (
-    <div className={isOpen ? 'mobileMemuOpened' : 'mobileMemuClosed'}>
-      <Navbar handleClose={handleClose} />
+    <div className={mobileOpen ? 'mobileMemuOpened' : 'mobileMemuClosed'}>
+      <Navbar
+        setMobileOpen={setMobileOpen}
+        mobileOpen={mobileOpen}
+        handleClose={handleClose}
+      />
     </div>
   );
 }

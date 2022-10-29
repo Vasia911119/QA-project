@@ -1,12 +1,9 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from 'react';
 
-import useSiteMetadata from '../queries/site-metadata'
-
-export default function ContentSection() {
+export default function ContentSection({ children }) {
   return (
-    <div className="flex flex-col items-center justify-between py-2">
-      <ul></ul>
+    <div className="mx-auto flex flex-col items-center smOnly:px-3 mdOnly:py-14 mdOnly:px-11 xl:px-40 xl:py-10">
+      {children}
     </div>
-  )
+  );
 }

@@ -1,47 +1,49 @@
-import React from 'react'
-import { Link, useI18next } from 'gatsby-plugin-react-i18next'
-import Flag from 'react-world-flags'
+import React from 'react';
+import { Link, useI18next } from 'gatsby-plugin-react-i18next';
+import Flag from 'react-world-flags';
 
 const showLanguage = lang => {
-  return lang === 'uk' ? 'UA' : lang.toUpperCase()
-}
+  return lang === 'uk' ? 'UA' : lang.toUpperCase();
+};
 
 const showFlag = lang => {
   switch (lang) {
     case 'uk':
-      return 'UA'
+      return 'UA';
     case 'en':
-      return 'GB'
+      return 'GB';
     case 'ru':
-      return null
+      return null;
     default:
-      return null
+      return null;
   }
-}
+};
 
-const SwitchLanguages = () => {
-  const [open, setOpen] = React.useState(false)
-  const { languages, originalPath, language } = useI18next()
+const SwitchLanguages = ({ collapsed = false }) => {
+  const [open, setOpen] = React.useState(false);
+  const { languages, originalPath, language } = useI18next();
 
   const handleOpen = () => {
-    setOpen(!open)
-  }
+    setOpen(!open);
+  };
 
-  const langArray = languages.filter(lang => lang !== language)
+  const langArray = languages.filter(lang => lang !== language);
 
   return (
     <div>
       <button onClick={handleOpen} className="flex items-center">
         <Flag
           code={showFlag(language)}
-          className="w-6 h-6 !inline-block object-cover rounded-[50%] mr-3"
+          className=" !inline-block h-6 w-6 rounded-[50%] object-cover"
           fallback={
-            <span className="w-6 h-6 inline-block object-cover rounded-[50%] mr-3 bg-white"></span>
+            <span className=" inline-block h-6 w-6 rounded-[50%] bg-white object-cover"></span>
           }
         />
-        <p className="text-grey-350 hover:text-slate-50 transition-colors">
-          {showLanguage(language)}
-        </p>
+        {!collapsed && (
+          <p className="ml-3 text-grey-350 transition-colors hover:text-slate-50">
+            {showLanguage(language)}
+          </p>
+        )}
       </button>
       {open && (
         <ul className="languages">
@@ -56,22 +58,24 @@ const SwitchLanguages = () => {
                 >
                   <Flag
                     code={showFlag(lng)}
-                    className="w-6 h-6 !inline-block object-cover rounded-[50%] mr-3"
+                    className=" !inline-block h-6 w-6 rounded-[50%] object-cover"
                     fallback={
-                      <span className="w-6 h-6 inline-block object-cover rounded-[50%] mr-3 bg-white"></span>
+                      <span className=" inline-block h-6 w-6 rounded-[50%] bg-white object-cover"></span>
                     }
-                  />
-                  <p className="text-grey-350 hover:text-slate-50 transition-colors">
-                    {showLanguage(lng)}
-                  </p>
+                  />{' '}
+                  {!collapsed && (
+                    <p className="ml-3 text-grey-350 transition-colors hover:text-slate-50">
+                      {showLanguage(lng)}
+                    </p>
+                  )}
                 </Link>
               </li>
-            )
+            );
           })}
         </ul>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default SwitchLanguages
+export default SwitchLanguages;

@@ -1,0 +1,38 @@
+/* sidebar styles */
+
+.sidebarWrapper {
+  @apply z-20 flex h-screen  flex-col items-center bg-blue-950  py-10 text-base font-semibold text-grey-350 mdOnly:absolute xl:fixed;
+}
+.sidebarWrapperCollapsed {
+  @apply z-20 flex h-screen w-14  flex-col items-center bg-blue-950  py-10 text-base font-semibold text-grey-350 mdOnly:absolute xl:fixed;
+}
+.navigation {
+  @apply mr-auto mt-5 flex max-h-[532px] max-w-[348px] flex-col overflow-y-auto px-5;
+}
+.collapsedNavigation {
+  @apply mt-5 flex max-h-[532px] max-w-[348px] flex-col overflow-y-auto;
+}
+
+.navigationItem {
+  @apply mb-5 flex;
+}
+
+.activeMenu {
+  @apply text-slate-50;
+}
+.icon {
+  @apply mt-1 cursor-pointer;
+}
+.collapsedMenu {
+  @apply h-5 w-5 rotate-180;
+}
+.uncollapsedMenu {
+  @apply h-5 w-5;
+}
+
+.collapsedFooter {
+  @apply flex  w-full justify-between border-t border-stone-400 px-5 py-4;
+}
+.footer {
+  @apply flex h-32  w-full flex-col items-center justify-between border-t border-stone-400 py-4;
+}
