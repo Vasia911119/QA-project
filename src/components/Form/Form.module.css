@@ -29,7 +29,9 @@
   @apply w-[100%] md:w-[280px] xl:w-[264px] border-b border-red-500 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent mb-8 xl:mb-0
 }
 .input::placeholder,
-.textarea::placeholder {
+.textarea::placeholder,
+.inputRed::placeholder,
+.textareaRed::placeholder {
   @apply text-[#9EA2C6]
 }
 .textarea:focus,
