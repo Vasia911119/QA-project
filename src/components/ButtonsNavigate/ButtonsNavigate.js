@@ -56,11 +56,11 @@ const ButtonsNavigate = () => {
       <button
         onClick={prev}
         className={
-          currentIndex === 0 || pathname === '/'
+          currentIndex === 0 || pathname === '/' || pathname === ''
             ? s.buttonLeftDisabled
             : s.buttonLeft
         }
-        disabled={currentIndex === 0 || pathname === '/'}
+        disabled={currentIndex === 0 || pathname === '/' || pathname === ''}
         type="button"
       >
         <BiChevronLeft className={s.icon} alt="prev" />
