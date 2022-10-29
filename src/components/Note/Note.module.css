@@ -8,5 +8,5 @@
   @apply w-[40px] h-[40px] text-slate-50 absolute inset-2/4 translate-y-[-50%] translate-x-[-50%];
 }
 .iconWrapper {
-  @apply w-20 h-full bg-blue-500 rounded-l-[12px] justify-center absolute inset-0;
+  @apply w-20 bg-blue-500 rounded-l-[12px] justify-center absolute inset-0;
 }
