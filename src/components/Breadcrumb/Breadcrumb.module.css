@@ -7,10 +7,7 @@
 .iconHome {
   @apply w-[22px] h-[22px] text-stone-300 transition-all;
 }
-.iconHome:hover {
-  @apply text-stone-900;
-}
-.iconHome:focus {
+.iconHome:hover, .iconHome:focus {
   @apply text-stone-900;
 }
 .iconNextMain {
@@ -24,4 +21,18 @@
 }
 .textTitle {
   @apply ml-[1px];
+}
+:global(.dark) .iconHome,
+:global(.dark) .iconNext,
+:global(.dark) .text {
+  @apply text-[#9EA2C6];
+}
+:global(.dark) .iconHomeMain,
+:global(.dark) .iconNextMain,
+:global(.dark) .textTitle {
+  @apply text-slate-50;
+}
+:global(.dark) .iconHome:hover,
+:global(.dark) .iconHome:focus {
+  @apply text-slate-50;
 }
