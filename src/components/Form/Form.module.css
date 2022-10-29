@@ -16,9 +16,6 @@
 .input {
   @apply w-[100%] md:w-[280px] xl:w-[264px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent mb-8 xl:mb-0
 }
-.input::placeholder {
-  @apply text-[#9EA2C6]
-}
 .inputRed {
   @apply w-[100%] md:w-[280px] xl:w-[264px] border-b border-red-500 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent mb-8 xl:mb-0
 }
@@ -28,11 +25,12 @@
 .textarea {
   @apply w-[100%] xl:w-[264px] border-b border-stone-900 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent
 }
-.textarea::placeholder {
-  @apply text-[#9EA2C6]
-}
 .textareaRed {
   @apply w-[100%] md:w-[280px] xl:w-[264px] border-b border-red-500 font-inter font-medium text-sm text-[#9EA2C6] p-2 bg-transparent mb-8 xl:mb-0
+}
+.input::placeholder,
+.textarea::placeholder {
+  @apply text-[#9EA2C6]
 }
 .textarea:focus,
 .input:focus,
