@@ -3,14 +3,16 @@ import { graphql, useStaticQuery, navigate } from 'gatsby';
 import { BiChevronRight } from 'react-icons/bi';
 import { BiChevronLeft } from 'react-icons/bi';
 import * as s from './ButtonsNavigate.module.css';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 const ButtonsNavigate = () => {
+  const { i18n } = useTranslation();
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
         filter: {
           fields: { slug: { regex: "/" } }
-          frontmatter: { language: { eq: "uk" } }
+          frontmatter: { page_chapter_name: { ne: "home" } }
         }
         sort: { fields: frontmatter___page_range }
       ) {
@@ -18,17 +20,25 @@ const ButtonsNavigate = () => {
           fields {
             slug
           }
+          frontmatter {
+            language
+          }
         }
       }
     }
   `);
 
   const getResultArray = () => {
-    let result = ['/'];
-    data.allMarkdownRemark.nodes.map(item => result.push(item.fields.slug));
+    let result = [`/${i18n.language}/`];
+    data.allMarkdownRemark.nodes.map(item => {
+      if (item.frontmatter.language === i18n.language) {
+        result.push(item.fields.slug);
+      }
+    });
     return result;
   };
   const resultArray = getResultArray();
+  console.log(resultArray);
   let pathname = typeof window !== 'undefined' ? window.location.pathname : '';
   const currentIndex = resultArray.indexOf(pathname);
   const navigation = resultIndex => {
