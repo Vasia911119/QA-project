@@ -3,20 +3,22 @@ import { Link } from 'gatsby';
 import { BiHome } from 'react-icons/bi';
 import { BiChevronRight } from 'react-icons/bi';
 import * as s from './Breadcrumb.module.css';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 const Breadcrumb = ({ title, name }) => {
+  const { i18n } = useTranslation();
   return (
     <div className={s.wrapper}>
       {name ? (
         <>
-          <Link to="/">
+          <Link to={`/${i18n.language}/`}>
             <BiHome className={s.iconHome} alt="home" />
           </Link>
           <BiChevronRight className={s.iconNext} alt="next" />
         </>
       ) : (
         <>
-          <Link to="/">
+          <Link to={`/${i18n.language}/`}>
             <BiHome className={s.iconHomeMain} alt="home" />
           </Link>
           <BiChevronRight className={s.iconNextMain} alt="next" />
