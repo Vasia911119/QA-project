@@ -78,19 +78,21 @@ const Form = () => {
       <form method="POST" name="contact" onSubmit={handleSubmit(onSubmit)}>
         <div className={s.wrapperInputs}>
           <input
-            className={s.input}
+            className={errors.name === undefined ? s.input : s.inputRed}
             {...register('name')}
             placeholder={t(nameInput)}
           />
 
           <input
-            className={s.input}
+            className={errors.email === undefined ? s.input : s.inputRed}
             {...register('email')}
             placeholder={t(emailInput)}
           />
 
           <input
-            className={s.textarea}
+            className={
+              errors.message === undefined ? s.textarea : s.textareaRed
+            }
             {...register('message')}
             placeholder={t(messageInput)}
           />
