@@ -2,7 +2,7 @@
 title: Список розділів посиланнями
 links_chapter_item:
   - links_chapter_name: presentations
-    link_chapter_title_UA: Презетнтації
+    link_chapter_title_UA: Презентації
     link_chapter_title_EN: Presentations
     link_chapter_title_RU: Презентации
     link_chapter_range: "1"
