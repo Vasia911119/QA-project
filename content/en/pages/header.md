@@ -7,6 +7,8 @@ identifier: header
 language: en
 page_range: 1
 ---
+![header panel](/img/header1.jpeg)
+
 ## 1﻿. Link on Main Page
 
 In the right corner is a link to the main site of **GoIT** in the form of a logo.
@@ -17,9 +19,11 @@ Inside the navigation menu to move between resolved issues:
 
 The `"left"` arrow opens the previous question.
 
-The central button, which shows the number of the current question and through the slash "/" the total number of questions. Clicking on this button opens a list of resolved questions. Clicking on the button with the question number in the list opens the page with the corresponding question. a list of resolved issues opens.
+* Стрелка `"влево"` открывает предыдущий вопрос.
+* Посередине кнопка, на которой указан номер текущего вопроса и через слэш '"/"` общее количество вопросов. По клику на данную кнопку открывается выпадающий список решенных вопросов. Клик на кнопку с номером вопроса в выпадающем списке открывает страницу с соответствующим вопросом. открывается выпадающий список решенных вопросов.
+* Стрелка `"вправо"` открывает следующий вопрос.
 
-The `"right"` opens the next question.
+![navigation bar](/img/header2.jpg)
 
 ## 3. Localization icon
 
