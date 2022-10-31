@@ -1,6 +1,7 @@
 ---
 file_title: ua_templates
 link_chapter_name: templates
+chapter_range: "2"
 link_chapter_title: Шаблони
 language: uk
 identifier: links
