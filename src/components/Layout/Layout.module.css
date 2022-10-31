@@ -1,0 +1,15 @@
+.mainSection {
+    @apply relative mx-auto antialiased md:flex;
+}
+.collapsed {
+    @apply bg-blue-950 text-stone-400 md:w-[56px] md:min-w-[56px];
+}
+.uncollapsed {
+    @apply z-30 bg-blue-950 text-stone-400 mdOnly:absolute md:w-[348px] md:min-w-[348px];
+}
+.button {
+    @apply absolute right-5 top-8;
+}
+.biMenu {
+    @apply h-6 w-6
+}
