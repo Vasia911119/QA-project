@@ -1,7 +1,7 @@
 ---
 file_title: ua_presentations
 link_chapter_name: presentations
-link_chapter_title: Презетнтації
+link_chapter_title: Презентації
 language: uk
 identifier: links
 links_items:
