@@ -1,0 +1,6 @@
+.mobileMemuClosed {
+  @apply fixed left-0 overflow-hidden  bg-blue-950 text-stone-400  smOnly:top-0 smOnly:z-50 smOnly:h-screen smOnly:w-screen smOnly:translate-x-full smOnly:transition-transform md:hidden;
+}
+.mobileMemuOpened {
+  @apply fixed left-0 overflow-hidden bg-blue-950 text-stone-400  smOnly:top-0 smOnly:z-50 smOnly:h-screen smOnly:w-screen smOnly:translate-x-0 smOnly:transition-transform md:hidden;
+}
