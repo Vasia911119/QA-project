@@ -26,14 +26,16 @@ export default function Navbar({
   setMenuCollapsed,
 }) {
   const menuItems = useMenuStructure();
-  // const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const width = useWindowResize();
-  console.log(mobileOpen);
-  console.log(width);
+
   // ============= home page menu chapter (render only first page the home chapter) ================
   const menuIHomePage = menuItems.filter(
-    i => i.frontmatter.page_chapter_name === 'home'
+    i =>
+      i.frontmatter.page_chapter_name === 'home' &&
+      i.frontmatter.language === i18n.language
   );
+
   const homePageTitle = menuIHomePage[0].frontmatter.page_chapter_title;
 
   // ========================= =======================================
@@ -41,7 +43,9 @@ export default function Navbar({
   //====== filtering data for certain chapter menu by chapter name
   const buildNewPagesChapterStructure = function (allData, chapterName) {
     const menuItemsWithoutHomePage = allData.filter(
-      i => i.frontmatter.page_chapter_name === chapterName
+      i =>
+        i.frontmatter.page_chapter_name === chapterName &&
+        i.frontmatter.language === i18n.language
     );
     return menuItemsWithoutHomePage.reduce((acc, next) => {
       const curGroup = acc.sub ?? [];
@@ -54,6 +58,7 @@ export default function Navbar({
             title: next.frontmatter.page_title,
             slug: next.fields.slug,
             html: next.html,
+            position: next.frontmatter.page_range,
           },
         ],
       };
@@ -65,9 +70,16 @@ export default function Navbar({
     menuItems,
     'component'
   );
+  const homeDataComponent = buildNewPagesChapterStructure(menuItems, 'home');
+  console.log(homeDataComponent);
 
   // links chapters array
-  const linksMenu = menuItems.filter(i => i.frontmatter.link_chapter_name);
+  const linksMenu = menuItems.filter(
+    i =>
+      i.frontmatter.link_chapter_name &&
+      i.frontmatter.language === i18n.language
+  );
+  console.log(linksMenu);
 
   return (
     <div

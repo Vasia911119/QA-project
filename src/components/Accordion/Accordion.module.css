@@ -41,3 +41,6 @@
   /* flex-shrink: 1; */
   @apply rotate-180 cursor-pointer;
 }
+.arrow {
+  @apply h-7 w-7;
+}

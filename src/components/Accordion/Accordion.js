@@ -33,7 +33,7 @@ function Accordion({
               className={accordionStatus ? s.icon : s.iconRotate}
               onClick={handleClick}
             >
-              <BiChevronUp />
+              <BiChevronUp className={s.arrow} />
             </span>
           </div>
         ) : (
@@ -45,7 +45,7 @@ function Accordion({
               className={accordionStatus ? s.icon : s.iconRotate}
               onClick={handleClick}
             >
-              <BiChevronUp />
+              <BiChevronUp className={s.arrow} />
             </span>
           </div>
         )}
