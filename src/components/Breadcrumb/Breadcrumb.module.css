@@ -16,11 +16,14 @@
 .iconNext {
   @apply ml-[1px] w-[22px] h-[22px] text-stone-300;
 }
+.textWrapper {
+  @apply ml-[1px] max-w-[35%];
+}
 .text {
-  @apply ml-[1px] text-stone-300 truncate;
+  @apply text-stone-300 truncate;
 }
 .textTitle {
-  @apply ml-[1px] truncate;
+  @apply truncate;
 }
 :global(.dark) .iconHome,
 :global(.dark) .iconNext,

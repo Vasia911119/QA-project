@@ -30,6 +30,8 @@ const ButtonsNavigate = () => {
 
   // Отримуємо масив з адресами сторінок, по даному масиві буде відбуватись навігація кнопками Назад і Далі
   const getResultArray = () => {
+    const userLang = navigator.language || navigator.userLanguage;
+    console.log('defaultLanguage', userLang);
     const result = [`/${i18n.language}/`];
     data.allMarkdownRemark.nodes.map(item => {
       if (item.frontmatter.language === i18n.language) {
