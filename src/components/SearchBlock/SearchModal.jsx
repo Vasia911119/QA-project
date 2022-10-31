@@ -4,13 +4,32 @@ import React, { Fragment, useState } from 'react';
 import SearchResult from './SearchResult';
 import SearchField from './SearchField';
 import { Dialog, Transition } from '@headlessui/react';
-import { RiSearchLine } from 'react-icons/ri';
+import { RiEjectFill, RiSearchLine } from 'react-icons/ri';
 
-const query = graphql`
+// const query = graphql`
+//   {
+//     localSearchPages {
+//       publicIndexURL
+//       publicStoreURL
+//     }
+//   }
+// `;
+
+const queryFull = graphql`
   {
-    localSearchPages {
-      publicIndexURL
-      publicStoreURL
+    allMarkdownRemark {
+      nodes {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          language
+          title
+          description
+        }
+        rawMarkdownBody
+      }
     }
   }
 `;
@@ -18,25 +37,61 @@ const query = graphql`
 export const SearchModal = ({ closeModal, isOpen }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [pagesIndexStore, setPagesIndexStore] = useState(null);
-  const data = useStaticQuery(query);
+  // const data = useStaticQuery(query);
+  const dataFull = useStaticQuery(queryFull);
 
-  const {
-    publicStoreURL: pagesPublicStoreURL,
-    publicIndexURL: pagesPublicIndexURL,
-  } = data.localSearchPages;
+  // console.log(data);
+  const arrData = Array.from(dataFull.allMarkdownRemark.nodes);
+  console.log(arrData);
+  console.log(typeof arrData);
+  // function objToArr(data) {
+  //   const arrNodes = data
+  //   return arrNodes;
+  //   console.log(arrNodes);
+  // }
+  // const {
+  //   publicStoreURL: pagesPublicStoreURL,
+  //   publicIndexURL: pagesPublicIndexURL,
+  // } = data.localSearchPages;
+  // console.log(pagesPublicStoreURL);
+  // console.log(pagesPublicIndexURL);
 
-  const handleOnFocus = async () => {
+  // const handleOnFocus = async () => {
+  //   if (pagesIndexStore) return;
+
+  //   const [{ data: pagesIndex }, { data: pagesStore }] = await Promise.all([
+  //     axios.get(`${pagesPublicIndexURL}`),
+  //     axios.get(`${pagesPublicStoreURL}`),
+  //   ]);
+
+  //   setPagesIndexStore({
+  //     index: pagesIndex,
+  //     store: pagesStore,
+  //   });
+  // };
+
+  const handleOnFocus = arrData => {
     if (pagesIndexStore) return;
 
-    const [{ data: pagesIndex }, { data: pagesStore }] = await Promise.all([
-      axios.get(`${pagesPublicIndexURL}`),
-      axios.get(`${pagesPublicStoreURL}`),
-    ]);
+    setPagesIndexStore([...arrData]);
+    console.log(pagesIndexStore);
+    // const promiseResult = await new Promise((res, rej) => {
+    //   setTimeout(() => {
+    //     if (dataFull) {
+    //       // res(setPagesIndexStore([...dataFull.allMarkdownRemark.nodes]));
+    //       res(console.log(dataFull));
+    //     } else {
+    //       rej(error);
+    //     }
+    //   }, 0);
+    // });
 
-    setPagesIndexStore({
-      index: pagesIndex,
-      store: pagesStore,
-    });
+    // const pagesFullData = await new Promise ((res, rej) => {
+
+    // })[...dataFull.allMarkdownRemark.nodes];
+    // console.log(pagesFullData, 'pagesFullData');
+    // setPagesIndexStore(pagesFullData);
+    // console.log(pagesIndexStore, 'pagesIndexStore');
   };
 
   return (

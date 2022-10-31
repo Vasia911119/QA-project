@@ -252,7 +252,7 @@ module.exports = {
         },
         query: `
           {
-            allMarkdownRemark {
+            allMarkdownRemark(filter: {frontmatter: {language: {in: ["uk", "en", "ru"]}}}) {
               nodes {
                 id
                 rawMarkdownBody
@@ -260,23 +260,21 @@ module.exports = {
                   slug
                 }
                 frontmatter {
-                  slug
+                  description
                   language
                   title
-                  description
                 }
               }
             }
           }
         `,
         ref: 'id',
-        index: ['title', 'body', 'description'],
+        index: ['title', 'body', 'description', 'slug'],
         store: ['id', 'slug', 'title', 'language', 'description'],
         normalizer: ({ data }) =>
           data.allMarkdownRemark.nodes.map(node => ({
             id: node.id,
-
-            slug: node.frontmatter.slug,
+            slug: node.slug,
             title: node.frontmatter.title,
             language: node.frontmatter.language,
             description: node.frontmatter.description,

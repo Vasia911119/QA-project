@@ -8,7 +8,7 @@ function SearchField({ value, setValue, onFocus }) {
         className="flex  h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 text-[#9EA2C6] outline-transparent"
         placeholder="Що шукаємо?"
         type="text"
-        value={value}
+        value={value.toLowerCase().trim()}
         onChange={e => setValue(e.target.value)}
         onFocus={onFocus && onFocus}
       />

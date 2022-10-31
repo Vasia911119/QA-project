@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 function SearchResultItem({ page }) {
+  console.log(page);
   return (
-    <Link to={`/${page.slug.current}`} className="font-family: 'Inter' block">
-      <span className="font-medium">{page.description}</span>
-      <span className="font-normal">{page.body}</span>
+    <Link to={`${page.slug}`} className="font-family: 'Inter' block ">
+      <p className="font-medium mb-1">description</p>
+      <p className="font-normal">result</p>
     </Link>
   );
 }
