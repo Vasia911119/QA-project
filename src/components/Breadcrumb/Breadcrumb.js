@@ -26,9 +26,13 @@ const Breadcrumb = ({ title, name }) => {
       )}
       {name && (
         <>
-          <span className={s.text}>{name}</span>
+          <div className={s.textWrapper}>
+            <p className={s.text}>{name}</p>
+          </div>
           <BiChevronRight className={s.iconNext} alt="next" />
-          <span className={s.textTitle}>{title}</span>
+          <div className={s.textWrapper}>
+            <p className={s.textTitle}>{title}</p>
+          </div>
         </>
       )}
     </div>
