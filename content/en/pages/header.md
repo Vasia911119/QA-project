@@ -17,11 +17,9 @@ In the right corner is a link to the main site of **GoIT** in the form of a logo
 
 Inside the navigation menu to move between resolved issues:
 
-The `"left"` arrow opens the previous question.
-
-* Стрелка `"влево"` открывает предыдущий вопрос.
-* Посередине кнопка, на которой указан номер текущего вопроса и через слэш '"/"` общее количество вопросов. По клику на данную кнопку открывается выпадающий список решенных вопросов. Клик на кнопку с номером вопроса в выпадающем списке открывает страницу с соответствующим вопросом. открывается выпадающий список решенных вопросов.
-* Стрелка `"вправо"` открывает следующий вопрос.
+* The `"left"` arrow opens the previous question.
+* In the middle is a button with the number of the current question and, through a slash '"/"`, the total number of questions. By clicking on this button, a drop-down list of resolved issues opens. Clicking on the button with the question number in the drop-down list opens the page with the corresponding question. A drop-down list of resolved issues opens.
+* The `"right"` arrow opens the next question.
 
 ![navigation bar](/img/header2.jpg)
 
