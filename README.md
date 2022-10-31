@@ -1,10 +1,13 @@
 ## Localization
 
-Плагин [gatsby-plugin-react-i18next](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next) с React@17.0.2 работает в версии 1.2.3
+Плагин
+[gatsby-plugin-react-i18next](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next)
+с React@17.0.2 работает в версии 1.2.3
 
 Инструкция:
 
-1. Добавить настройки в файл `gatsby-config.js` (из [документации](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next))
+1. Добавить настройки в файл `gatsby-config.js` (из
+   [документации](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next))
 
 2. Создать файлы-источники данных для переключения языков
 
@@ -20,14 +23,21 @@
 
 Для получения доступа к этим данным используется хук `useTranslation`.
 
-3. Добавить запрос `graphql` на каждую страницу (из [документации](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next))
+3. Добавить запрос `graphql` на каждую страницу (из
+   [документации](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next))
 
-4. Для смены языка используется компонент `SwitchLanguages` (из [документации](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next))
+4. Для смены языка используется компонент `SwitchLanguages` (из
+   [документации](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next))
 
-5. В любом месте проекта есть доступ к языку, выбранному пользователем. Если язык данных, которые приходят с админ-панели Netlify CMS, совпадает с языком, выбранным пользователем на странице, рендерятся только эти данные
+5. В любом месте проекта есть доступ к языку, выбранному пользователем. Если
+   язык данных, которые приходят с админ-панели Netlify CMS, совпадает с языком,
+   выбранным пользователем на странице, рендерятся только эти данные
 
-6. По умолчанию будет выбран язык браузера, если он есть в массиве языков проекта (так работает [плагин](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next))
-   Для принудительного изменения языка по умолчанию (с русского на украинский) можно использовать костыль:
+6. По умолчанию будет выбран язык браузера, если он есть в массиве языков
+   проекта (так работает
+   [плагин](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next))
+   Для принудительного изменения языка по умолчанию (с русского на украинский)
+   можно использовать костыль:
 
 ```
 React.useEffect(() => {
@@ -46,7 +56,28 @@ React.useEffect(() => {
 
 [Инструкция по созданию темной темы](https://javascript.plainenglish.io/how-to-add-dark-mode-in-a-gatsby-website-23df7289b220)
 
-Теперь при переключении темы к `html` будет добавляться класс `dark`
+Есть 3 варианта темы:
+
+- от системы пользователя (по умолчанию);
+- светлая тема;
+- темная тема.
+
+Поэтому необходима дополнительная проверка на вариант темы при рендере
+компонента `Toggler`:
+
+```
+{theme === 'dark' && (
+  <>
+    <HiOutlineMoon /> {!collapsed ? 'Dark' : ''}
+  </>
+)}
+
+{theme === 'light' && (
+  <>
+    <HiOutlineSun /> {!collapsed ? 'Light' : ''}
+  </>
+)}
+```
 
 Помимо этого, в файл `tailwind.config.js` добавить:
 
@@ -56,6 +87,8 @@ module.exports = {
   // ...
 }
 ```
+
+Теперь при переключении темы к `html` будет добавляться класс `dark`.
 
 Для написания стилей темной темы используется синтаксис `dark:...`
 

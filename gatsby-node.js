@@ -40,7 +40,6 @@ exports.createPages = ({ actions, graphql }) => {
         page.frontmatter.slug
       );
       const identifier = page.frontmatter.identifier;
-      console.log(slug);
       createPage({
         path: slug,
         component: path.resolve(`src/templates/component.js`),
