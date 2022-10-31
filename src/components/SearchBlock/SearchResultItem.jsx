@@ -3,9 +3,13 @@ import { Link } from 'gatsby';
 
 function SearchResultItem({ page }) {
   console.log(page);
+
   return (
-    <Link to={`${page.slug}`} className="font-family: 'Inter' block ">
-      <p className="font-medium mb-1">description</p>
+    <Link
+      to={`${page.fields.slug}`}
+      className="font-family: 'Inter' flex flex-col gap-2"
+    >
+      <h4 className="mb-1 font-medium">description</h4>
       <p className="font-normal">result</p>
     </Link>
   );

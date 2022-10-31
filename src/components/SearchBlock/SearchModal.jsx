@@ -5,6 +5,7 @@ import SearchResult from './SearchResult';
 import SearchField from './SearchField';
 import { Dialog, Transition } from '@headlessui/react';
 import { RiEjectFill, RiSearchLine } from 'react-icons/ri';
+import { useEffect } from 'react';
 
 // const query = graphql`
 //   {
@@ -41,9 +42,10 @@ export const SearchModal = ({ closeModal, isOpen }) => {
   const dataFull = useStaticQuery(queryFull);
 
   // console.log(data);
-  const arrData = Array.from(dataFull.allMarkdownRemark.nodes);
-  console.log(arrData);
-  console.log(typeof arrData);
+  // const arrData = Array.from(dataFull.allMarkdownRemark.nodes);
+  const { nodes: arrData } = dataFull.allMarkdownRemark;
+
+  // console.log(typeof arrData);
   // function objToArr(data) {
   //   const arrNodes = data
   //   return arrNodes;
@@ -70,29 +72,38 @@ export const SearchModal = ({ closeModal, isOpen }) => {
   //   });
   // };
 
-  const handleOnFocus = arrData => {
-    if (pagesIndexStore) return;
+  const handleOnFocus = () => {
+    // if (pagesIndexStore.length === 0) return;
 
-    setPagesIndexStore([...arrData]);
-    console.log(pagesIndexStore);
-    // const promiseResult = await new Promise((res, rej) => {
-    //   setTimeout(() => {
-    //     if (dataFull) {
-    //       // res(setPagesIndexStore([...dataFull.allMarkdownRemark.nodes]));
-    //       res(console.log(dataFull));
-    //     } else {
-    //       rej(error);
-    //     }
-    //   }, 0);
-    // });
-
-    // const pagesFullData = await new Promise ((res, rej) => {
-
-    // })[...dataFull.allMarkdownRemark.nodes];
-    // console.log(pagesFullData, 'pagesFullData');
-    // setPagesIndexStore(pagesFullData);
-    // console.log(pagesIndexStore, 'pagesIndexStore');
+    if (arrData) {
+      setPagesIndexStore(arrData);
+    }
   };
+
+  useEffect(() => {
+    handleOnFocus();
+  }, [handleOnFocus]);
+
+  // setPagesIndexStore(arrData);
+  // console.log(pagesIndexStore);
+  // const promiseResult = await new Promise((res, rej) => {
+  //   setTimeout(() => {
+  //     if (dataFull) {
+  //       // res(setPagesIndexStore([...dataFull.allMarkdownRemark.nodes]));
+  //       res(console.log(dataFull));
+  //     } else {
+  //       rej(error);
+  //     }
+  //   }, 0);
+  // });
+
+  // const pagesFullData = await new Promise ((res, rej) => {
+
+  // })[...dataFull.allMarkdownRemark.nodes];
+  // console.log(pagesFullData, 'pagesFullData');
+  // setPagesIndexStore(pagesFullData);
+  // console.log(pagesIndexStore, 'pagesIndexStore');
+  // };
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -128,11 +139,7 @@ export const SearchModal = ({ closeModal, isOpen }) => {
                     className="absolute inset-y-1/2 left-3 -translate-y-1/2"
                   />
 
-                  <SearchField
-                    setValue={setSearchQuery}
-                    value={searchQuery}
-                    onFocus={handleOnFocus}
-                  />
+                  <SearchField setValue={setSearchQuery} value={searchQuery} />
                 </div>
 
                 {searchQuery && pagesIndexStore && (

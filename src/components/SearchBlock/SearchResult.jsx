@@ -4,6 +4,7 @@ import { useFlexSearch } from 'react-use-flexsearch';
 import SearchResultItem from './SearchResultItem';
 
 function SearchResult({ searchQuery, pagesIndexStore }) {
+  console.log(pagesIndexStore);
   // const pagesResult = useFlexSearch(
   //   searchQuery,
   //   JSON.stringify(pagesIndexStore.index),
@@ -15,13 +16,15 @@ function SearchResult({ searchQuery, pagesIndexStore }) {
   const pagesResult = [];
   console.log(typeof pagesIndexStore);
   console.log(pagesIndexStore);
+
   pagesIndexStore.filter(page => {
     if (
-      page.body.toLowerCase().includes(searchQuery) ||
-      page.title.toLowerCase().includes(searchQuery)
+      page.rawMarkdownBody.toLowerCase().includes(searchQuery) ||
+      page.frontmatter.title.toLowerCase().includes(searchQuery)
     ) {
-      pagesResult.push(page.fields.slug);
+      pagesResult.push(page);
     }
+
     return pagesResult;
   });
 
@@ -30,17 +33,15 @@ function SearchResult({ searchQuery, pagesIndexStore }) {
   }
 
   return (
-    <>hello</>
-    // <>
-    //   {pagesResult.length > 0 && (
-    //     <div className="py-2 px-4 ">
-    //       <p>Search Result</p>
-    //       {pagesResult.map(res => (
-    //         <SearchResultItem key={res.id} page={res} />
-    //       ))}
-    //     </div>
-    //   )}
-    // </>
+    <>
+      {pagesResult.length > 0 && (
+        <div className="py-2 px-4 ">
+          {pagesResult.map(res => (
+            <SearchResultItem key={res.id} page={res} />
+          ))}
+        </div>
+      )}
+    </>
 
     // <>
     //   {pagesResult.map(res => (

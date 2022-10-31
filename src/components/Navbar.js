@@ -14,19 +14,23 @@ export default function Navbar({ handleClose }) {
   const menuItems = useMenuStructure();
   // const { t, i18n } = useTranslation();
 
+  // console.log(menuItems);
+
   // home page menu chapter
   const menuIHomePage = menuItems.filter(
     i => i.frontmatter.page_chapter_name === 'home'
   );
   const homePageTitle = menuIHomePage[0].frontmatter.page_chapter_title;
-  console.log(menuIHomePage);
+  // console.log(menuIHomePage);
   // components chapter
 
   const menuItemsWithoutHomePage = menuItems.filter(
     i => i.frontmatter.page_chapter_name === 'component'
   );
+
   const accordionData = menuItemsWithoutHomePage.reduce((acc, next) => {
     const curGroup = acc.sub ?? [];
+
     return {
       ...acc,
       title: next.frontmatter.page_chapter_title,
@@ -43,7 +47,6 @@ export default function Navbar({ handleClose }) {
 
   // links chapters
   const linksMenu = menuItems.filter(i => i.frontmatter.link_chapter_name);
-  console.log(linksMenu);
 
   return (
     <div className="navigationScroll max-h-[600px] overflow-y-auto py-6 px-5 text-base font-semibold  text-grey-350">
@@ -73,6 +76,7 @@ export default function Navbar({ handleClose }) {
             content={accordionData.sub}
           />
         </li>
+
         {/* {linksMenu.map(i => (
           <li className="navigationItem ">
             <div className="navigationItemIcon"></div>

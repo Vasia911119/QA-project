@@ -1,7 +1,6 @@
 import React from 'react';
 
-function SearchField({ value, setValue, onFocus }) {
-  console.log(value);
+function SearchField({ value, setValue }) {
   return (
     <div>
       <input
@@ -10,7 +9,6 @@ function SearchField({ value, setValue, onFocus }) {
         type="text"
         value={value.toLowerCase().trim()}
         onChange={e => setValue(e.target.value)}
-        onFocus={onFocus && onFocus}
       />
     </div>
   );
