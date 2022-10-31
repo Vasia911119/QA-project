@@ -5,24 +5,24 @@ import React from 'react';
 export default function Logo({ title, className, rotate = false }) {
   return rotate ? (
     <StaticImage
-      src="../images/logo.png"
+      src="../images/logo.svg"
       formats={['auto', 'webp', 'avif']}
       alt={title}
       title={title}
       className={'block'}
       placeholder="blurred"
-      width={48}
+      width={50}
       height={16}
     />
   ) : (
     <StaticImage
-      src="../images/logo.png"
+      src="../images/logo.svg"
       formats={['auto', 'webp', 'avif']}
       alt={title}
       title={title}
       className={'mb-5'}
       placeholder="blurred"
-      width={94}
+      width={100}
       height={32}
     />
   );

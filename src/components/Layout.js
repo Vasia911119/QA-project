@@ -10,13 +10,23 @@ import MobileMenu from './MobileMenu/MobileMenu';
 const Layout = ({ children }) => {
   const width = useWindowResize();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [menuCollapsed, setMenuCollapsed] = useState(true);
+  const [menuCollapsed, setMenuCollapsed] = useState(false);
+  const [rememberMenuPosition, setRememberMenuPosition] = useState(false);
 
+  console.log(width);
   const handleClose = () => setMobileOpen(false);
-
+  console.log('rememberMenuPosition', rememberMenuPosition);
   useEffect(() => {
     if (width > 768 && mobileOpen) setMobileOpen(false);
+    if (width < 1280 && !menuCollapsed) setMenuCollapsed(true);
+    if (width > 1280 && menuCollapsed) {
+      setMenuCollapsed(false);
+      // setRememberMenuPosition(true);
+    }
   }, [width]);
+  useEffect(() => {
+    if (width < 1280) setMenuCollapsed(true);
+  }, []);
 
   return (
     <section className="relative mx-auto antialiased md:flex">

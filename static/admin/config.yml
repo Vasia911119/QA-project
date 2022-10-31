@@ -598,7 +598,7 @@ collections:
     media_folder: '/static/img'
     public_folder: /img
     description:
-      'Розділи українською мовою. Для створення нового розділу, будь ласка,
+      'Розділи англійською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
     create: true
     delete: true
@@ -702,7 +702,7 @@ collections:
     media_folder: '/static/img'
     public_folder: /img
     description:
-      'Розділи українською мовою. Для створення нового розділу, будь ласка,
+      'Розділи російською мовою. Для створення нового розділу, будь ласка,
       спочатку додайте його в колекцію List of Chapters'
     create: true
     delete: true

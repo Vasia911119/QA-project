@@ -22,6 +22,7 @@ export default function useMenuStructure() {
                 url_adress
               }
               page_range
+              chapter_range
             }
             fields {
               slug

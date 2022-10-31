@@ -52,13 +52,26 @@ function Accordion({
         <ul className={accordionStatus ? s.uncollapsed : s.collapsed}>
           {content.map(i => (
             <li key={i.slug || i.link_title}>
-              <Link
-                onClick={handleClose}
-                target={i.url_adress ? '_blank' : null}
-                to={i.slug || i.url_adress}
-              >
-                {i.title || i.link_title}
-              </Link>
+              {i.link_title && (
+                <a
+                  className={s.sublink}
+                  onClick={handleClose}
+                  target={i.url_adress ? '_blank' : null}
+                  to={i.url_adress}
+                >
+                  {i.link_title}
+                </a>
+              )}
+              {i.slug && (
+                <Link
+                  className={s.sublink}
+                  onClick={handleClose}
+                  target={i.url_adress ? '_blank' : null}
+                  to={i.slug}
+                >
+                  {i.title}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
