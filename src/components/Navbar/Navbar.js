@@ -98,36 +98,49 @@ export default function Navbar({
       i.frontmatter.link_chapter_name &&
       i.frontmatter.language === i18n.language
   );
-
+  console.log(linksMenus);
   return (
     <div
       className={menuCollapsed ? s.sidebarWrapperCollapsed : s.sidebarWrapper}
     >
       <div
         className={
-          menuCollapsed
+          mobileOpen
+            ? 'items  flex w-full flex-row-reverse  items-center justify-between border-b-[2px] border-[#9EA2C6] px-5 pb-7'
+            : menuCollapsed
             ? 'flex h-32 w-full flex-col items-center justify-between border-b border-stone-400 pb-4'
-            : 'w-full border-b border-stone-400  px-5 pb-4'
+            : 'flef w-full flex-col  border-b border-stone-400 px-5 pb-4'
         }
       >
         {mobileOpen && (
           <button
-            className="absolute right-5 top-8"
+            className={s.closeModalButton}
             onClick={() => setMobileOpen(false)}
           >
-            <AiOutlineClose clsassName="h-6 w-6" />
+            <AiOutlineClose />
           </button>
         )}
         <Link
           to={`/`}
           onClick={handleClose}
-          className={menuCollapsed ? 'mt-8 block w-[50px] -rotate-90' : 'mb-9 '}
+          className={
+            mobileOpen
+              ? ' mb - 0'
+              : menuCollapsed
+              ? 'mt-8 block w-[50px] -rotate-90'
+              : 'mb-9 '
+          }
         >
-          <Logo rotate={menuCollapsed} className={'mb-5 block'} title="Go-It" />
+          <Logo
+            rotate={menuCollapsed}
+            className={mobileOpen ? 'mb-5 block' : 'mb-0 block'}
+            title="Go-It"
+          />
         </Link>
-        {menuCollapsed ? (
+
+        {menuCollapsed || mobileOpen ? (
           <BiSearch
-            className={'h-5 w-5 hover:text-slate-50 focus:text-slate-50'}
+            className={'h-6 w-6 hover:text-slate-50 focus:text-slate-50'}
           />
         ) : (
           <input
@@ -140,10 +153,14 @@ export default function Navbar({
       <ul
         style={menuCollapsed ? { maxWidth: '56px' } : null}
         className={`navigationScroll ${
-          menuCollapsed ? s.collapsedNavigation : s.navigation
+          menuCollapsed
+            ? s.navigationCollapsed
+            : mobileOpen
+            ? s.navigationMobile
+            : s.navigation
         }`}
       >
-        <li className={s.navigationItem}>
+        <li className={mobileOpen ? s.navigationItemMobile : s.navigationItem}>
           <Link to={'/'}>
             <BiHomeAlt className={s.icon} />
           </Link>
@@ -165,9 +182,15 @@ export default function Navbar({
               menuItems,
               i
             );
+            // console.log(accordionDataComponent);
             if (accordionDataComponent)
               return (
-                <li key={i} className={s.navigationItem}>
+                <li
+                  key={i}
+                  className={
+                    mobileOpen ? s.navigationItemMobile : s.navigationItem
+                  }
+                >
                   <div
                     onClick={() => setMenuCollapsed(false)}
                     className={s.icon}
@@ -184,24 +207,29 @@ export default function Navbar({
               );
           })}
         {linksMenus.length &&
-          linksMenus.map((i, index) => (
-            <li
-              className={s.navigationItem}
-              key={i.frontmatter.link_chapter_title}
-            >
-              <div onClick={() => setMenuCollapsed(false)} className={s.icon}>
-                {linkCaptersIcons[index]}
-              </div>
+          linksMenus.map((i, index) => {
+            console.log(i);
+            return (
+              <li
+                className={
+                  mobileOpen ? s.navigationItemMobile : s.navigationItem
+                }
+                key={i.frontmatter.link_chapter_title}
+              >
+                <div onClick={() => setMenuCollapsed(false)} className={s.icon}>
+                  {linkCaptersIcons[index]}
+                </div>
 
-              <Accordion
-                icon={linkCaptersIcons[index]}
-                className={menuCollapsed ? 'hidden' : 'ml-4 w-full'}
-                handleClose={handleClose}
-                title={i.frontmatter.link_chapter_title}
-                content={i.frontmatter.links_items}
-              />
-            </li>
-          ))}
+                <Accordion
+                  icon={linkCaptersIcons[index]}
+                  className={menuCollapsed ? 'hidden' : 'ml-4 w-full'}
+                  handleClose={handleClose}
+                  title={i.frontmatter.link_chapter_title}
+                  content={i.frontmatter.links_items}
+                />
+              </li>
+            );
+          })}
       </ul>
       <div className={menuCollapsed ? s.footer : s.collapsedFooter}>
         <SwitchLanguages collapsed={menuCollapsed} />

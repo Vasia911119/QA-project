@@ -20,7 +20,6 @@ export default function Logo({ title, className, rotate = false }) {
       formats={['auto', 'webp', 'avif']}
       alt={title}
       title={title}
-      className={'mb-5'}
       placeholder="blurred"
       width={100}
       height={32}

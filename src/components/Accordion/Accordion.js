@@ -51,22 +51,22 @@ function Accordion({
         )}
         <ul className={accordionStatus ? s.uncollapsed : s.collapsed}>
           {content.map(i => (
-            <li key={i.slug || i.link_title}>
+            <li key={i.link_title}>
               {i.link_title && (
                 <a
                   className={s.sublink}
                   onClick={handleClose}
-                  target={i.url_adress ? '_blank' : null}
-                  to={i.url_adress}
+                  target={'_blank'}
+                  href={i.url_adress}
                 >
                   {i.link_title}
                 </a>
               )}
               {i.slug && (
                 <Link
+                  key={i.slug}
                   className={s.sublink}
                   onClick={handleClose}
-                  target={i.url_adress ? '_blank' : null}
                   to={i.slug}
                 >
                   {i.title}

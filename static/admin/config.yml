@@ -77,7 +77,7 @@ collections:
                 label: 'Page chapter range',
                 name: 'chapter_range',
                 widget: 'number',
-                required: false,
+                required: true,
                 value_type: 'int',
                 min: 1,
                 step: 1,
@@ -186,13 +186,13 @@ collections:
           label: 'Page range',
           name: 'page_range',
           widget: 'number',
-          required: false,
+          required: true,
           value_type: 'int',
           min: 1,
           step: 1,
           hint:
-            "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
-            розміщення розділу на веб-сторінці (зверху вниз)",
+            "*Обов'язкове поле. Введіть цифру, що позначатиме черговість
+            розміщення веб-сторінки в розділу (зверху вниз)",
         },
       ]
 
@@ -293,13 +293,13 @@ collections:
           label: 'Page range',
           name: 'page_range',
           widget: 'number',
-          required: false,
+          required: true,
           value_type: 'int',
           min: 1,
           step: 1,
           hint:
-            "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
-            розміщення розділу на веб-сторінці (зверху вниз)",
+            "*Обов'язкове поле. Введіть цифру, що позначатиме черговість
+            розміщення веб-сторінки в розділу (зверху вниз)",
         },
       ]
 
@@ -400,13 +400,13 @@ collections:
           label: 'Page range',
           name: 'page_range',
           widget: 'number',
-          required: false,
+          required: true,
           value_type: 'int',
           min: 1,
           step: 1,
           hint:
-            "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
-            розміщення розділу на веб-сторінці (зверху вниз)",
+            "*Обов'язкове поле. Введіть цифру, що позначатиме черговість
+            розміщення веб-сторінки в розділу (зверху вниз)",
         },
       ]
 
@@ -476,12 +476,12 @@ collections:
                 label: 'Links chapter range',
                 name: 'link_chapter_range',
                 widget: 'number',
-                required: false,
+                required: true,
                 value_type: 'int',
                 min: 1,
                 step: 1,
                 hint:
-                  "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
+                  "*Ообов'язкове поле. Введіть цифру, що позначатиме черговість
                   розміщення розділу на веб-сторінці (зверху вниз)",
               },
             ],
@@ -580,13 +580,13 @@ collections:
                 label: 'Links range',
                 name: 'links_range',
                 widget: 'number',
-                required: false,
+                required: true,
                 value_type: 'int',
                 min: 1,
                 step: 1,
                 hint:
-                  "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
-                  розміщення розділу на веб-сторінці (зверху вниз)",
+                  "*Обов'язкове поле. Введіть цифру, що позначатиме черговість
+                  розміщення посилань в розділу (зверху вниз)",
               },
             ],
         },
@@ -684,13 +684,13 @@ collections:
                 label: 'Links range',
                 name: 'links_range',
                 widget: 'number',
-                required: false,
+                required: true,
                 value_type: 'int',
                 min: 1,
                 step: 1,
                 hint:
-                  "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
-                  розміщення розділу на веб-сторінці (зверху вниз)",
+                  "*Обов'язкове поле. Введіть цифру, що позначатиме черговість
+                  розміщення посилань в розділу (зверху вниз)",
               },
             ],
         },
@@ -788,13 +788,13 @@ collections:
                 label: 'Links range',
                 name: 'links_range',
                 widget: 'number',
-                required: false,
+                required: true,
                 value_type: 'int',
                 min: 1,
                 step: 1,
                 hint:
-                  "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
-                  розміщення розділу на веб-сторінці (зверху вниз)",
+                  "*Обов'язкове поле. Введіть цифру, що позначатиме черговість
+                  розміщення посилань в розділу (зверху вниз)",
               },
             ],
         },
