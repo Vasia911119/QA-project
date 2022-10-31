@@ -1,6 +1,7 @@
 ---
 file_title: ru_presentations
 link_chapter_name: presentations
+chapter_range: "1"
 link_chapter_title: Презентации
 language: ru
 identifier: links
