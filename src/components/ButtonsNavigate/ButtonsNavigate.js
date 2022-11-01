@@ -6,7 +6,10 @@ import * as s from './ButtonsNavigate.module.css';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 const ButtonsNavigate = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { next, previous } = t('button', {
+    returnObjects: true,
+  });
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
@@ -59,17 +62,17 @@ const ButtonsNavigate = () => {
   const navigation = resultIndex => {
     navigate(resultArray[resultIndex]);
   };
-  const prev = () => {
+  const goPrevious = () => {
     navigation(currentIndex - 1);
   };
-  const next = () => {
+  const goNext = () => {
     navigation(currentIndex + 1);
   };
 
   return (
     <div className={s.wrapper}>
       <button
-        onClick={prev}
+        onClick={goPrevious}
         className={
           currentIndex === 0 || pathname === '/' || pathname === ''
             ? s.buttonLeftDisabled
@@ -78,11 +81,11 @@ const ButtonsNavigate = () => {
         disabled={currentIndex === 0 || pathname === '/' || pathname === ''}
         type="button"
       >
-        <BiChevronLeft className={s.icon} alt="prev" />
-        Назад
+        <BiChevronLeft className={s.icon} alt="previous" />
+        {t(previous)}
       </button>
       <button
-        onClick={next}
+        onClick={goNext}
         className={
           currentIndex === resultArray.length - 1
             ? s.buttonRightDisabled
@@ -91,7 +94,7 @@ const ButtonsNavigate = () => {
         disabled={currentIndex === resultArray.length - 1}
         type="button"
       >
-        Далі
+        {t(next)}
         <BiChevronRight className={s.icon} alt="next" />
       </button>
     </div>

@@ -1,11 +1,12 @@
 import 'fontsource-inter';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import useWindowResize from '../hooks/useWindowResize';
-import Navbar from './Navbar/Navbar';
+import useWindowResize from '../../hooks/useWindowResize';
+import Navbar from '../Navbar/Navbar';
 import { BiMenu } from 'react-icons/bi';
-import ContentSection from './ContentSection';
-import MobileMenu from './MobileMenu/MobileMenu';
+import ContentSection from '../ContentSection';
+import MobileMenu from '../MobileMenu/MobileMenu';
+import * as s from './Layout.module.css';
 
 const Layout = ({ children }) => {
   const width = useWindowResize();
@@ -29,15 +30,9 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <section className="relative mx-auto antialiased md:flex">
+    <section className={s.mainSection}>
       {width >= 768 && (
-        <div
-          className={
-            menuCollapsed
-              ? 'bg-blue-950 text-stone-400 md:w-[56px] md:min-w-[56px]'
-              : 'z-32 bg-blue-950  text-stone-400 mdOnly:absolute md:w-[348px] md:min-w-[348px]'
-          }
-        >
+        <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
           <Navbar
             setMenuCollapsed={setMenuCollapsed}
             menuCollapsed={menuCollapsed}
@@ -47,11 +42,8 @@ const Layout = ({ children }) => {
 
       <main className="">
         {!mobileOpen && width < 768 && (
-          <button
-            className="absolute right-5 top-8"
-            onClick={() => setMobileOpen(true)}
-          >
-            <BiMenu className="h-6 w-6" />
+          <button className={s.button} onClick={() => setMobileOpen(true)}>
+            <BiMenu className={s.biMenu} />
           </button>
         )}
         {mobileOpen && width < 768 && (

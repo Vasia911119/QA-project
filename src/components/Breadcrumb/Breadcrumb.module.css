@@ -1,5 +1,5 @@
 .wrapper {
-  @apply flex items-center text-[10px] font-inter font-semibold sm:text-sm text-stone-900 mb-6;
+  @apply flex items-center font-inter font-semibold text-sm text-stone-900 mb-6;
 }
 .iconHomeMain {
   @apply w-[22px] h-[22px];
@@ -16,11 +16,14 @@
 .iconNext {
   @apply ml-[1px] w-[22px] h-[22px] text-stone-300;
 }
+.textWrapper {
+  @apply ml-[1px] max-w-[35%];
+}
 .text {
-  @apply ml-[1px] text-stone-300;
+  @apply text-stone-300 truncate;
 }
 .textTitle {
-  @apply ml-[1px];
+  @apply truncate;
 }
 :global(.dark) .iconHome,
 :global(.dark) .iconNext,
