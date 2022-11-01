@@ -125,27 +125,27 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
-    {
-      resolve: 'gatsby-plugin-next-seo',
-      options: {
-        title,
-        language: 'en',
-        description,
-        canonical: siteUrl,
-        openGraph: {
-          type: 'website',
-          locale: 'en_US',
-          url: siteUrl,
-          description,
-          title,
-          site_name: title,
-        },
-        twitter: {
-          site: social.twitter,
-          cardType: 'summary_large_image',
-        },
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-next-seo',
+    //   options: {
+    //     title,
+    //     language: 'en',
+    //     description,
+    //     canonical: siteUrl,
+    //     openGraph: {
+    //       type: 'website',
+    //       locale: 'en_US',
+    //       url: siteUrl,
+    //       description,
+    //       title,
+    //       site_name: title,
+    //     },
+    //     twitter: {
+    //       site: social.twitter,
+    //       cardType: 'summary_large_image',
+    //     },
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-feed`,
     //   options: {

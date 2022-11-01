@@ -7,8 +7,9 @@ import { BiMenu } from 'react-icons/bi';
 import ContentSection from '../ContentSection';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import * as s from './Layout.module.css';
+import NotFoundPage from '../../pages/404';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, pageContext }) => {
   const width = useWindowResize();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuCollapsed, setMenuCollapsed] = useState(false);
@@ -29,36 +30,39 @@ const Layout = ({ children }) => {
     if (width < 1280) setMenuCollapsed(true);
   }, []);
 
-  return (
-    <section className={s.mainSection}>
-      {width >= 768 && (
-        <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
-          <Navbar
-            setMenuCollapsed={setMenuCollapsed}
-            menuCollapsed={menuCollapsed}
-          />
-        </div>
-      )}
+  if (pageContext.layout === '404') {
+    return <NotFoundPage />;
+  } else
+    return (
+      <section className={s.mainSection}>
+        {width >= 768 && (
+          <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
+            <Navbar
+              setMenuCollapsed={setMenuCollapsed}
+              menuCollapsed={menuCollapsed}
+            />
+          </div>
+        )}
 
-      <main className="">
-        {!mobileOpen && width < 768 && (
-          <button className={s.button} onClick={() => setMobileOpen(true)}>
-            <BiMenu className={s.biMenu} />
-          </button>
-        )}
-        {mobileOpen && width < 768 && (
-          <MobileMenu
-            setMobileOpen={setMobileOpen}
-            handleClose={handleClose}
-            mobileOpen={mobileOpen}
-          />
-        )}
-        <div className={!menuCollapsed ? ' mdOnly:ml-14' : 'ml-0'}>
-          {children}
-        </div>
-      </main>
-    </section>
-  );
+        <main className="">
+          {!mobileOpen && width < 768 && (
+            <button className={s.button} onClick={() => setMobileOpen(true)}>
+              <BiMenu className={s.biMenu} />
+            </button>
+          )}
+          {mobileOpen && width < 768 && (
+            <MobileMenu
+              setMobileOpen={setMobileOpen}
+              handleClose={handleClose}
+              mobileOpen={mobileOpen}
+            />
+          )}
+          <div className={!menuCollapsed ? ' mdOnly:ml-14' : 'ml-0'}>
+            {children}
+          </div>
+        </main>
+      </section>
+    );
 };
 
 Layout.propTypes = {

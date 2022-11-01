@@ -17,6 +17,8 @@ function Accordion({
   const handleClick = () => {
     setAccordionStatus(!accordionStatus);
   };
+
+  // console.log(content);
   return (
     <div className={className}>
       <div className={accordionStatus ? s.wrapperUncollapsed : s.wrapper}>
@@ -50,8 +52,8 @@ function Accordion({
           </div>
         )}
         <ul className={accordionStatus ? s.uncollapsed : s.collapsed}>
-          {content.map(i => (
-            <li key={i.link_title}>
+          {content.map((i, index) => (
+            <li key={index}>
               {i.link_title && (
                 <a
                   className={s.sublink}
