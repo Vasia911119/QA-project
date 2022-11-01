@@ -5,7 +5,7 @@
     @apply brightness-[.2];
 }
 .mainWrapper {
-    @apply mx-auto relative h-[100%] w-[100%] top-0 left-0;
+    @apply mx-auto relative;
 }
 :global(.dark) .mainWrapper {
     @apply bg-blue-950;
