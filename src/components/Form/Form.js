@@ -73,42 +73,44 @@ const Form = () => {
   };
 
   return (
-    <div className={s.wrapper}>
-      <h2 className={s.title}>{t(title)}</h2>
-      <form method="POST" name="contact" onSubmit={handleSubmit(onSubmit)}>
-        <div className={s.wrapperInputs}>
-          <input
-            className={errors.name === undefined ? s.input : s.inputRed}
-            {...register('name')}
-            placeholder={t(nameInput)}
-          />
+    <div className={s.mainWrapper}>
+      <div className={s.wrapper}>
+        <h2 className={s.title}>{t(title)}</h2>
+        <form method="POST" name="contact" onSubmit={handleSubmit(onSubmit)}>
+          <div className={s.wrapperInputs}>
+            <input
+              className={errors.name === undefined ? s.input : s.inputRed}
+              {...register('name')}
+              placeholder={t(nameInput)}
+            />
 
-          <input
-            className={errors.email === undefined ? s.input : s.inputRed}
-            {...register('email')}
-            placeholder={t(emailInput)}
-          />
+            <input
+              className={errors.email === undefined ? s.input : s.inputRed}
+              {...register('email')}
+              placeholder={t(emailInput)}
+            />
 
-          <input
-            className={
-              errors.message === undefined ? s.textarea : s.textareaRed
-            }
-            {...register('message')}
-            placeholder={t(messageInput)}
-          />
-        </div>
-        <div className={s.wrapperErrorMsg}>
-          <p className={s.errorMsg}>{errors.name?.message}</p>
-          <p className={s.errorMsg}>{errors.email?.message}</p>
-          <p className={s.errorMsgTextarea}>{errors.message?.message}</p>
-        </div>
+            <input
+              className={
+                errors.message === undefined ? s.textarea : s.textareaRed
+              }
+              {...register('message')}
+              placeholder={t(messageInput)}
+            />
+          </div>
+          <div className={s.wrapperErrorMsg}>
+            <p className={s.errorMsg}>{errors.name?.message}</p>
+            <p className={s.errorMsg}>{errors.email?.message}</p>
+            <p className={s.errorMsgTextarea}>{errors.message?.message}</p>
+          </div>
 
-        <button className={s.button} type="submit">
-          {t(submit)}
-        </button>
-      </form>
-      <p className={s.text}>Copyright © 2022 GoIT. All rights reserved.</p>
-      <NotificationContainer />
+          <button className={s.button} type="submit">
+            {t(submit)}
+          </button>
+        </form>
+        <p className={s.text}>Copyright © 2022 GoIT. All rights reserved.</p>
+        <NotificationContainer />
+      </div>
     </div>
   );
 };

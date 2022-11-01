@@ -1,8 +1,11 @@
-.wrapper {
-  @apply bg-blue-100 pt-[52px] px-3 max-w-[478px] md:max-w-[720px] md:pt-8 md:px-14 xl:max-w-[932px] xl:pr-9 pb-5 xl:pl-8 mx-auto;
+.mainWrapper {
+  @apply w-full bg-blue-100;
 }
-:global(.dark) .wrapper {
+:global(.dark) .mainWrapper {
   @apply bg-[#1C2237];
+}
+.wrapper {
+  @apply pt-[52px] px-3 max-w-[478px] md:max-w-[720px] md:pt-8 md:px-14 xl:max-w-[932px] xl:pr-9 pb-5 xl:pl-8 mx-auto;
 }
 .title {
   @apply font-inter font-medium sm:text-lg text-stone-900 mb-8 text-center text-sm;
