@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-function SearchResultItem({ page, query }) {
+function SearchResultItem({ page, query, onClick }) {
   console.log(page);
+
   function subRes(str1, str2, query) {
     if (str1.includes(query)) {
+      console.log(query);
       return subStrWithSearchQuery(str1, query);
     }
     if (str2.includes(query)) {
@@ -24,14 +26,13 @@ function SearchResultItem({ page, query }) {
 
   function subStrWithSearchQuery(str, query) {
     let subStr = '';
-    let clearStr = str.replace(/[^a-zA-Z ]/g, ' ').split(' ');
-
+    let clearStr = str.replace(/[^a-zA-Zа-яґєіїА-ЯҐЄІЇ ]/g, ' ').split(' ');
     if (clearStr.includes(query)) {
       let idx = clearStr.indexOf(query);
       let startIdx = idx > 4 ? idx - 1 : 0;
       let endIdx = clearStr.length - idx > 5 ? idx + 1 : clearStr.length - 1;
       let subRes = clearStr.slice(startIdx, endIdx).join(' ');
-
+      console.log(subRes);
       subStr = `...${subRes}...`;
     }
 
@@ -40,6 +41,7 @@ function SearchResultItem({ page, query }) {
 
   return (
     <Link
+      onClick={onClick}
       to={`${page.fields.slug}`}
       className="font-family: 'Inter' flex flex-col gap-2 hover:bg-[#EDEEF9] focus:bg-[#EDEEF9] "
     >

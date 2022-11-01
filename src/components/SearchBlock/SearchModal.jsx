@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { Fragment, useState } from 'react';
 import SearchResult from './SearchResult';
-import SearchField from './SearchField';
+// import SearchField from './SearchField';
 import { Dialog, Transition } from '@headlessui/react';
 import { RiSearchLine } from 'react-icons/ri';
 import { useEffect } from 'react';
@@ -27,8 +27,13 @@ const queryFull = graphql`
   }
 `;
 
-export const SearchModal = ({ closeModal, isOpen }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+export const SearchModal = ({
+  closeModal,
+  isOpen,
+  searchQuery,
+  setSearchQuery,
+}) => {
+  // const [searchQuery, setSearchQuery] = useState('');
   const [pagesIndexStore, setPagesIndexStore] = useState(null);
   const dataFull = useStaticQuery(queryFull);
 
@@ -81,12 +86,20 @@ export const SearchModal = ({ closeModal, isOpen }) => {
                     className="absolute inset-y-1/2 left-3 -translate-y-1/2"
                   />
 
-                  <SearchField setValue={setSearchQuery} value={searchQuery} />
+                  <input
+                    className="flex  h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 text-[#9EA2C6] outline-transparent"
+                    placeholder="Що шукаємо?"
+                    type="text"
+                    value={searchQuery.toLowerCase().trim()}
+                    onChange={e => setSearchQuery(e.target.value)}
+                  />
+                  {/* <SearchField setValue={setSearchQuery} value={searchQuery} /> */}
                 </div>
 
                 {searchQuery && pagesIndexStore && (
                   <div>
                     <SearchResult
+                      onClick={closeModal}
                       searchQuery={searchQuery}
                       pagesIndexStore={pagesIndexStore}
                     />

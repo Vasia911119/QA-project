@@ -4,9 +4,11 @@ import { RiSearchLine } from 'react-icons/ri';
 
 const SearchBtnOpenModal = () => {
   let [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const closeModal = () => {
     setIsOpen(false);
+    setSearchQuery('');
   };
 
   const openModal = () => {
@@ -24,7 +26,12 @@ const SearchBtnOpenModal = () => {
         search
       </button>
 
-      <SearchModal isOpen={isOpen} closeModal={closeModal} />
+      <SearchModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
     </>
   );
 };

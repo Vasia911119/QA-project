@@ -2,7 +2,7 @@ import React from 'react';
 import SearchResultItem from './SearchResultItem';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 
-function SearchResult({ searchQuery, pagesIndexStore }) {
+function SearchResult({ searchQuery, pagesIndexStore, onClick }) {
   const { t, i18n } = useTranslation();
   // console.log(pagesIndexStore);
   const local = `${i18n.language}`;
@@ -16,8 +16,8 @@ function SearchResult({ searchQuery, pagesIndexStore }) {
     if (
       page.rawMarkdownBody &&
       page.frontmatter.page_chapter_title &&
-      page.fields &&
-      page.frontmatter.language === local
+      page.fields
+      // page.frontmatter.language === local
     ) {
       if (
         page.rawMarkdownBody.toLowerCase().includes(searchQuery) ||
@@ -27,7 +27,8 @@ function SearchResult({ searchQuery, pagesIndexStore }) {
       }
     }
     // console.log(page);
-    // console.log(pagesResult);
+    // if (res.frontmatter.language === local)
+    console.log(pagesResult);
     return pagesResult;
   });
 
@@ -48,9 +49,18 @@ function SearchResult({ searchQuery, pagesIndexStore }) {
     <>
       {pagesResult.length > 0 && (
         <div className="py-2 px-4 ">
-          {pagesResult.map(res => (
-            <SearchResultItem key={res.id} page={res} query={searchQuery} />
-          ))}
+          {pagesResult.map(res => {
+            if (res.frontmatter.language === local) {
+              return (
+                <SearchResultItem
+                  key={res.id}
+                  page={res}
+                  query={searchQuery}
+                  onClick={onClick}
+                />
+              );
+            }
+          })}
         </div>
       )}
     </>
