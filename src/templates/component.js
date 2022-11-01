@@ -8,6 +8,7 @@ import Form from '../components/Form/Form';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 import Note from '../components/Note/Note';
+import * as s from '../styles/page.module.css';
 
 import { HTMLContent } from '../components/Content';
 import Layout from '../components/Layout';
@@ -25,20 +26,20 @@ const ComponentTemplate = ({ data }) => {
         return (
           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
           <div key={node.id}>
-            <div className="mx-auto pt-[32px] md:w-[608px]">
+            <div className={s.wrapper}>
               <Breadcrumb
                 title={node.frontmatter.page_title}
                 name={node.frontmatter.page_chapter_title}
               />
-              <div className="space-y-4 text-left">
-                <h1 className="leading-12 lg:text-4xl lg:leading-14 mb-2 font-inter text-3xl text-gray-800">
-                  {node.frontmatter.title}
+              <div className={s.contentWrapper}>
+                <h1 className={s.title}>
+                  {node.frontmatter.page_chapter_title}
                 </h1>
               </div>
-              <HTMLContent className="prose max-w-none" content={node.html} />
+              <HTMLContent className={s.content} content={node.html} />
+              <Note description={node.frontmatter.description} />
+              <ButtonsNavigate />
             </div>
-            <Note description={node.frontmatter.description} />
-            <ButtonsNavigate />
             <Form />
           </div>
         );

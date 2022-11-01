@@ -4,6 +4,7 @@ import PropTypes, { node } from 'prop-types';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 import Note from '../components/Note/Note';
+import * as s from '../styles/page.module.css';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 
@@ -21,14 +22,12 @@ export default function HomePage({ data }) {
         node.frontmatter.language === i18n.language
       ) {
         return (
-          <div className="mx-auto pt-[32px] dark:bg-slate-300 " key={node.id}>
+          <div className={s.wrapper} key={node.id}>
             <Breadcrumb title={node.frontmatter.page_title} />
-            <div className="space-y-4 text-left">
-              <h1 className="leading-12 lg:text-4xl lg:leading-14 mb-2 text-3xl text-gray-800">
-                {node.frontmatter.page_title}
-              </h1>
+            <div className={s.contentWrapper}>
+              <h1 className={s.title}>{node.frontmatter.page_title}</h1>
             </div>
-            <HTMLContent className="prose max-w-none" content={node.html} />
+            <HTMLContent className={s.content} content={node.html} />
             <Note description={node.frontmatter.description} />
             <ButtonsNavigate />
           </div>

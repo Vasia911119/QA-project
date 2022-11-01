@@ -1,0 +1,21 @@
+.wrapper {
+    @apply mx-auto pt-[28px] pb-[100px] md:pt-[43px] px-3 md:px-14 xl:px-[162px] max-w-[932px];
+}
+:global(.dark) .wrapper {
+    @apply bg-gray-700 bg-blend-darken;
+}
+.contentWrapper {
+    @apply space-y-4 text-left;
+}
+.title {
+    @apply font-inter text-[28px] leading-[34px] md:text-[32px] md:leading-[39px] font-semibold text-stone-900;
+}
+:global(.dark) .title {
+    @apply text-[#9EA2C6];
+}
+.content {
+    @apply prose font-inter md:prose-lg;
+}
+:global(.dark) .content {
+    @apply prose-invert;
+}
