@@ -11,6 +11,13 @@ const NotFoundPage = function () {
   const width = useWindowResize();
   const { t } = useTranslation();
   const { oops, title, text, button } = t('404', { returnObjects: true });
+
+  // let websiteTheme;
+  // if (typeof window !== `undefined`) {
+  //   websiteTheme = window.__theme;
+  // }
+  //  && websiteTheme === 'dark'
+
   return (
     <section className={s.section}>
       {width < 768 ? (
@@ -38,7 +45,6 @@ const NotFoundPage = function () {
           placeholder="blurred"
         />
       )}
-
       <div className={s.wrapper}>
         <h1 className={s.title}>
           {oops} <br /> {title}
