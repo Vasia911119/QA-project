@@ -3,17 +3,41 @@ import { Link } from 'gatsby';
 
 function SearchResultItem({ page, query }) {
   console.log(page);
+  function subRes(str1, str2, query) {
+    if (str1.includes(query)) {
+      return subStrWithSearchQuery(str1, query);
+    }
+    if (str2.includes(query)) {
+      return subStrWithSearchQuery(str2, query);
+    }
+  }
 
-  // function subStrWithSearchQuery(str, query) {
-  //   console.log(query);
-  //   const clearStr = str.replace(/[^a-zA-Z ]/g, '');
-  //   let idx = clearStr.indexof(query);
-  //   // let subStr = str.slice(idx, 4);
-  //   // let result = `...${query} ${subStr}`;
-  //   return clearStr;
+  // function devideBlocks(htmlStr) {
+  //   const blockArr = htmlStr.split('#');
+  //   console.log(blockArr);
+  //   blockArr.map(link => {
+  //     link.split('//');
+  //   });
   // }
 
-  // console.log(subStrWithSearchQuery(page.rawMarkdownBody, query));
+  // devideBlocks(page.html);
+
+  function subStrWithSearchQuery(str, query) {
+    let subStr = '';
+    let clearStr = str.replace(/[^a-zA-Z ]/g, ' ').split(' ');
+
+    if (clearStr.includes(query)) {
+      let idx = clearStr.indexOf(query);
+      let startIdx = idx > 4 ? idx - 1 : 0;
+      let endIdx = clearStr.length - idx > 5 ? idx + 1 : clearStr.length - 1;
+      let subRes = clearStr.slice(startIdx, endIdx).join(' ');
+
+      subStr = `...${subRes}...`;
+    }
+
+    return subStr;
+  }
+
   return (
     <Link
       to={`${page.fields.slug}`}
@@ -23,7 +47,11 @@ function SearchResultItem({ page, query }) {
         {page.frontmatter.page_title}
       </h4>
       <p className="text-sm font-normal text-[#94A3B8]">
-        {page.frontmatter.page_chapter_title}
+        {subRes(
+          page.rawMarkdownBody,
+          page.frontmatter.page_chapter_title,
+          query
+        )}
       </p>
     </Link>
   );

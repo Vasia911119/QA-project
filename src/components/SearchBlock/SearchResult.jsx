@@ -4,13 +4,13 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 function SearchResult({ searchQuery, pagesIndexStore }) {
   const { t, i18n } = useTranslation();
-  console.log(pagesIndexStore);
+  // console.log(pagesIndexStore);
   const local = `${i18n.language}`;
-  console.log(local);
+  // console.log(local);
 
   const pagesResult = [];
-  console.log(typeof pagesIndexStore);
-  console.log(pagesIndexStore);
+  // console.log(typeof pagesIndexStore);
+  // console.log(pagesIndexStore);
 
   pagesIndexStore.filter(page => {
     if (
@@ -26,7 +26,8 @@ function SearchResult({ searchQuery, pagesIndexStore }) {
         pagesResult.push(page);
       }
     }
-    console.log(pagesResult);
+    // console.log(page);
+    // console.log(pagesResult);
     return pagesResult;
   });
 

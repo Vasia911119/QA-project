@@ -21,6 +21,7 @@ const queryFull = graphql`
           language
         }
         rawMarkdownBody
+        html
       }
     }
   }
