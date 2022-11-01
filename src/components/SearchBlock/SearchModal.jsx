@@ -1,76 +1,39 @@
-import axios from 'axios';
+
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { Fragment, useState } from 'react';
 import SearchResult from './SearchResult';
 import SearchField from './SearchField';
 import { Dialog, Transition } from '@headlessui/react';
-import { RiEjectFill, RiSearchLine } from 'react-icons/ri';
+import { RiSearchLine } from 'react-icons/ri';
 import { useEffect } from 'react';
-
-// const query = graphql`
-//   {
-//     localSearchPages {
-//       publicIndexURL
-//       publicStoreURL
-//     }
-//   }
-// `;
 
 const queryFull = graphql`
   {
     allMarkdownRemark {
-      nodes {
-        id
-        fields {
-          slug
-        }
-        frontmatter {
-          language
-          title
-          description
-        }
-        rawMarkdownBody
+    nodes {
+      id
+      fields {
+        slug
       }
+      frontmatter {
+        page_chapter_name
+        page_chapter_title
+        page_title
+        language
+      }
+      rawMarkdownBody
     }
+  }
   }
 `;
 
 export const SearchModal = ({ closeModal, isOpen }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [pagesIndexStore, setPagesIndexStore] = useState(null);
-  // const data = useStaticQuery(query);
   const dataFull = useStaticQuery(queryFull);
 
-  // console.log(data);
   // const arrData = Array.from(dataFull.allMarkdownRemark.nodes);
   const { nodes: arrData } = dataFull.allMarkdownRemark;
-
-  // console.log(typeof arrData);
-  // function objToArr(data) {
-  //   const arrNodes = data
-  //   return arrNodes;
-  //   console.log(arrNodes);
-  // }
-  // const {
-  //   publicStoreURL: pagesPublicStoreURL,
-  //   publicIndexURL: pagesPublicIndexURL,
-  // } = data.localSearchPages;
-  // console.log(pagesPublicStoreURL);
-  // console.log(pagesPublicIndexURL);
-
-  // const handleOnFocus = async () => {
-  //   if (pagesIndexStore) return;
-
-  //   const [{ data: pagesIndex }, { data: pagesStore }] = await Promise.all([
-  //     axios.get(`${pagesPublicIndexURL}`),
-  //     axios.get(`${pagesPublicStoreURL}`),
-  //   ]);
-
-  //   setPagesIndexStore({
-  //     index: pagesIndex,
-  //     store: pagesStore,
-  //   });
-  // };
 
   const handleOnFocus = () => {
     // if (pagesIndexStore.length === 0) return;
@@ -83,27 +46,6 @@ export const SearchModal = ({ closeModal, isOpen }) => {
   useEffect(() => {
     handleOnFocus();
   }, [handleOnFocus]);
-
-  // setPagesIndexStore(arrData);
-  // console.log(pagesIndexStore);
-  // const promiseResult = await new Promise((res, rej) => {
-  //   setTimeout(() => {
-  //     if (dataFull) {
-  //       // res(setPagesIndexStore([...dataFull.allMarkdownRemark.nodes]));
-  //       res(console.log(dataFull));
-  //     } else {
-  //       rej(error);
-  //     }
-  //   }, 0);
-  // });
-
-  // const pagesFullData = await new Promise ((res, rej) => {
-
-  // })[...dataFull.allMarkdownRemark.nodes];
-  // console.log(pagesFullData, 'pagesFullData');
-  // setPagesIndexStore(pagesFullData);
-  // console.log(pagesIndexStore, 'pagesIndexStore');
-  // };
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -131,7 +73,7 @@ export const SearchModal = ({ closeModal, isOpen }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className=" rounded-2xl absolute top-[196px] min-h-[60px] w-[96%] max-w-[488px] transform overflow-hidden rounded-[10px] bg-white text-left align-middle shadow-xl transition-all md:top-[200px] md:w-[488px] xl:top-[160px] xl:w-[480px]">
+              <Dialog.Panel className=" rounded-2xl absolute top-[196px] max-h-[376px] min-h-[60px] w-[96%] max-w-[488px] transform overflow-hidden rounded-[10px] bg-white text-left align-middle shadow-xl transition-all md:top-[200px] md:w-[488px] xl:top-[160px] xl:w-[480px]">
                 <div className="relative">
                   <RiSearchLine
                     color="#9EA2C6"
