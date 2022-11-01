@@ -1,17 +1,105 @@
-.backgroundImage {
-    @apply w-[100%] h-[100%] absolute z-0 top-0;
+.section {
+    background: url("../images/businessman-pointing-1x.jpg") no-repeat center/cover;
+
+        @supports (background: url("../images/businessman-pointing-1x.webp")) {
+            background: url("../images/businessman-pointing-1x.webp") no-repeat center/cover;
+        }
+
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background: url("../images/businessman-pointing-2x.jpg") no-repeat center/cover;
+    
+            @supports (background: url("../images/businessman-pointing-2x.webp")) {
+                background: url("../images/businessman-pointing-2x.webp") no-repeat center/cover;
+            }
+        }
+    
+        @media (min-width: 768px) {
+            background: url("../images/businessman-pointing-2x.jpg") no-repeat center/cover;
+    
+            @supports (background: url("../images/businessman-pointing-2x.webp")) {
+                background: url("../images/businessman-pointing-2x.webp") no-repeat center/cover;
+            }
+        }
 }
-:global(.dark) .backgroundImage {
-    @apply brightness-[.2];
+:global(.dark) .section {
+    background: url("../images/businessman-pointing-dark-1x.jpg") no-repeat center/cover;
+    
+        @supports (background: url("../images/businessman-pointing-dark-1x.webp")) {
+            background: url("../images/businessman-pointing-dark-1x.webp") no-repeat center/cover;
+        }
+    
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background: url("../images/businessman-pointing-dark-2x.jpg") no-repeat center/cover;
+    
+            @supports (background: url("../images/businessman-pointing-dark-2x.webp")) {
+                background: url("../images/businessman-pointing-dark-2x.webp") no-repeat center/cover;
+            }
+        }
+    
+        @media (min-width: 768px) {
+            background: url("../images/businessman-pointing-dark-2x.jpg") no-repeat center/cover;
+    
+            @supports (background: url("../images/businessman-pointing-dark-2x.webp")) {
+                background: url("../images/businessman-pointing-dark-2x.webp") no-repeat center/cover;
+            }
+        }
 }
-.mainWrapper {
-    @apply mx-auto relative;
+.sectionComponents {
+    background: url("../images/layout-1x.jpg") no-repeat center/cover;
+
+    @supports (background: url("../images/layout-1x.webp")) {
+        background: url("../images/layout-1x.webp") no-repeat center/cover;
+    }
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background: url("../images/layout-2x.jpg") no-repeat center/cover;
+
+        @supports (background: url("../images/layout-2x.webp")) {
+            background: url("../images/layout-2x.webp") no-repeat center/cover;
+        }
+    }
+
+    @media (min-width: 768px) {
+        background: url("../images/layout-2x.jpg") no-repeat center/cover;
+
+        @supports (background: url("../images/layout-2x.webp")) {
+            background: url("../images/layout-2x.webp") no-repeat center/cover;
+        }
+    }
 }
-/* :global(.dark) .mainWrapper {
-    @apply bg-blue-950;
-} */
+:global(.dark) .sectionComponents {
+    background: url("../images/layout-dark-1x.jpg") no-repeat center/cover;
+    
+        @supports (background: url("../images/layout-dark-1x.webp")) {
+            background: url("../images/layout-dark-1x.webp") no-repeat center/cover;
+        }
+    
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background: url("../images/layout-dark-2x.jpg") no-repeat center/cover;
+    
+            @supports (background: url("../images/layout-dark-2x.webp")) {
+                background: url("../images/layout-dark-2x.webp") no-repeat center/cover;
+            }
+        }
+    
+        @media (min-width: 768px) {
+            background: url("../images/layout-dark-2x.jpg") no-repeat center/cover;
+    
+            @supports (background: url("../images/layout-dark-2x.webp")) {
+                background: url("../images/layout-dark-2x.webp") no-repeat center/cover;
+            }
+        }
+}
 .wrapper {
-    @apply min-h-[100vh] mx-auto pt-[28px] pb-[100px] md:pt-[43px] px-3 md:px-14 xl:px-[162px] max-w-[480px] md:max-w-[720px] xl:max-w-[932px] z-10 relative;
+    @apply min-h-[100vh] mx-auto pt-[28px] pb-[100px] md:pt-[43px] px-3 md:px-14 xl:px-[162px] max-w-[480px] md:max-w-[720px] xl:max-w-[932px];
 }
 .contentWrapper {
     @apply space-y-4 text-left;
