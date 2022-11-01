@@ -19,7 +19,7 @@ collections:
       'Перелік розділів. При зміні уже існуючих розділів потрібно повторно
       обрати їх у вже існуючих колекціях (наприклад, Pages_UA)'
     folder: 'content/pages-chapters'
-    create: true
+    create: false
     delete: false
     path: 'list-of-pages-chapters'
     fields:
@@ -113,7 +113,7 @@ collections:
             відображатися на сторінці',
         },
         {
-          label: 'Page Chapter Slug',
+          label: 'Page Chapter',
           name: 'page_chapter_name',
           collection: 'list_of_pages_chapters',
           widget: 'relation',
@@ -122,7 +122,7 @@ collections:
           search_fields: ['pages_chapter_item.*.pages_chapter_name'],
           display_fields: ['pages_chapter_item.*.pages_chapter_name'],
           value_field: 'pages_chapter_item.*.pages_chapter_name',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву папки для збереження даної сторінки',
         },
         {
           label: 'Page Chapter Title',
@@ -134,7 +134,7 @@ collections:
           search_fields: ['pages_chapter_item.*.chapter_title_UA'],
           display_fields: ['pages_chapter_item.*.chapter_title_UA'],
           value_field: 'pages_chapter_item.*.chapter_title_UA',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву розділу, до якого відноситься сторінка',
         },
         {
           label: 'Slug',
@@ -147,9 +147,7 @@ collections:
               'Назва може містити тільки малі латинські літери, цифри та тире.
               Має починатися з літери та не може закінчуватися на тире',
             ],
-          hint:
-            'Введіть назву сторінки англійською з маленької літери. Є
-            обовязковим для всіх сторінок, крім головної',
+          hint: 'Введіть назву сторінки англійською з маленької літери',
         },
         {
           label: 'Identifier',
@@ -162,9 +160,7 @@ collections:
               'Назва може містити тільки малі латинські літери, цифри та тире.
               Має починатися з літери та не може закінчуватися на тире',
             ],
-          hint:
-            'Введіть назву сторінки англійською з маленької літери. Є
-            обовязковим для всіх сторінок, крім головної',
+          hint: 'Введіть назву сторінки англійською з маленької літери',
         },
         {
           label: 'Language',
@@ -229,7 +225,7 @@ collections:
           search_fields: ['pages_chapter_item.*.pages_chapter_name'],
           display_fields: ['pages_chapter_item.*.pages_chapter_name'],
           value_field: 'pages_chapter_item.*.pages_chapter_name',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву папки для збереження даної сторінки',
         },
         {
           label: 'Page Chapter Title',
@@ -241,7 +237,7 @@ collections:
           search_fields: ['pages_chapter_item.*.chapter_title_EN'],
           display_fields: ['pages_chapter_item.*.chapter_title_EN'],
           value_field: 'pages_chapter_item.*.chapter_title_EN',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву розділу, до якого відноситься сторінка',
         },
         {
           label: 'Slug',
@@ -254,9 +250,7 @@ collections:
               'Назва може містити тільки малі латинські літери, цифри та тире.
               Має починатися з літери та не може закінчуватися на тире',
             ],
-          hint:
-            'Введіть назву сторінки англійською з маленької літери. Є
-            обовязковим для всіх сторінок, крім головної',
+          hint: 'Введіть назву сторінки англійською з маленької літери',
         },
         {
           label: 'Identifier',
@@ -269,9 +263,7 @@ collections:
               'Назва може містити тільки малі латинські літери, цифри та тире.
               Має починатися з літери та не може закінчуватися на тире',
             ],
-          hint:
-            'Введіть назву сторінки англійською з маленької літери. Є
-            обовязковим для всіх сторінок, крім головної',
+          hint: 'Введіть назву сторінки англійською з маленької літери',
         },
         {
           label: 'Language',
@@ -336,7 +328,7 @@ collections:
           search_fields: ['pages_chapter_item.*.pages_chapter_name'],
           display_fields: ['pages_chapter_item.*.pages_chapter_name'],
           value_field: 'pages_chapter_item.*.pages_chapter_name',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву папки для збереження даної сторінки',
         },
         {
           label: 'Page Chapter Title',
@@ -348,7 +340,7 @@ collections:
           search_fields: ['pages_chapter_item.*.chapter_title_RU'],
           display_fields: ['pages_chapter_item.*.chapter_title_RU'],
           value_field: 'pages_chapter_item.*.chapter_title_RU',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву розділу, до якого відноситься сторінка',
         },
         {
           label: 'Slug',
@@ -361,9 +353,7 @@ collections:
               'Назва може містити тільки малі латинські літери, цифри та тире.
               Має починатися з літери та не може закінчуватися на тире',
             ],
-          hint:
-            'Введіть назву сторінки англійською з маленької літери. Є
-            обовязковим для всіх сторінок, крім головної',
+          hint: 'Введіть назву сторінки англійською з маленької літери',
         },
         {
           label: 'Identifier',
@@ -376,9 +366,7 @@ collections:
               'Назва може містити тільки малі латинські літери, цифри та тире.
               Має починатися з літери та не може закінчуватися на тире',
             ],
-          hint:
-            'Введіть назву сторінки англійською з маленької літери. Є
-            обовязковим для всіх сторінок, крім головної',
+          hint: 'Введіть назву сторінки англійською з маленької літери',
         },
         {
           label: 'Language',
@@ -418,7 +406,7 @@ collections:
       'Перелік підрозділів. При зміні уже існуючих підрозділів потрібно повторно
       обрати їх у вже існуючих колекціях (наприклад, Links_UA)'
     folder: 'content/links-chapters'
-    create: true
+    create: false
     delete: false
     path: 'list-of-links-chapters'
     fields:
@@ -518,7 +506,7 @@ collections:
           search_fields: ['links_chapter_item.*.links_chapter_name'],
           display_fields: ['links_chapter_item.*.links_chapter_name'],
           value_field: 'links_chapter_item.*.links_chapter_name',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву папки для збереження даної сторінки',
         },
         {
           label: 'Chapter position',
@@ -542,7 +530,7 @@ collections:
           search_fields: ['links_chapter_item.*.link_chapter_title_UA'],
           display_fields: ['links_chapter_item.*.link_chapter_title_UA'],
           value_field: 'links_chapter_item.*.link_chapter_title_UA',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву розділу, до якого відноситься сторінка',
         },
         {
           label: 'Language',
@@ -622,7 +610,7 @@ collections:
           search_fields: ['links_chapter_item.*.links_chapter_name'],
           display_fields: ['links_chapter_item.*.links_chapter_name'],
           value_field: 'links_chapter_item.*.links_chapter_name',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву папки для збереження даної сторінки',
         },
         {
           label: 'Chapter position',
@@ -646,7 +634,7 @@ collections:
           search_fields: ['links_chapter_item.*.link_chapter_title_EN'],
           display_fields: ['links_chapter_item.*.link_chapter_title_EN'],
           value_field: 'links_chapter_item.*.link_chapter_title_EN',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву розділу, до якого відноситься сторінка',
         },
         {
           label: 'Language',
@@ -726,7 +714,7 @@ collections:
           search_fields: ['links_chapter_item.*.links_chapter_name'],
           display_fields: ['links_chapter_item.*.links_chapter_name'],
           value_field: 'links_chapter_item.*.links_chapter_name',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву папки для збереження даної сторінки',
         },
         {
           label: 'Chapter position',
@@ -750,7 +738,7 @@ collections:
           search_fields: ['links_chapter_item.*.link_chapter_title_RU'],
           display_fields: ['links_chapter_item.*.link_chapter_title_RU'],
           value_field: 'links_chapter_item.*.link_chapter_title_RU',
-          hint: 'Виберіть назву папки для збереження даного розділу',
+          hint: 'Виберіть назву розділу, до якого відноситься сторінка',
         },
         {
           label: 'Language',
