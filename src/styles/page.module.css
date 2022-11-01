@@ -7,9 +7,9 @@
 .mainWrapper {
     @apply mx-auto relative;
 }
-:global(.dark) .mainWrapper {
+/* :global(.dark) .mainWrapper {
     @apply bg-blue-950;
-}
+} */
 .wrapper {
     @apply min-h-[100vh] mx-auto pt-[28px] pb-[100px] md:pt-[43px] px-3 md:px-14 xl:px-[162px] max-w-[480px] md:max-w-[720px] xl:max-w-[932px] z-10 relative;
 }
