@@ -1,10 +1,12 @@
 import { graphql, navigate } from 'gatsby';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes, { node } from 'prop-types';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 import Note from '../components/Note/Note';
 import * as s from '../styles/page.module.css';
+import { StaticImage } from 'gatsby-plugin-image';
+import useWindowResize from '../hooks/useWindowResize';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 
@@ -13,6 +15,7 @@ import { HTMLContent } from '../components/Content';
 export default function HomePage({ data }) {
   const { nodes } = data.allMarkdownRemark;
   const { i18n } = useTranslation();
+  const width = useWindowResize();
 
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
@@ -32,6 +35,31 @@ export default function HomePage({ data }) {
               <Note description={node.frontmatter.description} />
               <ButtonsNavigate />
             </div>
+            {width < 768 ? (
+              <StaticImage
+                src="../images/businessman-pointing-mobile.png"
+                formats={['auto', 'webp', 'avif']}
+                alt="businessman pointing"
+                className={s.backgroundImage}
+                placeholder="blurred"
+              />
+            ) : width > 1280 ? (
+              <StaticImage
+                src="../images/businessman-pointing-tablet.png"
+                formats={['auto', 'webp', 'avif']}
+                alt="businessman pointing"
+                className={s.backgroundImage}
+                placeholder="blurred"
+              />
+            ) : (
+              <StaticImage
+                src="../images/businessman-pointing-desktop.png"
+                formats={['auto', 'webp', 'avif']}
+                alt="businessman pointing"
+                className={s.backgroundImage}
+                placeholder="blurred"
+              />
+            )}
           </div>
         );
       }
@@ -76,8 +104,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-// allMarkdownRemark(
-//       filter: { frontmatter: { language: { eq: $language } } }
-//       sort: { fields: frontmatter___page_range }
-//     ) {
