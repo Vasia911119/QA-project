@@ -5,6 +5,6 @@ page_chapter_title: Тестовий розділ
 slug: test
 identifier: test
 language: uk
-page_range: 5
+page_range: 1
 ---
 П﻿ривіт
