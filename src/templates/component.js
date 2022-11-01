@@ -32,9 +32,7 @@ const ComponentTemplate = ({ data }) => {
                 name={node.frontmatter.page_chapter_title}
               />
               <div className={s.contentWrapper}>
-                <h1 className={s.title}>
-                  {node.frontmatter.page_chapter_title}
-                </h1>
+                <h1 className={s.title}>{node.frontmatter.page_title}</h1>
               </div>
               <HTMLContent className={s.content} content={node.html} />
               <Note description={node.frontmatter.description} />
