@@ -36,6 +36,29 @@ module.exports = {
 
         // textLight: '#F8FAFC', slate 50
       },
+      // TYPOGRAFY
+      typography: ({ theme }) => ({
+        invert: {
+          css: {
+            '--tw-prose-body': theme('colors.grey[350]'),
+            '--tw-prose-headings': theme('colors.grey[350]'),
+            '--tw-prose-lead': 'var(--tw-prose-invert-lead)',
+            '--tw-prose-links': 'var(--tw-prose-invert-links)',
+            '--tw-prose-bold': theme('colors.grey[350]'),
+            '--tw-prose-counters': 'var(--tw-prose-invert-counters)',
+            '--tw-prose-bullets': 'var(--tw-prose-invert-bullets)',
+            '--tw-prose-hr': 'var(--tw-prose-invert-hr)',
+            '--tw-prose-quotes': 'var(--tw-prose-invert-quotes)',
+            '--tw-prose-quote-borders': 'var(--tw-prose-invert-quote-borders)',
+            '--tw-prose-captions': 'var(--tw-prose-invert-captions)',
+            '--tw-prose-code': theme('colors.grey[350]'),
+            '--tw-prose-pre-code': 'var(--tw-prose-invert-pre-code)',
+            '--tw-prose-pre-bg': 'var(--tw-prose-invert-pre-bg)',
+            '--tw-prose-th-borders': 'var(--tw-prose-invert-th-borders)',
+            '--tw-prose-td-borders': 'var(--tw-prose-invert-td-borders)',
+          },
+        },
+      }),
 
       // CONTAINER
       container: {
@@ -50,4 +73,4 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/typography')],
-}
+};
