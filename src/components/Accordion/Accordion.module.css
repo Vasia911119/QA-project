@@ -29,15 +29,21 @@
   @apply flex w-full items-center justify-between;
 }
 .button {
-  @apply mr-4 whitespace-normal text-left;
+  @apply mr-4 select-none whitespace-normal text-left hover:text-slate-50 focus:text-slate-50;
   /* flex-basis: 100%;
   flex-shrink: 2; */
 }
 .icon {
   /* flex-shrink: 1; */
-  @apply cursor-pointer;
+  @apply cursor-pointer hover:text-slate-50 focus:text-slate-50;
 }
 .iconRotate {
   /* flex-shrink: 1; */
-  @apply rotate-180 cursor-pointer;
+  @apply rotate-180 cursor-pointer hover:text-slate-50 focus:text-slate-50;
+}
+.arrow {
+  @apply h-7 w-7;
+}
+.sublink {
+  @apply cursor-pointer select-none hover:text-slate-50 focus:text-slate-50;
 }

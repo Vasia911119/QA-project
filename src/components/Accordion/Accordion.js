@@ -33,7 +33,7 @@ function Accordion({
               className={accordionStatus ? s.icon : s.iconRotate}
               onClick={handleClick}
             >
-              <BiChevronUp />
+              <BiChevronUp className={s.arrow} />
             </span>
           </div>
         ) : (
@@ -45,20 +45,33 @@ function Accordion({
               className={accordionStatus ? s.icon : s.iconRotate}
               onClick={handleClick}
             >
-              <BiChevronUp />
+              <BiChevronUp className={s.arrow} />
             </span>
           </div>
         )}
         <ul className={accordionStatus ? s.uncollapsed : s.collapsed}>
           {content.map(i => (
-            <li key={i.slug || i.link_title}>
-              <Link
-                onClick={handleClose}
-                target={i.url_adress ? '_blank' : null}
-                to={i.slug || i.url_adress}
-              >
-                {i.title || i.link_title}
-              </Link>
+            <li key={i.link_title}>
+              {i.link_title && (
+                <a
+                  className={s.sublink}
+                  onClick={handleClose}
+                  target={'_blank'}
+                  href={i.url_adress}
+                >
+                  {i.link_title}
+                </a>
+              )}
+              {i.slug && (
+                <Link
+                  key={i.slug}
+                  className={s.sublink}
+                  onClick={handleClose}
+                  to={i.slug}
+                >
+                  {i.title}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

@@ -1,7 +1,7 @@
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #5651b7;
+  scrollbar-color: #5f6272;
   overflow-y: overlay;
 }
 
@@ -12,9 +12,9 @@ body::-webkit-scrollbar-track {
   background: #392e3d;
 }
 body::-webkit-scrollbar-thumb {
-  background-color: #5651b7;
+  background-color: #5f6272;
   border-radius: 0.5rem;
-  background: rgb(112, 107, 208);
+  background: #5f6272;
   background: linear-gradient(
     180deg,
     rgba(112, 107, 208, 1) 0%,

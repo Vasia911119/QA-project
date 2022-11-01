@@ -1,37 +1,51 @@
 /* sidebar styles */
-
+.closeModalButton svg {
+  @apply h-6 w-6;
+}
 .sidebarWrapper {
   @apply z-20 flex h-screen  flex-col items-center bg-blue-950  py-10 text-base font-semibold text-grey-350 mdOnly:absolute xl:fixed;
 }
 .sidebarWrapperCollapsed {
-  @apply z-20 flex h-screen w-14  flex-col items-center bg-blue-950  py-10 text-base font-semibold text-grey-350 mdOnly:absolute xl:fixed;
+  @apply z-20 flex h-screen w-14  flex-col items-center bg-blue-950  py-6 text-base font-semibold text-grey-350 mdOnly:absolute xl:fixed;
 }
 .navigation {
-  @apply mr-auto mt-5 flex max-h-[532px] max-w-[348px] flex-col overflow-y-auto px-5;
+  @apply my-[10px] mr-auto flex max-h-[532px] max-w-[348px] flex-col overflow-y-auto;
 }
-.collapsedNavigation {
-  @apply mt-5 flex max-h-[532px] max-w-[348px] flex-col overflow-y-auto;
+.navigationMobile {
+  @apply mr-auto flex max-h-[532px] w-full max-w-full flex-col overflow-y-auto;
+}
+.navigationCollapsed {
+  @apply mt-3 mb-3 flex max-h-[532px] max-w-[348px] flex-col overflow-y-auto;
 }
 
 .navigationItem {
-  @apply mb-5 flex;
+  @apply flex   px-5 pt-[10px] pb-4;
+}
+.navigationItemCollapsed {
+  @apply flex   py-[12px];
+}
+.navigationItemMobile {
+  @apply flex border-b-[1px] border-[#9EA2C6] px-5 py-4;
+}
+.navigationItemMobile:last-child {
+  @apply border-b-[0px];
 }
 
 .activeMenu {
   @apply text-slate-50;
 }
 .icon {
-  @apply mt-1 cursor-pointer;
+  @apply mt-1 h-5 w-5 cursor-pointer hover:text-slate-50 focus:text-slate-50;
 }
-.collapsedMenu {
-  @apply h-5 w-5 rotate-180;
+.collapsedMenuButton {
+  @apply h-6 w-6 rotate-180 hover:text-slate-50 focus:text-slate-50;
 }
-.uncollapsedMenu {
-  @apply h-5 w-5;
+.uncollapsedMenuButton {
+  @apply h-6 w-6 hover:text-slate-50 focus:text-slate-50;
 }
 
 .collapsedFooter {
-  @apply flex  w-full justify-between border-t border-stone-400 px-5 py-4;
+  @apply flex w-full items-start justify-between border-t border-stone-400 px-5 py-4;
 }
 .footer {
   @apply flex h-32  w-full flex-col items-center justify-between border-t border-stone-400 py-4;

@@ -4,7 +4,9 @@ export default function useMenuStructure() {
   const { allMarkdownRemark } = useStaticQuery(
     graphql`
       query MenuStructureQuery {
-        allMarkdownRemark(filter: { frontmatter: { language: { eq: "uk" } } }) {
+        allMarkdownRemark(
+          sort: { fields: frontmatter___page_range, order: ASC }
+        ) {
           nodes {
             frontmatter {
               language
@@ -19,6 +21,8 @@ export default function useMenuStructure() {
                 links_range
                 url_adress
               }
+              page_range
+              chapter_range
             }
             fields {
               slug
