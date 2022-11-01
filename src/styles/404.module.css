@@ -1,3 +1,19 @@
+.section {
+  @apply relative h-screen w-screen bg-[#DBD9D9];
+}
+.wrapper {
+  @apply absolute translate-y-[-50%] px-3 text-center font-inter xl:top-1/2 xl:left-[10%] notXl:top-1/3 notXl:left-1/2  notXl:w-full notXl:translate-x-[-50%];
+}
+
+.button {
+  @apply mx-auto flex h-12 w-[257px] items-center justify-center rounded-[12px] bg-blue-600  text-white;
+}
 .iconArrow {
   @apply h-8 w-8;
+}
+.title {
+  @apply mb-10 smOnly:text-2xl md:text-3xl;
+}
+.text {
+  @apply mb-24 smOnly:text-base md:text-lg;
 }

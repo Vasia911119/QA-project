@@ -125,15 +125,20 @@ export default function Navbar({
           onClick={handleClose}
           className={
             mobileOpen
-              ? ' mb - 0'
+              ? ' mb-0'
               : menuCollapsed
-              ? 'mt-8 block w-[50px] -rotate-90'
+              ? 'mt-8 h-4 -rotate-90'
               : 'mb-9 '
           }
         >
           <Logo
-            rotate={menuCollapsed}
-            className={mobileOpen ? 'mb-5 block' : 'mb-0 block'}
+            className={
+              mobileOpen
+                ? ' block  h-8 w-[100px]'
+                : menuCollapsed
+                ? 'h-4 w-[50px]'
+                : 'mb-0 block  h-8 w-[100px]'
+            }
             title="Go-It"
           />
         </Link>

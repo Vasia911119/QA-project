@@ -56,6 +56,8 @@ function Accordion({
             <li key={index}>
               {i.link_title && (
                 <a
+                  rel="noreferrer noopener"
+                  aria-label={i.link_title}
                   className={s.sublink}
                   onClick={handleClose}
                   target={'_blank'}
