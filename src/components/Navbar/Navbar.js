@@ -17,6 +17,7 @@ import {
 import * as s from './Navbar.module.css';
 
 import Accordion from '../Accordion/Accordion';
+import SearchBtnOpenModal from '../SearchBlock/SearchBtnOpenModal';
 
 export default function Navbar({
   mobileOpen,
@@ -143,11 +144,7 @@ export default function Navbar({
             className={'h-6 w-6 hover:text-slate-50 focus:text-slate-50'}
           />
         ) : (
-          <input
-            type="text"
-            className="w-full rounded p-3 text-sm"
-            placeholder={'Search'}
-          />
+          <SearchBtnOpenModal />
         )}
       </div>
       <ul

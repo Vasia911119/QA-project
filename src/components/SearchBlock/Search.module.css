@@ -1,0 +1,6 @@
+.searchModalOpenBtn{
+    @apply flex h-10 w-[100%] cursor-pointer items-center justify-start gap-[10px] rounded-[10px] bg-[#EDEEF9] pl-5 capitalize text-[#9EA2C6] transition-colors;
+}
+.searchModalOpenBtn:hover, .searchModalOpenBtn:focus{
+    @apply bg-slate-200;
+}
