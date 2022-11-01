@@ -1,12 +1,10 @@
 import { graphql, navigate } from 'gatsby';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes, { node } from 'prop-types';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 import Note from '../components/Note/Note';
 import * as s from '../styles/page.module.css';
-import { StaticImage } from 'gatsby-plugin-image';
-import useWindowResize from '../hooks/useWindowResize';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 
@@ -15,7 +13,6 @@ import { HTMLContent } from '../components/Content';
 export default function HomePage({ data }) {
   const { nodes } = data.allMarkdownRemark;
   const { i18n } = useTranslation();
-  const width = useWindowResize();
 
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
@@ -25,32 +22,7 @@ export default function HomePage({ data }) {
         node.frontmatter.language === i18n.language
       ) {
         return (
-          <div className={s.mainWrapper} key={node.id}>
-            {width < 768 ? (
-              <StaticImage
-                src="../images/businessman-pointing-mobile.png"
-                formats={['auto', 'webp', 'avif']}
-                alt="businessman pointing"
-                className={s.backgroundImage}
-                placeholder="blurred"
-              />
-            ) : width > 1280 ? (
-              <StaticImage
-                src="../images/businessman-pointing-tablet.png"
-                formats={['auto', 'webp', 'avif']}
-                alt="businessman pointing"
-                className={s.backgroundImage}
-                placeholder="blurred"
-              />
-            ) : (
-              <StaticImage
-                src="../images/businessman-pointing-desktop.png"
-                formats={['auto', 'webp', 'avif']}
-                alt="businessman pointing"
-                className={s.backgroundImage}
-                placeholder="blurred"
-              />
-            )}
+          <section className={s.section} key={node.id}>
             <div className={s.wrapper}>
               <Breadcrumb title={node.frontmatter.page_title} />
               <div className={s.contentWrapper}>
@@ -60,7 +32,7 @@ export default function HomePage({ data }) {
               <Note description={node.frontmatter.description} />
               <ButtonsNavigate />
             </div>
-          </div>
+          </section>
         );
       }
     })
