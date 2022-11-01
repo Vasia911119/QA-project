@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { Fragment, useState } from 'react';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import SearchResult from './SearchResult';
 // import SearchField from './SearchField';
 import { Dialog, Transition } from '@headlessui/react';
@@ -36,6 +37,12 @@ export const SearchModal = ({
   // const [searchQuery, setSearchQuery] = useState('');
   const [pagesIndexStore, setPagesIndexStore] = useState(null);
   const dataFull = useStaticQuery(queryFull);
+
+  const { t } = useTranslation();
+
+  const { placeholder } = t('search', {
+    returnObjects: true,
+  });
 
   // const arrData = Array.from(dataFull.allMarkdownRemark.nodes);
   const { nodes: arrData } = dataFull.allMarkdownRemark;
@@ -88,7 +95,7 @@ export const SearchModal = ({
 
                   <input
                     className="flex  h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 text-[#9EA2C6] outline-transparent"
-                    placeholder="Що шукаємо?"
+                    placeholder={placeholder}
                     type="text"
                     value={searchQuery.toLowerCase().trim()}
                     onChange={e => setSearchQuery(e.target.value)}

@@ -23,5 +23,10 @@
     "message": "Message must contain min 20 characters",
     "success": "Message sent"
   },
-  "searchPlaceholder": "Search EN"
+  "search": {
+    "button": "Search",
+    "placeholder": "What are you looking for?",
+    "notFoundTitle": "Unfortunately nothing was found :(",
+    "notFoundText": "Try another search option"
+  }
 }

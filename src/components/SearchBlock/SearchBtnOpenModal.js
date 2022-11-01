@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { SearchModal } from './SearchModal';
 import { RiSearchLine } from 'react-icons/ri';
 
 const SearchBtnOpenModal = () => {
   let [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
+  const { t } = useTranslation();
+
+  const { button } = t('search', {
+    returnObjects: true,
+  });
 
   const closeModal = () => {
     setIsOpen(false);
@@ -23,7 +30,7 @@ const SearchBtnOpenModal = () => {
         onClick={openModal}
       >
         <RiSearchLine color="#9EA2C6" size={24} />
-        search
+        {button}
       </button>
 
       <SearchModal
