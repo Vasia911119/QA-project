@@ -5,9 +5,29 @@
 .sidebarWrapper {
   @apply z-20 flex h-full min-h-screen flex-col items-center bg-blue-950  py-10 text-base font-semibold text-grey-350 mdOnly:absolute xl:fixed;
 }
+:global(.dark) .sidebarWrapper {
+  @apply bg-[#161826];
+}
+
 .sidebarWrapperCollapsed {
   @apply z-20 flex h-full min-h-screen w-14  flex-col items-center bg-blue-950  py-6 text-base font-semibold text-grey-350 mdOnly:absolute xl:fixed;
 }
+:global(.dark) .sidebarWrapperCollapsed {
+  @apply bg-[#161826];
+}
+.searchSectionMobile {
+  @apply flex w-full flex-row-reverse  items-center justify-between border-b-[2px] border-[#9EA2C6] px-5 pb-7;
+}
+.searchSectionMenuCollapsed {
+  @apply flex h-36 w-full flex-col items-center justify-between border-b border-stone-400 pb-4;
+}
+.searchSectionMenuUncollapsed {
+  @apply flex w-full flex-col  border-b border-[#9EA2C6] px-5 pb-4;
+}
+.searchIcon {
+  @apply h-6 w-6 hover:text-slate-50 focus:text-slate-50;
+}
+
 .navigation {
   @apply my-[10px] mr-auto flex max-h-[532px] max-w-[348px] flex-col overflow-y-auto;
 }
@@ -35,7 +55,7 @@
   @apply text-slate-50;
 }
 .icon {
-  @apply mt-1 h-5 w-5 cursor-pointer hover:text-slate-50 focus:text-slate-50;
+  @apply mt-[2px] h-5 w-5 cursor-pointer hover:text-slate-50 focus:text-slate-50;
 }
 .collapsedMenuButton {
   @apply h-6 w-6 rotate-180 hover:text-slate-50 focus:text-slate-50;
@@ -45,8 +65,8 @@
 }
 
 .collapsedFooter {
-  @apply flex w-full items-start justify-between border-t border-stone-400 px-5 py-4;
+  @apply flex w-full items-start justify-between border-t border-[#9EA2C6] px-5 py-4;
 }
 .footer {
-  @apply flex h-32  w-full flex-col items-center justify-between border-t border-stone-400 py-4;
+  @apply flex h-32  w-full flex-col items-center justify-between border-t border-[#9EA2C6] py-4;
 }

@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
-// import Header from '../Header';
-// import Footer from '../Footer';
 import * as s from './MobileMenu.module.css';
 
 function MobileMenu({ setMobileOpen, handleClose, mobileOpen }) {

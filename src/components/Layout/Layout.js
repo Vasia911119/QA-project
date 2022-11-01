@@ -2,22 +2,22 @@ import 'fontsource-inter';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useWindowResize from '../../hooks/useWindowResize';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../Navbar';
 import { BiMenu } from 'react-icons/bi';
-import ContentSection from '../ContentSection';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import * as s from './Layout.module.css';
 import NotFoundPage from '../../pages/404';
+import Logo from '../Logo';
+import { Link } from 'gatsby';
 
 const Layout = ({ children, pageContext }) => {
   const width = useWindowResize();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuCollapsed, setMenuCollapsed] = useState(false);
-  const [rememberMenuPosition, setRememberMenuPosition] = useState(false);
+  // const [rememberMenuPosition, setRememberMenuPosition] = useState(false);
 
-  console.log(width);
   const handleClose = () => setMobileOpen(false);
-  console.log('rememberMenuPosition', rememberMenuPosition);
+
   useEffect(() => {
     if (width > 768 && mobileOpen) setMobileOpen(false);
     if (width < 1280 && !menuCollapsed) setMenuCollapsed(true);
@@ -29,6 +29,11 @@ const Layout = ({ children, pageContext }) => {
   useEffect(() => {
     if (width < 1280) setMenuCollapsed(true);
   }, []);
+
+  let websiteTheme;
+  if (typeof window !== `undefined`) {
+    websiteTheme = window.__theme;
+  }
 
   if (pageContext.layout === '404') {
     return <NotFoundPage />;
@@ -46,9 +51,18 @@ const Layout = ({ children, pageContext }) => {
 
         <main className="">
           {!mobileOpen && width < 768 && (
-            <button className={s.button} onClick={() => setMobileOpen(true)}>
-              <BiMenu className={s.biMenu} />
-            </button>
+            <div className={s.mobileHeader}>
+              <Link to="/">
+                {websiteTheme === 'dark' ? <Logo /> : <Logo black />}
+              </Link>
+              <button
+                aria-label="open menu"
+                type="button"
+                onClick={() => setMobileOpen(true)}
+              >
+                <BiMenu className={s.biMenu} />
+              </button>{' '}
+            </div>
           )}
           {mobileOpen && width < 768 && (
             <MobileMenu

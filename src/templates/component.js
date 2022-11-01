@@ -11,7 +11,6 @@ import Note from '../components/Note/Note';
 import * as s from '../styles/page.module.css';
 
 import { HTMLContent } from '../components/Content';
-import Layout from '../components/Layout';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 

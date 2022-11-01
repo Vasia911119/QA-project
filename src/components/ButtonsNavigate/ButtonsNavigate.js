@@ -72,6 +72,7 @@ const ButtonsNavigate = () => {
   return (
     <div className={s.wrapper}>
       <button
+        aria-label="go previous page"
         onClick={goPrevious}
         className={
           currentIndex === 0 || pathname === '/' || pathname === ''
@@ -85,6 +86,7 @@ const ButtonsNavigate = () => {
         {t(previous)}
       </button>
       <button
+        aria-label="go next page"
         onClick={goNext}
         className={
           currentIndex === resultArray.length - 1

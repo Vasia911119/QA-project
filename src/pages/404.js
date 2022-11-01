@@ -11,7 +11,6 @@ const NotFoundPage = function () {
   const width = useWindowResize();
   const { t } = useTranslation();
   const { oops, title, text, button } = t('404', { returnObjects: true });
-
   return (
     <section className={s.section}>
       {width < 768 ? (

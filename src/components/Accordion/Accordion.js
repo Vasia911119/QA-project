@@ -9,16 +9,13 @@ function Accordion({
   title,
   content = '',
   titleUrl = null,
-  status = false,
   handleClose,
 }) {
-  const [accordionStatus, setAccordionStatus] = useState(status);
-
+  const [accordionStatus, setAccordionStatus] = useState(false);
   const handleClick = () => {
     setAccordionStatus(!accordionStatus);
   };
 
-  // console.log(content);
   return (
     <div className={className}>
       <div className={accordionStatus ? s.wrapperUncollapsed : s.wrapper}>
@@ -28,8 +25,9 @@ function Accordion({
               to={titleUrl}
               onClick={handleClose}
               activeClassName="activeLink"
+              className={s.button}
             >
-              <button className={s.button}>{title}</button>
+              {title}
             </Link>
             <span
               className={accordionStatus ? s.icon : s.iconRotate}
@@ -40,7 +38,12 @@ function Accordion({
           </div>
         ) : (
           <div className={s.buttonWrapper}>
-            <button className={s.button} onClick={handleClick}>
+            <button
+              className={s.button}
+              aria-label="expand subsection"
+              type="button"
+              onClick={handleClick}
+            >
               {title}
             </button>
             <span
@@ -86,6 +89,9 @@ function Accordion({
 
 export default Accordion;
 Accordion.propTypes = {
-  // title: PropTypes.string.isRequired,
-  // content: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.array,
+  className: PropTypes.string,
+  titleUrl: PropTypes.string,
+  handleClose: PropTypes.func,
 };

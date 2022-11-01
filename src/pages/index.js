@@ -5,6 +5,7 @@ import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 import Note from '../components/Note/Note';
 import * as s from '../styles/page.module.css';
+import Logo from '../components/Logo';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 

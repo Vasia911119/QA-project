@@ -31,7 +31,12 @@ const SwitchLanguages = ({ collapsed = false }) => {
 
   return (
     <div>
-      <button onClick={handleOpen} className="flex items-center">
+      <button
+        type="button"
+        aria-label="open language switcher"
+        onClick={handleOpen}
+        className="flex items-center"
+      >
         <Flag
           code={showFlag(language)}
           className=" !inline-block h-6 w-6 rounded-[50%] object-cover"

@@ -63,7 +63,6 @@ const Form = () => {
       createNotification();
       reset();
     } catch (error) {
-      console.log(error);
       setError(true);
     } finally {
       setTimeout(() => {
@@ -104,7 +103,7 @@ const Form = () => {
             <p className={s.errorMsgTextarea}>{errors.message?.message}</p>
           </div>
 
-          <button className={s.button} type="submit">
+          <button aria-label="submit form" className={s.button} type="submit">
             {t(submit)}
           </button>
         </form>
