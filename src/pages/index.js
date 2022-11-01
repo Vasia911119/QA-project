@@ -26,15 +26,6 @@ export default function HomePage({ data }) {
       ) {
         return (
           <div className={s.mainWrapper} key={node.id}>
-            <div className={s.wrapper}>
-              <Breadcrumb title={node.frontmatter.page_title} />
-              <div className={s.contentWrapper}>
-                <h1 className={s.title}>{node.frontmatter.page_title}</h1>
-              </div>
-              <HTMLContent className={s.content} content={node.html} />
-              <Note description={node.frontmatter.description} />
-              <ButtonsNavigate />
-            </div>
             {width < 768 ? (
               <StaticImage
                 src="../images/businessman-pointing-mobile.png"
@@ -60,6 +51,15 @@ export default function HomePage({ data }) {
                 placeholder="blurred"
               />
             )}
+            <div className={s.wrapper}>
+              <Breadcrumb title={node.frontmatter.page_title} />
+              <div className={s.contentWrapper}>
+                <h1 className={s.title}>{node.frontmatter.page_title}</h1>
+              </div>
+              <HTMLContent className={s.content} content={node.html} />
+              <Note description={node.frontmatter.description} />
+              <ButtonsNavigate />
+            </div>
           </div>
         );
       }
