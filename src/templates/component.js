@@ -29,18 +29,6 @@ const ComponentTemplate = ({ data }) => {
         return (
           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
           <div className={s.mainWrapper} key={node.id}>
-            <div className={s.wrapper}>
-              <Breadcrumb
-                title={node.frontmatter.page_title}
-                name={node.frontmatter.page_chapter_title}
-              />
-              <div className={s.contentWrapper}>
-                <h1 className={s.title}>{node.frontmatter.page_title}</h1>
-              </div>
-              <HTMLContent className={s.content} content={node.html} />
-              <Note description={node.frontmatter.description} />
-              <ButtonsNavigate />
-            </div>
             {width < 768 ? (
               <StaticImage
                 src="../images/gradient-mobile.png"
@@ -66,6 +54,18 @@ const ComponentTemplate = ({ data }) => {
                 placeholder="blurred"
               />
             )}
+            <div className={s.wrapper}>
+              <Breadcrumb
+                title={node.frontmatter.page_title}
+                name={node.frontmatter.page_chapter_title}
+              />
+              <div className={s.contentWrapper}>
+                <h1 className={s.title}>{node.frontmatter.page_title}</h1>
+              </div>
+              <HTMLContent className={s.content} content={node.html} />
+              <Note description={node.frontmatter.description} />
+              <ButtonsNavigate />
+            </div>
             <Form />
           </div>
         );
