@@ -22,14 +22,16 @@ export default function HomePage({ data }) {
         node.frontmatter.language === i18n.language
       ) {
         return (
-          <div className={s.wrapper} key={node.id}>
-            <Breadcrumb title={node.frontmatter.page_title} />
-            <div className={s.contentWrapper}>
-              <h1 className={s.title}>{node.frontmatter.page_title}</h1>
+          <div className={s.mainWrapper} key={node.id}>
+            <div className={s.wrapper}>
+              <Breadcrumb title={node.frontmatter.page_title} />
+              <div className={s.contentWrapper}>
+                <h1 className={s.title}>{node.frontmatter.page_title}</h1>
+              </div>
+              <HTMLContent className={s.content} content={node.html} />
+              <Note description={node.frontmatter.description} />
+              <ButtonsNavigate />
             </div>
-            <HTMLContent className={s.content} content={node.html} />
-            <Note description={node.frontmatter.description} />
-            <ButtonsNavigate />
           </div>
         );
       }

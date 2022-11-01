@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
         </div>
       )}
 
-      <main className="">
+      <main className={s.main}>
         {!mobileOpen && width < 768 && (
           <button className={s.button} onClick={() => setMobileOpen(true)}>
             <BiMenu className={s.biMenu} />

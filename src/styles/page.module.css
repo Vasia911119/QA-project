@@ -1,8 +1,11 @@
-.wrapper {
-    @apply min-h-[100vh] mx-auto pt-[28px] pb-[100px] md:pt-[43px] px-3 md:px-14 xl:px-[162px] max-w-[932px];
+.mainWrapper {
+    @apply mx-auto;
 }
-:global(.dark) .wrapper {
+:global(.dark) .mainWrapper {
     @apply bg-gray-700 bg-blend-darken;
+}
+.wrapper {
+    @apply min-h-[100vh] mx-auto pt-[28px] pb-[100px] md:pt-[43px] px-3 md:px-14 xl:px-[162px] max-w-[480px] md:max-w-[720px] xl:max-w-[932px];
 }
 .contentWrapper {
     @apply space-y-4 text-left;
@@ -14,7 +17,7 @@
     @apply text-[#9EA2C6];
 }
 .content {
-    @apply prose font-inter md:prose-lg;
+    @apply prose font-inter md:prose-lg mx-auto;
 }
 :global(.dark) .content {
     @apply prose-invert;
