@@ -1,8 +1,8 @@
 const siteUrl = 'https://gatsby-starter-netlify-tailwind.netlify.app/';
 const title = 'QA test docs';
 const description = 'Testing gatsby';
-// const logo = '/img/logo.svg';
-const srcLogo = 'src/images/logo.svg';
+const logo = '/img/logo.png';
+const srcLogo = 'src/images/logo.png';
 const color = '#433e85';
 const social = {
   twitter: '',
@@ -20,7 +20,7 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
   siteMetadata: {
     siteUrl,
-    // logo,
+    logo,
     title,
     description,
     color,
