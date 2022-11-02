@@ -8,7 +8,7 @@ import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 import Note from '../components/Note/Note';
 import * as s from '../styles/page.module.css';
-
+import useWindowResize from '../hooks/useWindowResize';
 import { MobileMenuContext } from '../components/Layout/Layout';
 import Logo from '../components/Logo';
 import { BiMenu } from 'react-icons/bi';
