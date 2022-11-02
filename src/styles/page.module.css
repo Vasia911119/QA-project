@@ -1,123 +1,193 @@
 .section {
-  background: url('../images/pages/main/businessman-pointing-1x.jpg') no-repeat fixed
-    center/cover;
+  background: url('../images/pages/main/businessman-pointing-1x.jpg') no-repeat
+    fixed center/cover;
 }
 
-@supports (background: url('../images/pages/main/businessman-pointing-1x.webp')) {
-    .section {
-        background: url('../images/pages/main/businessman-pointing-1x.webp') no-repeat fixed center/cover;
-    }
+@supports (
+  background: url('../images/pages/main/businessman-pointing-1x.webp')
+) {
+  .section {
+    background: url('../images/pages/main/businessman-pointing-1x.webp')
+      no-repeat fixed center/cover;
+  }
 }
 
 @media (min-device-pixel-ratio: 2),
-(min-resolution: 192dpi),
-(min-resolution: 2dppx), 
-(min-width: 768px) {
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx),
+  (min-width: 768px) {
+  .section {
+    background: url('../images/pages/main/businessman-pointing-2x.jpg')
+      no-repeat fixed center/cover;
+  }
+  @supports (
+    background: url('../images/pages/main/businessman-pointing-2x.webp')
+  ) {
     .section {
-        background: url('../images/pages/main/businessman-pointing-2x.jpg') no-repeat fixed center/cover;
+      background: url('../images/pages/main/businessman-pointing-2x.webp')
+        no-repeat fixed center/cover;
     }
-    @supports (background: url('../images/pages/main/businessman-pointing-2x.webp')) {
-        .section {background: url('../images/pages/main/businessman-pointing-2x.webp') no-repeat fixed center/cover;}
-    }
+  }
 }
 
 :global(.dark) .section {
-  background: url('../images/pages/main/businessman-pointing-dark-1x.jpg') no-repeat fixed
-    center/cover;
+  background: url('../images/pages/main/businessman-pointing-dark-1x.jpg')
+    no-repeat fixed center/cover;
 }
 
- @supports (background: url('../images/pages/main/businessman-pointing-dark-1x.webp')) {
-    :global(.dark) .section {
-        background: url('../images/pages/main/businessman-pointing-dark-1x.webp') no-repeat fixed center/cover;
-    }
- }
+@supports (
+  background: url('../images/pages/main/businessman-pointing-dark-1x.webp')
+) {
+  :global(.dark) .section {
+    background: url('../images/pages/main/businessman-pointing-dark-1x.webp')
+      no-repeat fixed center/cover;
+  }
+}
 
 @media (min-device-pixel-ratio: 2),
-(min-resolution: 192dpi),
-(min-resolution: 2dppx), 
-(min-width: 768px) {
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx),
+  (min-width: 768px) {
+  :global(.dark) .section {
+    background: url('../images/pages/main/businessman-pointing-dark-2x.jpg')
+      no-repeat fixed center/cover;
+  }
+  @supports (
+    background: url('../images/pages/main/businessman-pointing-dark-2x.webp')
+  ) {
     :global(.dark) .section {
-        background: url('../images/pages/main/businessman-pointing-dark-2x.jpg') no-repeat fixed center/cover;
+      background: url('../images/pages/main/businessman-pointing-dark-2x.webp')
+        no-repeat fixed center/cover;
     }
-    @supports (background: url('../images/pages/main/businessman-pointing-dark-2x.webp')) {
-        :global(.dark) .section {
-            background: url('../images/pages/main/businessman-pointing-dark-2x.webp') no-repeat fixed center/cover;
-        }
-    }
+  }
 }
 
 .sectionComponents {
-  background: url('../images/pages/components/v1/layout-1x.jpg') no-repeat fixed center/cover;
+  background: url('../images/pages/components/v1/layout-1x.jpg') no-repeat fixed
+    center/cover;
 }
 
 @supports (background: url('../images/pages/components/v1/layout-1x.webp')) {
-    .sectionComponents {
-        background: url('../images/pages/components/v1/layout-1x.webp') no-repeat fixed center/cover;
-    }
+  .sectionComponents {
+    background: url('../images/pages/components/v1/layout-1x.webp') no-repeat
+      fixed center/cover;
+  }
 }
 
 @media (min-device-pixel-ratio: 2),
-(min-resolution: 192dpi),
-(min-resolution: 2dppx),
-(min-width: 768px) and (max-width: 1280px) {
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx),
+  (min-width: 768px) and (max-width: 1280px) {
+  .sectionComponents {
+    background: url('../images/pages/components/v1/layout-2x.jpg') no-repeat
+      fixed center/cover;
+  }
+  @supports (background: url('../images/pages/components/v1/layout-2x.webp')) {
     .sectionComponents {
-        background: url('../images/pages/components/v1/layout-2x.jpg') no-repeat fixed center/cover;
+      background: url('../images/pages/components/v1/layout-2x.webp') no-repeat
+        fixed center/cover;
     }
-    @supports (background: url('../images/pages/components/v1/layout-2x.webp')) {
-        .sectionComponents {
-            background: url('../images/pages/components/v1/layout-2x.webp') no-repeat fixed center/cover;
-        }
-    }
+  }
 }
 
 @media (min-width: 1280px) {
+  .sectionComponents {
+    background: url('../images/pages/components/layout-2x.jpg') no-repeat fixed
+      center/cover;
+  }
+  @supports (background: url('../images/pages/components/layout-2x.webp')) {
     .sectionComponents {
-        background: linear-gradient(89.42deg, #F8FAFC 35.63%, rgba(248, 250, 252, 0) 91.9%), url('../images/pages/components/layout-2x.jpg') no-repeat fixed center/cover;
+      background: url('../images/pages/components/layout-2x.webp') no-repeat
+        fixed center/cover;
     }
-    @supports (background: linear-gradient(89.42deg, #F8FAFC 35.63%, rgba(248, 250, 252, 0) 91.9%), url('../images/pages/components/layout-2x.webp')) {
-        .sectionComponents {
-            background: linear-gradient(89.42deg, #F8FAFC 35.63%, rgba(248, 250, 252, 0) 91.9%), url('../images/pages/components/layout-2x.webp') no-repeat fixed center/cover;
-        }
-    }
+  }
 }
 
 :global(.dark) .sectionComponents {
-    background: linear-gradient(180deg, rgba(144, 222, 254, 0.15) 0%, rgba(120, 245, 250, 0.15) 59.37%, rgba(120, 245, 250, 0.0405) 95.83%),
-    url('../images/pages/components/v1/layout-dark-1x.jpg') no-repeat fixed center/cover;
+  background: linear-gradient(
+      180deg,
+      rgba(144, 222, 254, 0.15) 0%,
+      rgba(120, 245, 250, 0.15) 59.37%,
+      rgba(120, 245, 250, 0.0405) 95.83%
+    ),
+    url('../images/pages/components/v1/layout-dark-1x.jpg') no-repeat fixed
+      center/cover;
 }
 
-@supports (background: linear-gradient(180deg, rgba(144, 222, 254, 0.15) 0%, rgba(120, 245, 250, 0.15) 59.37%, rgba(120, 245, 250, 0.0405) 95.83%), url('../images/pages/components/v1/layout-dark-1x.webp')) {
-    :global(.dark) .sectionComponents {
-        background: linear-gradient(180deg, rgba(144, 222, 254, 0.15) 0%, rgba(120, 245, 250, 0.15) 59.37%, rgba(120, 245, 250, 0.0405) 95.83%), url('../images/pages/components/v1/layout-dark-1x.webp') no-repeat fixed center/cover;
-    }
+@supports (
+  background:
+    linear-gradient(
+      180deg,
+      rgba(144, 222, 254, 0.15) 0%,
+      rgba(120, 245, 250, 0.15) 59.37%,
+      rgba(120, 245, 250, 0.0405) 95.83%
+    ),
+  url('../images/pages/components/v1/layout-dark-1x.webp')
+) {
+  :global(.dark) .sectionComponents {
+    background: linear-gradient(
+        180deg,
+        rgba(144, 222, 254, 0.15) 0%,
+        rgba(120, 245, 250, 0.15) 59.37%,
+        rgba(120, 245, 250, 0.0405) 95.83%
+      ),
+      url('../images/pages/components/v1/layout-dark-1x.webp') no-repeat fixed
+        center/cover;
+  }
 }
 
 @media (min-device-pixel-ratio: 2),
-(min-resolution: 192dpi),
-(min-resolution: 2dppx), 
-(min-width: 768px) and (max-width: 1280px) {
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx),
+  (min-width: 768px) and (max-width: 1280px) {
+  :global(.dark) .sectionComponents {
+    background: linear-gradient(
+        180deg,
+        rgba(144, 222, 254, 0.15) 0%,
+        rgba(120, 245, 250, 0.15) 59.37%,
+        rgba(120, 245, 250, 0.0405) 95.83%
+      ),
+      url('../images/pages/components/v1/layout-dark-2x.jpg') no-repeat fixed
+        center/cover;
+  }
+
+  @supports (
+    background:
+      linear-gradient(
+        180deg,
+        rgba(144, 222, 254, 0.15) 0%,
+        rgba(120, 245, 250, 0.15) 59.37%,
+        rgba(120, 245, 250, 0.0405) 95.83%
+      ),
+    url('../images/pages/components/v1/layout-dark-2x.webp')
+  ) {
     :global(.dark) .sectionComponents {
-        background: linear-gradient(180deg, rgba(144, 222, 254, 0.15) 0%, rgba(120, 245, 250, 0.15) 59.37%, rgba(120, 245, 250, 0.0405) 95.83%), url('../images/pages/components/v1/layout-dark-2x.jpg') no-repeat fixed center/cover;
+      background: linear-gradient(
+          180deg,
+          rgba(144, 222, 254, 0.15) 0%,
+          rgba(120, 245, 250, 0.15) 59.37%,
+          rgba(120, 245, 250, 0.0405) 95.83%
+        ),
+        url('../images/pages/components/v1/layout-dark-2x.webp') no-repeat fixed
+          center/cover;
     }
-    
-    @supports (background: linear-gradient(180deg, rgba(144, 222, 254, 0.15) 0%, rgba(120, 245, 250, 0.15) 59.37%, rgba(120, 245, 250, 0.0405) 95.83%), url('../images/pages/components/v1/layout-dark-2x.webp')) {
-            :global(.dark) .sectionComponents {
-                background: linear-gradient(180deg, rgba(144, 222, 254, 0.15) 0%, rgba(120, 245, 250, 0.15) 59.37%, rgba(120, 245, 250, 0.0405) 95.83%), url('../images/pages/components/v1/layout-dark-2x.webp') no-repeat fixed center/cover;
-            }
-        
-    }
+  }
 }
 
 @media (min-width: 1280px) {
+  :global(.dark) .sectionComponents {
+    background: url('../images/pages/components/layout-dark-2x.jpg') no-repeat
+      fixed center/cover;
+  }
+
+  @supports (
+    background: url('../images/pages/components/layout-dark-2x.webp')
+  ) {
     :global(.dark) .sectionComponents {
-        background: linear-gradient(180deg, rgba(144, 222, 254, 0.2) 0%, rgba(120, 245, 250, 0.2) 59.37%, rgba(120, 245, 250, 0.054) 95.83%), url('../images/pages/components/layout-dark-2x.jpg') no-repeat fixed center/cover;
+      background: url('../images/pages/components/layout-dark-2x.webp')
+        no-repeat fixed center/cover;
     }
-    
-    @supports (background: linear-gradient(180deg, rgba(144, 222, 254, 0.2) 0%, rgba(120, 245, 250, 0.2) 59.37%, rgba(120, 245, 250, 0.054) 95.83%), url('../images/pages/components/layout-dark-2x.webp')) {
-        :global(.dark) .sectionComponents {
-            background: linear-gradient(180deg, rgba(144, 222, 254, 0.2) 0%, rgba(120, 245, 250, 0.2) 59.37%, rgba(120, 245, 250, 0.054) 95.83%), url('../images/pages/components/layout-dark-2x.webp') no-repeat fixed center/cover;
-        }
-    }
+  }
 }
 
 .wrapper {
