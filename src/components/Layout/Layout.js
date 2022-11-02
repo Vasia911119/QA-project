@@ -1,22 +1,26 @@
 import 'fontsource-inter';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import PropTypes from 'prop-types';
 import useWindowResize from '../../hooks/useWindowResize';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../Navbar';
 import { BiMenu } from 'react-icons/bi';
-import ContentSection from '../ContentSection';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import * as s from './Layout.module.css';
+import NotFoundPage from '../../pages/404';
+import Logo from '../Logo';
+import { Link } from 'gatsby';
 
-const Layout = ({ children }) => {
+export const MobileMenuContext = createContext();
+
+const Layout = ({ children, pageContext }) => {
   const width = useWindowResize();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuCollapsed, setMenuCollapsed] = useState(false);
-  const [rememberMenuPosition, setRememberMenuPosition] = useState(false);
+  // const [rememberMenuPosition, setRememberMenuPosition] = useState(false);
 
-  console.log(width);
+  const menuState = { mobileOpen, setMobileOpen };
   const handleClose = () => setMobileOpen(false);
-  console.log('rememberMenuPosition', rememberMenuPosition);
+
   useEffect(() => {
     if (width > 768 && mobileOpen) setMobileOpen(false);
     if (width < 1280 && !menuCollapsed) setMenuCollapsed(true);
@@ -29,36 +33,41 @@ const Layout = ({ children }) => {
     if (width < 1280) setMenuCollapsed(true);
   }, []);
 
-  return (
-    <section className={s.mainSection}>
-      {width >= 768 && (
-        <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
-          <Navbar
-            setMenuCollapsed={setMenuCollapsed}
-            menuCollapsed={menuCollapsed}
-          />
-        </div>
-      )}
+  let websiteTheme;
+  if (typeof window !== `undefined`) {
+    websiteTheme = window.__theme;
+  }
 
-      <main className={s.main}>
-        {!mobileOpen && width < 768 && (
-          <button className={s.button} onClick={() => setMobileOpen(true)}>
-            <BiMenu className={s.biMenu} />
-          </button>
+  // <<<<<<< HEAD
+  if (pageContext.layout === '404') {
+    return <NotFoundPage />;
+  } else
+    return (
+      <section className={s.mainSection}>
+        {width >= 768 && (
+          <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
+            <Navbar
+              setMenuCollapsed={setMenuCollapsed}
+              menuCollapsed={menuCollapsed}
+            />
+          </div>
         )}
-        {mobileOpen && width < 768 && (
-          <MobileMenu
-            setMobileOpen={setMobileOpen}
-            handleClose={handleClose}
-            mobileOpen={mobileOpen}
-          />
-        )}
-        <div className={!menuCollapsed ? ' mdOnly:ml-14' : 'ml-0'}>
-          {children}
-        </div>
-      </main>
-    </section>
-  );
+        <main className={s.main}>
+          {mobileOpen && width < 768 && (
+            <MobileMenu
+              setMobileOpen={setMobileOpen}
+              handleClose={handleClose}
+              mobileOpen={mobileOpen}
+            />
+          )}
+          <div className={!menuCollapsed ? ' mdOnly:ml-14' : ' ml-0'}>
+            <MobileMenuContext.Provider value={menuState}>
+              {children}
+            </MobileMenuContext.Provider>
+          </div>
+        </main>
+      </section>
+    );
 };
 
 Layout.propTypes = {

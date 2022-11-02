@@ -1,24 +1,214 @@
+/* 
 .mainWrapper {
-    @apply mx-auto;
+  @apply relative mx-auto;
 }
 :global(.dark) .mainWrapper {
-    @apply bg-gray-700 bg-blend-darken;
+  @apply bg-blue-950;
+} */
+
+.section {
+  background-position: fixed;
+  background: url('../images/businessman-pointing-1x.jpg') no-repeat
+    center/cover;
+
+  @supports (background: url('../images/businessman-pointing-1x.webp')) {
+    background: url('../images/businessman-pointing-1x.webp') no-repeat
+      center/cover;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background: url('../images/businessman-pointing-2x.jpg') no-repeat
+      center/cover;
+
+    @supports (background: url('../images/businessman-pointing-2x.webp')) {
+      background: url('../images/businessman-pointing-2x.webp') no-repeat
+        center/cover;
+    }
+  }
+
+  @media (min-width: 768px) {
+    background: url('../images/businessman-pointing-2x.jpg') no-repeat
+      center/cover;
+
+    @supports (background: url('../images/businessman-pointing-2x.webp')) {
+      background: url('../images/businessman-pointing-2x.webp') no-repeat
+        center/cover;
+    }
+  }
+}
+:global(.dark) .section {
+  background: url('../images/businessman-pointing-dark-1x.jpg') no-repeat
+    center/cover;
+
+  @supports (background: url('../images/businessman-pointing-dark-1x.webp')) {
+    background: url('../images/businessman-pointing-dark-1x.webp') no-repeat
+      center/cover;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background: url('../images/businessman-pointing-dark-2x.jpg') no-repeat
+      center/cover;
+
+    @supports (background: url('../images/businessman-pointing-dark-2x.webp')) {
+      background: url('../images/businessman-pointing-dark-2x.webp') no-repeat
+        center/cover;
+    }
+  }
+
+  @media (min-width: 768px) {
+    background: url('../images/businessman-pointing-dark-2x.jpg') no-repeat
+      center/cover;
+
+    @supports (background: url('../images/businessman-pointing-dark-2x.webp')) {
+      background: url('../images/businessman-pointing-dark-2x.webp') no-repeat
+        center/cover;
+    }
+  }
+}
+.sectionComponents {
+  background: url('../images/layout-1x.jpg') no-repeat center/cover;
+
+  @supports (background: url('../images/layout-1x.webp')) {
+    background: url('../images/layout-1x.webp') no-repeat center/cover;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background: url('../images/layout-2x.jpg') no-repeat center/cover;
+
+    @supports (background: url('../images/layout-2x.webp')) {
+      background: url('../images/layout-2x.webp') no-repeat center/cover;
+    }
+  }
+
+  @media (min-width: 768px) {
+    background: url('../images/layout-2x.jpg') no-repeat center/cover;
+
+    @supports (background: url('../images/layout-2x.webp')) {
+      background: url('../images/layout-2x.webp') no-repeat center/cover;
+    }
+  }
+}
+:global(.dark) .sectionComponents {
+  background: linear-gradient(
+      180deg,
+      rgba(144, 222, 254, 0.15) 0%,
+      rgba(120, 245, 250, 0.15) 59.37%,
+      rgba(120, 245, 250, 0.0405) 95.83%
+    ),
+    url('../images/layout-dark-1x.jpg') no-repeat center/cover;
+
+  @supports (
+    background:
+      linear-gradient(
+        180deg,
+        rgba(144, 222, 254, 0.15) 0%,
+        rgba(120, 245, 250, 0.15) 59.37%,
+        rgba(120, 245, 250, 0.0405) 95.83%
+      ),
+    url('../images/layout-dark-1x.webp')
+  ) {
+    background: linear-gradient(
+        180deg,
+        rgba(144, 222, 254, 0.15) 0%,
+        rgba(120, 245, 250, 0.15) 59.37%,
+        rgba(120, 245, 250, 0.0405) 95.83%
+      ),
+      url('../images/layout-dark-1x.webp') no-repeat center/cover;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background: linear-gradient(
+        180deg,
+        rgba(144, 222, 254, 0.15) 0%,
+        rgba(120, 245, 250, 0.15) 59.37%,
+        rgba(120, 245, 250, 0.0405) 95.83%
+      ),
+      url('../images/layout-dark-2x.jpg') no-repeat center/cover;
+
+    @supports (
+      background:
+        linear-gradient(
+          180deg,
+          rgba(144, 222, 254, 0.15) 0%,
+          rgba(120, 245, 250, 0.15) 59.37%,
+          rgba(120, 245, 250, 0.0405) 95.83%
+        ),
+      url('../images/layout-dark-2x.webp')
+    ) {
+      background: linear-gradient(
+          180deg,
+          rgba(144, 222, 254, 0.15) 0%,
+          rgba(120, 245, 250, 0.15) 59.37%,
+          rgba(120, 245, 250, 0.0405) 95.83%
+        ),
+        url('../images/layout-dark-2x.webp') no-repeat center/cover;
+    }
+  }
+
+  @media (min-width: 768px) {
+    background: linear-gradient(
+        180deg,
+        rgba(144, 222, 254, 0.15) 0%,
+        rgba(120, 245, 250, 0.15) 59.37%,
+        rgba(120, 245, 250, 0.0405) 95.83%
+      ),
+      url('../images/layout-dark-2x.jpg') no-repeat center/cover;
+
+    @supports (
+      background:
+        linear-gradient(
+          180deg,
+          rgba(144, 222, 254, 0.15) 0%,
+          rgba(120, 245, 250, 0.15) 59.37%,
+          rgba(120, 245, 250, 0.0405) 95.83%
+        ),
+      url('../images/layout-dark-2x.webp')
+    ) {
+      background: linear-gradient(
+          180deg,
+          rgba(144, 222, 254, 0.15) 0%,
+          rgba(120, 245, 250, 0.15) 59.37%,
+          rgba(120, 245, 250, 0.0405) 95.83%
+        ),
+        url('../images/layout-dark-2x.webp') no-repeat center/cover;
+    }
+  }
 }
 .wrapper {
-    @apply min-h-[100vh] mx-auto pt-[28px] pb-[100px] md:pt-[43px] px-3 md:px-14 xl:px-[162px] max-w-[480px] md:max-w-[720px] xl:max-w-[932px];
+  @apply mr-auto min-h-[100vh] max-w-[480px] px-3 pt-[28px] pb-[100px] md:max-w-[720px] md:px-14 md:pt-[43px] xl:max-w-[932px] xl:px-[162px];
 }
 .contentWrapper {
-    @apply space-y-4 text-left;
+  @apply space-y-4 text-left;
 }
 .title {
-    @apply font-inter text-[28px] leading-[34px] md:text-[32px] md:leading-[39px] font-semibold text-stone-900;
+  @apply font-inter text-[28px] font-semibold leading-[34px] text-stone-900 md:text-[32px] md:leading-[39px];
 }
 :global(.dark) .title {
-    @apply text-[#9EA2C6];
+  @apply text-[#9EA2C6];
 }
 .content {
-    @apply prose font-inter md:prose-lg mx-auto;
+  @apply prose mx-auto font-inter md:prose-lg;
 }
 :global(.dark) .content {
-    @apply prose-invert;
+  @apply prose-invert;
+}
+
+.mobileHeader {
+  @apply mb-[30px] flex items-center justify-between;
+}
+
+.biMenu {
+  @apply h-6 w-6 fill-[#252A41] active:text-white;
+}
+
+:global(.dark) .biMenu {
+  @apply fill-white;
 }

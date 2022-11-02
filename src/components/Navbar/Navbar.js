@@ -10,13 +10,15 @@ import ToggleMode from '../Toggler';
 import { BiHomeAlt, BiChevronsLeft, BiSearch } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import {
+  HiOutlineQuestionMarkCircle,
   HiOutlineTemplate,
   HiOutlineCreditCard,
   HiOutlineDocumentText,
 } from 'react-icons/hi';
 import * as s from './Navbar.module.css';
 
-import Accordion from '../Accordion/Accordion';
+import Accordion from '../Accordion';
+
 import SearchBtnOpenModal from '../SearchBlock/SearchBtnOpenModal';
 
 export default function Navbar({
@@ -38,6 +40,7 @@ export default function Navbar({
     <HiOutlineCreditCard className={s.icon} />,
     <HiOutlineDocumentText className={s.icon} />,
   ];
+  const plugIcon = <HiOutlineQuestionMarkCircle className={s.icon} />;
 
   // ============= home page menu chapter (render only first page the home chapter) ================
   const menuHomePage = menuItems.filter(
@@ -99,7 +102,6 @@ export default function Navbar({
       i.frontmatter.link_chapter_name &&
       i.frontmatter.language === i18n.language
   );
-  console.log(linksMenus);
   return (
     <div
       className={menuCollapsed ? s.sidebarWrapperCollapsed : s.sidebarWrapper}
@@ -107,18 +109,20 @@ export default function Navbar({
       <div
         className={
           mobileOpen
-            ? 'items  flex w-full flex-row-reverse  items-center justify-between border-b-[2px] border-[#9EA2C6] px-5 pb-7'
+            ? s.searchSectionMobile
             : menuCollapsed
-            ? 'flex h-32 w-full flex-col items-center justify-between border-b border-stone-400 pb-4'
-            : 'flef w-full flex-col  border-b border-stone-400 px-5 pb-4'
+            ? s.searchSectionMenuCollapsed
+            : s.searchSectionMenuUncollapsed
         }
       >
         {mobileOpen && (
           <button
+            type="button"
+            aria-label="close menu"
             className={s.closeModalButton}
             onClick={() => setMobileOpen(false)}
           >
-            <AiOutlineClose />
+            <AiOutlineClose className="smOnly:fill-white" />
           </button>
         )}
         <Link
@@ -126,23 +130,26 @@ export default function Navbar({
           onClick={handleClose}
           className={
             mobileOpen
-              ? ' mb - 0'
+              ? ' mb-0'
               : menuCollapsed
-              ? 'mt-8 block w-[50px] -rotate-90'
+              ? 'mt-8 h-4 -rotate-90'
               : 'mb-9 '
           }
         >
           <Logo
-            rotate={menuCollapsed}
-            className={mobileOpen ? 'mb-5 block' : 'mb-0 block'}
+            className={
+              mobileOpen
+                ? ' block  h-8 w-[100px]'
+                : menuCollapsed
+                ? 'h-4 w-[50px]'
+                : 'mb-0 block  h-8 w-[100px]'
+            }
             title="Go-It"
           />
         </Link>
 
         {menuCollapsed || mobileOpen ? (
-          <BiSearch
-            className={'h-6 w-6 hover:text-slate-50 focus:text-slate-50'}
-          />
+          <BiSearch className={s.searchIcon} />
         ) : (
           <SearchBtnOpenModal />
         )}
@@ -179,7 +186,6 @@ export default function Navbar({
               menuItems,
               i
             );
-            // console.log(accordionDataComponent);
             if (accordionDataComponent)
               return (
                 <li
@@ -192,7 +198,7 @@ export default function Navbar({
                     onClick={() => setMenuCollapsed(false)}
                     className={s.icon}
                   >
-                    {notHomePageMenuChaptersIcons[index]}
+                    {notHomePageMenuChaptersIcons[index] || plugIcon}
                   </div>
                   <Accordion
                     className={menuCollapsed ? 'hidden' : 'ml-4 w-full'}
@@ -205,7 +211,6 @@ export default function Navbar({
           })}
         {linksMenus.length &&
           linksMenus.map((i, index) => {
-            console.log(i);
             return (
               <li
                 className={
@@ -214,7 +219,7 @@ export default function Navbar({
                 key={i.frontmatter.link_chapter_title}
               >
                 <div onClick={() => setMenuCollapsed(false)} className={s.icon}>
-                  {linkCaptersIcons[index]}
+                  {linkCaptersIcons[index] || plugIcon}
                 </div>
 
                 <Accordion
@@ -233,6 +238,7 @@ export default function Navbar({
         <ToggleMode collapsed={menuCollapsed} />
         {width >= 768 && (
           <button
+            aria-label="toggle sidebar"
             type="button"
             onClick={() => setMenuCollapsed(!menuCollapsed)}
           >

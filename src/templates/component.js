@@ -1,17 +1,19 @@
-import { graphql } from 'gatsby';
-import { GatsbyImage, getImage, getSrc } from 'gatsby-plugin-image';
-import { GatsbySeo, ArticleJsonLd } from 'gatsby-plugin-next-seo';
+import { graphql, Link } from 'gatsby';
+
 import i18next from 'i18next';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import Form from '../components/Form/Form';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 import Note from '../components/Note/Note';
 import * as s from '../styles/page.module.css';
+import useWindowResize from '../hooks/useWindowResize';
+import { MobileMenuContext } from '../components/Layout/Layout';
+import Logo from '../components/Logo';
+import { BiMenu } from 'react-icons/bi';
 
 import { HTMLContent } from '../components/Content';
-import Layout from '../components/Layout';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 
@@ -19,14 +21,36 @@ const ComponentTemplate = ({ data }) => {
   const { t, i18n } = useTranslation();
   const { nodes } = data.allMarkdownRemark;
 
+  const width = useWindowResize();
+  const { mobileOpen, setMobileOpen } = useContext(MobileMenuContext);
+
+  let websiteTheme;
+  if (typeof window !== `undefined`) {
+    websiteTheme = window.__theme;
+  }
+
   return (
     nodes &&
     nodes.map(node => {
       if (node.frontmatter.language === i18n.language) {
         return (
           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-          <div className={s.mainWrapper} key={node.id}>
+          <section className={s.sectionComponents} key={node.id}>
             <div className={s.wrapper}>
+              {!mobileOpen && width < 768 && (
+                <div className={s.mobileHeader}>
+                  <Link to="/">
+                    {websiteTheme === 'dark' ? <Logo /> : <Logo black />}
+                  </Link>
+                  <button
+                    aria-label="open menu"
+                    type="button"
+                    onClick={() => setMobileOpen(true)}
+                  >
+                    <BiMenu className={s.biMenu} />
+                  </button>{' '}
+                </div>
+              )}
               <Breadcrumb
                 title={node.frontmatter.page_title}
                 name={node.frontmatter.page_chapter_title}
@@ -39,7 +63,7 @@ const ComponentTemplate = ({ data }) => {
               <ButtonsNavigate />
             </div>
             <Form />
-          </div>
+          </section>
         );
       }
     })

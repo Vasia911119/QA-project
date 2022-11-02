@@ -4,6 +4,10 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 function SearchResult({ searchQuery, pagesIndexStore, onClick }) {
   const { t, i18n } = useTranslation();
+  const { notFoundTitle, notFoundText } = t('search', {
+    returnObjects: true,
+  });
+  // console.log(pagesIndexStore);
   const local = `${i18n.language}`;
   const pagesResult = [];
 
@@ -29,10 +33,10 @@ function SearchResult({ searchQuery, pagesIndexStore, onClick }) {
     return (
       <div className="flex h-[180px] w-[100%] flex-col items-center justify-center gap-y-4">
         <h4 className="font-family: 'Inter' text-lg  font-bold text-[#1C1917]">
-          Нажаль нічого не знайдено :(
+          {notFoundTitle}
         </h4>
         <p className="font-family: 'Inter' text-base  font-medium text-[#1C1917]">
-          Спробуйте ввести інший варіант для пошуку
+          {notFoundText}
         </p>
       </div>
     );

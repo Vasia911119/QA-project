@@ -23,7 +23,6 @@ module.exports = {
     // BASE FONT
     fontFamily: {
       inter: ['Inter', 'sans-serif'], // class="font-inter"
-      // exo: ['"Exo 2"', 'sans-serif'],
     },
     // THEME
     extend: {
@@ -32,9 +31,6 @@ module.exports = {
         orange: { 950: '#ff7849' },
         grey: { 350: '#9EA2C6' }, //text
         slate: { 50: '#F8FAFC' },
-        // buttonDisabled: '#D6D3D1', stone 300
-
-        // textLight: '#F8FAFC', slate 50
       },
       // TYPOGRAFY
       typography: ({ theme }) => ({
@@ -61,15 +57,15 @@ module.exports = {
       }),
 
       // CONTAINER
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: '1.25rem',
-          sm: '1.25rem',
-          md: '2rem',
-          xl: '2.5rem',
-        },
-      },
+      // container: {
+      //   center: true,
+      //   padding: {
+      //     DEFAULT: '1.25rem',
+      //     sm: '1.25rem',
+      //     md: '2rem',
+      //     xl: '2.5rem',
+      //   },
+      // },
     },
   },
   plugins: [require('@tailwindcss/typography')],

@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { Fragment, useState } from 'react';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import SearchResult from './SearchResult';
 import { Dialog, Transition } from '@headlessui/react';
 import { RiSearchLine, GrClose } from 'react-icons/ri';
@@ -35,6 +36,14 @@ export const SearchModal = ({
 }) => {
   const [pagesIndexStore, setPagesIndexStore] = useState(null);
   const dataFull = useStaticQuery(queryFull);
+
+  const { t } = useTranslation();
+
+  const { placeholder } = t('search', {
+    returnObjects: true,
+  });
+
+  // const arrData = Array.from(dataFull.allMarkdownRemark.nodes);
   const { nodes: arrData } = dataFull.allMarkdownRemark;
 
   const handleOnFocus = () => {
@@ -87,8 +96,8 @@ export const SearchModal = ({
                     <GrClose color="#F8FAFC" size={44} />
                   </ButtonCls> */}
                   <input
-                    className="text-outline-transparent  flex h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 placeholder:text-[#9EA2C6]"
-                    placeholder="Що шукаємо?"
+                    className="flex  h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 text-[#9EA2C6] outline-transparent"
+                    placeholder={placeholder}
                     type="text"
                     value={searchQuery.toLowerCase()}
                     onChange={e => setSearchQuery(e.target.value)}
