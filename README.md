@@ -113,3 +113,39 @@ module.exports = {
 </body>
 </html>
 ```
+
+## Breadcrumbs
+
+Для переходу на головну сторінку використовується `Link`
+([документація](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/)).
+
+## Form
+
+Форма створена на основі плагіна `react-hook-form`
+([документація](https://react-hook-form.com/)).
+
+Для валідації форми використовується `yup`
+([документація](https://www.npmjs.com/package/yup)).
+
+Для нотифікації при відправці форми використовується `react-notifications`
+([документація](https://www.npmjs.com/package/react-notifications)).
+
+Форма відправляється в telegram. Для того, щоб форма відправилась необхідні
+змінні оточення - `environment variables`, оскільки сайт розміщений на хостингу
+Netlify -
+([документація](https://docs.netlify.com/environment-variables/overview/#site-environment-variables)),
+то відповідно там і треба додати ці змінні.
+
+Додати необхідно змінну `GATSBY_TELEGRAM_BOT_TOKEN` з токеном боту з telegram та
+змінну `GATSBY_TELEGRAM_CHAT_ID` з id чату telegram куди будуть приходити дані з
+форми.
+
+Як створити бот в telegram, додати його до чату, як отримати з створеного боту
+токен та отримати id чату, та як отримати повідомлення з форми в чат telegram
+можна переглянути тут -
+([відео](https://www.youtube.com/watch?v=RviYQrNdDok&ab_channel=AVISTV))
+
+## ButtonsNavigate
+
+Навігація кнопками здійснюється за допомогою `navigate`
+([документація](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/#how-to-use-the-navigate-helper-function))
