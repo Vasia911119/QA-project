@@ -43,7 +43,7 @@ function SearchResultItem({ page, query, onClick }) {
     <Link
       onClick={onClick}
       to={`${page.fields.slug}`}
-      className="font-family: 'Inter' flex flex-col gap-2 hover:bg-[#EDEEF9] focus:bg-[#EDEEF9] "
+      className="font-family: 'Inter' flex flex-col gap-2 px-4 transition-colors duration-700 hover:bg-[#EDEEF9] focus:bg-[#EDEEF9] "
     >
       <h4 className="text-lg font-medium text-[#1C1917] ">
         {page.frontmatter.page_title}

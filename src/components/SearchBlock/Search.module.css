@@ -4,3 +4,6 @@
 .searchModalOpenBtn:hover, .searchModalOpenBtn:focus{
     @apply bg-slate-200;
 }
+/* .searchField{
+    @apply text-outline-transparent  flex h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 placeholder:text-[#9EA2C6];
+} */

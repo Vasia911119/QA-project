@@ -4,31 +4,24 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 function SearchResult({ searchQuery, pagesIndexStore, onClick }) {
   const { t, i18n } = useTranslation();
-  // console.log(pagesIndexStore);
   const local = `${i18n.language}`;
-  // console.log(local);
-
   const pagesResult = [];
-  // console.log(typeof pagesIndexStore);
-  // console.log(pagesIndexStore);
 
   pagesIndexStore.filter(page => {
     if (
       page.rawMarkdownBody &&
       page.frontmatter.page_chapter_title &&
       page.fields
-      // page.frontmatter.language === local
     ) {
       if (
-        page.rawMarkdownBody.toLowerCase().includes(searchQuery) ||
-        page.frontmatter.page_chapter_title.toLowerCase().includes(searchQuery)
+        page.rawMarkdownBody.toLowerCase().includes(searchQuery.trim()) ||
+        page.frontmatter.page_chapter_title
+          .toLowerCase()
+          .includes(searchQuery.trim())
       ) {
         pagesResult.push(page);
       }
     }
-    // console.log(page);
-    // if (res.frontmatter.language === local)
-    console.log(pagesResult);
     return pagesResult;
   });
 
@@ -48,7 +41,7 @@ function SearchResult({ searchQuery, pagesIndexStore, onClick }) {
   return (
     <>
       {pagesResult.length > 0 && (
-        <div className="py-2 px-4 ">
+        <div className="py-2">
           {pagesResult.map(res => {
             if (res.frontmatter.language === local) {
               return (

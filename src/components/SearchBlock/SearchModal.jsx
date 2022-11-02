@@ -1,10 +1,10 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { Fragment, useState } from 'react';
 import SearchResult from './SearchResult';
-// import SearchField from './SearchField';
 import { Dialog, Transition } from '@headlessui/react';
-import { RiSearchLine } from 'react-icons/ri';
+import { RiSearchLine, GrClose } from 'react-icons/ri';
 import { useEffect } from 'react';
+import * as s from './Search.module.css';
 
 const queryFull = graphql`
   {
@@ -33,16 +33,11 @@ export const SearchModal = ({
   searchQuery,
   setSearchQuery,
 }) => {
-  // const [searchQuery, setSearchQuery] = useState('');
   const [pagesIndexStore, setPagesIndexStore] = useState(null);
   const dataFull = useStaticQuery(queryFull);
-
-  // const arrData = Array.from(dataFull.allMarkdownRemark.nodes);
   const { nodes: arrData } = dataFull.allMarkdownRemark;
 
   const handleOnFocus = () => {
-    // if (pagesIndexStore.length === 0) return;
-
     if (arrData) {
       setPagesIndexStore(arrData);
     }
@@ -64,7 +59,7 @@ export const SearchModal = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 z-50 bg-gradient-to-r from-[#8af2fc33] to-[#8af2fc33]" />
+          <div className="fixed inset-0 z-50 bg-gradient-to-r from-[#8af2fc33] to-[#8af2fc33] backdrop-blur-[10px]" />
         </Transition.Child>
 
         <div className="fixed inset-0 z-50 overflow-y-auto ">
@@ -85,15 +80,19 @@ export const SearchModal = ({
                     size={24}
                     className="absolute inset-y-1/2 left-3 -translate-y-1/2"
                   />
-
+                  {/* <ButtonCls
+                    className="flex justify-center rounded-[50%] align-middle "
+                    onClick={closeModal}
+                  >
+                    <GrClose color="#F8FAFC" size={44} />
+                  </ButtonCls> */}
                   <input
-                    className="flex  h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 text-[#9EA2C6] outline-transparent"
+                    className="text-outline-transparent  flex h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 placeholder:text-[#9EA2C6]"
                     placeholder="Що шукаємо?"
                     type="text"
-                    value={searchQuery.toLowerCase().trim()}
+                    value={searchQuery.toLowerCase()}
                     onChange={e => setSearchQuery(e.target.value)}
                   />
-                  {/* <SearchField setValue={setSearchQuery} value={searchQuery} /> */}
                 </div>
 
                 {searchQuery && pagesIndexStore && (
