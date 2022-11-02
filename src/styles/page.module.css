@@ -1,4 +1,5 @@
 .section {
+    background-position: fixed;
     background: url("../images/businessman-pointing-1x.jpg") no-repeat center/cover;
 
         @supports (background: url("../images/businessman-pointing-1x.webp")) {
@@ -99,7 +100,7 @@
         }
 }
 .wrapper {
-    @apply min-h-[100vh] mx-auto pt-[28px] pb-[100px] md:pt-[43px] px-3 md:px-14 xl:px-[162px] max-w-[480px] md:max-w-[720px] xl:max-w-[932px];
+    @apply min-h-[100vh] mr-auto pt-[28px] pb-[100px] md:pt-[43px] px-3 md:px-14 xl:px-[162px] max-w-[480px] md:max-w-[720px] xl:max-w-[932px];
 }
 .contentWrapper {
     @apply space-y-4 text-left;
