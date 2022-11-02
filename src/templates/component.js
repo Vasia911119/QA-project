@@ -10,7 +10,10 @@ import Note from '../components/Note/Note';
 import * as s from '../styles/page.module.css';
 import useWindowResize from '../hooks/useWindowResize';
 import { MobileMenuContext } from '../components/Layout/Layout';
-import Logo from '../components/Logo';
+
+import Logo from '-!svg-react-loader!../icons/logo.svg';
+import LogoBlack from '-!svg-react-loader!../icons/logo-black.svg';
+
 import { BiMenu } from 'react-icons/bi';
 
 import { HTMLContent } from '../components/Content';
@@ -40,7 +43,7 @@ const ComponentTemplate = ({ data }) => {
               {!mobileOpen && width < 768 && (
                 <div className={s.mobileHeader}>
                   <Link to="/">
-                    {websiteTheme === 'dark' ? <Logo /> : <Logo black />}
+                    {websiteTheme === 'dark' ? <Logo /> : <LogoBlack />}
                   </Link>
                   <button
                     aria-label="open menu"

@@ -3,12 +3,10 @@ import React, { useState, useEffect, createContext } from 'react';
 import PropTypes from 'prop-types';
 import useWindowResize from '../../hooks/useWindowResize';
 import Navbar from '../Navbar';
-import { BiMenu } from 'react-icons/bi';
+
 import MobileMenu from '../MobileMenu/MobileMenu';
 import * as s from './Layout.module.css';
 import NotFoundPage from '../../pages/404';
-import Logo from '../Logo';
-import { Link } from 'gatsby';
 
 export const MobileMenuContext = createContext();
 
@@ -38,7 +36,6 @@ const Layout = ({ children, pageContext }) => {
     websiteTheme = window.__theme;
   }
 
-  // <<<<<<< HEAD
   if (pageContext.layout === '404') {
     return <NotFoundPage />;
   } else

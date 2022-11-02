@@ -2,7 +2,7 @@ const siteUrl = 'https://gatsby-starter-netlify-tailwind.netlify.app/';
 const title = 'QA test docs';
 const description = 'Testing gatsby';
 const logo = '/img/logo.svg';
-const srcLogo = 'src/images/logo.svg';
+const srcLogo = 'src/icons/logo-black.svg';
 const color = '#433e85';
 const social = {
   twitter: '',
@@ -32,7 +32,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /\.inline\.svg$/,
+          include: /images/,
         },
       },
     },
