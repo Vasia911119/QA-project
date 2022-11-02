@@ -205,9 +205,7 @@
 .content {
   @apply prose mx-auto font-inter md:prose-lg;
 }
-/* .content > ul {
-  @apply prose prose-ul:list-outside prose-ul:list-disc;
-} */
+
 :global(.dark) .content {
   @apply prose-invert;
 }
