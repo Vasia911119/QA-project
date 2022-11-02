@@ -1,10 +1,12 @@
 import { graphql, Link } from 'gatsby';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
+
 import PropTypes, { node } from 'prop-types';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 import Note from '../components/Note/Note';
 import * as s from '../styles/page.module.css';
+
 import { MobileMenuContext } from '../components/Layout/Layout';
 import { StaticImage } from 'gatsby-plugin-image';
 import useWindowResize from '../hooks/useWindowResize';
@@ -18,6 +20,7 @@ import { HTMLContent } from '../components/Content';
 export default function HomePage({ data }) {
   const { nodes } = data.allMarkdownRemark;
   const { i18n } = useTranslation();
+
   const width = useWindowResize();
   const { mobileOpen, setMobileOpen } = useContext(MobileMenuContext);
 
@@ -34,7 +37,7 @@ export default function HomePage({ data }) {
         node.frontmatter.language === i18n.language
       ) {
         return (
-          <div className={s.mainWrapper} key={node.id}>
+          <section className={s.section} key={node.id}>
             <div className={s.wrapper}>
               {!mobileOpen && width < 768 && (
                 <div className={s.mobileHeader}>
@@ -58,32 +61,7 @@ export default function HomePage({ data }) {
               <Note description={node.frontmatter.description} />
               <ButtonsNavigate />
             </div>
-            {width < 768 ? (
-              <StaticImage
-                src="../images/businessman-pointing-mobile.png"
-                formats={['auto', 'webp', 'avif']}
-                alt="businessman pointing"
-                className={s.backgroundImage}
-                placeholder="blurred"
-              />
-            ) : width > 1280 ? (
-              <StaticImage
-                src="../images/businessman-pointing-tablet.png"
-                formats={['auto', 'webp', 'avif']}
-                alt="businessman pointing"
-                className={s.backgroundImage}
-                placeholder="blurred"
-              />
-            ) : (
-              <StaticImage
-                src="../images/businessman-pointing-desktop.png"
-                formats={['auto', 'webp', 'avif']}
-                alt="businessman pointing"
-                className={s.backgroundImage}
-                placeholder="blurred"
-              />
-            )}
-          </div>
+          </section>
         );
       }
     })

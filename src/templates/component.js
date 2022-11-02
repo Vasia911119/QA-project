@@ -8,8 +8,6 @@ import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
 import Note from '../components/Note/Note';
 import * as s from '../styles/page.module.css';
-import { StaticImage } from 'gatsby-plugin-image';
-import useWindowResize from '../hooks/useWindowResize';
 
 import { MobileMenuContext } from '../components/Layout/Layout';
 import Logo from '../components/Logo';
@@ -22,6 +20,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 const ComponentTemplate = ({ data }) => {
   const { t, i18n } = useTranslation();
   const { nodes } = data.allMarkdownRemark;
+
   const width = useWindowResize();
   const { mobileOpen, setMobileOpen } = useContext(MobileMenuContext);
 
@@ -36,7 +35,7 @@ const ComponentTemplate = ({ data }) => {
       if (node.frontmatter.language === i18n.language) {
         return (
           // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-          <div className={s.mainWrapper} key={node.id}>
+          <section className={s.sectionComponents} key={node.id}>
             <div className={s.wrapper}>
               {!mobileOpen && width < 768 && (
                 <div className={s.mobileHeader}>
@@ -63,33 +62,8 @@ const ComponentTemplate = ({ data }) => {
               <Note description={node.frontmatter.description} />
               <ButtonsNavigate />
             </div>
-            {width < 768 ? (
-              <StaticImage
-                src="../images/gradient-mobile.png"
-                formats={['auto', 'webp', 'avif']}
-                alt="gradient"
-                className={s.backgroundImage}
-                placeholder="blurred"
-              />
-            ) : width > 1280 ? (
-              <StaticImage
-                src="../images/gradient-tablet.png"
-                formats={['auto', 'webp', 'avif']}
-                alt="gradient"
-                className={s.backgroundImage}
-                placeholder="blurred"
-              />
-            ) : (
-              <StaticImage
-                src="../images/gradient-desktop.png"
-                formats={['auto', 'webp', 'avif']}
-                alt="gradient"
-                className={s.backgroundImage}
-                placeholder="blurred"
-              />
-            )}
             <Form />
-          </div>
+          </section>
         );
       }
     })
