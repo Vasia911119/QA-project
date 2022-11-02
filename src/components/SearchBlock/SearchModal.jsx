@@ -54,7 +54,7 @@ export const SearchModal = ({
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={closeModal}>
+      <Dialog as="div" className="z-100 relative" onClose={closeModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -64,11 +64,11 @@ export const SearchModal = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gradient-to-r from-[#8af2fc33] to-[#8af2fc33]" />
+          <div className="fixed inset-0 z-50 bg-gradient-to-r from-[#8af2fc33] to-[#8af2fc33]" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto ">
-          <div className="flex min-h-full items-center justify-center p-4 text-center ">
+        <div className="fixed inset-0 z-50 overflow-y-auto ">
+          <div className=" flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
