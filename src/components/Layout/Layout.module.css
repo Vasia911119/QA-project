@@ -1,5 +1,5 @@
 .main {
-    @apply w-full;
+  @apply w-full;
 }
 .mainSection {
   @apply relative mx-auto antialiased md:flex;
@@ -10,7 +10,7 @@
 .uncollapsed {
   @apply z-30 h-full bg-blue-950 text-stone-400 mdOnly:absolute md:w-[348px] md:min-w-[348px];
 }
-.mobileHeader {
+/* .mobileHeader {
   @apply flex items-center justify-between pl-3 pr-5 pt-9;
 }
 
@@ -24,4 +24,4 @@
 
 :global(.dark) .biMenu {
   @apply text-[#9EA2C6];
-}
+} */

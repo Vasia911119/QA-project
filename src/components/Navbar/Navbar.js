@@ -122,7 +122,7 @@ export default function Navbar({
             className={s.closeModalButton}
             onClick={() => setMobileOpen(false)}
           >
-            <AiOutlineClose />
+            <AiOutlineClose className="smOnly:fill-white" />
           </button>
         )}
         <Link
