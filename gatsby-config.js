@@ -1,6 +1,6 @@
-const siteUrl = 'https://gatsby-starter-netlify-tailwind.netlify.app/';
+const siteUrl = 'https://profound-lokum-cdd3e6.netlify.app/';
 const title = 'QA test docs';
-const description = 'Testing gatsby';
+const description = 'GO-IT documentation';
 const logo = '/src/images/logo.svg';
 const color = '#433e85';
 const social = {
