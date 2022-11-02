@@ -2,32 +2,29 @@ import { StaticImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Logo({ title, className, rotate = false }) {
-  return rotate ? (
+export default function Logo({ black, className = '' }) {
+  return black ? (
     <StaticImage
-      src="../images/logo.svg"
+      src="../images/logo-black.svg"
       formats={['auto', 'webp', 'avif']}
-      alt={title}
-      title={title}
-      className={'block'}
+      alt="logo"
+      title="Go-IT"
+      className={className}
       placeholder="blurred"
-      width={50}
-      height={16}
     />
   ) : (
     <StaticImage
       src="../images/logo.svg"
       formats={['auto', 'webp', 'avif']}
-      alt={title}
-      title={title}
+      alt="logo"
+      title="Go-IT"
+      className={className}
       placeholder="blurred"
-      width={100}
-      height={32}
     />
   );
 }
 
 Logo.propTypes = {
-  title: PropTypes.string.isRequired,
+  // title: PropTypes.string.isRequired,
   className: PropTypes.string,
 };

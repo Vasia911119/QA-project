@@ -53,9 +53,17 @@ exports.createPages = ({ actions, graphql }) => {
     });
   });
 };
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage } = actions;
 
+  if (page.path.match(/404/)) {
+    page.context.layout = '404';
+    createPage(page);
+  }
+};
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
+
   if (!!node.frontmatter && !!node.frontmatter.slug) {
     const value = createFilePath({ node, getNode });
     createNodeField({

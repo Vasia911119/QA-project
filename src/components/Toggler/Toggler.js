@@ -22,6 +22,8 @@ const ToggleMode = ({ collapsed = false }) => {
 
   return (
     <button
+      type="button"
+      aria-label="change theme"
       onClick={ThemeToggle}
       className="flex items-center gap-2 text-grey-350 transition-colors hover:text-slate-50 focus:text-slate-50"
     >
