@@ -1,3 +1,6 @@
+.main {
+    @apply w-full;
+}
 .mainSection {
   @apply relative mx-auto antialiased md:flex;
 }

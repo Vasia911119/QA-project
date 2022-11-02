@@ -19,6 +19,8 @@ import * as s from './Navbar.module.css';
 
 import Accordion from '../Accordion';
 
+import SearchBtnOpenModal from '../SearchBlock/SearchBtnOpenModal';
+
 export default function Navbar({
   mobileOpen,
   setMobileOpen,
@@ -149,11 +151,7 @@ export default function Navbar({
         {menuCollapsed || mobileOpen ? (
           <BiSearch className={s.searchIcon} />
         ) : (
-          <input
-            type="text"
-            className="w-full rounded p-3 text-sm"
-            placeholder={'Search'}
-          />
+          <SearchBtnOpenModal />
         )}
       </div>
       <ul

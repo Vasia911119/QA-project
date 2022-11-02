@@ -35,6 +35,7 @@ const Layout = ({ children, pageContext }) => {
     websiteTheme = window.__theme;
   }
 
+  // <<<<<<< HEAD
   if (pageContext.layout === '404') {
     return <NotFoundPage />;
   } else
@@ -47,6 +48,13 @@ const Layout = ({ children, pageContext }) => {
               menuCollapsed={menuCollapsed}
             />
           </div>
+          // =======
+          //       <main className={s.main}>
+          //         {!mobileOpen && width < 768 && (
+          //           <button className={s.button} onClick={() => setMobileOpen(true)}>
+          //             <BiMenu className={s.biMenu} />
+          //           </button>
+          // >>>>>>> 80925b82b11d4db158d056a1a85582b66d6dde9e
         )}
 
         <main className="">

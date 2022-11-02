@@ -1,5 +1,5 @@
 .mainWrapper {
-  @apply w-full bg-blue-100;
+  @apply w-full bg-blue-100 relative z-10;
 }
 :global(.dark) .mainWrapper {
   @apply bg-[#1C2237];

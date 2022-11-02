@@ -1,5 +1,5 @@
 .wrapper {
-  @apply relative mx-auto mt-[52px] flex max-w-[608px] items-center rounded-[12px] bg-slate-50 bg-opacity-[65] shadow-md backdrop-blur-[3px];
+  @apply relative mx-auto mt-[52px] flex max-w-[608px] items-center rounded-[12px] bg-slate-50 bg-opacity-50 shadow-md backdrop-blur-[3px];
 }
 :global(.dark) .wrapper {
   @apply bg-[#252A41] bg-opacity-50;
