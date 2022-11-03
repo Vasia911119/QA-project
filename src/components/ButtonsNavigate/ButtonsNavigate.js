@@ -49,16 +49,22 @@ const ButtonsNavigate = () => {
   const pathname =
     typeof window !== 'undefined' ? window.location.pathname : '';
   // Отримуємо поточний індекс елемента в масиві сторінок
-  const currentIndex =
-    // Наступні перевірки зумовлені особливістю роботи плагіна gatsby-plugin-react-i18next з мовою на сторінці по замовчуванню особливість полягає в тому, що на сторінку з мовою по замовчуванню можна перейти по двох різних шляхах, до прикладу - "/" та "/uk/", на інших мовах сторінки шлях буде до прикладу лише - "/en/", або "/ru/" і тому подібне
-    pathname === '/'
-      ? 0
-      : resultArray.indexOf(
-          (i18n.language === 'uk' && pathname.includes('/uk/')) ||
-            i18n.language !== 'uk'
-            ? pathname
-            : '/uk' + pathname
-        );
+  const getCurrentIndex = () => {
+    const currentIndex =
+      // Наступні перевірки зумовлені особливістю роботи плагіна gatsby-plugin-react-i18next з мовою на сторінці по замовчуванню особливість полягає в тому, що на сторінку з мовою по замовчуванню можна перейти по двох різних шляхах, до прикладу - "/" та "/uk/", на інших мовах сторінки шлях буде до прикладу лише - "/en/", або "/ru/" і тому подібне
+      pathname === '/'
+        ? 0
+        : resultArray.indexOf(
+            (i18n.language === 'uk' && pathname.includes('/uk/')) ||
+              i18n.language !== 'uk'
+              ? pathname
+              : '/uk' + pathname
+          );
+    window.localStorage.setItem('currentIndex', currentIndex);
+    return currentIndex;
+  };
+  const currentIndex = getCurrentIndex();
+
   const navigation = resultIndex => {
     navigate(resultArray[resultIndex]);
   };
@@ -75,7 +81,11 @@ const ButtonsNavigate = () => {
         aria-label="go previous page"
         onClick={goPrevious}
         className={s.buttonLeft}
-        disabled={currentIndex === 0 || pathname === '/' || pathname === ''}
+        disabled={
+          +window.localStorage.getItem('currentIndex') === 0 ||
+          pathname === '/' ||
+          pathname === ''
+        }
         type="button"
       >
         <BiChevronLeft className={s.icon} alt="previous" />
@@ -85,7 +95,10 @@ const ButtonsNavigate = () => {
         aria-label="go next page"
         onClick={goNext}
         className={s.buttonRight}
-        disabled={currentIndex === resultArray.length - 1}
+        disabled={
+          +window.localStorage.getItem('currentIndex') ===
+          resultArray.length - 1
+        }
         type="button"
       >
         {t(next)}

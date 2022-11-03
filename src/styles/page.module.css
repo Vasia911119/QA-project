@@ -31,16 +31,26 @@
 }
 
 :global(.dark) .section {
-  background: url('../images/pages/main/businessman-pointing-dark-1x.jpg')
-    no-repeat fixed center/cover;
+  background: linear-gradient(
+      89.96deg,
+      #1c2237 2.03%,
+      rgba(28, 34, 55, 0) 99.39%
+    ),
+    url('../images/pages/main/businessman-pointing-dark-1x.jpg') no-repeat fixed
+      center/cover;
 }
 
 @supports (
   background: url('../images/pages/main/businessman-pointing-dark-1x.webp')
 ) {
   :global(.dark) .section {
-    background: url('../images/pages/main/businessman-pointing-dark-1x.webp')
-      no-repeat fixed center/cover;
+    background: linear-gradient(
+        89.96deg,
+        #1c2237 2.03%,
+        rgba(28, 34, 55, 0) 99.39%
+      ),
+      url('../images/pages/main/businessman-pointing-dark-1x.webp') no-repeat
+        fixed center/cover;
   }
 }
 
@@ -49,15 +59,25 @@
   (min-resolution: 2dppx),
   (min-width: 768px) {
   :global(.dark) .section {
-    background: url('../images/pages/main/businessman-pointing-dark-2x.jpg')
-      no-repeat fixed center/cover;
+    background: linear-gradient(
+        89.96deg,
+        #1c2237 2.03%,
+        rgba(28, 34, 55, 0) 99.39%
+      ),
+      url('../images/pages/main/businessman-pointing-dark-2x.jpg') no-repeat
+        fixed center/cover;
   }
   @supports (
     background: url('../images/pages/main/businessman-pointing-dark-2x.webp')
   ) {
     :global(.dark) .section {
-      background: url('../images/pages/main/businessman-pointing-dark-2x.webp')
-        no-repeat fixed center/cover;
+      background: linear-gradient(
+          89.96deg,
+          #1c2237 2.03%,
+          rgba(28, 34, 55, 0) 99.39%
+        ),
+        url('../images/pages/main/businessman-pointing-dark-2x.webp') no-repeat
+          fixed center/cover;
     }
   }
 }
