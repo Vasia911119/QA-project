@@ -60,7 +60,7 @@ const ButtonsNavigate = () => {
             : '/uk' + pathname
         );
 
-  //----------------------------------Варіант №1-------------------------------------//
+  //----------------------------------Варіант №0-------------------------------------//
 
   const navigation = resultIndex => {
     navigate(resultArray[resultIndex]);
@@ -76,8 +76,13 @@ const ButtonsNavigate = () => {
     <div className={s.wrapper}>
       <button
         onClick={goPrevious}
-        className={s.buttonLeft}
-        disabled={currentIndex === 0 || pathname === '/' || pathname === ''}
+        className={
+          pathname === `/${i18n.language}/` ||
+          pathname === '/' ||
+          pathname === ''
+            ? s.buttonLeftDisabled
+            : s.buttonLeft
+        }
         type="button"
       >
         <BiChevronLeft className={s.icon} alt="previous" />
@@ -85,8 +90,11 @@ const ButtonsNavigate = () => {
       </button>
       <button
         onClick={goNext}
-        className={s.buttonRight}
-        disabled={currentIndex === resultArray.length - 1}
+        className={
+          pathname === resultArray[resultArray.length - 1]
+            ? s.buttonRightDisabled
+            : s.buttonRight
+        }
         type="button"
       >
         {t(next)}
@@ -95,6 +103,42 @@ const ButtonsNavigate = () => {
     </div>
   );
 };
+
+//----------------------------------Варіант №1-------------------------------------//
+
+//   const navigation = resultIndex => {
+//     navigate(resultArray[resultIndex]);
+//   };
+//   const goPrevious = () => {
+//     navigation(currentIndex - 1);
+//   };
+//   const goNext = () => {
+//     navigation(currentIndex + 1);
+//   };
+
+//   return (
+//     <div className={s.wrapper}>
+//       <button
+//         onClick={goPrevious}
+//         className={s.buttonLeft}
+//         disabled={currentIndex === 0 || pathname === '/' || pathname === ''}
+//         type="button"
+//       >
+//         <BiChevronLeft className={s.icon} alt="previous" />
+//         {t(previous)}
+//       </button>
+//       <button
+//         onClick={goNext}
+//         className={s.buttonRight}
+//         disabled={currentIndex === resultArray.length - 1}
+//         type="button"
+//       >
+//         {t(next)}
+//         <BiChevronRight className={s.icon} alt="next" />
+//       </button>
+//     </div>
+//   );
+// };
 
 //----------------------------------Варіант №2-------------------------------------//
 
