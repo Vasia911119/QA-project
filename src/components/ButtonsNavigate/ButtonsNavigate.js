@@ -84,7 +84,7 @@ const ButtonsNavigate = () => {
         className={s.buttonLeft}
         disabled={
           (typeof window !== 'undefined' &&
-            +window.localStorage.getItem('currentIndex')) === 0 ||
+            Number(window.localStorage.getItem('currentIndex'))) === 0 ||
           pathname === '/' ||
           pathname === ''
         }
@@ -99,7 +99,7 @@ const ButtonsNavigate = () => {
         className={s.buttonRight}
         disabled={
           (typeof window !== 'undefined' &&
-            +window.localStorage.getItem('currentIndex')) ===
+            Number(window.localStorage.getItem('currentIndex'))) ===
           resultArray.length - 1
         }
         type="button"
