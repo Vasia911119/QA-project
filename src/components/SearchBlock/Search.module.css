@@ -1,9 +1,85 @@
-.searchModalOpenBtn{
-    @apply flex h-10 w-[100%] cursor-pointer items-center justify-start gap-[10px] rounded-[10px] bg-[#EDEEF9] pl-5 capitalize text-[#9EA2C6] transition-colors;
+.searchField {
+  @apply flex  h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#F8FAFC] pl-10 text-[#1C1917] outline-transparent;
 }
-.searchModalOpenBtn:hover, .searchModalOpenBtn:focus{
-    @apply bg-slate-200;
+:global(.dark) .searchField {
+  @apply bg-[#252A41] text-[#F8FAFC];
 }
-/* .searchField{
-    @apply text-outline-transparent  flex h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 placeholder:text-[#9EA2C6];
-} */
+.searchField::placeholder {
+  @apply text-[#9EA2C6];
+}
+:global(.dark) .searchField::placeholder {
+  @apply text-[#9EA2C6];
+}
+.searchIcon {
+  @apply h-6 w-6 hover:text-slate-50 focus:text-slate-50 smOnly:fill-white;
+}
+.searchResultItemLink {
+  @apply flex  flex-col gap-2 px-4 font-inter transition-colors duration-700;
+}
+
+.searchResultItemLink:hover,
+.searchResultItemLink:focus {
+  @apply bg-[#EDEEF9];
+}
+
+:global(.dark) .searchResultItemLink:hover,
+.searchResultItemLink:focus {
+  @apply bg-[#3B82F6];
+}
+:global(.dark) .searchResultItemLink:hover .searchResultItemSubtitle,
+.searchResultItemLink:focus .searchResultItemSubtitle,
+.searchResultItemLink:hover .searchResultItemText,
+.searchResultItemLink:focus .searchResultItemText {
+  @apply text-[#F8FAFC];
+}
+
+.searchResultItemSubtitle {
+  @apply text-lg font-medium text-[#1C1917];
+}
+
+:global(.dark) .searchResultItemSubtitle,
+:global(.dark) .searchResultItemText {
+  @apply text-[#9EA2C6];
+}
+
+.searchResultItemText {
+  @apply text-sm font-normal text-[#94A3B8];
+}
+
+.searchResultNotFoundBox {
+  @apply flex h-[180px] w-[100%] flex-col items-center justify-center gap-y-4;
+}
+.searchResultNotFoundSubtitle {
+  @apply font-inter text-lg  font-bold text-[#1C1917];
+}
+:global(.dark) .searchResultNotFoundSubtitle,
+:global(.dark) .searchResultNotFoundText {
+  @apply text-[#F8FAFC];
+}
+.searchResultNotFoundText {
+  @apply font-inter text-base  font-medium text-[#1C1917];
+}
+.searchModalWrapper {
+  @apply relative z-50;
+}
+.searchModalBackdrop {
+  @apply fixed inset-0 z-50 bg-gradient-to-r from-[#8af2fc33] to-[#8af2fc33] backdrop-blur-[10px];
+}
+:global(.dark) .searchModalBackdrop {
+  @apply bg-gradient-to-r from-[#1C2237E6] to-[#1C2237E6] backdrop-blur-[10px];
+}
+.searchModalBlock {
+  @apply fixed inset-0 z-50 overflow-y-auto;
+}
+.searchModalIcon {
+  @apply absolute inset-y-1/2 left-3 -translate-y-1/2;
+}
+.searchModalBlockCenter {
+  @apply flex min-h-full items-center justify-center p-4 text-center;
+}
+.searchBlockPanel {
+  @apply absolute top-[196px] max-h-[376px] min-h-[60px] w-[96%] max-w-[488px] transform overflow-hidden rounded-[12px] bg-[#F8FAFC]  text-left  align-middle shadow-xl transition-all md:top-[200px] md:w-[488px] xl:top-[200px] xl:w-[480px];
+}
+:global(.dark) .searchBlockPanel {
+  @apply bg-[#252A41];
+}

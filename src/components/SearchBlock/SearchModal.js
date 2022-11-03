@@ -3,7 +3,8 @@ import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import SearchResult from './SearchResult';
 import { Dialog, Transition } from '@headlessui/react';
-import { RiSearchLine, GrClose } from 'react-icons/ri';
+// import { GrClose } from 'react-icons/ri';
+import { BiSearch } from 'react-icons/bi';
 import { useEffect } from 'react';
 import * as s from './Search.module.css';
 
@@ -43,7 +44,6 @@ export const SearchModal = ({
     returnObjects: true,
   });
 
-  // const arrData = Array.from(dataFull.allMarkdownRemark.nodes);
   const { nodes: arrData } = dataFull.allMarkdownRemark;
 
   const handleOnFocus = () => {
@@ -58,7 +58,7 @@ export const SearchModal = ({
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="z-100 relative" onClose={closeModal}>
+      <Dialog as="div" className={s.searchModalWrapper} onClose={closeModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -68,11 +68,11 @@ export const SearchModal = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 z-50 bg-gradient-to-r from-[#8af2fc33] to-[#8af2fc33] backdrop-blur-[10px]" />
+          <div className={s.searchModalBackdrop} />
         </Transition.Child>
 
-        <div className="fixed inset-0 z-50 overflow-y-auto ">
-          <div className=" flex min-h-full items-center justify-center p-4 text-center">
+        <div className={s.searchModalBlock}>
+          <div className={s.searchModalBlockCenter}>
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -82,12 +82,12 @@ export const SearchModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className=" rounded-2xl absolute top-[196px] max-h-[376px] min-h-[60px] w-[96%] max-w-[488px] transform overflow-hidden rounded-[10px] bg-white text-left align-middle shadow-xl transition-all md:top-[200px] md:w-[488px] xl:top-[160px] xl:w-[480px]">
+              <Dialog.Panel className={s.searchBlockPanel}>
                 <div className="relative">
-                  <RiSearchLine
+                  <BiSearch
                     color="#9EA2C6"
                     size={24}
-                    className="absolute inset-y-1/2 left-3 -translate-y-1/2"
+                    className={s.searchModalIcon}
                   />
                   {/* <ButtonCls
                     className="flex justify-center rounded-[50%] align-middle "
@@ -96,10 +96,10 @@ export const SearchModal = ({
                     <GrClose color="#F8FAFC" size={44} />
                   </ButtonCls> */}
                   <input
-                    className="flex  h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 text-[#9EA2C6] outline-transparent"
+                    className={s.searchField}
                     placeholder={placeholder}
                     type="text"
-                    value={searchQuery.toLowerCase()}
+                    value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
                   />
                 </div>
