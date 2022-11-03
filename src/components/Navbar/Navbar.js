@@ -4,7 +4,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 import useMenuStructure from '../../queries/menu-structure';
 import useWindowResize from '../../hooks/useWindowResize';
-import Logo from '-!svg-react-loader!../../icons/logo.svg';
+import Logo from '../../icons/logo.inline.svg';
 
 import SwitchLanguages from '../SwitchLanguages';
 import ToggleMode from '../Toggler';

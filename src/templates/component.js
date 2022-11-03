@@ -11,8 +11,8 @@ import * as s from '../styles/page.module.css';
 import useWindowResize from '../hooks/useWindowResize';
 import { MobileMenuContext } from '../components/Layout/Layout';
 
-import Logo from '-!svg-react-loader!../icons/logo.svg';
-import LogoBlack from '-!svg-react-loader!../icons/logo-black.svg';
+import Logo from '../icons/logo.inline.svg';
+import LogoBlack from '../icons/logo-black.inline.svg';
 
 import { BiMenu } from 'react-icons/bi';
 

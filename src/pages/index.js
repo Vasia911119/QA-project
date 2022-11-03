@@ -8,15 +8,13 @@ import Note from '../components/Note/Note';
 import * as s from '../styles/page.module.css';
 
 import { MobileMenuContext } from '../components/Layout/Layout';
-import { StaticImage } from 'gatsby-plugin-image';
 import useWindowResize from '../hooks/useWindowResize';
 
-import Logo from '-!svg-react-loader!../icons/logo.svg';
-
+import Logo from '../icons/logo.inline.svg';
+import LogoBlack from '../icons/logo-black.inline.svg';
 import { BiMenu } from 'react-icons/bi';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
-
 import { HTMLContent } from '../components/Content';
 
 export default function HomePage({ data }) {

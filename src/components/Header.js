@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 // import useSiteMetadata from '../queries/site-metadata';
-import Logo from '-!svg-react-loader!../icons/logo.svg';
+import Logo from '../icons/logo.inline.svg';
 
 export default function Header() {
   const { title } = useSiteMetadata();
