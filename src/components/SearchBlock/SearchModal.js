@@ -3,9 +3,9 @@ import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import SearchResult from './SearchResult';
 import { Dialog, Transition } from '@headlessui/react';
-// import { GrClose } from 'react-icons/ri';
 import { BiSearch } from 'react-icons/bi';
 import { useEffect } from 'react';
+import SearchClsBtn from './SearchClsBtn';
 import * as s from './Search.module.css';
 
 const queryFull = graphql`
@@ -34,6 +34,7 @@ export const SearchModal = ({
   isOpen,
   searchQuery,
   setSearchQuery,
+  onClsClick,
 }) => {
   const [pagesIndexStore, setPagesIndexStore] = useState(null);
   const dataFull = useStaticQuery(queryFull);
@@ -89,12 +90,7 @@ export const SearchModal = ({
                     size={24}
                     className={s.searchModalIcon}
                   />
-                  {/* <ButtonCls
-                    className="flex justify-center rounded-[50%] align-middle "
-                    onClick={closeModal}
-                  >
-                    <GrClose color="#F8FAFC" size={44} />
-                  </ButtonCls> */}
+
                   <input
                     className={s.searchField}
                     placeholder={placeholder}
@@ -103,7 +99,6 @@ export const SearchModal = ({
                     onChange={e => setSearchQuery(e.target.value)}
                   />
                 </div>
-
                 {searchQuery && pagesIndexStore && (
                   <div>
                     <SearchResult
@@ -115,6 +110,7 @@ export const SearchModal = ({
                 )}
               </Dialog.Panel>
             </Transition.Child>
+            <SearchClsBtn onClsClick={closeModal} />
           </div>
         </div>
       </Dialog>

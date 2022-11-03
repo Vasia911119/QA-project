@@ -81,7 +81,7 @@
   @apply absolute top-[196px] max-h-[376px] min-h-[60px] w-[96%] max-w-[488px] transform overflow-hidden rounded-[12px] bg-[#F8FAFC]  text-left  align-middle shadow-xl transition-all md:top-[200px] md:w-[488px] xl:top-[200px] xl:w-[480px];
 }
 :global(.dark) .searchBlockPanel {
-  @apply bg-[#252A41];
+  @apply relative bg-[#252A41];
 }
 .searchBtnLg {
   @apply flex h-10 w-[100%] cursor-pointer items-center justify-start gap-[10px] rounded-[10px] pl-5 capitalize text-[#9EA2C6] transition-colors hover:bg-slate-200 focus:bg-slate-200;
@@ -94,4 +94,10 @@
 }
 .searchBtnSm {
   @apply block h-10;
+}
+.searchClsBtn {
+  @apply absolute top-[60px] flex h-16 w-16 items-center justify-center rounded-[50%] border border-[#F8FAFC] text-slate-50;
+}
+.searchClsIcon {
+  @apply smOnly:fill-white;
 }
