@@ -114,7 +114,7 @@ module.exports = {
 </html>
 ```
 
-## Breadcrumbs
+## Breadcrumb
 
 Для переходу на головну сторінку використовується `Link`
 ([документація](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/)).
