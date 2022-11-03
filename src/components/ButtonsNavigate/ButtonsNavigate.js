@@ -45,26 +45,12 @@ const ButtonsNavigate = () => {
     return result;
   };
   const resultArray = getResultArray();
-  // // Отримуємо адресу поточної сторінки
-  // const pathname =
-  //   typeof window !== 'undefined' ? window.location.pathname : '';
-  // // Отримуємо поточний індекс елемента в масиві сторінок
-  // const currentIndex =
-  //   // Наступні перевірки зумовлені особливістю роботи плагіна gatsby-plugin-react-i18next з мовою на сторінці по замовчуванню особливість полягає в тому, що на сторінку з мовою по замовчуванню можна перейти по двох різних шляхах, до прикладу - "/" та "/uk/", на інших мовах сторінки шлях буде до прикладу лише - "/en/", або "/ru/" і тому подібне
-  //   pathname === '/'
-  //     ? 0
-  //     : resultArray.indexOf(
-  //         (i18n.language === 'uk' && pathname.includes('/uk/')) ||
-  //           i18n.language !== 'uk'
-  //           ? pathname
-  //           : '/uk' + pathname
-  //       );
-
-  //---------------------------------Варіант №0-------------------------------------//
+  // Отримуємо адресу поточної сторінки
   const pathname =
     typeof window !== 'undefined' ? window.location.pathname : '';
-
+  // Отримуємо поточний індекс елемента в масиві сторінок
   const currentIndex =
+    // Наступні перевірки зумовлені особливістю роботи плагіна gatsby-plugin-react-i18next з мовою на сторінці по замовчуванню особливість полягає в тому, що на сторінку з мовою по замовчуванню можна перейти по двох різних шляхах, до прикладу - "/" та "/uk/", на інших мовах сторінки шлях буде до прикладу лише - "/en/", або "/ru/" і тому подібне
     pathname === '/'
       ? 0
       : resultArray.indexOf(
@@ -73,6 +59,8 @@ const ButtonsNavigate = () => {
             ? pathname
             : '/uk' + pathname
         );
+
+  //---------------------------------Варіант №1-------------------------------------//
 
   const [path, setPath] = useState(pathname);
   const [index, setIndex] = useState(currentIndex);
@@ -102,8 +90,11 @@ const ButtonsNavigate = () => {
       <button
         aria-label="go previous page"
         onClick={goPrevious}
-        className={s.buttonLeft}
-        disabled={path === `/${i18n.language}/` || path === '/' || path === ''}
+        className={
+          path !== `/${i18n.language}/` || path === '/' || path === ''
+            ? s.buttonLeft
+            : s.buttonLeftDisabled
+        }
         type="button"
       >
         <BiChevronLeft className={s.icon} alt="previous" />
@@ -112,8 +103,11 @@ const ButtonsNavigate = () => {
       <button
         aria-label="go next page"
         onClick={goNext}
-        className={s.buttonRight}
-        disabled={path === resultArray[resultArray.length - 1]}
+        className={
+          path !== resultArray[resultArray.length - 1]
+            ? s.buttonRight
+            : s.buttonRightDisabled
+        }
         type="button"
       >
         {t(next)}
@@ -123,7 +117,7 @@ const ButtonsNavigate = () => {
   );
 };
 
-//----------------------------------Варіант №1-------------------------------------//
+//----------------------------------Варіант №2-------------------------------------//
 
 //   const navigation = resultIndex => {
 //     navigate(resultArray[resultIndex]);
@@ -167,7 +161,7 @@ const ButtonsNavigate = () => {
 //   );
 // };
 
-//----------------------------------Варіант №2-------------------------------------//
+//----------------------------------Варіант №3-------------------------------------//
 
 //   const navigation = resultIndex => {
 //     navigate(resultArray[resultIndex]);
@@ -203,7 +197,7 @@ const ButtonsNavigate = () => {
 //   );
 // };
 
-//----------------------------------Варіант №3-------------------------------------//
+//----------------------------------Варіант №4-------------------------------------//
 
 //   const navigation = resultIndex => {
 //     navigate(resultArray[resultIndex]);
@@ -243,7 +237,7 @@ const ButtonsNavigate = () => {
 //   );
 // };
 
-//----------------------------------Варіант №4-------------------------------------//
+//----------------------------------Варіант №5-------------------------------------//
 
 //   typeof window !== 'undefined' &&
 //     window.localStorage.setItem('currentIndex', currentIndex);
@@ -291,7 +285,7 @@ const ButtonsNavigate = () => {
 //   );
 // };
 
-//----------------------------------Варіант №5-------------------------------------//
+//----------------------------------Варіант №6-------------------------------------//
 
 //   const [index, setIndex] = useState(currentIndex);
 
