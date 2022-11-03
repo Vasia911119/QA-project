@@ -77,13 +77,10 @@ const ButtonsNavigate = () => {
   const [path, setPath] = useState(pathname);
   const [index, setIndex] = useState(currentIndex);
 
-  const getPath =
-    typeof window !== 'undefined'
-      ? window.localStorage.getItem('path')
-      : pathname;
-
   useEffect(() => {
-    setPath(getPath);
+    setPath(
+      typeof window !== 'undefined' && window.localStorage.getItem('path')
+    );
   }, []);
 
   useEffect(() => {
