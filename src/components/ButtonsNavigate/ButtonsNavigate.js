@@ -60,7 +60,8 @@ const ButtonsNavigate = () => {
               ? pathname
               : '/uk' + pathname
           );
-    window.localStorage.setItem('currentIndex', currentIndex);
+    typeof window !== 'undefined' &&
+      window.localStorage.setItem('currentIndex', currentIndex);
     return currentIndex;
   };
   const currentIndex = getCurrentIndex();
@@ -82,7 +83,8 @@ const ButtonsNavigate = () => {
         onClick={goPrevious}
         className={s.buttonLeft}
         disabled={
-          +window.localStorage.getItem('currentIndex') === 0 ||
+          (typeof window !== 'undefined' &&
+            +window.localStorage.getItem('currentIndex')) === 0 ||
           pathname === '/' ||
           pathname === ''
         }
@@ -96,7 +98,8 @@ const ButtonsNavigate = () => {
         onClick={goNext}
         className={s.buttonRight}
         disabled={
-          +window.localStorage.getItem('currentIndex') ===
+          (typeof window !== 'undefined' &&
+            +window.localStorage.getItem('currentIndex')) ===
           resultArray.length - 1
         }
         type="button"
