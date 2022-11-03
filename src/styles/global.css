@@ -5,10 +5,6 @@
 html {
   scroll-behavior: smooth;
 }
-ul,
-li {
-  list-style: none;
-}
 p,
 h1,
 h2,
