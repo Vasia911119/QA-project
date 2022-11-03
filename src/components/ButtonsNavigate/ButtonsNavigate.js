@@ -59,47 +59,41 @@ const ButtonsNavigate = () => {
             ? pathname
             : '/uk' + pathname
         );
-  const [index, setIndex] = useState(currentIndex);
 
-  const getIndex =
-    typeof window !== 'undefined'
-      ? JSON.parse(window.localStorage.getItem('index'))
-      : currentIndex;
-
-  useEffect(() => {
-    currentIndex === getIndex ? setIndex(getIndex) : setIndex(currentIndex);
-  }, []);
-
-  useEffect(() => {
-    typeof window !== 'undefined' &&
-      window.localStorage.setItem('index', index);
-    navigate(resultArray[index]);
-  }, [index]);
-
+  //----------------------------------Варіант №1-------------------------------------//
+  const navigation = resultIndex => {
+    navigate(resultArray[resultIndex]);
+  };
   const goPrevious = () => {
-    setIndex(index - 1);
+    navigation(currentIndex - 1);
   };
   const goNext = () => {
-    setIndex(index + 1);
+    navigation(currentIndex + 1);
   };
 
   return (
     <div className={s.wrapper}>
       <button
-        aria-label="go previous page"
         onClick={goPrevious}
-        className={s.buttonLeft}
-        disabled={index === 0 || pathname === '/' || pathname === ''}
+        className={
+          currentIndex === 0 || pathname === '/' || pathname === ''
+            ? s.buttonLeftDisabled
+            : s.buttonLeft
+        }
+        disabled={currentIndex === 0 || pathname === '/' || pathname === ''}
         type="button"
       >
         <BiChevronLeft className={s.icon} alt="previous" />
         {t(previous)}
       </button>
       <button
-        aria-label="go next page"
         onClick={goNext}
-        className={s.buttonRight}
-        disabled={index === resultArray.length - 1}
+        className={
+          currentIndex === resultArray.length - 1
+            ? s.buttonRightDisabled
+            : s.buttonRight
+        }
+        disabled={currentIndex === resultArray.length - 1}
         type="button"
       >
         {t(next)}
@@ -108,5 +102,103 @@ const ButtonsNavigate = () => {
     </div>
   );
 };
+
+//----------------------------------Варіант №2-------------------------------------//
+//   typeof window !== 'undefined' &&
+//     window.localStorage.setItem('currentIndex', currentIndex);
+
+//   const navigation = resultIndex => {
+//     navigate(resultArray[resultIndex]);
+//   };
+//   const goPrevious = () => {
+//     navigation(currentIndex - 1);
+//   };
+//   const goNext = () => {
+//     navigation(currentIndex + 1);
+//   };
+
+//   return (
+//     <div className={s.wrapper}>
+//       <button
+//         onClick={goPrevious}
+//         className={s.buttonLeft}
+//         disabled={
+//           (typeof window !== 'undefined' &&
+//             Number(window.localStorage.getItem('currentIndex'))) === 0 ||
+//           pathname === '/' ||
+//           pathname === ''
+//         }
+//         type="button"
+//       >
+//         <BiChevronLeft className={s.icon} alt="previous" />
+//         {t(previous)}
+//       </button>
+//       <button
+//         onClick={goNext}
+//         className={s.buttonRight}
+//         disabled={
+//           (typeof window !== 'undefined' &&
+//             Number(window.localStorage.getItem('currentIndex'))) ===
+//           resultArray.length - 1
+//         }
+//         type="button"
+//       >
+//         {t(next)}
+//         <BiChevronRight className={s.icon} alt="next" />
+//       </button>
+//     </div>
+//   );
+// };
+
+//----------------------------------Варіант №3-------------------------------------//
+//   const [index, setIndex] = useState(currentIndex);
+
+//   const getIndex =
+//     typeof window !== 'undefined'
+//       ? JSON.parse(window.localStorage.getItem('index'))
+//       : currentIndex;
+
+//   useEffect(() => {
+//     currentIndex === getIndex ? setIndex(getIndex) : setIndex(currentIndex);
+//   }, []);
+
+//   useEffect(() => {
+//     typeof window !== 'undefined' &&
+//       window.localStorage.setItem('index', index);
+//     navigate(resultArray[index]);
+//   }, [index]);
+
+//   const goPrevious = () => {
+//     setIndex(index - 1);
+//   };
+//   const goNext = () => {
+//     setIndex(index + 1);
+//   };
+
+//   return (
+//     <div className={s.wrapper}>
+//       <button
+//         aria-label="go previous page"
+//         onClick={goPrevious}
+//         className={s.buttonLeft}
+//         disabled={index === 0 || pathname === '/' || pathname === ''}
+//         type="button"
+//       >
+//         <BiChevronLeft className={s.icon} alt="previous" />
+//         {t(previous)}
+//       </button>
+//       <button
+//         aria-label="go next page"
+//         onClick={goNext}
+//         className={s.buttonRight}
+//         disabled={index === resultArray.length - 1}
+//         type="button"
+//       >
+//         {t(next)}
+//         <BiChevronRight className={s.icon} alt="next" />
+//       </button>
+//     </div>
+//   );
+// };
 
 export default ButtonsNavigate;
