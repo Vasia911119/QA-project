@@ -27,15 +27,6 @@
 .searchIcon {
   @apply h-6 w-6 hover:text-slate-50 focus:text-slate-50 smOnly:fill-white;
 }
-.searchBtnLg {
-  @apply flex h-10 w-[100%] cursor-pointer items-center justify-start gap-[10px] rounded-[10px] bg-[#EDEEF9]  pl-5 capitalize text-[#9EA2C6] transition-colors hover:bg-slate-200 focus:bg-slate-200;
-}
-:global(.dark) .searchBtnLg {
-  @apply bg-[#252A41];
-}
-.searchBtnSm {
-  @apply flex h-10 w-[100%];
-}
 .navigation {
   @apply my-[10px] mr-auto flex max-h-[532px] max-w-[348px] flex-col overflow-y-auto;
 }

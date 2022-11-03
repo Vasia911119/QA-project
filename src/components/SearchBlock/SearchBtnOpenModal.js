@@ -4,7 +4,7 @@ import { SearchModal } from './SearchModal';
 import { BiSearch } from 'react-icons/bi';
 import * as s from './Search.module.css';
 
-const SearchBtnOpenModal = ({ className }) => {
+const SearchBtnOpenModal = ({ menuCollapsed, mobileOpen }) => {
   let [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -25,10 +25,20 @@ const SearchBtnOpenModal = ({ className }) => {
 
   return (
     <>
-      <button className={className} type="button" onClick={openModal}>
-        <BiSearch className={s.searchIcon} />
-        {button}
-      </button>
+      {menuCollapsed || mobileOpen ? (
+        <button type="button" className={s.searchBtnSm} onClick={openModal}>
+          <BiSearch className={s.searchIcon} />
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={openModal}
+          className={`${s.searchBtnLg} ${s.searchBtnBgLite}`}
+        >
+          <BiSearch className={s.searchIcon} />
+          {button}
+        </button>
+      )}
 
       <SearchModal
         isOpen={isOpen}

@@ -83,3 +83,15 @@
 :global(.dark) .searchBlockPanel {
   @apply bg-[#252A41];
 }
+.searchBtnLg {
+  @apply flex h-10 w-[100%] cursor-pointer items-center justify-start gap-[10px] rounded-[10px] pl-5 capitalize text-[#9EA2C6] transition-colors hover:bg-slate-200 focus:bg-slate-200;
+}
+.searchBtnBgLite {
+  @apply bg-[#EDEEF9] !important;
+}
+:global(.dark) .searchBtnLg {
+  @apply bg-[#252A41];
+}
+.searchBtnSm {
+  @apply block h-10;
+}

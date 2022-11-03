@@ -148,11 +148,8 @@ export default function Navbar({
           />
         </Link>
 
-        {menuCollapsed || mobileOpen ? (
-          <SearchBtnOpenModal className={s.searchBtnSm} />
-        ) : (
-          <SearchBtnOpenModal className={s.searchBtnLg} />
-        )}
+        <SearchBtnOpenModal menuCollapsed={menuCollapsed} mobileOpen={mobileOpen}></SearchBtnOpenModal>
+
       </div>
       <ul
         style={menuCollapsed ? { maxWidth: '56px' } : null}
