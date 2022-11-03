@@ -1,7 +1,7 @@
-const siteUrl = 'https://profound-lokum-cdd3e6.netlify.app/';
+const siteUrl = 'https://gatsby-starter-netlify-tailwind.netlify.app/';
 const title = 'QA test docs';
-const description = 'GO-IT documentation';
-const logo = '/src/images/logo.svg';
+const description = 'Testing gatsby';
+const logo = '/img/logo.svg';
 const color = '#433e85';
 const social = {
   twitter: '',
@@ -134,7 +134,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: color,
         display: `minimal-ui`,
-        icon: logo,
+        icon: 'src/images/logo.svg',
       },
     },
     {
