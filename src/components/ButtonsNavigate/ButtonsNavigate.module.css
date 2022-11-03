@@ -1,4 +1,5 @@
-.wrapper {
+/* -------------------------------------Варіант №1------------------------------------ */
+/* .wrapper {
   @apply mt-[80px] flex font-inter text-base font-semibold text-slate-50 md:mt-[92px] xl:mt-[100px];
 }
 .buttonLeft {
@@ -25,9 +26,11 @@
 }
 .icon {
   @apply h-[30px] w-[30px];
-}
+} */
 
-/* .wrapper {
+/* -------------------------------------Варіант №2,3,4,5------------------------------------ */
+
+.wrapper {
   @apply mt-[80px] flex font-inter text-base font-semibold text-slate-50 md:mt-[92px] xl:mt-[100px];
 }
 .buttonLeft {
@@ -54,4 +57,4 @@
 }
 .icon {
   @apply h-[30px] w-[30px];
-} */
+}

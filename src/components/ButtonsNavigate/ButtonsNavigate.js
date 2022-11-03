@@ -45,12 +45,26 @@ const ButtonsNavigate = () => {
     return result;
   };
   const resultArray = getResultArray();
-  // Отримуємо адресу поточної сторінки
+  // // Отримуємо адресу поточної сторінки
+  // const pathname =
+  //   typeof window !== 'undefined' ? window.location.pathname : '';
+  // // Отримуємо поточний індекс елемента в масиві сторінок
+  // const currentIndex =
+  //   // Наступні перевірки зумовлені особливістю роботи плагіна gatsby-plugin-react-i18next з мовою на сторінці по замовчуванню особливість полягає в тому, що на сторінку з мовою по замовчуванню можна перейти по двох різних шляхах, до прикладу - "/" та "/uk/", на інших мовах сторінки шлях буде до прикладу лише - "/en/", або "/ru/" і тому подібне
+  //   pathname === '/'
+  //     ? 0
+  //     : resultArray.indexOf(
+  //         (i18n.language === 'uk' && pathname.includes('/uk/')) ||
+  //           i18n.language !== 'uk'
+  //           ? pathname
+  //           : '/uk' + pathname
+  //       );
+
+  //---------------------------------Варіант №0-------------------------------------//
   const pathname =
     typeof window !== 'undefined' ? window.location.pathname : '';
-  // Отримуємо поточний індекс елемента в масиві сторінок
+
   const currentIndex =
-    // Наступні перевірки зумовлені особливістю роботи плагіна gatsby-plugin-react-i18next з мовою на сторінці по замовчуванню особливість полягає в тому, що на сторінку з мовою по замовчуванню можна перейти по двох різних шляхах, до прикладу - "/" та "/uk/", на інших мовах сторінки шлях буде до прикладу лише - "/en/", або "/ru/" і тому подібне
     pathname === '/'
       ? 0
       : resultArray.indexOf(
@@ -60,41 +74,49 @@ const ButtonsNavigate = () => {
             : '/uk' + pathname
         );
 
-  //----------------------------------Варіант №0-------------------------------------//
+  const [path, setPath] = useState(pathname);
+  const [index, setIndex] = useState(currentIndex);
 
-  const navigation = resultIndex => {
-    navigate(resultArray[resultIndex]);
-  };
+  const getPath =
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('path')
+      : pathname;
+
+  useEffect(() => {
+    setPath(getPath);
+  }, []);
+
+  useEffect(() => {
+    typeof window !== 'undefined' && window.localStorage.setItem('path', path);
+    setPath(pathname);
+    navigate(resultArray[index]);
+  }, [index]);
+
   const goPrevious = () => {
-    navigation(currentIndex - 1);
+    setIndex(index - 1);
   };
+
   const goNext = () => {
-    navigation(currentIndex + 1);
+    setIndex(index + 1);
   };
 
   return (
     <div className={s.wrapper}>
       <button
+        aria-label="go previous page"
         onClick={goPrevious}
-        className={
-          pathname === `/${i18n.language}/` ||
-          pathname === '/' ||
-          pathname === ''
-            ? s.buttonLeftDisabled
-            : s.buttonLeft
-        }
+        className={s.buttonLeft}
+        disabled={path === `/${i18n.language}/` || path === '/' || path === ''}
         type="button"
       >
         <BiChevronLeft className={s.icon} alt="previous" />
         {t(previous)}
       </button>
       <button
+        aria-label="go next page"
         onClick={goNext}
-        className={
-          pathname === resultArray[resultArray.length - 1]
-            ? s.buttonRightDisabled
-            : s.buttonRight
-        }
+        className={s.buttonRight}
+        disabled={path === resultArray[resultArray.length - 1]}
         type="button"
       >
         {t(next)}
@@ -105,6 +127,50 @@ const ButtonsNavigate = () => {
 };
 
 //----------------------------------Варіант №1-------------------------------------//
+
+//   const navigation = resultIndex => {
+//     navigate(resultArray[resultIndex]);
+//   };
+//   const goPrevious = () => {
+//     navigation(currentIndex - 1);
+//   };
+//   const goNext = () => {
+//     navigation(currentIndex + 1);
+//   };
+
+//   return (
+//     <div className={s.wrapper}>
+//       <button
+//         onClick={goPrevious}
+//         className={
+//           pathname === `/${i18n.language}/` ||
+//           pathname === '/' ||
+//           pathname === ''
+//             ? s.buttonLeftDisabled
+//             : s.buttonLeft
+//         }
+//         type="button"
+//       >
+//         <BiChevronLeft className={s.icon} alt="previous" />
+//         {t(previous)}
+//       </button>
+//       <button
+//         onClick={goNext}
+//         className={
+//           pathname === resultArray[resultArray.length - 1]
+//             ? s.buttonRightDisabled
+//             : s.buttonRight
+//         }
+//         type="button"
+//       >
+//         {t(next)}
+//         <BiChevronRight className={s.icon} alt="next" />
+//       </button>
+//     </div>
+//   );
+// };
+
+//----------------------------------Варіант №2-------------------------------------//
 
 //   const navigation = resultIndex => {
 //     navigate(resultArray[resultIndex]);
@@ -140,7 +206,7 @@ const ButtonsNavigate = () => {
 //   );
 // };
 
-//----------------------------------Варіант №2-------------------------------------//
+//----------------------------------Варіант №3-------------------------------------//
 
 //   const navigation = resultIndex => {
 //     navigate(resultArray[resultIndex]);
@@ -180,7 +246,7 @@ const ButtonsNavigate = () => {
 //   );
 // };
 
-//----------------------------------Варіант №3-------------------------------------//
+//----------------------------------Варіант №4-------------------------------------//
 
 //   typeof window !== 'undefined' &&
 //     window.localStorage.setItem('currentIndex', currentIndex);
@@ -228,7 +294,7 @@ const ButtonsNavigate = () => {
 //   );
 // };
 
-//----------------------------------Варіант №4-------------------------------------//
+//----------------------------------Варіант №5-------------------------------------//
 
 //   const [index, setIndex] = useState(currentIndex);
 
