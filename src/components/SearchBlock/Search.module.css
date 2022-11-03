@@ -22,16 +22,16 @@
   @apply bg-[#3B82F6];
 }
 
-.searchResultItemLink:hover,
-.searchResultItemLink:focus {
-  @apply bg-[#EDEEF9];
-}
-
 :global(.dark) .searchResultItemLink:hover .searchResultItemSubtitle,
 .searchResultItemLink:focus .searchResultItemSubtitle,
 .searchResultItemLink:hover .searchResultItemText,
 .searchResultItemLink:focus .searchResultItemText {
   @apply text-[#F8FAFC];
+}
+
+.searchResultItemLink:hover,
+.searchResultItemLink:focus {
+  @apply bg-[#EDEEF9];
 }
 
 .searchResultItemSubtitle {

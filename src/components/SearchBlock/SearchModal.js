@@ -110,7 +110,7 @@ export const SearchModal = ({
                 )}
               </Dialog.Panel>
             </Transition.Child>
-            <SearchClsBtn onClsClick={closeModal} />
+            {/* <SearchClsBtn onClsClick={closeModal} /> */}
           </div>
         </div>
       </Dialog>
