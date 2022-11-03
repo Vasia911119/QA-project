@@ -74,11 +74,7 @@ const ButtonsNavigate = () => {
       <button
         aria-label="go previous page"
         onClick={goPrevious}
-        className={
-          currentIndex === 0 || pathname === '/' || pathname === ''
-            ? s.buttonLeftDisabled
-            : s.buttonLeft
-        }
+        className={s.buttonLeft}
         disabled={currentIndex === 0 || pathname === '/' || pathname === ''}
         type="button"
       >
@@ -88,11 +84,7 @@ const ButtonsNavigate = () => {
       <button
         aria-label="go next page"
         onClick={goNext}
-        className={
-          currentIndex === resultArray.length - 1
-            ? s.buttonRightDisabled
-            : s.buttonRight
-        }
+        className={s.buttonRight}
         disabled={currentIndex === resultArray.length - 1}
         type="button"
       >
