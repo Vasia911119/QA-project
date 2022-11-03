@@ -5,7 +5,7 @@ import SearchResult from './SearchResult';
 import { Dialog, Transition } from '@headlessui/react';
 import { BiSearch } from 'react-icons/bi';
 import { useEffect } from 'react';
-import SearchClsBtn from './SearchClsBtn';
+// import SearchClsBtn from './SearchClsBtn';
 import * as s from './Search.module.css';
 
 const queryFull = graphql`
