@@ -58,6 +58,9 @@ module.exports = {
         DEFAULT: {
           css: {
             '--tw-prose-bullets': theme('colors.blue[950]'),
+            '--tw-prose-hr': theme('colors.blue[950]'),
+            '--tw-prose-th-borders': theme('colors.blue[950]'),
+            '--tw-prose-td-borders': theme('colors.blue[950]'),
             ul: {
               listStyle: 'outside',
               listStyleType: 'decimal',
