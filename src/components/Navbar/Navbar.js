@@ -4,7 +4,8 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 import useMenuStructure from '../../queries/menu-structure';
 import useWindowResize from '../../hooks/useWindowResize';
-import Logo from '../Logo';
+import Logo from '../../icons/logo.inline.svg';
+
 import SwitchLanguages from '../SwitchLanguages';
 import ToggleMode from '../Toggler';
 import { BiHomeAlt, BiChevronsLeft } from 'react-icons/bi';

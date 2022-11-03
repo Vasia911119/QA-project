@@ -1,24 +1,28 @@
 .wrapper {
-  @apply flex mt-[80px] md:mt-[92px] xl:mt-[100px] font-inter font-semibold text-base text-slate-50;
+  @apply mt-[80px] flex font-inter text-base font-semibold text-slate-50 md:mt-[92px] xl:mt-[100px];
 }
 .buttonLeft {
-  @apply flex items-center justify-center rounded-[10px] bg-blue-600 w-[114px] h-12 font-inter font-semibold text-xs transition-all ml-auto mr-8;
-}
-.buttonLeft:hover, .buttonLeft:focus {
-  @apply bg-blue-500;
-}
-.buttonLeftDisabled {
-  @apply flex items-center justify-center rounded-[10px] bg-stone-300 w-[114px] h-12 font-inter font-semibold text-xs transition-all ml-auto mr-8;
+  @apply ml-auto mr-8 flex h-12 w-[114px] items-center justify-center rounded-[10px] bg-blue-600 font-inter text-base font-semibold transition-all disabled:bg-stone-300;
 }
 .buttonRight {
-  @apply flex items-center justify-center rounded-[10px] bg-blue-600 w-[114px] h-12 font-inter font-semibold text-xs transition-all mr-auto;
+  @apply mr-auto flex h-12 w-[114px] items-center justify-center rounded-[10px] bg-blue-600 font-inter text-base font-semibold transition-all disabled:bg-stone-300;
 }
-.buttonRight:hover, .buttonRight:focus {
-  @apply bg-blue-500;
+:global(.dark) .buttonLeft,
+:global(.dark) .buttonRight {
+  @apply disabled:bg-slate-400;
 }
-.buttonRightDisabled {
-  @apply flex items-center justify-center rounded-[10px] bg-stone-300 w-[114px] h-12 font-inter font-semibold text-xs transition-all mr-auto;
+.buttonLeft:hover,
+.buttonLeft:focus,
+.buttonRight:hover,
+.buttonRight:focus {
+  @apply bg-blue-500 disabled:bg-stone-300;
+}
+:global(.dark) .buttonLeft:hover,
+:global(.dark) .buttonLeft:hover,
+:global(.dark) .buttonRight:hover,
+:global(.dark) .buttonRight:hover {
+  @apply disabled:bg-slate-400;
 }
 .icon {
-  @apply w-[30px] h-[30px];
+  @apply h-[30px] w-[30px];
 }

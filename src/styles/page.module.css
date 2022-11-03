@@ -31,16 +31,26 @@
 }
 
 :global(.dark) .section {
-  background: url('../images/pages/main/businessman-pointing-dark-1x.jpg')
-    no-repeat fixed center/cover;
+  background: linear-gradient(
+      89.96deg,
+      #1c2237 2.03%,
+      rgba(28, 34, 55, 0) 99.39%
+    ),
+    url('../images/pages/main/businessman-pointing-dark-1x.jpg') no-repeat fixed
+      center/cover;
 }
 
 @supports (
   background: url('../images/pages/main/businessman-pointing-dark-1x.webp')
 ) {
   :global(.dark) .section {
-    background: url('../images/pages/main/businessman-pointing-dark-1x.webp')
-      no-repeat fixed center/cover;
+    background: linear-gradient(
+        89.96deg,
+        #1c2237 2.03%,
+        rgba(28, 34, 55, 0) 99.39%
+      ),
+      url('../images/pages/main/businessman-pointing-dark-1x.webp') no-repeat
+        fixed center/cover;
   }
 }
 
@@ -49,15 +59,25 @@
   (min-resolution: 2dppx),
   (min-width: 768px) {
   :global(.dark) .section {
-    background: url('../images/pages/main/businessman-pointing-dark-2x.jpg')
-      no-repeat fixed center/cover;
+    background: linear-gradient(
+        89.96deg,
+        #1c2237 2.03%,
+        rgba(28, 34, 55, 0) 99.39%
+      ),
+      url('../images/pages/main/businessman-pointing-dark-2x.jpg') no-repeat
+        fixed center/cover;
   }
   @supports (
     background: url('../images/pages/main/businessman-pointing-dark-2x.webp')
   ) {
     :global(.dark) .section {
-      background: url('../images/pages/main/businessman-pointing-dark-2x.webp')
-        no-repeat fixed center/cover;
+      background: linear-gradient(
+          89.96deg,
+          #1c2237 2.03%,
+          rgba(28, 34, 55, 0) 99.39%
+        ),
+        url('../images/pages/main/businessman-pointing-dark-2x.webp') no-repeat
+          fixed center/cover;
     }
   }
 }
@@ -176,22 +196,34 @@
 
 @media (min-width: 1280px) {
   :global(.dark) .sectionComponents {
-    background: url('../images/pages/components/layout-dark-2x.jpg') no-repeat
-      fixed center/cover;
+    background: linear-gradient(
+        180deg,
+        rgba(144, 222, 254, 0.1) 0%,
+        rgba(120, 245, 250, 0.1) 59.37%,
+        rgba(120, 245, 250, 0.027) 95.83%
+      ),
+      linear-gradient(89.96deg, #1c2237 41.93%, rgba(28, 34, 55, 0.65) 99.39%),
+      url('../images/pages/components/layout-2x.jpg') no-repeat fixed
+        center/cover;
   }
 
-  @supports (
-    background: url('../images/pages/components/layout-dark-2x.webp')
-  ) {
+  @supports (background: url('../images/pages/components/layout-2x.webp')) {
     :global(.dark) .sectionComponents {
-      background: url('../images/pages/components/layout-dark-2x.webp')
-        no-repeat fixed center/cover;
+      background: linear-gradient(
+          180deg,
+          rgba(144, 222, 254, 0.1) 0%,
+          rgba(120, 245, 250, 0.1) 59.37%,
+          rgba(120, 245, 250, 0.027) 95.83%
+        ),
+        linear-gradient(89.96deg, #1c2237 41.93%, rgba(28, 34, 55, 0.65) 99.39%),
+        url('../images/pages/components/layout-2x.webp') no-repeat fixed
+          center/cover;
     }
   }
 }
 
 .wrapper {
-  @apply mr-auto min-h-[100vh] max-w-[480px] px-3 pt-[28px] pb-[100px] md:max-w-[720px] md:px-14 md:pt-[43px] xl:max-w-[932px] xl:px-[162px];
+  @apply mx-auto min-h-[100vh] max-w-[480px] px-3 pt-[28px] pb-[100px] md:max-w-[720px] md:px-14 md:pt-[43px] xl:ml-0 xl:max-w-[932px] xl:px-[162px];
 }
 .contentWrapper {
   @apply space-y-4 text-left;
