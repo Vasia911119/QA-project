@@ -2,10 +2,11 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import SearchResult from './SearchResult';
-// import SearchField from './SearchField';
 import { Dialog, Transition } from '@headlessui/react';
-import { RiSearchLine } from 'react-icons/ri';
+import { BiSearch } from 'react-icons/bi';
 import { useEffect } from 'react';
+// import SearchClsBtn from './SearchClsBtn';
+import * as s from './Search.module.css';
 
 const queryFull = graphql`
   {
@@ -33,8 +34,8 @@ export const SearchModal = ({
   isOpen,
   searchQuery,
   setSearchQuery,
+  onClsClick,
 }) => {
-  // const [searchQuery, setSearchQuery] = useState('');
   const [pagesIndexStore, setPagesIndexStore] = useState(null);
   const dataFull = useStaticQuery(queryFull);
 
@@ -44,12 +45,9 @@ export const SearchModal = ({
     returnObjects: true,
   });
 
-  // const arrData = Array.from(dataFull.allMarkdownRemark.nodes);
   const { nodes: arrData } = dataFull.allMarkdownRemark;
 
   const handleOnFocus = () => {
-    // if (pagesIndexStore.length === 0) return;
-
     if (arrData) {
       setPagesIndexStore(arrData);
     }
@@ -61,7 +59,7 @@ export const SearchModal = ({
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={closeModal}>
+      <Dialog as="div" className={s.searchModalWrapper} onClose={closeModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -71,11 +69,11 @@ export const SearchModal = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gradient-to-r from-[#8af2fc33] to-[#8af2fc33]" />
+          <div className={s.searchModalBackdrop} />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto ">
-          <div className="flex min-h-full items-center justify-center p-4 text-center ">
+        <div className={s.searchModalBlock}>
+          <div className={s.searchModalBlockCenter}>
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -85,24 +83,22 @@ export const SearchModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className=" rounded-2xl absolute top-[196px] max-h-[376px] min-h-[60px] w-[96%] max-w-[488px] transform overflow-hidden rounded-[10px] bg-white text-left align-middle shadow-xl transition-all md:top-[200px] md:w-[488px] xl:top-[160px] xl:w-[480px]">
+              <Dialog.Panel className={s.searchBlockPanel}>
                 <div className="relative">
-                  <RiSearchLine
+                  <BiSearch
                     color="#9EA2C6"
                     size={24}
-                    className="absolute inset-y-1/2 left-3 -translate-y-1/2"
+                    className={s.searchModalIcon}
                   />
 
                   <input
-                    className="flex  h-[60px] w-[100%] items-center justify-start gap-[10px] bg-[#ffffff] pl-10 text-[#9EA2C6] outline-transparent"
+                    className={s.searchField}
                     placeholder={placeholder}
                     type="text"
-                    value={searchQuery.toLowerCase().trim()}
+                    value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
                   />
-                  {/* <SearchField setValue={setSearchQuery} value={searchQuery} /> */}
                 </div>
-
                 {searchQuery && pagesIndexStore && (
                   <div>
                     <SearchResult
@@ -114,6 +110,7 @@ export const SearchModal = ({
                 )}
               </Dialog.Panel>
             </Transition.Child>
+            {/* <SearchClsBtn onClsClick={closeModal} /> */}
           </div>
         </div>
       </Dialog>

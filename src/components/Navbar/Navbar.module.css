@@ -27,7 +27,6 @@
 .searchIcon {
   @apply h-6 w-6 hover:text-slate-50 focus:text-slate-50 smOnly:fill-white;
 }
-
 .navigation {
   @apply my-[10px] mr-auto flex max-h-[532px] max-w-[348px] flex-col overflow-y-auto;
 }
