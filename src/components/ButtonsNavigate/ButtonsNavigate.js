@@ -61,6 +61,13 @@ const ButtonsNavigate = () => {
             : '/uk' + pathname
         );
 
+  // Кнопка Назад має бути disabled:
+  // 1. В браузерній строці в адресі поточної сторінки лише '/', або '/uk/', '/en/', '/ru/', або ''.
+  // 2. resultArray[0] = '/uk/', або '/en/', або '/ru/'
+
+  // Кнопка Далі має бути disabled:
+  // В браузерній строці в адресі поточної сторінки останнє значення масиву resultArray
+
   //---------------------------------Варіант №1-------------------------------------//
 
   const [path, setPath] = useState(pathname);
@@ -89,7 +96,6 @@ const ButtonsNavigate = () => {
   return (
     <div className={s.wrapper}>
       <button
-        aria-label="go previous page"
         onClick={goPrevious}
         className={
           path !== `/${i18n.language}/` || path === '/' || path === ''
@@ -102,7 +108,6 @@ const ButtonsNavigate = () => {
         {t(previous)}
       </button>
       <button
-        aria-label="go next page"
         onClick={goNext}
         className={
           path !== resultArray[resultArray.length - 1]
