@@ -1,4 +1,36 @@
+/* -------------------------------------Варіант № 1,2------------------------------------ */
 .wrapper {
+  @apply mt-[80px] flex font-inter text-base font-semibold text-slate-50 md:mt-[92px] xl:mt-[100px];
+}
+.buttonLeft {
+  @apply ml-auto mr-8 flex h-12 w-[114px] items-center justify-center rounded-[10px] bg-blue-600 font-inter text-xs font-semibold transition-all;
+}
+.buttonLeftDisabled {
+  @apply ml-auto mr-8 flex h-12 w-[114px] items-center justify-center rounded-[10px] bg-stone-300 font-inter text-xs font-semibold transition-all;
+}
+.buttonRight {
+  @apply mr-auto flex h-12 w-[114px] items-center justify-center rounded-[10px] bg-blue-600 font-inter text-xs font-semibold transition-all;
+}
+.buttonRightDisabled {
+  @apply mr-auto flex h-12 w-[114px] items-center justify-center rounded-[10px] bg-stone-300 font-inter text-xs font-semibold transition-all;
+}
+.buttonLeft:hover,
+.buttonLeft:focus,
+.buttonRight:hover,
+.buttonRight:focus {
+  @apply bg-blue-500;
+}
+:global(.dark) .buttonLeftDisabled,
+:global(.dark) .buttonRightDisabled {
+  @apply bg-slate-400;
+}
+.icon {
+  @apply h-[30px] w-[30px];
+}
+
+/* -------------------------------------Варіант № 3,4,5,6------------------------------------ */
+
+/* .wrapper {
   @apply mt-[80px] flex font-inter text-base font-semibold text-slate-50 md:mt-[92px] xl:mt-[100px];
 }
 .buttonLeft {
@@ -25,4 +57,4 @@
 }
 .icon {
   @apply h-[30px] w-[30px];
-}
+} */

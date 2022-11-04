@@ -8,7 +8,7 @@ import Logo from '../../icons/logo.inline.svg';
 
 import SwitchLanguages from '../SwitchLanguages';
 import ToggleMode from '../Toggler';
-import { BiHomeAlt, BiChevronsLeft, BiSearch } from 'react-icons/bi';
+import { BiHomeAlt, BiChevronsLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import {
   HiOutlineQuestionMarkCircle,
@@ -149,11 +149,8 @@ export default function Navbar({
           />
         </Link>
 
-        {menuCollapsed || mobileOpen ? (
-          <BiSearch className={s.searchIcon} />
-        ) : (
-          <SearchBtnOpenModal />
-        )}
+        <SearchBtnOpenModal menuCollapsed={menuCollapsed} mobileOpen={mobileOpen}></SearchBtnOpenModal>
+
       </div>
       <ul
         style={menuCollapsed ? { maxWidth: '56px' } : null}

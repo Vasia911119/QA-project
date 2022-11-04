@@ -60,63 +60,40 @@ const ButtonsNavigate = () => {
             : '/uk' + pathname
         );
 
-  //----------------------------------Варіант №1-------------------------------------//
+  //---------------------------------Варіант №1-------------------------------------//
 
-  //   const navigation = resultIndex => {
-  //     navigate(resultArray[resultIndex]);
-  //   };
-  //   const goPrevious = () => {
-  //     navigation(currentIndex - 1);
-  //   };
-  //   const goNext = () => {
-  //     navigation(currentIndex + 1);
-  //   };
+  const [path, setPath] = useState(pathname);
+  const [index, setIndex] = useState(currentIndex);
 
-  //   return (
-  //     <div className={s.wrapper}>
-  //       <button
-  //         onClick={goPrevious}
-  //         className={s.buttonLeft}
-  //         disabled={currentIndex === 0 || pathname === '/' || pathname === ''}
-  //         type="button"
-  //       >
-  //         <BiChevronLeft className={s.icon} alt="previous" />
-  //         {t(previous)}
-  //       </button>
-  //       <button
-  //         onClick={goNext}
-  //         className={s.buttonRight}
-  //         disabled={currentIndex === resultArray.length - 1}
-  //         type="button"
-  //       >
-  //         {t(next)}
-  //         <BiChevronRight className={s.icon} alt="next" />
-  //       </button>
-  //     </div>
-  //   );
-  // };
+  useEffect(() => {
+    setPath(
+      typeof window !== 'undefined' && window.localStorage.getItem('path')
+    );
+  }, []);
 
-  //----------------------------------Варіант №2-------------------------------------//
+  useEffect(() => {
+    typeof window !== 'undefined' && window.localStorage.setItem('path', path);
+    setPath(pathname);
+    navigate(resultArray[index]);
+  }, [index]);
 
-  const navigation = resultIndex => {
-    navigate(resultArray[resultIndex]);
-  };
   const goPrevious = () => {
-    navigation(currentIndex - 1);
+    setIndex(currentIndex - 1);
   };
+
   const goNext = () => {
-    navigation(currentIndex + 1);
+    setIndex(currentIndex + 1);
   };
 
   return (
     <div className={s.wrapper}>
       <button
+        aria-label="go previous page"
         onClick={goPrevious}
-        className={s.buttonLeft}
-        disabled={
-          pathname === `/${i18n.language}/` ||
-          pathname === '/' ||
-          pathname === ''
+        className={
+          path !== `/${i18n.language}/` || path === '/' || path === ''
+            ? s.buttonLeft
+            : s.buttonLeftDisabled
         }
         type="button"
       >
@@ -124,9 +101,13 @@ const ButtonsNavigate = () => {
         {t(previous)}
       </button>
       <button
+        aria-label="go next page"
         onClick={goNext}
-        className={s.buttonRight}
-        disabled={pathname === resultArray[resultArray.length - 1]}
+        className={
+          path !== resultArray[resultArray.length - 1]
+            ? s.buttonRight
+            : s.buttonRightDisabled
+        }
         type="button"
       >
         {t(next)}
@@ -136,7 +117,127 @@ const ButtonsNavigate = () => {
   );
 };
 
+//----------------------------------Варіант №2-------------------------------------//
+
+//   const navigation = resultIndex => {
+//     navigate(resultArray[resultIndex]);
+//   };
+//   const goPrevious = () => {
+//     navigation(currentIndex - 1);
+//   };
+//   const goNext = () => {
+//     navigation(currentIndex + 1);
+//   };
+
+//   return (
+//     <div className={s.wrapper}>
+//       <button
+//         onClick={goPrevious}
+//         className={
+//           pathname === `/${i18n.language}/` ||
+//           pathname === '/' ||
+//           pathname === ''
+//             ? s.buttonLeftDisabled
+//             : s.buttonLeft
+//         }
+//         type="button"
+//       >
+//         <BiChevronLeft className={s.icon} alt="previous" />
+//         {t(previous)}
+//       </button>
+//       <button
+//         onClick={goNext}
+//         className={
+//           pathname === resultArray[resultArray.length - 1]
+//             ? s.buttonRightDisabled
+//             : s.buttonRight
+//         }
+//         type="button"
+//       >
+//         {t(next)}
+//         <BiChevronRight className={s.icon} alt="next" />
+//       </button>
+//     </div>
+//   );
+// };
+
 //----------------------------------Варіант №3-------------------------------------//
+
+//   const navigation = resultIndex => {
+//     navigate(resultArray[resultIndex]);
+//   };
+//   const goPrevious = () => {
+//     navigation(currentIndex - 1);
+//   };
+//   const goNext = () => {
+//     navigation(currentIndex + 1);
+//   };
+
+//   return (
+//     <div className={s.wrapper}>
+//       <button
+//         onClick={goPrevious}
+//         className={s.buttonLeft}
+//         disabled={currentIndex === 0 || pathname === '/' || pathname === ''}
+//         type="button"
+//       >
+//         <BiChevronLeft className={s.icon} alt="previous" />
+//         {t(previous)}
+//       </button>
+//       <button
+//         onClick={goNext}
+//         className={s.buttonRight}
+//         disabled={currentIndex === resultArray.length - 1}
+//         type="button"
+//       >
+//         {t(next)}
+//         <BiChevronRight className={s.icon} alt="next" />
+//       </button>
+//     </div>
+//   );
+// };
+
+//----------------------------------Варіант №4-------------------------------------//
+
+//   const navigation = resultIndex => {
+//     navigate(resultArray[resultIndex]);
+//   };
+//   const goPrevious = () => {
+//     navigation(currentIndex - 1);
+//   };
+//   const goNext = () => {
+//     navigation(currentIndex + 1);
+//   };
+
+//   return (
+//     <div className={s.wrapper}>
+//       <button
+//         onClick={goPrevious}
+//         className={s.buttonLeft}
+//         disabled={
+//           pathname === `/${i18n.language}/` ||
+//           pathname === '/' ||
+//           pathname === ''
+//         }
+//         type="button"
+//       >
+//         <BiChevronLeft className={s.icon} alt="previous" />
+//         {t(previous)}
+//       </button>
+//       <button
+//         onClick={goNext}
+//         className={s.buttonRight}
+//         disabled={pathname === resultArray[resultArray.length - 1]}
+//         type="button"
+//       >
+//         {t(next)}
+//         <BiChevronRight className={s.icon} alt="next" />
+//       </button>
+//     </div>
+//   );
+// };
+
+//----------------------------------Варіант №5-------------------------------------//
 
 //   typeof window !== 'undefined' &&
 //     window.localStorage.setItem('currentIndex', currentIndex);
@@ -184,7 +285,7 @@ const ButtonsNavigate = () => {
 //   );
 // };
 
-//----------------------------------Варіант №4-------------------------------------//
+//----------------------------------Варіант №6-------------------------------------//
 
 //   const [index, setIndex] = useState(currentIndex);
 
