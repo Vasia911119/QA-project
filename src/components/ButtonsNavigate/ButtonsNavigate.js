@@ -48,7 +48,7 @@ const ButtonsNavigate = () => {
   };
   const resultArray = getResultArray();
   // Отримуємо адресу поточної сторінки
-  const pathname = typeof window !== 'undefined' ? location.pathname : '';
+  const pathname = typeof window !== 'undefined' && location.pathname;
   // Отримуємо поточний індекс елемента в масиві сторінок
   const currentIndex =
     // Наступні перевірки зумовлені особливістю роботи плагіна gatsby-plugin-react-i18next з мовою на сторінці по замовчуванню особливість полягає в тому, що на сторінку з мовою по замовчуванню можна перейти по двох різних шляхах, до прикладу - "/" та "/uk/", на інших мовах сторінки шлях буде до прикладу лише - "/en/", або "/ru/" і тому подібне
@@ -98,7 +98,7 @@ const ButtonsNavigate = () => {
       <button
         onClick={goPrevious}
         className={
-          path !== `/${i18n.language}/` || path !== '/' || path !== ''
+          path !== `/${i18n.language}/` || path !== '/'
             ? s.buttonLeft
             : s.buttonLeftDisabled
         }
