@@ -150,10 +150,6 @@ Netlify -
 Навігація кнопками здійснюється за допомогою `navigate`
 ([документація](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/#how-to-use-the-navigate-helper-function))
 
-При зміні мови сторінки по замовчуванню, для номальної роботи навігації кнопками
-необхідно в файлі `src/services/defaultLangForBtn.js` також змінити мову по
-замовчуванню.
-
 ## Стилізація динамічного контенту
 
 Стилізувати динамічний контент можна двома способами:
