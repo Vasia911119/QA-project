@@ -133,8 +133,8 @@ export default function Navbar({
             mobileOpen
               ? ' mb-0'
               : menuCollapsed
-              ? 'mt-8 h-4 -rotate-90'
-              : 'mb-9 '
+              ? ' h-4 -rotate-90'
+              : 'mb-[24px] '
           }
         >
           <Logo
@@ -199,6 +199,7 @@ export default function Navbar({
                     {notHomePageMenuChaptersIcons[index] || plugIcon}
                   </div>
                   <Accordion
+                    setMenuCollapsed={setMenuCollapsed}
                     className={menuCollapsed ? 'hidden' : 'ml-4 w-full'}
                     handleClose={handleClose}
                     title={accordionDataComponent.title}
@@ -221,6 +222,7 @@ export default function Navbar({
                 </div>
 
                 <Accordion
+                  setMenuCollapsed={setMenuCollapsed}
                   icon={linkCaptersIcons[index]}
                   className={menuCollapsed ? 'hidden' : 'ml-4 w-full'}
                   handleClose={handleClose}
@@ -236,6 +238,7 @@ export default function Navbar({
         <ToggleMode collapsed={menuCollapsed} />
         {width >= 768 && (
           <button
+            className="p-0"
             aria-label="toggle sidebar"
             type="button"
             onClick={() => setMenuCollapsed(!menuCollapsed)}
@@ -244,6 +247,7 @@ export default function Navbar({
               className={
                 menuCollapsed ? s.collapsedMenuButton : s.uncollapsedMenuButton
               }
+              size={18}
             />
           </button>
         )}
