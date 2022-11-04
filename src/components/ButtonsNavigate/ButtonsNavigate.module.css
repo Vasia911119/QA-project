@@ -22,7 +22,7 @@
 }
 :global(.dark) .buttonLeftDisabled,
 :global(.dark) .buttonRightDisabled {
-  @apply disabled:bg-slate-400;
+  @apply bg-slate-400;
 }
 .icon {
   @apply h-[30px] w-[30px];
