@@ -98,9 +98,9 @@ const ButtonsNavigate = () => {
       <button
         onClick={goPrevious}
         className={
-          path === `/${i18n.language}/` || path === '/' || path === ''
-            ? s.buttonLeftDisabled
-            : s.buttonLeft
+          path !== `/${i18n.language}/` || path !== '/' || path !== ''
+            ? s.buttonLeft
+            : s.buttonLeftDisabled
         }
         type="button"
       >
@@ -110,9 +110,9 @@ const ButtonsNavigate = () => {
       <button
         onClick={goNext}
         className={
-          path === resultArray[resultArray.length - 1]
-            ? s.buttonRightDisabled
-            : s.buttonRight
+          path !== resultArray[resultArray.length - 1]
+            ? s.buttonRight
+            : s.buttonRightDisabled
         }
         type="button"
       >
