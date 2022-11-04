@@ -98,9 +98,9 @@ const ButtonsNavigate = () => {
       <button
         onClick={goPrevious}
         className={
-          path !== `/${i18n.language}/` || path !== '/'
-            ? s.buttonLeft
-            : s.buttonLeftDisabled
+          path === `/${i18n.language}/` || path === '/'
+            ? s.buttonLeftDisabled
+            : s.buttonLeft
         }
         type="button"
       >
