@@ -4,9 +4,11 @@ import { BiChevronRight } from 'react-icons/bi';
 import { BiChevronLeft } from 'react-icons/bi';
 import * as s from './ButtonsNavigate.module.css';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useLocation } from '@reach/router';
 
 const ButtonsNavigate = () => {
   const { t, i18n } = useTranslation();
+  const location = useLocation();
   const { next, previous } = t('button', {
     returnObjects: true,
   });
@@ -46,8 +48,7 @@ const ButtonsNavigate = () => {
   };
   const resultArray = getResultArray();
   // Отримуємо адресу поточної сторінки
-  const pathname =
-    typeof window !== 'undefined' ? window.location.pathname : '';
+  const pathname = typeof window !== 'undefined' ? location.pathname : '';
   // Отримуємо поточний індекс елемента в масиві сторінок
   const currentIndex =
     // Наступні перевірки зумовлені особливістю роботи плагіна gatsby-plugin-react-i18next з мовою на сторінці по замовчуванню особливість полягає в тому, що на сторінку з мовою по замовчуванню можна перейти по двох різних шляхах, до прикладу - "/" та "/uk/", на інших мовах сторінки шлях буде до прикладу лише - "/en/", або "/ru/" і тому подібне

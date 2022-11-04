@@ -149,3 +149,11 @@ Netlify -
 
 Навігація кнопками здійснюється за допомогою `navigate`
 ([документація](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/#how-to-use-the-navigate-helper-function))
+
+## Стилізація динамічного контенту
+
+Стилізувати динамічний контент можна двома способами:
+
+1. Через глобальні стилі.
+2. Через `@tailwindcss/typography`
+   ([документація](https://tailwindcss.com/docs/typography-plugin))
