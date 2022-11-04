@@ -96,7 +96,6 @@ const ButtonsNavigate = () => {
   return (
     <div className={s.wrapper}>
       <button
-        aria-label="go previous page"
         onClick={goPrevious}
         className={
           path !== `/${i18n.language}/` || path === '/' || path === ''
@@ -109,7 +108,6 @@ const ButtonsNavigate = () => {
         {t(previous)}
       </button>
       <button
-        aria-label="go next page"
         onClick={goNext}
         className={
           path !== resultArray[resultArray.length - 1]
