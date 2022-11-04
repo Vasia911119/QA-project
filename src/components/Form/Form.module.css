@@ -42,7 +42,7 @@
 .input:focus,
 .textareaRed:focus,
 .inputRed:focus {
-  @apply outline-0;
+  @apply border-b-2 outline-0;
 }
 .wrapperErrorMsg {
   @apply absolute top-[calc(100%_-_373px)] md:top-[calc(100%_-_308px)] md:flex md:w-[608px] md:flex-wrap md:justify-between xl:top-[calc(100%_-_119px)] xl:w-[864px];
