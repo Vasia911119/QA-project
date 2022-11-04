@@ -51,7 +51,7 @@ const ComponentTemplate = ({ data }) => {
                     onClick={() => setMobileOpen(true)}
                   >
                     <BiMenu className={s.biMenu} />
-                  </button>{' '}
+                  </button>
                 </div>
               )}
               <Breadcrumb

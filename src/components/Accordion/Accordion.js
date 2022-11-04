@@ -16,6 +16,7 @@ function Accordion({
   const width = useWindowResize();
 
   const [accordionStatus, setAccordionStatus] = useState(false);
+
   const handleClick = () => {
     setAccordionStatus(!accordionStatus);
   };
@@ -78,7 +79,7 @@ function Accordion({
                   key={i.slug}
                   className={s.sublink}
                   onClick={() => {
-                    handleClose;
+                    width < 768 && handleClose();
                     width < 1280 && width >= 768
                       ? setMenuCollapsed(true)
                       : null;

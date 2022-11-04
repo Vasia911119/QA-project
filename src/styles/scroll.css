@@ -1,21 +1,19 @@
-html {
+/* html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #5e6273;
   overflow-y: overlay;
-}
+} */
 
 .navigationScroll::-webkit-scrollbar-track {
   border-radius: 8px;
   background-color: #5e6273;
 }
-
 .navigationScroll::-webkit-scrollbar {
   width: 8px;
   background-color: #5e6273;
   border-radius: 8px;
 }
-
 .navigationScroll::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background-color: #424865;
@@ -23,15 +21,23 @@ html {
 
 body::-webkit-scrollbar-track {
   border-radius: 8px;
-  background-color: #5e6273;
+  background-color: #e6e6e6;
 }
 
 body::-webkit-scrollbar {
   width: 8px;
-  background-color: #5e6273;
+  background-color: #e6e6e6;
 }
 
 body::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background-color: #424865;
+}
+/* не відпрацьовує */
+:global(.dark) .body::-webkit-scrollbar-track,
+:global(.dark) .body::-webkit-scrollbar {
+  @apply bg-[#5e6273];
+}
+:global(.dark) .body::-webkit-scrollbar-thumb {
+  @apply bg-[#424865];
 }

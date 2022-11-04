@@ -133,7 +133,7 @@ export default function Navbar({
             mobileOpen
               ? ' mb-0'
               : menuCollapsed
-              ? ' h-4 -rotate-90'
+              ? 'h-4 -rotate-90  md:mb-[52px] '
               : 'mb-[24px] '
           }
         >
@@ -149,8 +149,10 @@ export default function Navbar({
           />
         </Link>
 
-        <SearchBtnOpenModal menuCollapsed={menuCollapsed} mobileOpen={mobileOpen}></SearchBtnOpenModal>
-
+        <SearchBtnOpenModal
+          menuCollapsed={menuCollapsed}
+          mobileOpen={mobileOpen}
+        />
       </div>
       <ul
         style={menuCollapsed ? { maxWidth: '56px' } : null}

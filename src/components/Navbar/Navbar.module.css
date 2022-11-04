@@ -3,7 +3,7 @@
   @apply h-6 w-6;
 }
 .sidebarWrapper {
-  @apply z-20 flex h-full min-h-screen flex-col items-center bg-blue-950  text-base font-semibold text-grey-350 smOnly:pt-[28px] mdOnly:absolute md:pt-10 xl:fixed;
+  @apply z-20 flex h-full min-h-screen min-w-[348px] flex-col items-center bg-blue-950  text-base font-semibold text-grey-350 smOnly:pt-[28px] mdOnly:absolute md:pt-10 xl:fixed;
 }
 :global(.dark) .sidebarWrapper {
   @apply bg-[#161826];
