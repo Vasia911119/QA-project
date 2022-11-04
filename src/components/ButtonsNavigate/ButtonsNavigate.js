@@ -78,11 +78,11 @@ const ButtonsNavigate = () => {
   }, [index]);
 
   const goPrevious = () => {
-    setIndex(index - 1);
+    setIndex(currentIndex - 1);
   };
 
   const goNext = () => {
-    setIndex(index + 1);
+    setIndex(currentIndex + 1);
   };
 
   return (
