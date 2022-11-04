@@ -7,7 +7,7 @@ function MobileMenu({ setMobileOpen, handleClose, mobileOpen }) {
     document.body.setAttribute('overflow', 'hidden');
 
     return () => {
-      document.body.setAttribute('overflow', 'hidden');
+      document.body.removeAttribute('overflow', 'hidden');
     };
   }, [mobileOpen]);
 

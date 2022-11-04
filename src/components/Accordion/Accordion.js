@@ -3,14 +3,18 @@ import { Link } from 'gatsby';
 import { BiChevronUp } from 'react-icons/bi';
 import * as s from './Accordion.module.css';
 import PropTypes from 'prop-types';
+import useWindowResize from '../../hooks/useWindowResize';
 
 function Accordion({
+  setMenuCollapsed,
   className = null,
   title,
   content = '',
   titleUrl = null,
   handleClose,
 }) {
+  const width = useWindowResize();
+
   const [accordionStatus, setAccordionStatus] = useState(false);
   const handleClick = () => {
     setAccordionStatus(!accordionStatus);
@@ -73,7 +77,12 @@ function Accordion({
                 <Link
                   key={i.slug}
                   className={s.sublink}
-                  onClick={handleClose}
+                  onClick={() => {
+                    handleClose;
+                    width < 1280 && width >= 768
+                      ? setMenuCollapsed(true)
+                      : null;
+                  }}
                   to={i.slug}
                 >
                   {i.title}

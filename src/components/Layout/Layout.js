@@ -57,7 +57,10 @@ const Layout = ({ children, pageContext }) => {
               mobileOpen={mobileOpen}
             />
           )}
-          <div className={!menuCollapsed ? ' mdOnly:ml-14' : ' ml-0'}>
+          <div
+            className={!menuCollapsed ? ' mdOnly:ml-14' : ' ml-0'}
+            style={mobileOpen ? { height: '0px' } : null}
+          >
             <MobileMenuContext.Provider value={menuState}>
               {children}
             </MobileMenuContext.Provider>
