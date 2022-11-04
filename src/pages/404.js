@@ -12,39 +12,8 @@ const NotFoundPage = function () {
   const { t } = useTranslation();
   const { oops, title, text, button } = t('404', { returnObjects: true });
 
-  // let websiteTheme;
-  // if (typeof window !== `undefined`) {
-  //   websiteTheme = window.__theme;
-  // }
-  //  && websiteTheme === 'dark'
-
   return (
     <section className={s.section}>
-      {width < 768 ? (
-        <StaticImage
-          src="../images/404/FrameS.jpg"
-          formats={['auto', 'webp', 'avif']}
-          alt=""
-          className={'block h-full w-full'}
-          placeholder="blurred"
-        />
-      ) : width > 1280 ? (
-        <StaticImage
-          src="../images/404/FrameX.png"
-          formats={['auto', 'webp', 'avif']}
-          alt=""
-          className={'block h-full w-full'}
-          placeholder="blurred"
-        />
-      ) : (
-        <StaticImage
-          src="../images/404/FrameM.jpg"
-          formats={['auto', 'webp', 'avif']}
-          alt=""
-          className={'block h-full w-full'}
-          placeholder="blurred"
-        />
-      )}
       <div className={s.wrapper}>
         <h1 className={s.title}>
           {oops} <br /> {title}
