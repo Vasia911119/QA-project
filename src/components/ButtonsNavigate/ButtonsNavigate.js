@@ -38,16 +38,19 @@ const ButtonsNavigate = () => {
   // Отримуємо масив з адресами сторінок, по даному масиві буде відбуватись навігація кнопками Назад і Далі
   const getResultArray = () => {
     const result = [`/${i18n.language}/`];
-    data.allMarkdownRemark.nodes.map(item => {
-      if (item.frontmatter.language === i18n.language) {
-        result.push(
-          // Дана перевірка зумовлена особливістю роботи плагіна gatsby-plugin-react-i18next з мовою на сторінці по замовчуванню, особливість полягає в тому, що на сторінку з мовою по замовчуванню можна перейти по двох різних шляхах, до прикладу - "/" та "/uk/", на інших мовах сторінки шлях буде до прикладу лише - "/en/", або "/ru/" і тому подібне
-          i18n.language === `${defaultLanguage}`
-            ? `/${defaultLanguage}` + item.fields.slug
-            : item.fields.slug
-        );
-      }
-    });
+    data &&
+      data.allMarkdownRemark &&
+      data.allMarkdownRemark.nodes &&
+      data.allMarkdownRemark.nodes.map(item => {
+        if (item.frontmatter.language === i18n.language) {
+          result.push(
+            // Дана перевірка зумовлена особливістю роботи плагіна gatsby-plugin-react-i18next з мовою на сторінці по замовчуванню, особливість полягає в тому, що на сторінку з мовою по замовчуванню можна перейти по двох різних шляхах, до прикладу - "/" та "/uk/", на інших мовах сторінки шлях буде до прикладу лише - "/en/", або "/ru/" і тому подібне
+            i18n.language === `${defaultLanguage}`
+              ? `/${defaultLanguage}` + item.fields.slug
+              : item.fields.slug
+          );
+        }
+      });
     return result;
   };
   const resultArray = getResultArray();
