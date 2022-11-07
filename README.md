@@ -157,3 +157,33 @@ Netlify -
 1. Через глобальні стилі.
 2. Через `@tailwindcss/typography`
    ([документація](https://tailwindcss.com/docs/typography-plugin))
+
+## Search
+
+Пошук створений на основі чистого js (реалізація через плагіни не повертала шлях
+до сторінки через складну архітектуру) - отримання даних через запит до graphql
+
+```
+  {
+    allMarkdownRemark {
+      nodes {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          page_chapter_name
+          page_chapter_title
+          page_title
+          language
+        }
+        rawMarkdownBody
+        html
+      }
+    }
+  }
+```
+
+пошук повертає результати залежно від локалізації обраної на стороні клієнта та
+переводить на сторінку із знайденими результатами запиту. Модальне вікно
+створене за допомогою бібліотеки ([документація](https://headlessui.com/))
