@@ -1,5 +1,5 @@
 ---
-title: Список розділів зі сторінками
+title: Список розділів зі сторінками asda
 pages_chapter_item:
   - pages_chapter_name: home
     chapter_title_UA: Специфікація до web-ресурсу
