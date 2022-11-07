@@ -17,21 +17,29 @@
   @apply flex  flex-col gap-2 px-4 font-inter transition-colors duration-700;
 }
 
+.searchResultItemLink:hover,
+.searchResultItemLink:focus {
+  @apply bg-[#EDEEF9];
+}
+
+.searchResultItemLink:hover .searchResultItemSubtitle,
+.searchResultItemLink:focus .searchResultItemSubtitle {
+  @apply text-[#1C1917];
+}
+
+.searchResultItemLink:hover .searchResultItemText,
+.searchResultItemLink:focus .searchResultItemText {
+  @apply text-[#94A3B8];
+}
 :global(.dark) .searchResultItemLink:hover,
 .searchResultItemLink:focus {
   @apply bg-[#3B82F6];
 }
-
 :global(.dark) .searchResultItemLink:hover .searchResultItemSubtitle,
 .searchResultItemLink:focus .searchResultItemSubtitle,
 .searchResultItemLink:hover .searchResultItemText,
 .searchResultItemLink:focus .searchResultItemText {
   @apply text-[#F8FAFC];
-}
-
-.searchResultItemLink:hover,
-.searchResultItemLink:focus {
-  @apply bg-[#EDEEF9];
 }
 
 .searchResultItemSubtitle {
