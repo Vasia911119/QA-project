@@ -15,5 +15,5 @@ links_chapter_item:
     link_chapter_title_UA: "нова "
     link_chapter_title_EN: new
     link_chapter_title_RU: новая
-    link_chapter_range: 1
+    link_chapter_range: 3
 ---
