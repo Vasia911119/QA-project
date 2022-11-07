@@ -33,7 +33,7 @@
   "searchPlaceholder": "Search UA",
 
   "search": {
-    "button": "Пошук",
+    "button": "Пошук...",
     "placeholder": "Що шукаємо?",
     "notFoundTitle": "На жаль, нічого не знайдено :(",
     "notFoundText": "Спробуйте ввести інший варіант для пошуку"

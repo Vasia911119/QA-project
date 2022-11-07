@@ -14,7 +14,6 @@ const Layout = ({ children, pageContext }) => {
   const width = useWindowResize();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuCollapsed, setMenuCollapsed] = useState(false);
-  // const [rememberMenuPosition, setRememberMenuPosition] = useState(false);
 
   const menuState = { mobileOpen, setMobileOpen };
   const handleClose = () => setMobileOpen(false);
@@ -24,7 +23,6 @@ const Layout = ({ children, pageContext }) => {
     if (width < 1280 && !menuCollapsed) setMenuCollapsed(true);
     if (width > 1280 && menuCollapsed) {
       setMenuCollapsed(false);
-      // setRememberMenuPosition(true);
     }
   }, [width]);
   useEffect(() => {
@@ -57,7 +55,10 @@ const Layout = ({ children, pageContext }) => {
               mobileOpen={mobileOpen}
             />
           )}
-          <div className={!menuCollapsed ? ' mdOnly:ml-14' : ' ml-0'}>
+          <div
+            className={!menuCollapsed ? ' mdOnly:ml-14' : ' ml-0'}
+            style={mobileOpen ? { height: '0px' } : null}
+          >
             <MobileMenuContext.Provider value={menuState}>
               {children}
             </MobileMenuContext.Provider>

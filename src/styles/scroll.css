@@ -1,42 +1,43 @@
-html {
+/* html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #5f6272;
+  scrollbar-color: #5e6273;
   overflow-y: overlay;
+} */
+
+.navigationScroll::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #5e6273;
+}
+.navigationScroll::-webkit-scrollbar {
+  width: 8px;
+  background-color: #5e6273;
+  border-radius: 8px;
+}
+.navigationScroll::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #424865;
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e6e6e6;
 }
 
 body::-webkit-scrollbar {
-  width: 1rem;
-}
-body::-webkit-scrollbar-track {
-  background: #392e3d;
-}
-body::-webkit-scrollbar-thumb {
-  background-color: #5f6272;
-  border-radius: 0.5rem;
-  background: #5f6272;
-  background: linear-gradient(
-    180deg,
-    rgba(112, 107, 208, 1) 0%,
-    rgba(86, 81, 183, 1) 100%
-  );
-  border: 1px solid rgba(86, 81, 183, 0.5);
+  width: 8px;
+  background-color: #e6e6e6;
 }
 
-.navigationScroll::-webkit-scrollbar {
-  width: 1rem;
+body::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #424865;
 }
-.navigationScroll::-webkit-scrollbar-track {
-  background: #392e3d;
+/* не відпрацьовує */
+:global(.dark) .body::-webkit-scrollbar-track,
+:global(.dark) .body::-webkit-scrollbar {
+  @apply bg-[#5e6273];
 }
-.navigationScroll::-webkit-scrollbar-thumb {
-  background-color: #5651b7;
-  border-radius: 0.5rem;
-  background: rgb(112, 107, 208);
-  background: linear-gradient(
-    180deg,
-    rgba(112, 107, 208, 1) 0%,
-    rgba(86, 81, 183, 1) 100%
-  );
-  border: 1px solid rgba(86, 81, 183, 0.5);
+:global(.dark) .body::-webkit-scrollbar-thumb {
+  @apply bg-[#424865];
 }

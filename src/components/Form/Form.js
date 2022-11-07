@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
-import { sendMessage } from '../../services/telegramApi';
+import { sendMessage } from '../../api/telegramApi';
 import {
   NotificationContainer,
   NotificationManager,

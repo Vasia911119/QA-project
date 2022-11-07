@@ -3,7 +3,7 @@
   @apply h-6 w-6;
 }
 .sidebarWrapper {
-  @apply z-20 flex h-full min-h-screen flex-col items-center bg-blue-950  text-base font-semibold text-grey-350 smOnly:pt-[28px] mdOnly:absolute md:pt-10 xl:fixed;
+  @apply z-20 flex h-full min-h-screen min-w-[348px] flex-col items-center bg-blue-950  text-base font-semibold text-grey-350 smOnly:pt-[28px] mdOnly:absolute md:pt-10 xl:fixed;
 }
 :global(.dark) .sidebarWrapper {
   @apply bg-[#161826];
@@ -19,13 +19,13 @@
   @apply flex w-full flex-row-reverse  items-center justify-between border-b-[1px] border-[#9EA2C6] px-5 pb-7;
 }
 .searchSectionMenuCollapsed {
-  @apply flex h-36 w-full flex-col items-center justify-between border-b border-stone-400 pb-4;
+  @apply flex h-[124px] w-full flex-col items-center justify-end border-b border-[#9EA2C6] pb-6;
 }
 .searchSectionMenuUncollapsed {
-  @apply flex w-full flex-col  border-b border-[#9EA2C6] px-5 pb-4;
+  @apply flex w-full flex-col   border-b border-[#9EA2C6] px-5 pb-3;
 }
 .searchIcon {
-  @apply h-6 w-6 hover:text-slate-50 focus:text-slate-50 smOnly:fill-white;
+  @apply h-[18px] w-[18px] hover:text-slate-50 focus:text-slate-50 smOnly:h-6 smOnly:w-6 smOnly:fill-white md:mt-[52px];
 }
 .navigation {
   @apply my-[10px] mr-auto flex max-h-[532px] max-w-[348px] flex-col overflow-y-auto;
@@ -54,13 +54,13 @@
   @apply text-slate-50;
 }
 .icon {
-  @apply mt-[2px] h-5 w-5 cursor-pointer hover:text-slate-50 focus:text-slate-50;
+  @apply mt-[2px] h-[18px] w-[18px] cursor-pointer hover:text-slate-50 focus:text-slate-50;
 }
 .collapsedMenuButton {
-  @apply h-6 w-6 rotate-180 hover:text-slate-50 focus:text-slate-50;
+  @apply h-5 w-5 rotate-180 hover:text-slate-50 focus:text-slate-50;
 }
 .uncollapsedMenuButton {
-  @apply h-6 w-6 hover:text-slate-50 focus:text-slate-50;
+  @apply h-5 w-5 hover:text-slate-50 focus:text-slate-50;
 }
 
 .collapsedFooter {

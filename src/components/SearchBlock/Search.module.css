@@ -102,7 +102,7 @@
   @apply bg-[#252A41] !important;
 }
 .searchBtnSm {
-  @apply block h-10;
+  @apply block smOnly:h-6 smOnly:w-6 md:h-[18px] md:w-[18px];
 }
 .searchClsBtn {
   @apply absolute top-[60px] flex h-16 w-16 items-center justify-center rounded-[50%] border border-[#F8FAFC] text-slate-50;

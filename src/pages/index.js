@@ -39,27 +39,40 @@ export default function HomePage({ data }) {
         return (
           <section className={s.section} key={node.id}>
             <div className={s.wrapper}>
-              {!mobileOpen && width < 768 && (
-                <div className={s.mobileHeader}>
-                  <Link to="/">
-                    {websiteTheme === 'dark' ? <Logo /> : <LogoBlack />}
-                  </Link>
-                  <button
-                    aria-label="open menu"
-                    type="button"
-                    onClick={() => setMobileOpen(true)}
-                  >
-                    <BiMenu className={s.biMenu} />
-                  </button>
-                </div>
+              {!mobileOpen && width < 768 ? (
+                <>
+                  {' '}
+                  <div className={s.mobileHeader}>
+                    <Link to="/">
+                      {websiteTheme === 'dark' ? <Logo /> : <LogoBlack />}
+                    </Link>
+                    <button
+                      aria-label="open menu"
+                      type="button"
+                      onClick={() => setMobileOpen(true)}
+                    >
+                      <BiMenu className={s.biMenu} />
+                    </button>
+                  </div>
+                  <Breadcrumb title={node.frontmatter.page_title} />
+                  <div className={s.contentWrapper}>
+                    <h1 className={s.title}>{node.frontmatter.page_title}</h1>
+                  </div>
+                  <HTMLContent className={s.content} content={node.html} />
+                  <Note description={node.frontmatter.description} />
+                  <ButtonsNavigate />
+                </>
+              ) : (
+                <>
+                  <Breadcrumb title={node.frontmatter.page_title} />
+                  <div className={s.contentWrapper}>
+                    <h1 className={s.title}>{node.frontmatter.page_title}</h1>
+                  </div>
+                  <HTMLContent className={s.content} content={node.html} />
+                  <Note description={node.frontmatter.description} />
+                  <ButtonsNavigate />
+                </>
               )}
-              <Breadcrumb title={node.frontmatter.page_title} />
-              <div className={s.contentWrapper}>
-                <h1 className={s.title}>{node.frontmatter.page_title}</h1>
-              </div>
-              <HTMLContent className={s.content} content={node.html} />
-              <Note description={node.frontmatter.description} />
-              <ButtonsNavigate />
             </div>
           </section>
         );

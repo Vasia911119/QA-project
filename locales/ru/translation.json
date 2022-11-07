@@ -33,7 +33,7 @@
   "searchPlaceholder": "Search RU",
 
   "search": {
-    "button": "Поиск",
+    "button": "Поиск...",
     "placeholder": "Что ищем?",
     "notFoundTitle": "К сожалению, ничего не было найдено :(",
     "notFoundText": "Попробуйте ввести другой вариант для поиска"
