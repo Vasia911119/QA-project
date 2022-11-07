@@ -8,5 +8,5 @@ identifier: links
 links_items:
   - link_title: Обзор
     url_adress: https://www.youtube.com/watch?v=Z_-zP37HthU&ab_channel=FCShakhtarDonetsk
-    links_range: 1
+    links_range: 3
 ---
