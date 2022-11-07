@@ -5,7 +5,9 @@ page_chapter_title: Components and functionality
 slug: correct-answers
 identifier: correct-answers
 language: en
+page_range: 4
 ---
+
 Сorrect answers to the questions
 
 | **Q﻿uestion #** | **Code to be entered**            |
