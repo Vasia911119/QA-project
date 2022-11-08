@@ -18,6 +18,12 @@ require('dotenv').config({
   path: `.env`,
 });
 const autoprefixer = require('autoprefixer');
+const myCustomQueries = {
+  sm: '(max-width: 767.99px)',
+  md: '(min-width: 768px)',
+  lg: '(min-width: 1280px)',
+  tablet: '(max-width: 1279.99px)',
+};
 
 module.exports = {
   siteMetadata: {
@@ -29,6 +35,12 @@ module.exports = {
     social,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-breakpoints',
+      options: {
+        queries: myCustomQueries,
+      },
+    },
     'gatsby-transformer-remark',
     'gatsby-plugin-react-helmet',
     {

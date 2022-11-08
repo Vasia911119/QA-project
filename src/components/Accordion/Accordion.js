@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { BiChevronUp } from 'react-icons/bi';
 import * as s from './Accordion.module.css';
 import PropTypes from 'prop-types';
-import useWindowResize from '../../hooks/useWindowResize';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 
 function Accordion({
   setMenuCollapsed,
@@ -13,10 +13,12 @@ function Accordion({
   titleUrl = null,
   handleClose,
 }) {
-  const width = useWindowResize();
+  const brakepoints = useBreakpoint();
 
   const [accordionStatus, setAccordionStatus] = useState(false);
-
+  const collapseMenuOnTablet = () => {
+    brakepoints.tablet && brakepoints.md && setMenuCollapsed(true);
+  };
   const handleClick = () => {
     setAccordionStatus(!accordionStatus);
   };
@@ -28,7 +30,7 @@ function Accordion({
           <div className={s.buttonWrapper}>
             <Link
               to={titleUrl}
-              onClick={handleClose}
+              onClick={collapseMenuOnTablet}
               activeClassName="activeLink"
               className={s.button}
             >
@@ -79,10 +81,8 @@ function Accordion({
                   key={i.slug}
                   className={s.sublink}
                   onClick={() => {
-                    width < 768 && handleClose();
-                    width < 1280 && width >= 768
-                      ? setMenuCollapsed(true)
-                      : null;
+                    brakepoints.sm && handleClose();
+                    collapseMenuOnTablet();
                   }}
                   to={i.slug}
                 >

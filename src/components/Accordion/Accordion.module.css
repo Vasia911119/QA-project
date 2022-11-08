@@ -1,49 +1,37 @@
 .wrapper {
-  @apply w-full;
+  @apply w-full transition-all;
 }
+
 .wrapperUncollapsed {
-  @apply relative w-full;
-}
-.wrapperUncollapsed::before {
-  content: '';
-  position: absolute;
-  top: 30px;
-  left: -27px;
-  width: 2px;
-  height: calc(100% - 30px);
-  background-color: #9ea2c6;
+  @apply relative w-full transition-all after:absolute  after:top-[30px]  after:left-[-27px]  after:h-[calc(100%-30px)]  after:w-[2px]  after:bg-[#9ea2c6]  after:content-[''];
 }
 
 .uncollapsed {
-  @apply mt-5;
+  @apply mt-5 transition-all;
 }
 .uncollapsed > div:not(:last-child),
 .uncollapsed li:not(:last-child) {
   @apply mb-5;
 }
 .collapsed {
-  @apply h-0 truncate;
+  @apply h-0 truncate transition-all;
 }
 
 .buttonWrapper {
   @apply flex w-full items-center justify-between;
 }
 .button {
-  @apply mr-4 select-none whitespace-normal text-left hover:text-slate-50 focus:text-slate-50;
-  /* flex-basis: 100%;
-  flex-shrink: 2; */
+  @apply mr-4 select-none whitespace-normal text-left transition-all hover:text-slate-50 focus:text-slate-50;
 }
 .icon {
-  /* flex-shrink: 1; */
-  @apply cursor-pointer hover:text-slate-50 focus:text-slate-50;
+  @apply cursor-pointer transition-all hover:text-slate-50 focus:text-slate-50;
 }
 .iconRotate {
-  /* flex-shrink: 1; */
-  @apply rotate-180 cursor-pointer hover:text-slate-50 focus:text-slate-50;
+  @apply rotate-180 cursor-pointer transition-all hover:text-slate-50 focus:text-slate-50;
 }
 .arrow {
-  @apply h-7 w-7;
+  @apply h-7 w-7 transition-all;
 }
 .sublink {
-  @apply cursor-pointer select-none hover:text-slate-50 focus:text-slate-50;
+  @apply cursor-pointer select-none transition-all hover:text-slate-50 focus:text-slate-50;
 }
