@@ -4,9 +4,7 @@ import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 
 import PropTypes, { node } from 'prop-types';
-import Breadcrumb from '../components/Breadcrumb';
-import ButtonsNavigate from '../components/ButtonsNavigate';
-import Note from '../components/Note';
+import { Breadcrumb, ButtonsNavigate, Note } from '../components';
 import * as s from '../styles/page.module.css';
 
 import { MobileMenuContext } from '../components/Layout/Layout';

@@ -7,7 +7,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { useLocation } from '@reach/router';
 import defaultLanguage from '../../services/defaultLangForBtn';
 
-const ButtonsNavigate = () => {
+export const ButtonsNavigate = () => {
   const { t, i18n } = useTranslation();
   // Отримуємо адресу поточної сторінки
   const { pathname } = useLocation();
@@ -123,5 +123,3 @@ const ButtonsNavigate = () => {
     </div>
   );
 };
-
-export default ButtonsNavigate;
