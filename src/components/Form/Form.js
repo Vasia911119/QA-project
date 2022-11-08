@@ -1,14 +1,14 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
-import { sendMessage } from '../../api/telegramApi';
 import {
   NotificationContainer,
   NotificationManager,
 } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
+import * as yup from 'yup';
+import { sendMessage } from '../../api/telegramApi';
 import * as s from './Form.module.css';
 
 const Form = () => {
