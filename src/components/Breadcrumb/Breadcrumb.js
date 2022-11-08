@@ -4,7 +4,7 @@ import React from 'react';
 import { BiChevronRight, BiHome } from 'react-icons/bi';
 import * as s from './Breadcrumb.module.css';
 
-const Breadcrumb = ({ title, name }) => {
+export const Breadcrumb = ({ title, name }) => {
   const { i18n } = useTranslation();
   return (
     <div className={s.wrapper}>
@@ -37,5 +37,3 @@ const Breadcrumb = ({ title, name }) => {
     </div>
   );
 };
-
-export default Breadcrumb;

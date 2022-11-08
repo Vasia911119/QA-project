@@ -2,7 +2,7 @@ import React from 'react';
 import { HiOutlineInformationCircle } from 'react-icons//hi';
 import * as s from './Note.module.css';
 
-const Note = ({ description }) => {
+export const Note = ({ description }) => {
   return (
     <>
       {description && (
@@ -16,5 +16,3 @@ const Note = ({ description }) => {
     </>
   );
 };
-
-export default Note;
