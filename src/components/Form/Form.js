@@ -11,7 +11,7 @@ import * as yup from 'yup';
 import { sendMessage } from '../../api/telegramApi';
 import * as s from './Form.module.css';
 
-const Form = () => {
+export const Form = () => {
   const [error, setError] = useState(null);
   const { t } = useTranslation();
 
@@ -119,5 +119,3 @@ const Form = () => {
     </div>
   );
 };
-
-export default Form;
