@@ -1,6 +1,8 @@
 import { graphql, Link } from 'gatsby';
 import React, { useContext } from 'react';
 
+import { Helmet } from 'react-helmet';
+
 import PropTypes, { node } from 'prop-types';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ButtonsNavigate from '../components/ButtonsNavigate/ButtonsNavigate';
@@ -31,53 +33,60 @@ export default function HomePage({ data }) {
 
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-    nodes.map(node => {
-      if (
-        node.frontmatter.page_chapter_name === 'home' &&
-        node.frontmatter.language === i18n.language
-      ) {
-        return (
-          <section className={s.section} key={node.id}>
-            <div className={s.wrapper}>
-              {!mobileOpen && width < 768 ? (
-                <>
-                  {' '}
-                  <div className={s.mobileHeader}>
-                    <Link to="/">
-                      {websiteTheme === 'dark' ? <Logo /> : <LogoBlack />}
-                    </Link>
-                    <button
-                      aria-label="open menu"
-                      type="button"
-                      onClick={() => setMobileOpen(true)}
-                    >
-                      <BiMenu className={s.biMenu} />
-                    </button>
-                  </div>
-                  <Breadcrumb title={node.frontmatter.page_title} />
-                  <div className={s.contentWrapper}>
-                    <h1 className={s.title}>{node.frontmatter.page_title}</h1>
-                  </div>
-                  <HTMLContent className={s.content} content={node.html} />
-                  <Note description={node.frontmatter.description} />
-                  <ButtonsNavigate />
-                </>
-              ) : (
-                <>
-                  <Breadcrumb title={node.frontmatter.page_title} />
-                  <div className={s.contentWrapper}>
-                    <h1 className={s.title}>{node.frontmatter.page_title}</h1>
-                  </div>
-                  <HTMLContent className={s.content} content={node.html} />
-                  <Note description={node.frontmatter.description} />
-                  <ButtonsNavigate />
-                </>
-              )}
-            </div>
-          </section>
-        );
-      }
-    })
+    <>
+      <Helmet
+        htmlAttributes={{
+          lang: i18n.language,
+        }}
+      />
+      {nodes.map(node => {
+        if (
+          node.frontmatter.page_chapter_name === 'home' &&
+          node.frontmatter.language === i18n.language
+        ) {
+          return (
+            <section className={s.section} key={node.id}>
+              <div className={s.wrapper}>
+                {!mobileOpen && width < 768 ? (
+                  <>
+                    {' '}
+                    <div className={s.mobileHeader}>
+                      <Link to="/">
+                        {websiteTheme === 'dark' ? <Logo /> : <LogoBlack />}
+                      </Link>
+                      <button
+                        aria-label="open menu"
+                        type="button"
+                        onClick={() => setMobileOpen(true)}
+                      >
+                        <BiMenu className={s.biMenu} />
+                      </button>
+                    </div>
+                    <Breadcrumb title={node.frontmatter.page_title} />
+                    <div className={s.contentWrapper}>
+                      <h1 className={s.title}>{node.frontmatter.page_title}</h1>
+                    </div>
+                    <HTMLContent className={s.content} content={node.html} />
+                    <Note description={node.frontmatter.description} />
+                    <ButtonsNavigate />
+                  </>
+                ) : (
+                  <>
+                    <Breadcrumb title={node.frontmatter.page_title} />
+                    <div className={s.contentWrapper}>
+                      <h1 className={s.title}>{node.frontmatter.page_title}</h1>
+                    </div>
+                    <HTMLContent className={s.content} content={node.html} />
+                    <Note description={node.frontmatter.description} />
+                    <ButtonsNavigate />
+                  </>
+                )}
+              </div>
+            </section>
+          );
+        }
+      })}
+    </>
   );
 }
 
