@@ -107,7 +107,9 @@ const Form = () => {
             {t(submit)}
           </button>
         </form>
-        <p className={s.text}>Copyright © 2022 GoIT. All rights reserved.</p>
+        <p className={s.text}>
+          Copyright © {new Date().getFullYear()} GoIT. All rights reserved.
+        </p>
         <NotificationContainer />
       </div>
     </div>
