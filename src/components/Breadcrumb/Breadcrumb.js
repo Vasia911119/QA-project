@@ -1,9 +1,8 @@
-import React from 'react';
 import { Link } from 'gatsby';
-import { BiHome } from 'react-icons/bi';
-import { BiChevronRight } from 'react-icons/bi';
-import * as s from './Breadcrumb.module.css';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
+import React from 'react';
+import { BiChevronRight, BiHome } from 'react-icons/bi';
+import * as s from './Breadcrumb.module.css';
 
 const Breadcrumb = ({ title, name }) => {
   const { i18n } = useTranslation();
