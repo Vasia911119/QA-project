@@ -36,8 +36,8 @@ body::-webkit-scrollbar-thumb {
 /* не відпрацьовує */
 :global(.dark) .body::-webkit-scrollbar-track,
 :global(.dark) .body::-webkit-scrollbar {
-  @apply bg-[#5e6273];
+  background-color: #5e6273;
 }
 :global(.dark) .body::-webkit-scrollbar-thumb {
-  @apply bg-[#424865];
+  background-color: #424865;
 }

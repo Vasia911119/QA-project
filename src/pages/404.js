@@ -1,15 +1,11 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
+import React from 'react';
 import { Helmet } from 'react-helmet';
-import * as s from '../styles/404.module.css';
-import { Link } from 'gatsby';
 import { BiChevronRight } from 'react-icons/bi';
-import { StaticImage } from 'gatsby-plugin-image';
-import useWindowResize from '../hooks/useWindowResize';
+import * as s from '../styles/404.module.css';
 
 const NotFoundPage = function () {
-  const width = useWindowResize();
   const { t, i18n } = useTranslation();
   const { oops, title, text, button } = t('404', { returnObjects: true });
 

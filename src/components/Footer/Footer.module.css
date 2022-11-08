@@ -1,0 +1,12 @@
+.collapsedMenuButton {
+  @apply h-6 w-6 rotate-180 transition-all hover:text-slate-50 focus:text-slate-50;
+}
+.uncollapsedMenuButton {
+  @apply h-6 w-6 transition-all hover:text-slate-50 focus:text-slate-50;
+}
+.collapsedFooter {
+  @apply flex w-full items-start justify-between border-t border-[#9EA2C6] px-5 py-4;
+}
+.footer {
+  @apply flex w-full flex-col items-center gap-4 border-t border-[#9EA2C6] py-4;
+}

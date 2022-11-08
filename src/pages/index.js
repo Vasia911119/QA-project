@@ -3,16 +3,16 @@ import React, { useContext } from 'react';
 
 import { Helmet } from 'react-helmet';
 
-import PropTypes, { node } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Breadcrumb, ButtonsNavigate, Note } from '../components';
 import * as s from '../styles/page.module.css';
 
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { MobileMenuContext } from '../components/Layout/Layout';
-import useWindowResize from '../hooks/useWindowResize';
 
-import Logo from '../icons/logo.inline.svg';
-import LogoBlack from '../icons/logo-black.inline.svg';
 import { BiMenu } from 'react-icons/bi';
+import LogoBlack from '../icons/logo-black.inline.svg';
+import Logo from '../icons/logo.inline.svg';
 
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { HTMLContent } from '../components/Content';
@@ -20,8 +20,8 @@ import { HTMLContent } from '../components/Content';
 export default function HomePage({ data }) {
   const { nodes } = data.allMarkdownRemark;
   const { i18n } = useTranslation();
+  const brakepoints = useBreakpoint();
 
-  const width = useWindowResize();
   const { mobileOpen, setMobileOpen } = useContext(MobileMenuContext);
 
   let websiteTheme;
@@ -45,7 +45,7 @@ export default function HomePage({ data }) {
           return (
             <section className={s.section} key={node.id}>
               <div className={s.wrapper}>
-                {!mobileOpen && width < 768 ? (
+                {!mobileOpen && brakepoints.sm ? (
                   <>
                     {' '}
                     <div className={s.mobileHeader}>

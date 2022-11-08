@@ -1,17 +1,18 @@
 import 'fontsource-inter';
-import React, { useState, useEffect, createContext } from 'react';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import PropTypes from 'prop-types';
-import useWindowResize from '../../hooks/useWindowResize';
+import React, { createContext, useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 
+import NotFoundPage from '../../pages/404';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import * as s from './Layout.module.css';
-import NotFoundPage from '../../pages/404';
 
 export const MobileMenuContext = createContext();
 
 const Layout = ({ children, pageContext }) => {
-  const width = useWindowResize();
+  const brakepoints = useBreakpoint();
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuCollapsed, setMenuCollapsed] = useState(false);
 
@@ -19,14 +20,14 @@ const Layout = ({ children, pageContext }) => {
   const handleClose = () => setMobileOpen(false);
 
   useEffect(() => {
-    if (width > 768 && mobileOpen) setMobileOpen(false);
-    if (width < 1280 && !menuCollapsed) setMenuCollapsed(true);
-    if (width > 1280 && menuCollapsed) {
+    if (brakepoints.md && mobileOpen) setMobileOpen(false);
+    if (brakepoints.tablet && !menuCollapsed) setMenuCollapsed(true);
+    if (brakepoints.lg && menuCollapsed) {
       setMenuCollapsed(false);
     }
-  }, [width]);
+  }, [brakepoints.lg, brakepoints.tablet, brakepoints.md]);
   useEffect(() => {
-    if (width < 1280) setMenuCollapsed(true);
+    if (brakepoints.tablet && brakepoints.md) setMenuCollapsed(true);
   }, []);
 
   let websiteTheme;
@@ -39,7 +40,7 @@ const Layout = ({ children, pageContext }) => {
   } else
     return (
       <section className={s.mainSection}>
-        {width >= 768 && (
+        {brakepoints.md && (
           <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
             <Navbar
               setMenuCollapsed={setMenuCollapsed}
@@ -48,7 +49,7 @@ const Layout = ({ children, pageContext }) => {
           </div>
         )}
         <main className={s.main}>
-          {mobileOpen && width < 768 && (
+          {mobileOpen && brakepoints.sm && (
             <MobileMenu
               setMobileOpen={setMobileOpen}
               handleClose={handleClose}

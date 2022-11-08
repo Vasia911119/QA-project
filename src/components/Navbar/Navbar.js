@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
+import React from 'react';
 
 import useMenuStructure from '../../queries/menu-structure';
-import useWindowResize from '../../hooks/useWindowResize';
-import Logo from '../../icons/logo.inline.svg';
 
-import SwitchLanguages from '../SwitchLanguages';
-import ToggleMode from '../Toggler';
-import { BiHomeAlt, BiChevronsLeft } from 'react-icons/bi';
-import { AiOutlineClose } from 'react-icons/ai';
+import { BiHomeAlt } from 'react-icons/bi';
 import {
-  HiOutlineQuestionMarkCircle,
-  HiOutlineTemplate,
   HiOutlineCreditCard,
   HiOutlineDocumentText,
+  HiOutlineQuestionMarkCircle,
+  HiOutlineTemplate,
 } from 'react-icons/hi';
 import * as s from './Navbar.module.css';
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 
 import Accordion from '../Accordion';
 
-import SearchBtnOpenModal from '../SearchBlock/SearchBtnOpenModal';
+import { Footer } from '../Footer/Footer';
+import { Header } from '../Header/Header';
 
 export default function Navbar({
   mobileOpen,
@@ -31,7 +28,11 @@ export default function Navbar({
 }) {
   const menuItems = useMenuStructure();
   const { i18n } = useTranslation();
-  const width = useWindowResize();
+  const brakepoints = useBreakpoint();
+
+  const colapseMenuOnTablet = () => {
+    brakepoints.tablet && brakepoints.md && setMenuCollapsed(true);
+  };
 
   // ------if adding new page/links chapter => add a new icon for this certain array of icons ------
   const notHomePageMenuChaptersIcons = [
@@ -93,7 +94,7 @@ export default function Navbar({
           ],
         };
       }, {});
-    } else return null;
+    } else return '';
   };
   // ============== end of filtering data for other peges chapters (not home chapter) ===========
 
@@ -107,53 +108,13 @@ export default function Navbar({
     <div
       className={menuCollapsed ? s.sidebarWrapperCollapsed : s.sidebarWrapper}
     >
-      <div
-        className={
-          mobileOpen
-            ? s.searchSectionMobile
-            : menuCollapsed
-            ? s.searchSectionMenuCollapsed
-            : s.searchSectionMenuUncollapsed
-        }
-      >
-        {mobileOpen && (
-          <button
-            type="button"
-            aria-label="close menu"
-            className={s.closeModalButton}
-            onClick={() => setMobileOpen(false)}
-          >
-            <AiOutlineClose className="smOnly:fill-white" />
-          </button>
-        )}
-        <Link
-          to={`/`}
-          onClick={handleClose}
-          className={
-            mobileOpen
-              ? ' mb-0'
-              : menuCollapsed
-              ? 'h-4 -rotate-90  md:mb-[52px] '
-              : 'mb-[24px] '
-          }
-        >
-          <Logo
-            className={
-              mobileOpen
-                ? ' block  h-8 w-[100px]'
-                : menuCollapsed
-                ? 'h-4 w-[50px]'
-                : 'mb-0 block  h-8 w-[100px]'
-            }
-            title="Go-It"
-          />
-        </Link>
-
-        <SearchBtnOpenModal
-          menuCollapsed={menuCollapsed}
-          mobileOpen={mobileOpen}
-        />
-      </div>
+      <Header
+        mobileOpen={mobileOpen}
+        handleClose={handleClose}
+        setMobileOpen={setMobileOpen}
+        menuCollapsed={menuCollapsed}
+        setMenuCollapsed={setMenuCollapsed}
+      />
       <ul
         style={menuCollapsed ? { maxWidth: '56px' } : null}
         className={`navigationScroll ${
@@ -170,11 +131,14 @@ export default function Navbar({
           </Link>
           <Link
             to={'/'}
-            onClick={handleClose}
+            onClick={() => {
+              handleClose;
+              colapseMenuOnTablet();
+            }}
             className={
               menuCollapsed
-                ? 'hidden'
-                : 'ml-4 w-full hover:text-slate-50 focus:text-slate-50'
+                ? 'h-0 w-0 truncate '
+                : 'ml-4 w-full  hover:text-slate-50 focus:text-slate-50'
             }
           >
             {homePageTitle}
@@ -202,7 +166,9 @@ export default function Navbar({
                   </div>
                   <Accordion
                     setMenuCollapsed={setMenuCollapsed}
-                    className={menuCollapsed ? 'hidden' : 'ml-4 w-full'}
+                    className={
+                      menuCollapsed ? 'h-0 w-0 truncate ' : 'ml-4 w-full '
+                    }
                     handleClose={handleClose}
                     title={accordionDataComponent.title}
                     content={accordionDataComponent.sub}
@@ -226,7 +192,9 @@ export default function Navbar({
                 <Accordion
                   setMenuCollapsed={setMenuCollapsed}
                   icon={linkCaptersIcons[index]}
-                  className={menuCollapsed ? 'hidden' : 'ml-4 w-full'}
+                  className={
+                    menuCollapsed ? 'h-0 w-0 truncate ' : 'ml-4 w-full '
+                  }
                   handleClose={handleClose}
                   title={i.frontmatter.link_chapter_title}
                   content={i.frontmatter.links_items}
@@ -235,25 +203,10 @@ export default function Navbar({
             );
           })}
       </ul>
-      <div className={menuCollapsed ? s.footer : s.collapsedFooter}>
-        <SwitchLanguages collapsed={menuCollapsed} />
-        <ToggleMode collapsed={menuCollapsed} />
-        {width >= 768 && (
-          <button
-            className="p-0"
-            aria-label="toggle sidebar"
-            type="button"
-            onClick={() => setMenuCollapsed(!menuCollapsed)}
-          >
-            <BiChevronsLeft
-              className={
-                menuCollapsed ? s.collapsedMenuButton : s.uncollapsedMenuButton
-              }
-              size={18}
-            />
-          </button>
-        )}
-      </div>
+      <Footer
+        menuCollapsed={menuCollapsed}
+        setMenuCollapsed={setMenuCollapsed}
+      />
     </div>
   );
 }
