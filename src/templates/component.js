@@ -1,6 +1,5 @@
 import { graphql, Link } from 'gatsby';
-
-import i18next from 'i18next';
+import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { Breadcrumb, ButtonsNavigate, Note, Form } from '../components';
@@ -30,43 +29,50 @@ const ComponentTemplate = ({ data }) => {
   }
 
   return (
-    nodes &&
-    nodes.map(node => {
-      if (node.frontmatter.language === i18n.language) {
-        return (
-          // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-          <section className={s.sectionComponents} key={node.id}>
-            <div className={s.wrapper}>
-              {!mobileOpen && width < 768 && (
-                <div className={s.mobileHeader}>
-                  <Link to="/">
-                    {websiteTheme === 'dark' ? <Logo /> : <LogoBlack />}
-                  </Link>
-                  <button
-                    aria-label="open menu"
-                    type="button"
-                    onClick={() => setMobileOpen(true)}
-                  >
-                    <BiMenu className={s.biMenu} />
-                  </button>
+    <>
+      <Helmet
+        htmlAttributes={{
+          lang: i18n.language,
+        }}
+      />
+      {nodes &&
+        nodes.map(node => {
+          if (node.frontmatter.language === i18n.language) {
+            return (
+              // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
+              <section className={s.sectionComponents} key={node.id}>
+                <div className={s.wrapper}>
+                  {!mobileOpen && width < 768 && (
+                    <div className={s.mobileHeader}>
+                      <Link to="/">
+                        {websiteTheme === 'dark' ? <Logo /> : <LogoBlack />}
+                      </Link>
+                      <button
+                        aria-label="open menu"
+                        type="button"
+                        onClick={() => setMobileOpen(true)}
+                      >
+                        <BiMenu className={s.biMenu} />
+                      </button>
+                    </div>
+                  )}
+                  <Breadcrumb
+                    title={node.frontmatter.page_title}
+                    name={node.frontmatter.page_chapter_title}
+                  />
+                  <div className={s.contentWrapper}>
+                    <h1 className={s.title}>{node.frontmatter.page_title}</h1>
+                  </div>
+                  <HTMLContent className={s.content} content={node.html} />
+                  <Note description={node.frontmatter.description} />
+                  <ButtonsNavigate />
                 </div>
-              )}
-              <Breadcrumb
-                title={node.frontmatter.page_title}
-                name={node.frontmatter.page_chapter_title}
-              />
-              <div className={s.contentWrapper}>
-                <h1 className={s.title}>{node.frontmatter.page_title}</h1>
-              </div>
-              <HTMLContent className={s.content} content={node.html} />
-              <Note description={node.frontmatter.description} />
-              <ButtonsNavigate />
-            </div>
-            <Form />
-          </section>
-        );
-      }
-    })
+                <Form />
+              </section>
+            );
+          }
+        })}
+    </>
   );
 };
 
