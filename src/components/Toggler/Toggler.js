@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IconContext } from 'react-icons';
 import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
-// import * as s from './Toggler.module.css';
 
 const ToggleMode = ({ collapsed = false }) => {
   let websiteTheme;
@@ -27,7 +26,7 @@ const ToggleMode = ({ collapsed = false }) => {
       onClick={ThemeToggle}
       className="flex items-center gap-2 text-grey-350 transition-colors hover:text-slate-50 focus:text-slate-50"
     >
-      <IconContext.Provider value={{ color: 'currentColor', size: 18 }}>
+      <IconContext.Provider value={{ color: 'currentColor', size: 24 }}>
         {theme === 'dark' && (
           <>
             <HiOutlineMoon /> {!collapsed ? 'Dark' : ''}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useI18next } from 'gatsby-plugin-react-i18next';
 import Flag from 'react-world-flags';
+import Backdrop from './Backdrop';
 
 const showLanguage = lang => {
   return lang === 'uk' ? 'UA' : lang.toUpperCase();
@@ -51,33 +52,36 @@ const SwitchLanguages = ({ collapsed = false }) => {
         )}
       </button>
       {open && (
-        <ul className="languages">
-          {langArray.map(lng => {
-            return (
-              <li key={lng} className="my-1">
-                <Link
-                  to={originalPath}
-                  language={lng}
-                  onClick={handleOpen}
-                  className="flex items-center"
-                >
-                  <Flag
-                    code={showFlag(lng)}
-                    className=" !inline-block h-6 w-6 rounded-[50%] object-cover"
-                    fallback={
-                      <span className=" inline-block h-6 w-6 rounded-[50%] bg-white object-cover"></span>
-                    }
-                  />{' '}
-                  {!collapsed && (
-                    <p className="ml-3 text-grey-350 transition-colors hover:text-slate-50">
-                      {showLanguage(lng)}
-                    </p>
-                  )}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <>
+          <ul className="relative z-20 w-full">
+            {langArray.map(lng => {
+              return (
+                <li key={lng} className="my-1">
+                  <Link
+                    to={originalPath}
+                    language={lng}
+                    onClick={handleOpen}
+                    className="flex items-center"
+                  >
+                    <Flag
+                      code={showFlag(lng)}
+                      className=" !inline-block h-6 w-6 rounded-[50%] object-cover"
+                      fallback={
+                        <span className=" inline-block h-6 w-6 rounded-[50%] bg-white object-cover"></span>
+                      }
+                    />{' '}
+                    {!collapsed && (
+                      <p className="ml-3 text-grey-350 transition-colors hover:text-slate-50">
+                        {showLanguage(lng)}
+                      </p>
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <Backdrop bcDropClose={handleOpen} />
+        </>
       )}
     </div>
   );
