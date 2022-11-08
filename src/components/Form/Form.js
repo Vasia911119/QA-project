@@ -39,6 +39,8 @@ const Form = () => {
     .required();
 
   const createNotification = () => NotificationManager.success(t(success));
+  const createNotificationError = () =>
+    NotificationManager.error('error in API');
 
   const {
     register,
@@ -49,7 +51,7 @@ const Form = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data, e) => {
+  const onSubmit = (data, e) => {
     try {
       e.preventDefault();
       // --- TELEGRAM ---
@@ -59,8 +61,10 @@ const Form = () => {
       text += `<b>Повідомлення: </b> ${data.message}\n`;
       text += `<b>Форма отримана з:</b>\n`;
       text += `<a href="https://xxx.netlify.app/">https://xxx.netlify.app/</a>`;
-      await sendMessage(text);
-      createNotification();
+      const res = sendMessage(text);
+      res.then(res => {
+        res?.data.ok ? createNotification() : createNotificationError();
+      });
       reset();
     } catch (error) {
       setError(true);
