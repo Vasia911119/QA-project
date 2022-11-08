@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useI18next } from 'gatsby-plugin-react-i18next';
 import Flag from 'react-world-flags';
+import PropTypes from 'prop-types';
 import Backdrop from './Backdrop';
 
 const showLanguage = lang => {
@@ -88,3 +89,7 @@ const SwitchLanguages = ({ collapsed = false }) => {
 };
 
 export default SwitchLanguages;
+
+SwitchLanguages.propTypes = {
+  collapsed: PropTypes.bool.isRequired,
+};
