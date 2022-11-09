@@ -11,16 +11,16 @@ export const Breadcrumb = ({ title, name }) => {
       {name ? (
         <>
           <Link to={`/${i18n.language}/`} aria-label="home">
-            <BiHome className={s.iconHome} alt="home" />
+            <BiHome className={s.iconHome} />
           </Link>
-          <BiChevronRight className={s.iconNext} alt="next" />
+          <BiChevronRight className={s.iconNext} />
         </>
       ) : (
         <>
           <Link to={`/${i18n.language}/`} aria-label="home">
-            <BiHome className={s.iconHomeMain} alt="home" />
+            <BiHome className={s.iconHomeMain} />
           </Link>
-          <BiChevronRight className={s.iconNextMain} alt="next" />
+          <BiChevronRight className={s.iconNextMain} />
         </>
       )}
       {name && (
@@ -28,7 +28,7 @@ export const Breadcrumb = ({ title, name }) => {
           <div className={s.textWrapper}>
             <p className={s.text}>{name}</p>
           </div>
-          <BiChevronRight className={s.iconNext} alt="next" />
+          <BiChevronRight className={s.iconNext} />
           <div className={s.textWrapper}>
             <p className={s.textTitle}>{title}</p>
           </div>

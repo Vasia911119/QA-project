@@ -8,7 +8,7 @@ export const Note = ({ description }) => {
       {description && (
         <div className={s.wrapper}>
           <div className={s.iconWrapper}>
-            <HiOutlineInformationCircle className={s.icon} alt="informations" />
+            <HiOutlineInformationCircle className={s.icon} />
           </div>
           <strong className={s.text}>{description}</strong>
         </div>
