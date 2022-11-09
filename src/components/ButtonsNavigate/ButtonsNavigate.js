@@ -108,7 +108,7 @@ export const ButtonsNavigate = () => {
         disabled={prevBtnDisabled}
         type="button"
       >
-        <BiChevronLeft className={s.icon} alt="previous" />
+        <BiChevronLeft className={s.icon} />
         {t(previous)}
       </button>
       <button
@@ -118,7 +118,7 @@ export const ButtonsNavigate = () => {
         type="button"
       >
         {t(next)}
-        <BiChevronRight className={s.icon} alt="next" />
+        <BiChevronRight className={s.icon} />
       </button>
     </div>
   );
