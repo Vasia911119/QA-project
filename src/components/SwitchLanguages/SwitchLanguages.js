@@ -45,6 +45,7 @@ const SwitchLanguages = ({ collapsed = false }) => {
           fallback={
             <span className=" inline-block h-6 w-6 rounded-[50%] bg-white object-cover"></span>
           }
+          alt={`${language} flag`}
         />
         {!collapsed && (
           <p className="ml-3 text-grey-350 transition-colors hover:text-slate-50">
@@ -70,6 +71,7 @@ const SwitchLanguages = ({ collapsed = false }) => {
                       fallback={
                         <span className=" inline-block h-6 w-6 rounded-[50%] bg-white object-cover"></span>
                       }
+                      alt={`${lng} flag`}
                     />{' '}
                     {!collapsed && (
                       <p className="ml-3 text-grey-350 transition-colors hover:text-slate-50">
