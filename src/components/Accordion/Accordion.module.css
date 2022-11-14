@@ -14,7 +14,7 @@
   @apply mb-5;
 }
 .collapsed {
-  @apply h-0 truncate transition-all;
+  @apply h-0 truncate whitespace-normal transition-all;
 }
 
 .buttonWrapper {
