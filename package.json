@@ -6,6 +6,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.3",
     "@hookform/resolvers": "^2.9.9",
+    "@savvywombat/tailwindcss-grid-areas": "^3.0.0",
     "@tailwindcss/typography": "0.5.7",
     "autoprefixer": "10.4.12",
     "axios": "^1.1.3",
