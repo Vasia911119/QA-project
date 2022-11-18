@@ -33,6 +33,22 @@ module.exports = {
         grey: { 350: '#9EA2C6' }, //text
         slate: { 50: '#F8FAFC' },
       },
+      gridTemplateAreas: {
+        sm: ['header, body, footer'],
+        md: [
+          '. header header .',
+          '. sidebar body .',
+          'footer footer footer footer',
+        ],
+      },
+      gridTemplateColumns: {
+        sm: ['minmax(320px, 1fr)'],
+        md: ['auto 282px minmax(320px, 1200px) auto'],
+      },
+      gridTemplateRows: {
+        sm: ['auto 1fr auto'],
+        md: ['auto 1fr auto'],
+      },
       // TYPOGRAFY
       typography: ({ theme }) => ({
         invert: {
