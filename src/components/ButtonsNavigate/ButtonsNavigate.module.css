@@ -2,10 +2,10 @@
   @apply mt-[80px] flex font-inter text-base font-semibold text-slate-50 md:mt-[92px] xl:mt-[100px];
 }
 .buttonLeft {
-  @apply ml-auto mr-8 flex h-12 w-[114px] items-center justify-center rounded-[10px] bg-blue-600 font-inter text-base font-semibold transition-all disabled:bg-stone-300;
+  @apply ml-auto mr-8 flex h-12 min-w-[114px] items-center justify-center rounded-[10px] bg-blue-600 font-inter text-base font-semibold transition-all disabled:bg-stone-300;
 }
 .buttonRight {
-  @apply mr-auto flex h-12 w-[114px] items-center justify-center rounded-[10px] bg-blue-600 font-inter text-base font-semibold transition-all disabled:bg-stone-300;
+  @apply mr-auto flex h-12 min-w-[114px] items-center justify-center rounded-[10px] bg-blue-600 font-inter text-base font-semibold transition-all disabled:bg-stone-300;
 }
 :global(.dark) .buttonLeft,
 :global(.dark) .buttonRight {
