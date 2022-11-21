@@ -114,7 +114,7 @@ export default function Navbar({
         setMobileOpen={setMobileOpen}
         menuCollapsed={menuCollapsed}
         setMenuCollapsed={setMenuCollapsed}
-      />
+      /><nav>
       <ul
         style={menuCollapsed ? { maxWidth: '56px' } : null}
         className={`navigationScroll ${
@@ -202,7 +202,8 @@ export default function Navbar({
               </li>
             );
           })}
-      </ul>
+        </ul>
+      </nav>
       <Footer
         menuCollapsed={menuCollapsed}
         setMenuCollapsed={setMenuCollapsed}

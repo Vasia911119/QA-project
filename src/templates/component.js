@@ -27,9 +27,13 @@ const ComponentTemplate = ({ data }) => {
     websiteTheme = window.__theme;
   }
 
+  const titleLanguageNode = nodes.filter(node => node.frontmatter.language === i18n.language)
+  const pageTitle = titleLanguageNode.length ? titleLanguageNode[0].frontmatter.page_title : 'Components'
+
   return (
     <>
       <Helmet
+        title={pageTitle}
         htmlAttributes={{
           lang: i18n.language,
         }}
@@ -39,7 +43,7 @@ const ComponentTemplate = ({ data }) => {
           if (node.frontmatter.language === i18n.language) {
             return (
               // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
-              <section className={s.sectionComponents} key={node.id}>
+              <div className={s.sectionComponents} key={node.id}>
                 <div className={s.wrapper}>
                   {!mobileOpen && brakepoints.sm && (
                     <div className={s.mobileHeader}>
@@ -67,7 +71,7 @@ const ComponentTemplate = ({ data }) => {
                   <ButtonsNavigate />
                 </div>
                 <Form />
-              </section>
+              </div>
             );
           }
         })}

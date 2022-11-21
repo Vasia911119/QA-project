@@ -10,7 +10,7 @@ export const Footer = ({ menuCollapsed, setMenuCollapsed }) => {
   const brakepoints = useBreakpoint();
 
   return (
-    <div className={menuCollapsed ? s.footer : s.collapsedFooter}>
+    <div className={menuCollapsed ? s.collapsedFooter: s.footer }>
       <SwitchLanguages collapsed={menuCollapsed} />
       <ToggleMode collapsed={menuCollapsed} />
 

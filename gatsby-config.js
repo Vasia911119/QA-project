@@ -5,15 +5,6 @@ const description = 'Testing gatsby';
 const logo = '/img/logo.inline.svg';
 const srcLogo = 'src/icons/logo-black.inline.svg';
 
-const color = '#433e85';
-const social = {
-  twitter: '',
-  instagram: '',
-  youtube: '',
-  github: '',
-  linkedin: '',
-};
-
 require('dotenv').config({
   path: `.env`,
 });
@@ -26,13 +17,12 @@ const myCustomQueries = {
 };
 
 module.exports = {
+  trailingSlash: 'never',
   siteMetadata: {
     siteUrl,
     logo,
     title,
     description,
-    color,
-    social,
   },
   plugins: [
     {
@@ -148,7 +138,6 @@ module.exports = {
         short_name: title,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: color,
         display: `minimal-ui`,
         icon: srcLogo,
       },
