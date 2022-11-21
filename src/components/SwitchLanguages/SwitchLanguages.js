@@ -41,11 +41,11 @@ const SwitchLanguages = ({ collapsed = false }) => {
       >
         <Flag
           code={showFlag(language)}
-          className=" !inline-block h-6 w-6 rounded-[50%] object-cover"
+          className=" !inline-block h-6 w-6 rounded-[50%] object-cover text-sm leading-3"
           fallback={
             <span className=" inline-block h-6 w-6 rounded-[50%] bg-white object-cover"></span>
           }
-          alt={`${language} flag`}
+          alt={`${showLanguage(language)} flag`}
         />
         {!collapsed && (
           <p className="ml-3 text-grey-350 transition-colors hover:text-slate-50">
@@ -67,11 +67,11 @@ const SwitchLanguages = ({ collapsed = false }) => {
                   >
                     <Flag
                       code={showFlag(lng)}
-                      className=" !inline-block h-6 w-6 rounded-[50%] object-cover"
+                      className=" !inline-block h-6 w-6 rounded-[50%] object-cover text-sm leading-3"
                       fallback={
                         <span className=" inline-block h-6 w-6 rounded-[50%] bg-white object-cover"></span>
                       }
-                      alt={`${lng} flag`}
+                      alt={`${showLanguage(lng)} flag`}
                     />{' '}
                     {!collapsed && (
                       <p className="ml-3 text-grey-350 transition-colors hover:text-slate-50">
