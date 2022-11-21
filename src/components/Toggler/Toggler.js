@@ -2,8 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { IconContext } from 'react-icons';
 import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 const ToggleMode = ({ collapsed = false }) => {
+  const { t } = useTranslation();
+  const { themeSwitcher } = t('aria-labels', {
+    returnObjects: true,
+  });
+
   let websiteTheme;
 
   if (typeof window !== `undefined`) {
@@ -23,7 +29,7 @@ const ToggleMode = ({ collapsed = false }) => {
   return (
     <button
       type="button"
-      aria-label="change theme"
+      aria-label={themeSwitcher}
       onClick={ThemeToggle}
       className="flex items-center gap-2 text-grey-350 transition-colors hover:text-slate-50 focus:text-slate-50"
     >

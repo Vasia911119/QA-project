@@ -31,6 +31,9 @@ export const Form = () => {
   const { title, nameInput, emailInput, messageInput, submit } = t('form', {
     returnObjects: true,
   });
+  const { form } = t('aria-labels', {
+    returnObjects: true,
+  });
 
   const schema = yup
     .object({
@@ -130,7 +133,7 @@ export const Form = () => {
             <p className={s.errorMsgTextarea}>{errors.message?.message}</p>
           </div>
 
-          <button aria-label="submit form" className={s.button} type="submit">
+          <button aria-label={t(form)} className={s.button} type="submit">
             {t(submit)}
           </button>
         </form>
