@@ -5,19 +5,23 @@ import { BiChevronRight, BiHome } from 'react-icons/bi';
 import * as s from './Breadcrumb.module.css';
 
 export const Breadcrumb = ({ title, name }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { home } = t('aria-labels', {
+    returnObjects: true,
+  });
+
   return (
     <div className={s.wrapper}>
       {name ? (
         <>
-          <Link to={`/${i18n.language}/`} aria-label="home">
+          <Link to={`/${i18n.language}/`} aria-label={home}>
             <BiHome className={s.iconHome} />
           </Link>
           <BiChevronRight className={s.iconNext} />
         </>
       ) : (
         <>
-          <Link to={`/${i18n.language}/`} aria-label="home">
+          <Link to={`/${i18n.language}/`} aria-label={home}>
             <BiHome className={s.iconHomeMain} />
           </Link>
           <BiChevronRight className={s.iconNextMain} />

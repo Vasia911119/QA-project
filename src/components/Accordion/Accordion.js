@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { BiChevronUp } from 'react-icons/bi';
-import * as s from './Accordion.module.css';
 import PropTypes from 'prop-types';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import * as s from './Accordion.module.css';
 
 function Accordion({
   setMenuCollapsed,
@@ -14,6 +15,10 @@ function Accordion({
   handleClose,
 }) {
   const brakepoints = useBreakpoint();
+  const { t } = useTranslation();
+  const { openAccordeon } = t('aria-labels', {
+    returnObjects: true,
+  });
 
   const [accordionStatus, setAccordionStatus] = useState(false);
   const collapseMenuOnTablet = () => {
@@ -47,7 +52,7 @@ function Accordion({
           <div className={s.buttonWrapper}>
             <button
               className={s.button}
-              aria-label="expand subsection"
+              aria-label={openAccordeon}
               type="button"
               onClick={handleClick}
             >
