@@ -18,9 +18,13 @@
   },
   "formValidation": {
     "required": "It is a required field",
-    "name": "Name must contain min 2 characters",
+    "name": "Only letters",
+    "nameMin": "Name must contain min 2 characters",
+    "nameMax": "Name must contain max 100 characters",
     "email": "Only Latin letters and min 3 letters before @ accepted",
-    "message": "Message must contain min 20 characters",
+    "emailMax": "Email must contain max 63 characters",
+    "messageMin": "Message must contain min 20 characters",
+    "messageMax": "Message must contain max 2000 characters",
     "success": "Message sent"
   },
 
