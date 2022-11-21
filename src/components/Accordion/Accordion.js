@@ -71,7 +71,7 @@ function Accordion({
             <li key={index}>
               {i.link_title && (
                 <a
-                  rel="noreferrer noopener"
+                  rel="noreferrer noopener nofollow"
                   aria-label={i.link_title}
                   className={s.sublink}
                   onClick={handleClose}

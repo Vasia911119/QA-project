@@ -12,6 +12,7 @@ const NotFoundPage = function () {
   return (
     <>
       <Helmet
+        title='404'
         htmlAttributes={{
           lang: i18n.language,
         }}

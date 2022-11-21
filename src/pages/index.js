@@ -29,10 +29,14 @@ export default function HomePage({ data }) {
     websiteTheme = window.__theme;
   }
 
+  const titleLanguageNode = nodes.filter(node => node.frontmatter.page_chapter_name === 'home' && node.frontmatter.language === i18n.language)
+  const pageTitle = titleLanguageNode.length ? titleLanguageNode[0].frontmatter.page_title : 'HomePage'
+
   return (
     // не обгорнуто в компонент Layout так як використовується плагін gatsby-plugin-layout
     <>
-      <Helmet
+      <Helmet 
+        title={pageTitle}
         htmlAttributes={{
           lang: i18n.language,
         }}
@@ -43,7 +47,7 @@ export default function HomePage({ data }) {
           node.frontmatter.language === i18n.language
         ) {
           return (
-            <section className={s.section} key={node.id}>
+            <div className={s.section} key={node.id}>
               <div className={s.wrapper}>
                 {!mobileOpen && brakepoints.sm ? (
                   <>
@@ -80,7 +84,7 @@ export default function HomePage({ data }) {
                   </>
                 )}
               </div>
-            </section>
+            </div>
           );
         }
       })}

@@ -16,7 +16,7 @@ export const Footer = ({ menuCollapsed, setMenuCollapsed }) => {
   });
 
   return (
-    <div className={menuCollapsed ? s.footer : s.collapsedFooter}>
+    <div className={menuCollapsed ? s.collapsedFooter: s.footer }>
       <SwitchLanguages collapsed={menuCollapsed} />
       <ToggleMode collapsed={menuCollapsed} />
 

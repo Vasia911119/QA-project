@@ -39,7 +39,7 @@ const Layout = ({ children, pageContext }) => {
     return <NotFoundPage />;
   } else
     return (
-      <section className={s.mainSection}>
+      <main className={s.mainSection}>
         {brakepoints.md && (
           <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
             <Navbar
@@ -48,7 +48,7 @@ const Layout = ({ children, pageContext }) => {
             />
           </div>
         )}
-        <main className={s.main}>
+        <div className={s.main}>
           {mobileOpen && brakepoints.sm && (
             <MobileMenu
               setMobileOpen={setMobileOpen}
@@ -64,8 +64,8 @@ const Layout = ({ children, pageContext }) => {
               {children}
             </MobileMenuContext.Provider>
           </div>
-        </main>
-      </section>
+        </div>
+      </main>
     );
 };
 

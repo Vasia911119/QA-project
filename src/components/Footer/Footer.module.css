@@ -4,9 +4,10 @@
 .uncollapsedMenuButton {
   @apply h-6 w-6 transition-all hover:text-slate-50 focus:text-slate-50;
 }
-.collapsedFooter {
-  @apply flex w-full items-start justify-between border-t border-[#9EA2C6] px-5 py-4;
-}
 .footer {
-  @apply flex w-full flex-col items-center gap-5 border-t border-[#9EA2C6] py-4;
+  @apply flex w-full items-start justify-between border-t border-[#9EA2C6] px-4 py-6 xl:h-[152px] xl:min-h-[152px] md:h-[168px] md:min-h-[168px] mt-auto;
+}
+.collapsedFooter {
+  @apply flex w-full flex-col items-center justify-between border-t border-[#9EA2C6] py-6 xl:h-[152px] xl:min-h-[152px]  md:h-[168px] md:min-h-[168px] mt-auto;
+
 }

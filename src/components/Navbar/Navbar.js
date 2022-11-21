@@ -202,7 +202,8 @@ export default function Navbar({
               </li>
             );
           })}
-      </ul>
+        </ul>
+      
       <Footer
         menuCollapsed={menuCollapsed}
         setMenuCollapsed={setMenuCollapsed}
