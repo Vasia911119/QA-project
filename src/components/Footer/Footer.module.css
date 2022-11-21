@@ -9,4 +9,5 @@
 }
 .collapsedFooter {
   @apply flex w-full flex-col items-center justify-between border-t border-[#9EA2C6] py-6 xl:min-h-[152px] md:min-h-[168px] mt-auto;
+
 }
