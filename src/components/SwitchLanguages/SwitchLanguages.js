@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useI18next } from 'gatsby-plugin-react-i18next';
 import Flag from 'react-world-flags';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Backdrop from './Backdrop';
 
 const showLanguage = lang => {
@@ -23,7 +24,11 @@ const showFlag = lang => {
 
 const SwitchLanguages = ({ collapsed = false }) => {
   const [open, setOpen] = React.useState(false);
+  const { t } = useTranslation();
   const { languages, originalPath, language } = useI18next();
+  const { languageSwitcher } = t('aria-labels', {
+    returnObjects: true,
+  });
 
   const handleOpen = () => {
     setOpen(!open);
@@ -35,7 +40,7 @@ const SwitchLanguages = ({ collapsed = false }) => {
     <div>
       <button
         type="button"
-        aria-label="open language switcher"
+        aria-label={languageSwitcher}
         onClick={handleOpen}
         className="flex items-center"
       >

@@ -27,18 +27,24 @@
     "messageMax": "Message must contain max 2000 characters",
     "success": "Message sent"
   },
-
   "404": {
     "oops": "Oops!",
     "title": "Something went wrong",
     "text": "Let's go back to the home page and try again",
     "button": "Home"
   },
-  "searchPlaceholder": "Search EN",
   "search": {
     "button": "Search...",
     "placeholder": "What are you looking for?",
     "notFoundTitle": "Unfortunately nothing was found :(",
     "notFoundText": "Try another search option"
+  },
+  "aria-labels": {
+    "openAccordeon": "expand subsection",
+    "languageSwitcher": "open language switcher",
+    "themeSwitcher": "change theme",
+    "toggleSidebar": "toggle sidebar",
+    "home": "home",
+    "form": "submit form"
   }
 }
