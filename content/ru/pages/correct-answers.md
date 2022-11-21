@@ -5,6 +5,7 @@ page_chapter_title: Компоненты и функциональность
 slug: correct-answers
 identifier: correct-answers
 language: ru
+page_range: 9
 ---
 
 
