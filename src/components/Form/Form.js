@@ -15,7 +15,17 @@ export const Form = () => {
   const [error, setError] = useState(null);
   const { t } = useTranslation();
 
-  const { required, name, email, message, success } = t('formValidation', {
+  const {
+    required,
+    name,
+    nameMin,
+    nameMax,
+    email,
+    emailMax,
+    messageMin,
+    messageMax,
+    success,
+  } = t('formValidation', {
     returnObjects: true,
   });
   const { title, nameInput, emailInput, messageInput, submit } = t('form', {
@@ -24,17 +34,30 @@ export const Form = () => {
 
   const schema = yup
     .object({
-      name: yup.string().trim().required(t(required)).min(2, t(name)).max(100),
+      name: yup
+        .string()
+        .trim()
+        .required(t(required))
+        .min(2, t(nameMin))
+        .max(100, t(nameMax))
+        .matches(
+          /^[а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ]{1}[а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ' ]+$/,
+          t(name)
+        ),
       email: yup
         .string()
         .email(t(email))
         .required(t(required))
-        .max(63)
+        .max(63, t(emailMax))
         .matches(
           /(?!-)^(?:[aA-zZ0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[aA-zZ0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*"){3}@(?:(?:[aA-zZ0-9](?:[aA-zZ0-9-]*[aA-zZ0-9])?\.)+[aA-zZ0-9](?:[aA-zZ0-9-]*[aA-zZ0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[aA-zZ0-9-]*[aA-zZ0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/g,
           t(email)
         ),
-      message: yup.string().required(t(required)).min(20, t(message)).max(2000),
+      message: yup
+        .string()
+        .required(t(required))
+        .min(20, t(messageMin))
+        .max(2000, t(messageMax)),
     })
     .required();
 
