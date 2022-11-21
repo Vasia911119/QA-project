@@ -14,7 +14,7 @@
   @apply text-[#9EA2C6];
 }
 .wrapperInputs {
-  @apply relative mb-[60px] md:flex md:w-[608px] md:flex-wrap md:justify-between xl:mb-8 xl:w-[864px];
+  @apply relative z-10 mb-[60px] md:flex md:w-[608px] md:flex-wrap md:justify-between xl:mb-8 xl:w-[864px];
 }
 .input {
   @apply mb-8 w-[100%] border-b border-stone-900 bg-transparent p-2 font-inter text-sm font-medium text-[#9EA2C6] md:w-[280px] xl:mb-0 xl:w-[264px];
