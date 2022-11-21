@@ -11,6 +11,11 @@ links_items:
     link_title: Базовые понятия
   - link_title: Тестовая документация
     url_adress: https://drive.google.com/file/d/1FLii3zqWub-bOmq65zfBGVt7uvAEGDaV/view
+    links_range: 2
   - link_title: Принципы тестирования
     url_adress: https://drive.google.com/file/d/1MARFxNgsFpkZAqau5abH5WNuqXsPdFUQ/view
+    links_range: 3
+  - link_title: Виды и типы документации
+    url_adress: https://drive.google.com/file/d/1Al8LV59fhxIlVWlMfvOlxrjMXxIoEImV/view
+    links_range: 4
 ---
