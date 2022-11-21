@@ -81,6 +81,16 @@ module.exports = {
               listStyle: 'outside',
               listStyleType: 'decimal',
             },
+            li: {
+              fontFamily: 'Inter, sans-serif',
+              fontSize: 18,
+              lineHeight: 1.4,
+            },
+            p: {
+              fontFamily: 'Inter, sans-serif',
+              fontSize: 18,
+              lineHeight: 1.4,
+            },
           },
         },
       }),
