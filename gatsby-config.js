@@ -17,7 +17,6 @@ const myCustomQueries = {
 };
 
 module.exports = {
-  trailingSlash: 'never',
   siteMetadata: {
     siteUrl,
     logo,
