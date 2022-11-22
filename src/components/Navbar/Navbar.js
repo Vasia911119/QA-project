@@ -22,7 +22,7 @@ import { Header } from '../Header/Header';
 export default function Navbar({
   mobileOpen,
   setMobileOpen,
-  handleClose,
+  handleCloseMobileMenu,
   menuCollapsed,
   setMenuCollapsed,
 }) {
@@ -110,7 +110,7 @@ export default function Navbar({
     >
       <Header
         mobileOpen={mobileOpen}
-        handleClose={handleClose}
+        handleCloseMobileMenu={handleCloseMobileMenu}
         setMobileOpen={setMobileOpen}
         menuCollapsed={menuCollapsed}
         setMenuCollapsed={setMenuCollapsed}
@@ -132,7 +132,7 @@ export default function Navbar({
           <Link
             to={'/'}
             onClick={() => {
-              handleClose;
+              handleCloseMobileMenu();
               colapseMenuOnTablet();
             }}
             className={
@@ -169,7 +169,7 @@ export default function Navbar({
                     className={
                       menuCollapsed ? 'h-0 w-0 truncate ' : 'ml-4 w-full '
                     }
-                    handleClose={handleClose}
+                    handleCloseMobileMenu={handleCloseMobileMenu}
                     title={accordionDataComponent.title}
                     content={accordionDataComponent.sub}
                   />
@@ -195,7 +195,7 @@ export default function Navbar({
                   className={
                     menuCollapsed ? 'h-0 w-0 truncate ' : 'ml-4 w-full '
                   }
-                  handleClose={handleClose}
+                  handleCloseMobileMenu={handleCloseMobileMenu}
                   title={i.frontmatter.link_chapter_title}
                   content={i.frontmatter.links_items}
                 />

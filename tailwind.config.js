@@ -34,20 +34,17 @@ module.exports = {
         slate: { 50: '#F8FAFC' },
       },
       gridTemplateAreas: {
-        sm: ['header, body, footer'],
-        md: [
-          '. header header .',
-          '. sidebar body .',
-          'footer footer footer footer',
+        'wide': [
+          'header header header',
+          'nav    main   main',
+          'nav    footer footer',
         ],
-      },
-      gridTemplateColumns: {
-        sm: ['minmax(320px, 1fr)'],
-        md: ['auto 282px minmax(320px, 1200px) auto'],
-      },
-      gridTemplateRows: {
-        sm: ['auto 1fr auto'],
-        md: ['auto 1fr auto'],
+        'slim': [
+          'header',
+          'nav',
+          'main',
+          'footer',
+        ],
       },
       // TYPOGRAFY
       typography: ({ theme }) => ({
@@ -95,16 +92,6 @@ module.exports = {
         },
       }),
 
-      // CONTAINER
-      // container: {
-      //   center: true,
-      //   padding: {
-      //     DEFAULT: '1.25rem',
-      //     sm: '1.25rem',
-      //     md: '2rem',
-      //     xl: '2.5rem',
-      //   },
-      // },
     },
   },
   plugins: [

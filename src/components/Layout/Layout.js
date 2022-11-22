@@ -17,7 +17,7 @@ const Layout = ({ children, pageContext }) => {
   const [menuCollapsed, setMenuCollapsed] = useState(false);
 
   const menuState = { mobileOpen, setMobileOpen };
-  const handleClose = () => setMobileOpen(false);
+  const handleCloseMobileMenu = () => {setMobileOpen(false)};
 
   useEffect(() => {
     if (brakepoints.md && mobileOpen) setMobileOpen(false);
@@ -35,6 +35,8 @@ const Layout = ({ children, pageContext }) => {
     websiteTheme = window.__theme;
   }
 
+
+
   if (pageContext.layout === '404') {
     return <NotFoundPage />;
   } else
@@ -43,6 +45,7 @@ const Layout = ({ children, pageContext }) => {
         {brakepoints.md && (
           <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
             <Navbar
+              handleCloseMobileMenu={handleCloseMobileMenu}
               setMenuCollapsed={setMenuCollapsed}
               menuCollapsed={menuCollapsed}
             />
@@ -52,7 +55,7 @@ const Layout = ({ children, pageContext }) => {
           {mobileOpen && brakepoints.sm && (
             <MobileMenu
               setMobileOpen={setMobileOpen}
-              handleClose={handleClose}
+              handleCloseMobileMenu={handleCloseMobileMenu}
               mobileOpen={mobileOpen}
             />
           )}
