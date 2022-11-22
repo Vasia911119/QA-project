@@ -1,7 +1,7 @@
 import 'fontsource-inter';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import PropTypes from 'prop-types';
-import React, { createContext, useLayoutEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 
 import NotFoundPage from '../../pages/404';
@@ -11,26 +11,32 @@ import * as s from './Layout.module.css';
 export const MobileMenuContext = createContext();
 
 const Layout = ({ children, pageContext }) => {
-  const brakepoints = useBreakpoint();
+  const breakpoints = useBreakpoint();
 
   const [sidebarLoaded, setSidebarLoaded] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuCollapsed, setMenuCollapsed] = useState(false);
 
   const menuState = { mobileOpen, setMobileOpen };
-  const handleCloseMobileMenu = () => {setMobileOpen(false)};
-  const colapseMenuOnTablet = () => {
-    brakepoints.tablet && brakepoints.md && setMenuCollapsed(true);
+  const handleCloseMobileMenu = () => {
+    setMobileOpen(false);
   };
-  useLayoutEffect(() => {
-    if (brakepoints.md && mobileOpen) setMobileOpen(false);
-    if (brakepoints.tablet && !menuCollapsed) setMenuCollapsed(true);
-    if (brakepoints.lg && menuCollapsed) {
+  const colapseMenuOnTablet = () => {
+    breakpoints.tablet && breakpoints.md && setMenuCollapsed(true);
+  };
+  useEffect(() => {
+    if (breakpoints.md && mobileOpen) setMobileOpen(false);
+    if (breakpoints.tablet && !menuCollapsed) setMenuCollapsed(true);
+    if (breakpoints.lg && menuCollapsed) {
       setMenuCollapsed(false);
     }
-  }, [brakepoints.lg, brakepoints.tablet, brakepoints.md]);
-  useLayoutEffect(() => {
-   colapseMenuOnTablet()
+  }, [breakpoints.lg, breakpoints.tablet, breakpoints.md]);
+
+  useEffect(() => {
+    colapseMenuOnTablet();
+    {
+      breakpoints.sm && setSidebarLoaded(true);
+    }
   }, []);
 
   let websiteTheme;
@@ -38,14 +44,12 @@ const Layout = ({ children, pageContext }) => {
     websiteTheme = window.__theme;
   }
 
-
-
   if (pageContext.layout === '404') {
     return <NotFoundPage />;
   } else
     return (
       <main className={s.mainSection}>
-        {brakepoints.md && (
+        {breakpoints.md && (
           <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
             <Navbar
               colapseMenuOnTablet={colapseMenuOnTablet}
@@ -57,7 +61,7 @@ const Layout = ({ children, pageContext }) => {
           </div>
         )}
         <div className={s.main}>
-          {mobileOpen && brakepoints.sm && (
+          {mobileOpen && breakpoints.sm && (
             <MobileMenu
               setMobileOpen={setMobileOpen}
               handleCloseMobileMenu={handleCloseMobileMenu}
@@ -66,10 +70,11 @@ const Layout = ({ children, pageContext }) => {
           )}
           <div
             className={!menuCollapsed ? ' mdOnly:ml-14' : ' ml-0'}
-            style={mobileOpen ? { height: '0px' } : null}
+            style={mobileOpen ? { display: 'none' } : null}
           >
             <MobileMenuContext.Provider value={menuState}>
-              {sidebarLoaded && children}
+              {breakpoints.md && sidebarLoaded && children}
+              {breakpoints.sm && children}
             </MobileMenuContext.Provider>
           </div>
         </div>

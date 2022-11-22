@@ -29,7 +29,7 @@ function SearchResultItem({ page, query, onClick }) {
 
   return (
     <Link
-      onClick={onClick}
+      onClick={()=> onClick()}
       to={`${page.fields.slug}`}
       className={s.searchResultItemLink}
     >

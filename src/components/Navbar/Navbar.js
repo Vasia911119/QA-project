@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 import useMenuStructure from '../../queries/menu-structure';
 
@@ -30,12 +30,13 @@ export default function Navbar({
 }) {
   const menuItems = useMenuStructure();
   const { i18n } = useTranslation();
-  const breakpoint=useBreakpoint()
- 
+  const breakpoint = useBreakpoint();
+
   useEffect(() => {
-   {breakpoint.md && setSidebarLoaded(true)}
-    }, [])
-  
+    {
+      breakpoint.md && setSidebarLoaded(true);
+    }
+  }, []);
 
   // ------if adding new page/links chapter => add a new icon for this certain array of icons ------
   const notHomePageMenuChaptersIcons = [
@@ -108,7 +109,7 @@ export default function Navbar({
       i.frontmatter.language === i18n.language
   );
   return (
-    <div 
+    <div
       className={menuCollapsed ? s.sidebarWrapperCollapsed : s.sidebarWrapper}
     >
       <Header
@@ -136,7 +137,9 @@ export default function Navbar({
             to={'/'}
             onClick={() => {
               handleCloseMobileMenu();
-             {breakpoint.md && colapseMenuOnTablet()}
+              {
+                breakpoint.md && setMenuCollapsed(true);
+              }
             }}
             className={
               menuCollapsed
@@ -205,8 +208,8 @@ export default function Navbar({
               </li>
             );
           })}
-        </ul>
-      
+      </ul>
+
       <Footer
         menuCollapsed={menuCollapsed}
         setMenuCollapsed={setMenuCollapsed}

@@ -84,6 +84,5 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    require('@savvywombat/tailwindcss-grid-areas'),
   ],
 };
