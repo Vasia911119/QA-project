@@ -33,19 +33,7 @@ module.exports = {
         grey: { 350: '#9EA2C6' }, //text
         slate: { 50: '#F8FAFC' },
       },
-      gridTemplateAreas: {
-        'wide': [
-          'header header header',
-          'nav    main   main',
-          'nav    footer footer',
-        ],
-        'slim': [
-          'header',
-          'nav',
-          'main',
-          'footer',
-        ],
-      },
+     
       // TYPOGRAFY
       typography: ({ theme }) => ({
         invert: {

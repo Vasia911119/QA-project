@@ -52,7 +52,6 @@
   "devDependencies": {
     "@netlify/plugin-gatsby": "3.4.8",
     "@netlify/plugin-lighthouse": "4.0.0",
-    "@savvywombat/tailwindcss-grid-areas": "^3.0.0",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13"
   },
