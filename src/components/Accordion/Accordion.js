@@ -12,7 +12,7 @@ function Accordion({
   title,
   content = '',
   titleUrl = null,
-  handleClose,
+  handleCloseMobileMenu,
 }) {
   const brakepoints = useBreakpoint();
   const { t } = useTranslation();
@@ -74,7 +74,7 @@ function Accordion({
                   rel="noreferrer noopener nofollow"
                   aria-label={i.link_title}
                   className={s.sublink}
-                  onClick={handleClose}
+                  onClick={handleCloseMobileMenu}
                   target={'_blank'}
                   href={i.url_adress}
                 >
@@ -86,7 +86,7 @@ function Accordion({
                   key={i.slug}
                   className={s.sublink}
                   onClick={() => {
-                    brakepoints.sm && handleClose();
+                    brakepoints.sm && handleCloseMobileMenu();
                     collapseMenuOnTablet();
                   }}
                   to={i.slug}
@@ -108,5 +108,5 @@ Accordion.propTypes = {
   content: PropTypes.array,
   className: PropTypes.string,
   titleUrl: PropTypes.string,
-  handleClose: PropTypes.func,
+  handleCloseMobileMenu: PropTypes.func,
 };

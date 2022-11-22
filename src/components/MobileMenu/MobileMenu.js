@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import * as s from './MobileMenu.module.css';
 
-function MobileMenu({ setMobileOpen, handleClose, mobileOpen }) {
+function MobileMenu({ setMobileOpen, handleCloseMobileMenu, mobileOpen }) {
   useEffect(() => {
     document.body.setAttribute('overflow', 'hidden');
 
@@ -16,7 +16,7 @@ function MobileMenu({ setMobileOpen, handleClose, mobileOpen }) {
       <Navbar
         setMobileOpen={setMobileOpen}
         mobileOpen={mobileOpen}
-        handleClose={handleClose}
+        handleCloseMobileMenu={handleCloseMobileMenu}
       />
     </div>
   );

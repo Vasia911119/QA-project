@@ -10,7 +10,7 @@ require('dotenv').config({
 });
 const autoprefixer = require('autoprefixer');
 const myCustomQueries = {
-  sm: '(max-width: 767.99px)',
+  sm: '(max-width: 767.98px)',
   md: '(min-width: 768px)',
   lg: '(min-width: 1280px)',
   tablet: '(max-width: 1279.99px)',

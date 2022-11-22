@@ -11,23 +11,32 @@ import * as s from './Layout.module.css';
 export const MobileMenuContext = createContext();
 
 const Layout = ({ children, pageContext }) => {
-  const brakepoints = useBreakpoint();
+  const breakpoints = useBreakpoint();
 
+  const [sidebarLoaded, setSidebarLoaded] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuCollapsed, setMenuCollapsed] = useState(false);
 
   const menuState = { mobileOpen, setMobileOpen };
-  const handleClose = () => setMobileOpen(false);
-
+  const handleCloseMobileMenu = () => {
+    setMobileOpen(false);
+  };
+  const colapseMenuOnTablet = () => {
+    breakpoints.tablet && breakpoints.md && setMenuCollapsed(true);
+  };
   useEffect(() => {
-    if (brakepoints.md && mobileOpen) setMobileOpen(false);
-    if (brakepoints.tablet && !menuCollapsed) setMenuCollapsed(true);
-    if (brakepoints.lg && menuCollapsed) {
+    if (breakpoints.md && mobileOpen) setMobileOpen(false);
+    if (breakpoints.tablet && !menuCollapsed) setMenuCollapsed(true);
+    if (breakpoints.lg && menuCollapsed) {
       setMenuCollapsed(false);
     }
-  }, [brakepoints.lg, brakepoints.tablet, brakepoints.md]);
+  }, [breakpoints.lg, breakpoints.tablet, breakpoints.md]);
+
   useEffect(() => {
-    if (brakepoints.tablet && brakepoints.md) setMenuCollapsed(true);
+    colapseMenuOnTablet();
+    {
+      breakpoints.sm && setSidebarLoaded(true);
+    }
   }, []);
 
   let websiteTheme;
@@ -40,28 +49,32 @@ const Layout = ({ children, pageContext }) => {
   } else
     return (
       <main className={s.mainSection}>
-        {brakepoints.md && (
+        {breakpoints.md && (
           <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
             <Navbar
+              colapseMenuOnTablet={colapseMenuOnTablet}
+              setSidebarLoaded={setSidebarLoaded}
+              handleCloseMobileMenu={handleCloseMobileMenu}
               setMenuCollapsed={setMenuCollapsed}
               menuCollapsed={menuCollapsed}
             />
           </div>
         )}
         <div className={s.main}>
-          {mobileOpen && brakepoints.sm && (
+          {mobileOpen && breakpoints.sm && (
             <MobileMenu
               setMobileOpen={setMobileOpen}
-              handleClose={handleClose}
+              handleCloseMobileMenu={handleCloseMobileMenu}
               mobileOpen={mobileOpen}
             />
           )}
           <div
             className={!menuCollapsed ? ' mdOnly:ml-14' : ' ml-0'}
-            style={mobileOpen ? { height: '0px' } : null}
+            style={mobileOpen ? { display: 'none' } : null}
           >
             <MobileMenuContext.Provider value={menuState}>
-              {children}
+              {breakpoints.md && sidebarLoaded && children}
+              {breakpoints.sm && children}
             </MobileMenuContext.Provider>
           </div>
         </div>

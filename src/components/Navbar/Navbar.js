@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import useMenuStructure from '../../queries/menu-structure';
 
@@ -20,19 +20,23 @@ import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 
 export default function Navbar({
+  setSidebarLoaded,
+  colapseMenuOnTablet,
   mobileOpen,
   setMobileOpen,
-  handleClose,
+  handleCloseMobileMenu,
   menuCollapsed,
   setMenuCollapsed,
 }) {
   const menuItems = useMenuStructure();
   const { i18n } = useTranslation();
-  const brakepoints = useBreakpoint();
+  const breakpoint = useBreakpoint();
 
-  const colapseMenuOnTablet = () => {
-    brakepoints.tablet && brakepoints.md && setMenuCollapsed(true);
-  };
+  useEffect(() => {
+    {
+      breakpoint.md && setSidebarLoaded(true);
+    }
+  }, []);
 
   // ------if adding new page/links chapter => add a new icon for this certain array of icons ------
   const notHomePageMenuChaptersIcons = [
@@ -110,7 +114,7 @@ export default function Navbar({
     >
       <Header
         mobileOpen={mobileOpen}
-        handleClose={handleClose}
+        handleCloseMobileMenu={handleCloseMobileMenu}
         setMobileOpen={setMobileOpen}
         menuCollapsed={menuCollapsed}
         setMenuCollapsed={setMenuCollapsed}
@@ -132,8 +136,10 @@ export default function Navbar({
           <Link
             to={'/'}
             onClick={() => {
-              handleClose;
-              colapseMenuOnTablet();
+              handleCloseMobileMenu();
+              {
+                breakpoint.md && setMenuCollapsed(true);
+              }
             }}
             className={
               menuCollapsed
@@ -169,7 +175,7 @@ export default function Navbar({
                     className={
                       menuCollapsed ? 'h-0 w-0 truncate ' : 'ml-4 w-full '
                     }
-                    handleClose={handleClose}
+                    handleCloseMobileMenu={handleCloseMobileMenu}
                     title={accordionDataComponent.title}
                     content={accordionDataComponent.sub}
                   />
@@ -195,15 +201,15 @@ export default function Navbar({
                   className={
                     menuCollapsed ? 'h-0 w-0 truncate ' : 'ml-4 w-full '
                   }
-                  handleClose={handleClose}
+                  handleCloseMobileMenu={handleCloseMobileMenu}
                   title={i.frontmatter.link_chapter_title}
                   content={i.frontmatter.links_items}
                 />
               </li>
             );
           })}
-        </ul>
-      
+      </ul>
+
       <Footer
         menuCollapsed={menuCollapsed}
         setMenuCollapsed={setMenuCollapsed}

@@ -34,7 +34,7 @@ export const ButtonsNavigate = () => {
       }
     }
   `);
-
+ 
   // Отримуємо масив з адресами сторінок, по даному масиві буде відбуватись навігація кнопками Назад і Далі
   const getResultArray = () => {
     const result = [`/${i18n.language}/`];

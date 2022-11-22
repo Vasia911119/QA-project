@@ -8,7 +8,7 @@ import * as s from './Header.module.css';
 export const Header = ({
   mobileOpen,
   setMobileOpen,
-  handleClose,
+  handleCloseMobileMenu,
   menuCollapsed,
 }) => {
   return (
@@ -32,7 +32,7 @@ export const Header = ({
       )}
       <Link
         to={`/`}
-        onClick={handleClose}
+        onClick={handleCloseMobileMenu}
         className={
           mobileOpen
             ? ' mb-0'
