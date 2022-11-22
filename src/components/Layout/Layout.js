@@ -1,7 +1,7 @@
 import 'fontsource-inter';
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import PropTypes from 'prop-types';
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useLayoutEffect, useState } from 'react';
 import Navbar from '../Navbar';
 
 import NotFoundPage from '../../pages/404';
@@ -13,21 +13,24 @@ export const MobileMenuContext = createContext();
 const Layout = ({ children, pageContext }) => {
   const brakepoints = useBreakpoint();
 
+  const [sidebarLoaded, setSidebarLoaded] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuCollapsed, setMenuCollapsed] = useState(false);
 
   const menuState = { mobileOpen, setMobileOpen };
   const handleCloseMobileMenu = () => {setMobileOpen(false)};
-
-  useEffect(() => {
+  const colapseMenuOnTablet = () => {
+    brakepoints.tablet && brakepoints.md && setMenuCollapsed(true);
+  };
+  useLayoutEffect(() => {
     if (brakepoints.md && mobileOpen) setMobileOpen(false);
     if (brakepoints.tablet && !menuCollapsed) setMenuCollapsed(true);
     if (brakepoints.lg && menuCollapsed) {
       setMenuCollapsed(false);
     }
   }, [brakepoints.lg, brakepoints.tablet, brakepoints.md]);
-  useEffect(() => {
-    if (brakepoints.tablet && brakepoints.md) setMenuCollapsed(true);
+  useLayoutEffect(() => {
+   colapseMenuOnTablet()
   }, []);
 
   let websiteTheme;
@@ -45,6 +48,8 @@ const Layout = ({ children, pageContext }) => {
         {brakepoints.md && (
           <div className={menuCollapsed ? s.collapsed : s.uncollapsed}>
             <Navbar
+              colapseMenuOnTablet={colapseMenuOnTablet}
+              setSidebarLoaded={setSidebarLoaded}
               handleCloseMobileMenu={handleCloseMobileMenu}
               setMenuCollapsed={setMenuCollapsed}
               menuCollapsed={menuCollapsed}
@@ -64,7 +69,7 @@ const Layout = ({ children, pageContext }) => {
             style={mobileOpen ? { height: '0px' } : null}
           >
             <MobileMenuContext.Provider value={menuState}>
-              {children}
+              {sidebarLoaded && children}
             </MobileMenuContext.Provider>
           </div>
         </div>
