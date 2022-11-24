@@ -37,7 +37,7 @@ const SwitchLanguages = ({ collapsed = false }) => {
   const langArray = languages.filter(lang => lang !== language);
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <button
         type="button"
         aria-label={languageSwitcher}
@@ -60,7 +60,7 @@ const SwitchLanguages = ({ collapsed = false }) => {
       </button>
       {open && (
         <>
-          <ul className="relative z-20 w-full">
+          <ul className="relative z-20 flex w-full flex-col gap-3">
             {langArray.map(lng => {
               return (
                 <li key={lng} className="my-1">
