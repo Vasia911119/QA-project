@@ -18,7 +18,7 @@
   },
   "formValidation": {
     "required": "It is a required field",
-    "name": "Only letters",
+    "name": "Name can only consist of letters, a dash and an apostrophe",
     "nameMin": "Name must contain min 2 characters",
     "nameMax": "Name must contain max 100 characters",
     "email": "Only Latin letters and min 3 letters before @ accepted",
