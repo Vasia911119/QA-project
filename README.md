@@ -143,7 +143,7 @@ Netlify -
 Як створити бот в telegram, додати його до чату, як отримати з створеного боту
 токен та отримати id чату, та як отримати повідомлення з форми в чат telegram
 можна переглянути тут -
-([відео](https://www.youtube.com/watch?v=RviYQrNdDok&ab_channel=AVISTV))
+([відео](https://www.youtube.com/watch?v=RviYQrNdDok&ab_channel=AVISTV)).
 
 ## ButtonsNavigate
 
